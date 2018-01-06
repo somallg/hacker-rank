@@ -28,4 +28,31 @@ function separateNumbers(s: string): boolean {
   return true;
 }
 
-separateNumbers('12');
+// function canSeparateNumbers(s: string, length: number): [boolean, number] {
+//   let from = 0;
+//   const results: number[] = [];
+//   for (let i = 0; i < s.length; i = i + 1) {
+//     const current: string = s.substr(from, length);
+//     const expectNext: number = parseInt(current, 10) + 1;
+//     const actualNext: string = s.substr(from + current.length, expectNext.toString().length);
+//
+//     console.log(`i=${i}, current=${current}, expectNext=${expectNext}, actualNext=${actualNext}`);
+//
+//     if (expectNext !== parseInt(actualNext, 10)) {
+//       return [false, -1];
+//     }
+//
+//     results.push(parseInt(current, 10));
+//     from = from + current.length;
+//   }
+//
+//   return [true, results[0]];
+// }
+
+function canSeparateNumbers(acc: [], s: string, length: number): number[] {
+
+
+  return acc;
+}
+
+console.log(canSeparateNumbers('123', 1));

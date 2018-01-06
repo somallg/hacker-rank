@@ -6,7 +6,8 @@
   "author": "somallg",
   "license": "MIT",
   "scripts": {
-    "compile": "gulp compile"
+    "compile": "gulp compile",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -17,6 +18,8 @@
     "@types/gulp-typescript": "^2.13.0",
     "@types/yargs": "^10.0.1",
     "chalk": "^2.3.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.1.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-if": "^2.0.2",
