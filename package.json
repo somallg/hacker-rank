@@ -6,6 +6,7 @@
   "author": "somallg",
   "license": "MIT",
   "scripts": {
+    "test": "echo 'done'",
     "compile": "gulp compile",
     "commit": "git-cz",
     "semantic-release": "semantic-release"
