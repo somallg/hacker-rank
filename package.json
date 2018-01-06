@@ -1,13 +1,28 @@
 {
   "name": "hacker-rank",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Submissions of HackerRank problems written in TypeScript",
   "main": "index.js",
   "author": "somallg",
   "license": "MIT",
   "scripts": {
     "compile": "gulp compile",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/github",
+      "@semantic-release/condition-travis"
+    ],
+    "publish": [
+      "@semantic-release/github"
+    ]
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -26,10 +41,16 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-print": "^2.0.1",
     "gulp-typescript": "^3.2.3",
+    "semantic-release": "^11.0.2",
+    "semantic-release-cli": "3.5.0",
     "ts-node": "^4.1.0",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "^5.4.2",
     "typescript": "^2.6.2",
     "yargs": "^10.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/somallg/hacker-rank.git"
   }
 }
