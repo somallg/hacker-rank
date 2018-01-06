@@ -181,13 +181,13 @@
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.6.0.tgz#383f456b26bc96c7889f0332079f4358b16c58dc"
 
-"@types/chalk@^2.2.0":
+"@types/chalk@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@types/chalk/-/chalk-2.2.0.tgz#b7f6e446f4511029ee8e3f43075fb5b73fbaa0ba"
   dependencies:
     chalk "*"
 
-"@types/del@^3.0.0":
+"@types/del@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/del/-/del-3.0.0.tgz#1c8cd8b6e38da3b572352ca8eaf5527931426288"
   dependencies:
@@ -205,26 +205,26 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/gulp-if@^0.0.33":
+"@types/gulp-if@0.0.33":
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@types/gulp-if/-/gulp-if-0.0.33.tgz#edece22b7925d9a6db5f9c8c0d7882aa776fb678"
   dependencies:
     "@types/node" "*"
     "@types/vinyl" "*"
 
-"@types/gulp-load-plugins@^0.0.31":
+"@types/gulp-load-plugins@0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@types/gulp-load-plugins/-/gulp-load-plugins-0.0.31.tgz#e25c9d626b2c0947944cf8369b9ecdd2dbf2e57a"
   dependencies:
     "@types/node" "*"
 
-"@types/gulp-typescript@^2.13.0":
+"@types/gulp-typescript@2.13.0":
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/@types/gulp-typescript/-/gulp-typescript-2.13.0.tgz#716ee26ce734d62ec5544b872ac073337a07202d"
   dependencies:
     gulp-typescript "*"
 
-"@types/gulp@^3.8.0":
+"@types/gulp@3.8.36":
   version "3.8.36"
   resolved "https://registry.yarnpkg.com/@types/gulp/-/gulp-3.8.36.tgz#11eaf583bf0534669b4ffa9bfed51557faa00a4c"
   dependencies:
@@ -237,8 +237,8 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
 
 "@types/node@*":
-  version "4.0.35"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-4.0.35.tgz#2b96b8e67bea7451e6e1ba8b65eaeb8f223261ed"
+  version "8.5.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.7.tgz#9c498c35af354dcfbca3790fb2e81129e93cf0e2"
 
 "@types/orchestrator@*":
   version "0.3.2"
@@ -265,7 +265,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/yargs@^10.0.1":
+"@types/yargs@10.0.1":
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-10.0.1.tgz#f986e2b5d37f1fb8c13c0ed15f45d01bcc3fb3d6"
 
@@ -1440,7 +1440,7 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concat-stream@^1.4.7, concat-stream@^1.5.0, concat-stream@^1.5.2:
+concat-stream@^1.4.10, concat-stream@^1.4.7, concat-stream@^1.5.0, concat-stream@^1.5.2:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.0.tgz#0aac662fd52be78964d5532f694784e70110acf7"
   dependencies:
@@ -1470,14 +1470,81 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
 
-conventional-changelog-angular@^1.3.3, conventional-changelog-angular@^1.4.0:
+conventional-changelog-angular@^1.3.3, conventional-changelog-angular@^1.4.0, conventional-changelog-angular@^1.5.2:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/conventional-changelog-angular/-/conventional-changelog-angular-1.6.0.tgz#0a26a071f2c9fcfcf2b86ba0cfbf6e6301b75bfa"
   dependencies:
     compare-func "^1.3.1"
     q "^1.4.1"
 
-conventional-changelog-writer@^2.0.1:
+conventional-changelog-atom@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-atom/-/conventional-changelog-atom-0.1.2.tgz#12595ad5267a6937c34cf900281b1c65198a4c63"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-codemirror@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-codemirror/-/conventional-changelog-codemirror-0.2.1.tgz#299a4f7147baf350e6c8158fc54954a291c5cc09"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-core@^1.9.3:
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-core/-/conventional-changelog-core-1.9.5.tgz#5db7566dad7c0cb75daf47fbb2976f7bf9928c1d"
+  dependencies:
+    conventional-changelog-writer "^2.0.3"
+    conventional-commits-parser "^2.1.0"
+    dateformat "^1.0.12"
+    get-pkg-repo "^1.0.0"
+    git-raw-commits "^1.3.0"
+    git-remote-origin-url "^2.0.0"
+    git-semver-tags "^1.2.3"
+    lodash "^4.0.0"
+    normalize-package-data "^2.3.5"
+    q "^1.4.1"
+    read-pkg "^1.1.0"
+    read-pkg-up "^1.0.1"
+    through2 "^2.0.0"
+
+conventional-changelog-ember@^0.2.9:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-ember/-/conventional-changelog-ember-0.2.10.tgz#dcd6e4cdc2e6c2b58653cf4d2cb1656a60421929"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-eslint@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-eslint/-/conventional-changelog-eslint-0.2.1.tgz#2c2a11beb216f80649ba72834180293b687c0662"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-express@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-express/-/conventional-changelog-express-0.2.1.tgz#838d9e1e6c9099703b150b9c19aa2d781742bd6c"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-jquery@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-jquery/-/conventional-changelog-jquery-0.1.0.tgz#0208397162e3846986e71273b6c79c5b5f80f510"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-jscs@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-jscs/-/conventional-changelog-jscs-0.1.0.tgz#0479eb443cc7d72c58bf0bcf0ef1d444a92f0e5c"
+  dependencies:
+    q "^1.4.1"
+
+conventional-changelog-jshint@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/conventional-changelog-jshint/-/conventional-changelog-jshint-0.2.1.tgz#86139bb3ac99899f2b177e9617e09b37d99bcf3a"
+  dependencies:
+    compare-func "^1.3.1"
+    q "^1.4.1"
+
+conventional-changelog-writer@^2.0.1, conventional-changelog-writer@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/conventional-changelog-writer/-/conventional-changelog-writer-2.0.3.tgz#073b0c39f1cc8fc0fd9b1566e93833f51489c81c"
   dependencies:
@@ -1491,6 +1558,21 @@ conventional-changelog-writer@^2.0.1:
     semver "^5.0.1"
     split "^1.0.0"
     through2 "^2.0.0"
+
+conventional-changelog@^1.1.0:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/conventional-changelog/-/conventional-changelog-1.1.7.tgz#9151a62b1d8edb2d82711dabf5b7cf71041f82b1"
+  dependencies:
+    conventional-changelog-angular "^1.5.2"
+    conventional-changelog-atom "^0.1.2"
+    conventional-changelog-codemirror "^0.2.1"
+    conventional-changelog-core "^1.9.3"
+    conventional-changelog-ember "^0.2.9"
+    conventional-changelog-eslint "^0.2.1"
+    conventional-changelog-express "^0.2.1"
+    conventional-changelog-jquery "^0.1.0"
+    conventional-changelog-jscs "^0.1.0"
+    conventional-changelog-jshint "^0.2.1"
 
 conventional-commit-types@^2.0.0:
   version "2.2.0"
@@ -1514,6 +1596,18 @@ conventional-commits-parser@^2.0.0, conventional-commits-parser@^2.1.0:
     split2 "^2.0.0"
     through2 "^2.0.0"
     trim-off-newlines "^1.0.0"
+
+conventional-recommended-bump@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/conventional-recommended-bump/-/conventional-recommended-bump-1.1.0.tgz#964d4fcc70fb5259d41fa9b39d3df6afdb87d253"
+  dependencies:
+    concat-stream "^1.4.10"
+    conventional-commits-filter "^1.1.1"
+    conventional-commits-parser "^2.1.0"
+    git-raw-commits "^1.3.0"
+    git-semver-tags "^1.2.3"
+    meow "^3.3.0"
+    object-assign "^4.0.1"
 
 convert-source-map@^1.1.1, convert-source-map@^1.5.0:
   version "1.5.1"
@@ -1624,7 +1718,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dateformat@^1.0.11:
+dateformat@^1.0.11, dateformat@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
   dependencies:
@@ -1691,7 +1785,7 @@ define-property@^1.0.0:
   dependencies:
     is-descriptor "^1.0.0"
 
-del@^3.0.0:
+del@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/del/-/del-3.0.0.tgz#53ecf699ffcbcb39637691ab13baf160819766e5"
   dependencies:
@@ -1774,6 +1868,13 @@ dot-prop@^4.1.0:
 dotenv@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+
+dotgitignore@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/dotgitignore/-/dotgitignore-1.0.3.tgz#a442cbde7dc20dff51cdb849e4c5a64568c07923"
+  dependencies:
+    find-up "^2.1.0"
+    minimatch "^3.0.4"
 
 duplexer2@0.0.2:
   version "0.0.2"
@@ -2024,7 +2125,7 @@ fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
 
-figures@^1.3.5:
+figures@^1.3.5, figures@^1.5.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
   dependencies:
@@ -2204,6 +2305,12 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
+fs-access@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/fs-access/-/fs-access-1.0.1.tgz#d6a87f262271cefebec30c553407fb995da8777a"
+  dependencies:
+    null-check "^1.0.0"
+
 fs-exists-sync@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/fs-exists-sync/-/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
@@ -2310,6 +2417,16 @@ get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
 
+get-pkg-repo@^1.0.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/get-pkg-repo/-/get-pkg-repo-1.4.0.tgz#c73b489c06d80cc5536c2c853f9e05232056972d"
+  dependencies:
+    hosted-git-info "^2.1.4"
+    meow "^3.3.0"
+    normalize-package-data "^2.3.0"
+    parse-github-repo-url "^1.3.0"
+    through2 "^2.0.0"
+
 get-stdin@5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-5.0.1.tgz#122e161591e21ff4c52530305693f20e6393a398"
@@ -2361,6 +2478,20 @@ git-raw-commits@^1.3.0:
     split2 "^2.0.0"
     through2 "^2.0.0"
 
+git-remote-origin-url@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/git-remote-origin-url/-/git-remote-origin-url-2.0.0.tgz#5282659dae2107145a11126112ad3216ec5fa65f"
+  dependencies:
+    gitconfiglocal "^1.0.0"
+    pify "^2.3.0"
+
+git-semver-tags@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/git-semver-tags/-/git-semver-tags-1.2.3.tgz#188b453882bf9d7a23afd31baba537dab7388d5d"
+  dependencies:
+    meow "^3.3.0"
+    semver "^5.0.1"
+
 git-up@^2.0.0:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/git-up/-/git-up-2.0.10.tgz#20fe6bafbef4384cae253dc4f463c49a0c3bd2ec"
@@ -2373,6 +2504,12 @@ git-url-parse@^7.0.1:
   resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-7.0.2.tgz#75fc7ae08e5daa90edc59043cdfa8da57c5a8715"
   dependencies:
     git-up "^2.0.0"
+
+gitconfiglocal@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gitconfiglocal/-/gitconfiglocal-1.0.0.tgz#41d045f3851a5ea88f03f24ca1c6178114464b9b"
+  dependencies:
+    ini "^1.3.2"
 
 github-url-from-git@^1.4.0:
   version "1.5.0"
@@ -2629,7 +2766,7 @@ graceful-fs@~1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-1.2.3.tgz#15a4806a57547cb2d2dbf27f42e89a8c3451b364"
 
-gulp-if@^2.0.2:
+gulp-if@2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/gulp-if/-/gulp-if-2.0.2.tgz#a497b7e7573005041caa2bc8b7dda3c80444d629"
   dependencies:
@@ -2637,7 +2774,7 @@ gulp-if@^2.0.2:
     ternary-stream "^2.0.1"
     through2 "^2.0.1"
 
-gulp-load-plugins@^1.5.0:
+gulp-load-plugins@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/gulp-load-plugins/-/gulp-load-plugins-1.5.0.tgz#4c419f7e5764d9a0e33061bab9618f81b73d4171"
   dependencies:
@@ -2655,7 +2792,7 @@ gulp-match@^1.0.3:
   dependencies:
     minimatch "^3.0.3"
 
-gulp-print@^2.0.1:
+gulp-print@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gulp-print/-/gulp-print-2.0.1.tgz#1acee58eac8af2d3c4ad3329dbe465758393c414"
   dependencies:
@@ -2672,7 +2809,7 @@ gulp-sourcemaps@1.6.0:
     through2 "^2.0.0"
     vinyl "^1.0.0"
 
-gulp-typescript@*, gulp-typescript@^3.2.3:
+gulp-typescript@*, gulp-typescript@3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/gulp-typescript/-/gulp-typescript-3.2.3.tgz#32d52ab97b97c4ce070c0419db08ea3af514d720"
   dependencies:
@@ -2704,7 +2841,7 @@ gulp-util@^3.0.0, gulp-util@^3.0.6, gulp-util@~3.0.7:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp@^3.9.1:
+gulp@3.9.1:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
   dependencies:
@@ -2959,7 +3096,7 @@ inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, 
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
-ini@^1.3.4, ini@~1.3.0, ini@~1.3.4:
+ini@^1.3.2, ini@^1.3.4, ini@~1.3.0, ini@~1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
@@ -4147,7 +4284,7 @@ nopt@^4.0.0, nopt@~4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
-normalize-package-data@^2.0.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.4.0, "normalize-package-data@~1.0.1 || ^2.0.0", normalize-package-data@~2.4.0:
+normalize-package-data@^2.0.0, normalize-package-data@^2.3.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.3.5, normalize-package-data@^2.4.0, "normalize-package-data@~1.0.1 || ^2.0.0", normalize-package-data@~2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
   dependencies:
@@ -4383,6 +4520,10 @@ npm@^5.5.1:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+null-check@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/null-check/-/null-check-1.0.0.tgz#977dffd7176012b9ec30d2a39db5cf72a0439edd"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -4637,7 +4778,7 @@ parse-git-config@^1.1.1:
     git-config-path "^1.0.1"
     ini "^1.3.4"
 
-parse-github-repo-url@^1.0.0:
+parse-github-repo-url@^1.0.0, parse-github-repo-url@^1.3.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/parse-github-repo-url/-/parse-github-repo-url-1.4.1.tgz#9e7d8bb252a6cb6ba42595060b7bf6df3dbc1f50"
 
@@ -4752,7 +4893,7 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-pify@^2.0.0:
+pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
 
@@ -4965,7 +5106,7 @@ read-pkg-up@^3.0.0:
     find-up "^2.0.0"
     read-pkg "^3.0.0"
 
-read-pkg@^1.0.0:
+read-pkg@^1.0.0, read-pkg@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-1.1.0.tgz#f5ffaa5ecd29cb31c0474bca7d756b6bb29e3f28"
   dependencies:
@@ -5386,7 +5527,7 @@ semantic-release-cli@3.5.0:
   optionalDependencies:
     keytar "^4.0.4"
 
-semantic-release@^11.0.2:
+semantic-release@11.0.2:
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-11.0.2.tgz#2a09baa33a0e41926ac3290c8b110d22a5ba2a48"
   dependencies:
@@ -5698,6 +5839,19 @@ ssri@^5.0.0, ssri@~5.0.0:
   resolved "https://registry.yarnpkg.com/ssri/-/ssri-5.0.0.tgz#13c19390b606c821f2a10d02b351c1729b94d8cf"
   dependencies:
     safe-buffer "^5.1.0"
+
+standard-version@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/standard-version/-/standard-version-4.3.0.tgz#41006cfee4eeab7c0ff3a47eecaa4c7506ed2e3f"
+  dependencies:
+    chalk "^1.1.3"
+    conventional-changelog "^1.1.0"
+    conventional-recommended-bump "^1.0.0"
+    dotgitignore "^1.0.3"
+    figures "^1.5.0"
+    fs-access "^1.0.0"
+    semver "^5.1.0"
+    yargs "^8.0.1"
 
 static-extend@^0.1.1:
   version "0.1.2"
@@ -6011,7 +6165,7 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
 
-ts-node@^4.1.0:
+ts-node@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-4.1.0.tgz#36d9529c7b90bb993306c408cd07f7743de20712"
   dependencies:
@@ -6039,7 +6193,7 @@ tslib@^1.0.0, tslib@^1.7.1, tslib@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.8.1.tgz#6946af2d1d651a7b1863b531d6e5afa41aa44eac"
 
-tslint-config-airbnb@^5.4.2:
+tslint-config-airbnb@5.4.2:
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.4.2.tgz#18eeff28f697b578731249d9a3ef8955b2f04f44"
   dependencies:
@@ -6068,7 +6222,7 @@ tslint-microsoft-contrib@~5.0.1:
   dependencies:
     tsutils "^1.4.0"
 
-tslint@^5.8.0:
+tslint@5.8.0:
   version "5.8.0"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.8.0.tgz#1f49ad5b2e77c76c3af4ddcae552ae4e3612eb13"
   dependencies:
@@ -6112,7 +6266,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.6.2:
+typescript@2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
 
@@ -6483,7 +6637,7 @@ yargs-parser@^8.0.0:
   dependencies:
     camelcase "^4.1.0"
 
-yargs@^10.0.3:
+yargs@10.0.3, yargs@^10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.3.tgz#6542debd9080ad517ec5048fb454efe9e4d4aaae"
   dependencies:
@@ -6500,7 +6654,7 @@ yargs@^10.0.3:
     y18n "^3.2.1"
     yargs-parser "^8.0.0"
 
-yargs@^8.0.2:
+yargs@^8.0.1, yargs@^8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
   dependencies:
