@@ -1,16 +1,17 @@
 {
   "name": "hacker-rank",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "Submissions of HackerRank problems written in TypeScript",
   "main": "index.js",
   "author": "somallg",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'done'",
-    "compile": "gulp compile",
     "commit": "git-cz",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "semantic-release": "semantic-release"
+    "compile": "gulp compile",
+    "release": "standard-version",
+    "semantic-release": "semantic-release",
+    "test": "echo 'done'"
   },
   "config": {
     "commitizen": {
@@ -49,6 +50,7 @@
     "husky": "0.14.3",
     "semantic-release": "^11.0.2",
     "semantic-release-cli": "3.5.0",
+    "standard-version": "4.3.0",
     "ts-node": "^4.1.0",
     "tslint": "^5.8.0",
     "tslint-config-airbnb": "^5.4.2",
