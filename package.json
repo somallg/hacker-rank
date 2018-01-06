@@ -9,6 +9,7 @@
     "test": "echo 'done'",
     "compile": "gulp compile",
     "commit": "git-cz",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
     "semantic-release": "semantic-release"
   },
   "config": {
@@ -21,13 +22,14 @@
       "@semantic-release/github",
       "@semantic-release/condition-travis"
     ],
-    "getLastRelease": [
-    ],
+    "getLastRelease": [],
     "publish": [
       "@semantic-release/github"
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "5.2.8",
+    "@commitlint/config-conventional": "5.2.3",
     "@types/chalk": "^2.2.0",
     "@types/del": "^3.0.0",
     "@types/gulp": "^3.8.0",
@@ -44,6 +46,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-print": "^2.0.1",
     "gulp-typescript": "^3.2.3",
+    "husky": "0.14.3",
     "semantic-release": "^11.0.2",
     "semantic-release-cli": "3.5.0",
     "ts-node": "^4.1.0",
