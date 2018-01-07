@@ -21,14 +21,14 @@
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
+      "@semantic-release/git",
       "@semantic-release/github",
       "@semantic-release/condition-travis"
     ],
-    "getLastRelease": [
-      "@semantic-release/git"
-    ],
+    "getLastRelease": "@semantic-release/git",
     "publish": [
       "@semantic-release/changelog",
+      "@semantic-release/git",
       "@semantic-release/github"
     ]
   },
