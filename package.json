@@ -20,19 +20,22 @@
   },
   "release": {
     "verifyConditions": [
-      "@semantic-release/github",
-      "@semantic-release/condition-travis"
+      "@semantic-release/changelog",
+      "@semantic-release/github"
     ],
     "getLastRelease": [
       "@semantic-release/git"
     ],
     "publish": [
+      "@semantic-release/changelog",
       "@semantic-release/github"
     ]
   },
   "devDependencies": {
     "@commitlint/cli": "5.2.8",
     "@commitlint/config-conventional": "5.2.3",
+    "@semantic-release/changelog": "1.0.0",
+    "@semantic-release/git": "2.0.1",
     "@types/chalk": "2.2.0",
     "@types/del": "3.0.0",
     "@types/gulp": "3.8.36",

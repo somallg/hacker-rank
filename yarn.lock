@@ -110,6 +110,14 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
+"@semantic-release/changelog@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-1.0.0.tgz#df918410ec04c72fed8328b8f583f4a2667b7584"
+  dependencies:
+    "@semantic-release/error" "^2.1.0"
+    fs-extra "^5.0.0"
+    lodash "^4.17.4"
+
 "@semantic-release/commit-analyzer@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/commit-analyzer/-/commit-analyzer-5.0.0.tgz#767a2055b5cd0a67421b1d504f3ca7db97055c42"
@@ -132,6 +140,22 @@
 "@semantic-release/error@^2.0.0", "@semantic-release/error@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.1.0.tgz#44771f676f5b148da309111285a97901aa95a6e0"
+
+"@semantic-release/git@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-2.0.1.tgz#19a1877617675d2c781d0c73ef5758e3db1f4cd0"
+  dependencies:
+    "@semantic-release/error" "^2.1.0"
+    debug "^3.1.0"
+    dir-glob "^2.0.0"
+    execa "^0.8.0"
+    fs-extra "^5.0.0"
+    git-url-parse "^7.0.1"
+    lodash "^4.17.4"
+    micromatch "^3.1.4"
+    p-locate "^2.0.0"
+    p-reduce "^1.0.0"
+    semver "^5.4.1"
 
 "@semantic-release/github@^2.0.0":
   version "2.2.3"
@@ -4059,7 +4083,7 @@ micromatch@^2.3.7, micromatch@^2.3.8:
     parse-glob "^3.0.4"
     regex-cache "^0.4.2"
 
-micromatch@^3.0.4:
+micromatch@^3.0.4, micromatch@^3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.4.tgz#bb812e741a41f982c854e42b421a7eac458796f4"
   dependencies:
