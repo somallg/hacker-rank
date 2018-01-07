@@ -21,7 +21,8 @@
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
-      "@semantic-release/github"
+      "@semantic-release/github",
+      "@semantic-release/condition-travis"
     ],
     "getLastRelease": [
       "@semantic-release/git"

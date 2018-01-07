@@ -4,6 +4,15 @@
 
 ### Features
 
+* **ci:** add automation CHANGELOG generation ([58d5d9a](https://github.com/somallg/hacker-rank/commit/58d5d9a))
+* **ci:** add travis ci to build flow ([e0cc44d](https://github.com/somallg/hacker-rank/commit/e0cc44d))
+
+<a name="1.0.0"></a>
+# 1.0.0 (2018-01-07)
+
+
+### Features
+
 * **ci:** add travis ci to build flow ([e0cc44d](https://github.com/somallg/hacker-rank/commit/e0cc44d))
 
 # Change Log
