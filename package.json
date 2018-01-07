@@ -23,7 +23,9 @@
       "@semantic-release/github",
       "@semantic-release/condition-travis"
     ],
-    "getLastRelease": [],
+    "getLastRelease": [
+      "@semantic-release/last-release-git-tag"
+    ],
     "publish": [
       "@semantic-release/github"
     ]
