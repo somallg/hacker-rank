@@ -1,10 +1,12 @@
 import ReadWriteStream = NodeJS.ReadWriteStream;
+import * as path from 'path';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as ts from 'gulp-typescript';
 import * as yargs from 'yargs';
 import * as del from 'del';
 import chalk from 'chalk';
+import { ConfigFile, Server } from 'karma';
 
 import { gulpConfig } from './gulp.config';
 import { GulpLoadPlugins } from './gulp.interface';
@@ -25,4 +27,11 @@ gulp.task('compile', ['clean'], () => {
 gulp.task('clean', () => {
   log(chalk.red('Cleaning js files'));
   return del([gulpConfig.alljs, gulpConfig.alldef]);
+});
+
+gulp.task('test',(done) => {
+  const options: ConfigFile = {
+    configFile: path.join(__dirname, '..', 'karma.conf.js')
+  };
+  new Server(options, done).start();
 });

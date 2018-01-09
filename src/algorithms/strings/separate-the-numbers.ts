@@ -2,7 +2,7 @@
  * @url: https://www.hackerrank.com/challenges/separate-the-numbers/problem
  */
 
-function separateNumbers(s: string): boolean {
+export function separateNumbers(s: string): boolean {
   // Complete this function
   let i: number = 1;
   const start: number = 0;
@@ -49,10 +49,20 @@ function separateNumbers(s: string): boolean {
 //   return [true, results[0]];
 // }
 
-function canSeparateNumbers(acc: [], s: string, length: number): number[] {
+export function canSeparateNumbers(acc: number[], s: string, length: number): number[] {
+  if (s.length === 0 || s.length <= length) {
+    return acc;
+  }
 
+  const current: string = s.substr(0, length);
+  const expectNext: number = parseInt(current, 10) + 1;
+  const actualNext: string = s.substr(current.length, expectNext.toString().length);
 
-  return acc;
+  if (expectNext !== parseInt(actualNext, 10)) {
+    return [-1];
+  }
+
+  return canSeparateNumbers(acc.concat(parseInt(current, 10)), s.substr(current.length), length);
 }
 
-console.log(canSeparateNumbers('123', 1));
+console.log(canSeparateNumbers([], '123', 2));
