@@ -11,7 +11,7 @@
     "compile": "gulp compile",
     "release": "standard-version",
     "semantic-release": "semantic-release",
-    "test": "echo 'done'"
+    "test": "gulp test"
   },
   "config": {
     "commitizen": {

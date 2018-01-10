@@ -6,7 +6,7 @@ import * as ts from 'gulp-typescript';
 import * as yargs from 'yargs';
 import * as del from 'del';
 import chalk from 'chalk';
-import {ConfigFile, ConfigOptions, Server} from 'karma';
+import { ConfigFile, ConfigOptions, Server } from 'karma';
 
 import { gulpConfig } from './gulp.config';
 import { GulpLoadPlugins } from './gulp.interface';
@@ -29,18 +29,16 @@ gulp.task('clean', () => {
   return del([gulpConfig.alljs, gulpConfig.alldef]);
 });
 
-gulp.task('test',(done) => {
-  const options: ConfigFile = {
+gulp.task('test', (done) => {
+  let options: ConfigFile | ConfigOptions  = {
     configFile: path.join(__dirname, '..', 'karma.conf.js')
   };
-  new Server(options, done).start();
-});
-
-gulp.task('test:headless',(done) => {
-  const options: ConfigFile | ConfigOptions = {
-    configFile: path.join(__dirname, '..', 'karma.conf.js'),
-    browsers: ['PhantomJS'],
-    singleRun: true
-  };
+  if (args.headless) {
+    options = {
+      ...options,
+      browsers: ['PhantomJS'],
+      singleRun: true
+    };
+  }
   new Server(options, done).start();
 });
