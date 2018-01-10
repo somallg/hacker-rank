@@ -1,3 +1,11 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/somallg/hacker-rank/compare/v1.0.0...v1.1.0) (2018-01-10)
+
+
+### Features
+
+* add more problems ([04f6ba2](https://github.com/somallg/hacker-rank/commit/04f6ba2))
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-01-07)
 
