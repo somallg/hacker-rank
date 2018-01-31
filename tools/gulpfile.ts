@@ -69,4 +69,22 @@ gulp.task('clean', () => {
   }
 
   return del(`./${d}`);
-})
+});
+
+gulp.task('tslint', () => {
+  log(`${chalk.blue('Compiling files')} ts --> js`);
+
+  return gulp.src(gulpConfig.tsSrc, { base: '.' })
+    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
+    .pipe<ReadWriteStream>(tsProject())
+    .pipe(gulp.dest('.'));
+});
+
+gulp.task('lint', () => {
+  log(chalk.blue('Linting source files'));
+
+  return gulp.src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
+    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
+    .pipe<ReadWriteStream>($.tslint({ formatter: 'verbose', fix: !!args.fix }))
+    .pipe<ReadWriteStream>($.tslint.report());
+});

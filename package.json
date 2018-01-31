@@ -18,6 +18,11 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "gulp lint"
+    }
+  },
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
@@ -56,6 +61,7 @@
     "gulp-karma": "0.0.5",
     "gulp-load-plugins": "1.5.0",
     "gulp-print": "2.0.1",
+    "gulp-tslint": "^8.1.2",
     "gulp-typescript": "3.2.3",
     "husky": "0.14.3",
     "jasmine-core": "2.8.0",
