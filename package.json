@@ -11,7 +11,8 @@
     "compile": "gulp compile",
     "release": "standard-version",
     "semantic-release": "semantic-release",
-    "test": "gulp test --headless"
+    "test": "gulp test --headless",
+    "pre-push": "gulp lint"
   },
   "config": {
     "commitizen": {
