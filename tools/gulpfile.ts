@@ -10,6 +10,7 @@ import { ConfigFile, ConfigOptions, Server } from 'karma';
 
 import { gulpConfig } from './gulp.config';
 import { GulpLoadPlugins } from './gulp.interface';
+import { specSource, fileSource } from './file-generator';
 
 const $ = gulpLoadPlugins({ lazy: true }) as GulpLoadPlugins;
 const args = yargs.argv;
@@ -42,3 +43,30 @@ gulp.task('test', (done) => {
   }
   new Server(options, done).start();
 });
+
+gulp.task('gen', () => {
+  const { d, p } = args;
+  if (!d || !p) {
+    log(chalk.red(`Please provide directory name (--d) and problem name (--p)`));
+    return 1;
+  }
+
+  log(chalk.blue('Generating problem files'));
+
+  return $.file([
+      { name: `${p}.spec.ts`, source: specSource(p) },
+      { name: `${p}.ts`, source: fileSource(p) }
+  ]).pipe(gulp.dest(`./${d}/${p}`));
+});
+
+gulp.task('clean', () => {
+  log(chalk.blue('Cleaning problem files'));
+
+  const { d } = args;
+  if (!d) {
+    log(chalk.red(`Please provide directory name`));
+    return 1;
+  }
+
+  return del(`./${d}`);
+})
