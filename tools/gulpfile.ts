@@ -94,3 +94,5 @@ gulp.task('prettier', () => {
     .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
     .pipe<ReadWriteStream>(gulp.dest('.'));
 });
+
+gulp.task('enforce', ['lint', 'prettier']);
