@@ -12,7 +12,7 @@
     "release": "standard-version",
     "semantic-release": "semantic-release",
     "test": "gulp test --headless",
-    "prepush": "gulp enforce --verbose"
+    "prepush": "gulp enforce --verbose --fix"
   },
   "config": {
     "commitizen": {
