@@ -7,12 +7,12 @@
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
+    "precommit": "gulp enforce --verbose --fix",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "compile": "gulp compile",
     "release": "standard-version",
     "semantic-release": "semantic-release",
-    "test": "gulp test --headless",
-    "prepush": "gulp enforce --verbose --fix"
+    "test": "gulp test --headless"
   },
   "config": {
     "commitizen": {
