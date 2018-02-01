@@ -12,10 +12,10 @@ export function separateNumbers(s: string): string {
     l = l + 1;
   }
 
-  res = res.filter(r => r !== '-1');
+  res = res.filter((r: string) => r !== '-1');
 
   if (res && res.length > 0) {
-    return `YES ${res.reduce((acc, e) => (acc.length < e.length || acc < e) ? acc : e)}`;
+    return `YES ${res.reduce((acc, e) => (acc.length < e.length || acc < e ? acc : e))}`;
   }
 
   return 'NO';
@@ -38,17 +38,20 @@ function canSeparateNumbers(acc: string[], s: string, length: number): string[] 
 }
 
 export function addOne(s: string) {
-  const sum = s.split('').reduceRight((acc: { s: string, carry: number}, e: string) => {
-    if (acc.carry > 0) {
-      const t = +e + acc.carry;
-      acc.s = `${t % 10}${acc.s}`;
-      acc.carry = (t > 9 ? 1 : 0);
-    } else {
-      acc.s = `${e}${acc.s}`;
-    }
+  const sum = s.split('').reduceRight(
+    (acc: { s: string; carry: number }, e: string) => {
+      if (acc.carry > 0) {
+        const t = +e + acc.carry;
+        acc.s = `${t % 10}${acc.s}`;
+        acc.carry = t > 9 ? 1 : 0;
+      } else {
+        acc.s = `${e}${acc.s}`;
+      }
 
-    return acc;
-  }, { s: '' , carry: 1 });
+      return acc;
+    },
+    { s: '', carry: 1 }
+  );
 
   if (sum.carry === 1) {
     sum.s = `1${sum.s}`;

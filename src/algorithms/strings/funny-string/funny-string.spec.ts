@@ -3,7 +3,6 @@ import { input1, input2 } from './input';
 
 describe('Funny String', () => {
   describe('checkFunnyString', () => {
-
     it('should return true if input is acxz', () => {
       expect(checkFunnyString('acxz', 'zxca')).toBe(true);
     });
@@ -14,7 +13,6 @@ describe('Funny String', () => {
   });
 
   describe('funnyString', () => {
-
     it('should return Funny if input is acxz', () => {
       expect(funnyString('acxz')).toEqual('Funny');
     });

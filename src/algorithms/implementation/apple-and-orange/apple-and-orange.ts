@@ -2,18 +2,19 @@
  * @url: https://www.hackerrank.com/challenges/apple-and-orange/problem
  */
 export function countApplesAndOranges(
-  s: number, t: number, a: number, b: number,
-  apples: number[], oranges: number[]) {
+  s: number,
+  t: number,
+  a: number,
+  b: number,
+  apples: number[],
+  oranges: number[]
+) {
   // Complete this function
   const betweenHouse = between(s, t);
 
-  const nbApple = apples.map(apple => a + apple)
-        .filter(betweenHouse)
-        .length;
+  const nbApple = apples.map((apple: number) => a + apple).filter(betweenHouse).length;
 
-  const nbOrange = oranges.map(orange => b + orange)
-        .filter(betweenHouse)
-        .length;
+  const nbOrange = oranges.map((orange: number) => b + orange).filter(betweenHouse).length;
 
   return [nbApple, nbOrange];
 }

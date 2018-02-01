@@ -63,7 +63,6 @@ describe('Separate the Numbers', () => {
       expect(separateNumbers('8342840360736983428493607370')).toBe('NO');
     });
 
-
     it('should return YES when input is 51073756645096775107375664509678', () => {
       expect(separateNumbers('51073756645096775107375664509678')).toBe('YES 5107375664509677');
     });
@@ -100,7 +99,4 @@ describe('Separate the Numbers', () => {
       expect(addOne('96589218797811259658921879781126')).toBe('96589218797811259658921879781127');
     });
   });
-
 });
-
-

@@ -4,7 +4,10 @@
 
 export function funnyString(s: string): string {
   // Complete this function
-  const r = s.split('').reverse().join('');
+  const r = s
+    .split('')
+    .reverse()
+    .join('');
 
   const isFunny = checkFunnyString(s, r);
 
@@ -30,4 +33,3 @@ export function checkFunnyString(s: string, r: string): boolean {
 
   return isFunny;
 }
-
