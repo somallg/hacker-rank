@@ -1,5 +1,4 @@
-export const specSource = (problem: string) =>
-  `import { } from './${problem}';
+export const specSource = (problem: string) => `import { } from './${problem}';
 
 describe('', () => {
   describe('', () => {
