@@ -1,5 +1,5 @@
 export const specSource = (problem: string) =>
-`import { } from './${problem}';
+  `import { } from './${problem}';
 
 describe('', () => {
   describe('', () => {
