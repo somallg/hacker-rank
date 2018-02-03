@@ -9,10 +9,11 @@
     "commit": "git-cz",
     "precommit": "gulp enforce --verbose --fix",
     "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prepush": "yarn test",
     "compile": "gulp compile",
     "release": "standard-version",
     "semantic-release": "semantic-release",
-    "test": "gulp test --headless"
+    "test": "gulp test"
   },
   "config": {
     "commitizen": {
@@ -66,11 +67,9 @@
     "karma-chrome-launcher": "2.2.0",
     "karma-jasmine": "1.1.1",
     "karma-jasmine-html-reporter": "0.2.2",
-    "karma-phantomjs-launcher": "1.0.4",
     "karma-sourcemap-loader": "0.3.7",
     "karma-spec-reporter": "0.0.32",
     "karma-webpack": "2.0.9",
-    "phantomjs-prebuilt": "2.1.16",
     "prettier": "^1.10.2",
     "semantic-release": "11.0.2",
     "semantic-release-cli": "3.5.0",

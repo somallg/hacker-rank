@@ -38,10 +38,8 @@ gulp.task('test', (done) => {
   let options: ConfigFile | ConfigOptions = {
     configFile: path.join(__dirname, '..', 'karma.conf.js')
   };
-  if (args.headless) {
+  if (args.watch && !!args.watch) {
     options = {
-      ...options,
-      browsers: ['PhantomJS'],
       singleRun: true
     };
   }
@@ -51,14 +49,19 @@ gulp.task('test', (done) => {
 gulp.task('gen', () => {
   const { d, p } = args;
   if (!d || !p) {
-    log(chalk.red(`Please provide directory name (--d) and problem name (--p)`));
+    log(
+      chalk.red(`Please provide directory name (--d) and problem name (--p)`)
+    );
     return 1;
   }
 
   log(chalk.blue('Generating problem files'));
 
   return $.file(
-    [{ name: `${p}.spec.ts`, source: specSource(p) }, { name: `${p}.ts`, source: fileSource(p) }],
+    [
+      { name: `${p}.spec.ts`, source: specSource(p) },
+      { name: `${p}.ts`, source: fileSource(p) }
+    ],
     { src: true }
   ).pipe(gulp.dest(`./${d}/${p}`));
 });
