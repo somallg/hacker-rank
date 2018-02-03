@@ -17,5 +17,6 @@ export function gemstones(arr: string[]): number {
     {} as any
   );
 
-  return Object.keys(gems).filter((gem: string) => gems[gem] === arr.length).length;
+  return Object.keys(gems).filter((gem: string) => gems[gem] === arr.length)
+    .length;
 }

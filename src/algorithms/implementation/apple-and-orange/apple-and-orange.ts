@@ -12,13 +12,17 @@ export function countApplesAndOranges(
   // Complete this function
   const betweenHouse = between(s, t);
 
-  const nbApple = apples.map((apple: number) => a + apple).filter(betweenHouse).length;
+  const nbApple = apples.map(sumCurry(a)).filter(betweenHouse).length;
 
-  const nbOrange = oranges.map((orange: number) => b + orange).filter(betweenHouse).length;
+  const nbOrange = oranges.map(sumCurry(b)).filter(betweenHouse).length;
 
   return [nbApple, nbOrange];
 }
 
 function between(s: number, t: number) {
   return (x: number) => x >= s && x <= t;
+}
+
+function sumCurry(n: number) {
+  return (x: number) => n + x;
 }

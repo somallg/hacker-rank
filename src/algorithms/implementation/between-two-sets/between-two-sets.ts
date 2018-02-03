@@ -10,11 +10,11 @@ export function getTotalX(a: number[], b: number[]) {
     return 0;
   }
 
-  return Array(minB - maxA + 1)
-    .fill(0)
+  return Array.apply(null, { length: minB - maxA + 1 })
     .map((_: number, i: number) => i + maxA)
     .filter(
       (e: number) =>
-        a.every((eleA: number) => e % eleA === 0) && b.every((eleB: number) => eleB % e === 0)
+        a.every((eleA: number) => e % eleA === 0) &&
+        b.every((eleB: number) => eleB % e === 0)
     ).length;
 }

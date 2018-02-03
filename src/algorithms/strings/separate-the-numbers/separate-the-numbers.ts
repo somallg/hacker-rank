@@ -15,26 +15,39 @@ export function separateNumbers(s: string): string {
   res = res.filter((r: string) => r !== '-1');
 
   if (res && res.length > 0) {
-    return `YES ${res.reduce((acc, e) => (acc.length < e.length || acc < e ? acc : e))}`;
+    return `YES ${res.reduce(
+      (acc, e) => (acc.length < e.length || acc < e ? acc : e)
+    )}`;
   }
 
   return 'NO';
 }
 
-function canSeparateNumbers(acc: string[], s: string, length: number): string[] {
+function canSeparateNumbers(
+  acc: string[],
+  s: string,
+  length: number
+): string[] {
   if (s.length === 0 || s.length <= length) {
     return acc;
   }
 
   const current: string = s.substr(0, length);
   const expectNext: string = addOne(current);
-  const actualNext: string = s.substr(current.length, expectNext.toString().length);
+  const actualNext: string = s.substr(
+    current.length,
+    expectNext.toString().length
+  );
 
   if (expectNext !== actualNext || current[0] === '0') {
     return ['-1'];
   }
 
-  return canSeparateNumbers(acc.concat(current), s.substr(current.length), actualNext.length);
+  return canSeparateNumbers(
+    acc.concat(current),
+    s.substr(current.length),
+    actualNext.length
+  );
 }
 
 export function addOne(s: string) {
