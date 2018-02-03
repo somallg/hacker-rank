@@ -1,5 +1,7 @@
 # Hacker Rank
 
+[![Build Status](https://travis-ci.org/somallg/hacker-rank.svg?branch=dev)](https://travis-ci.org/somallg/hacker-rank)
+
 ## What ?
 * This repository is used to store submissions of HackerRank problems written in TypeScript
 
