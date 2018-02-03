@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "9"
 dist: trusty
-sudo: false
+sudo: required
 addons:
   chrome: stable
 cache:
