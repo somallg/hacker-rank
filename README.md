@@ -11,4 +11,4 @@
   * Better tools support (WebStorm, VSCode)
   * Able to debug offline
   * Able to run my own UT
-  * Store my subsmission in a central part
+  * Store my submissions in a central part
