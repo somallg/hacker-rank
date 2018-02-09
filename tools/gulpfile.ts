@@ -93,7 +93,9 @@ gulp.task('prettier', () => {
 
   return gulp
     .src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
-    .pipe<ReadWriteStream>($.prettierPlugin(prettierConfig, { filter: true }))
+    .pipe<ReadWriteStream>(
+      $.prettierPlugin(prettierConfig, { filter: true, validate: true })
+    )
     .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
     .pipe<ReadWriteStream>(gulp.dest('.'));
 });
