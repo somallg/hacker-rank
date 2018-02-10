@@ -38,11 +38,22 @@ gulp.task('test', (done) => {
   let options: ConfigFile | ConfigOptions = {
     configFile: path.join(__dirname, '..', 'karma.conf.js')
   };
+
   if (args.watch && !!args.watch) {
     options = {
-      singleRun: true
+      ...options,
+      autoWatch: true,
+      singleRun: false
     };
   }
+
+  if (args.files) {
+    options = {
+      ...options,
+      files: [`${args.files}/**/*.spec.ts`]
+    };
+  }
+
   new Server(options, done).start();
 });
 
