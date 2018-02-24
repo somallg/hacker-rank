@@ -1,3 +1,3 @@
-export interface GulpLoadPlugins {
+export interface IGulpLoadPlugins {
   [key: string]: any;
 }

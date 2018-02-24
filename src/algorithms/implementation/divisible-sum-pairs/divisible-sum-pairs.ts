@@ -1,7 +1,8 @@
 /**
  * @url https://www.hackerrank.com/challenges/divisible-sum-pairs/problem
  */
-export function divisibleSumPairs(_: number, k: number, ar: number[]) {
+
+export function divisibleSumPairs(_: number, k: number, ar: number[]): number {
   // Complete this function
   return ar
     .reduce((acc: number[][], ai: number, i: number) => {

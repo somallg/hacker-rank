@@ -1,21 +1,22 @@
 /**
  * @url https://www.hackerrank.com/challenges/breaking-best-and-worst-records/problem
  */
+
 export interface Score {
   highestScore: number[];
   lowestScore: number[];
 }
 
-export function breakingRecords(score: number[]) {
+export function breakingRecords(score: number[]): number[] {
   // Complete this function
-  const { highestScore, lowestScore } = getHighestandLowestScore(score);
+  const { highestScore, lowestScore }: Score = getHighestandLowestScore(score);
 
-  const nbBrokeHighestscore = highestScore.reduce(
+  const nbBrokeHighestscore: number = highestScore.reduce(
     countBrokeRecords(highestScore),
     0
   );
 
-  const nbBrokeLowestscore = lowestScore.reduce(
+  const nbBrokeLowestscore: number = lowestScore.reduce(
     countBrokeRecords(lowestScore),
     0
   );
@@ -23,9 +24,11 @@ export function breakingRecords(score: number[]) {
   return [nbBrokeHighestscore, nbBrokeLowestscore];
 }
 
-function countBrokeRecords(score: number[]) {
-  return (acc: number, e: number, index: number) => {
-    let res = acc;
+function countBrokeRecords(
+  score: number[]
+): (acc: number, e: number, index: number) => number {
+  return (acc: number, e: number, index: number): number => {
+    let res: number = acc;
     if (index > 0 && e !== score[index - 1]) {
       res = res + 1;
     }
@@ -34,17 +37,18 @@ function countBrokeRecords(score: number[]) {
   };
 }
 
-export function getHighestandLowestScore(score: number[]) {
+export function getHighestandLowestScore(score: number[]): Score {
   return score.reduce(
     (acc: Score, e: number) => {
-      const highestScore = acc.highestScore[acc.highestScore.length - 1];
+      const highestScore: number =
+        acc.highestScore[acc.highestScore.length - 1];
       if (highestScore === undefined || e > highestScore) {
         acc.highestScore.push(e);
       } else {
         acc.highestScore.push(highestScore);
       }
 
-      const lowestScore = acc.lowestScore[acc.lowestScore.length - 1];
+      const lowestScore: number = acc.lowestScore[acc.lowestScore.length - 1];
       if (lowestScore === undefined || e < lowestScore) {
         acc.lowestScore.push(e);
       } else {

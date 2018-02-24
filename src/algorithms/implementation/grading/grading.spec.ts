@@ -1,9 +1,9 @@
-import { solve, getNextMultiOf5 } from './grading';
+import { getNextMultiOf5, solveGrading } from './grading';
 
 describe('Grading Students', () => {
-  describe('solve', () => {
+  describe('solveGrading', () => {
     it('should return correct when input [73, 67, 38, 33]', () => {
-      expect(solve([73, 67, 38, 33])).toEqual([75, 67, 40, 33]);
+      expect(solveGrading([73, 67, 38, 33])).toEqual([75, 67, 40, 33]);
     });
   });
 

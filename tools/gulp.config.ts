@@ -1,7 +1,14 @@
-const src = 'src';
-const tools = 'tools';
+export interface GulpConfig {
+  tsSrc: string;
+  tsTools: string;
+  alljs: string;
+  alldef: string;
+}
 
-export const gulpConfig = {
+const src: string = 'src';
+const tools: string = 'tools';
+
+export const gulpConfig: GulpConfig = {
   tsSrc: `${src}/**/*.ts`,
   tsTools: `${tools}/**/*.ts`,
   alljs: `${src}/**/*.js`,

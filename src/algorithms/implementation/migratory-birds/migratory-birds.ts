@@ -6,10 +6,11 @@ interface MaxWithIndex {
   maxIndex: number;
 }
 
-export function migratoryBirds(n: number, ar: number[]): number {
+export function migratoryBirds(_: number, ar: number[]): number {
   return ar
     .reduce((acc: number[], e: number) => {
       acc[e] = acc[e] === undefined ? 0 : acc[e] + 1;
+
       return acc;
     }, [])
     .reduce(
@@ -18,6 +19,7 @@ export function migratoryBirds(n: number, ar: number[]): number {
           acc.max = e;
           acc.maxIndex = index;
         }
+
         return acc;
       },
       { max: -Infinity, maxIndex: -1 }

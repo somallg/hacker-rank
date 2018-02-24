@@ -28,7 +28,6 @@ describe('Breaking the Records', () => {
     });
 
     it('should return [3, 0] when input 0, 9, 3, 10, 2, 20', () => {
-      console.log(getHighestandLowestScore([0, 9, 3, 10, 2, 20]));
       expect(breakingRecords([0, 9, 3, 10, 2, 20])).toEqual([3, 0]);
     });
   });

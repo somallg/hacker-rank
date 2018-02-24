@@ -1,7 +1,13 @@
 /**
  * @url https://www.hackerrank.com/challenges/kangaroo/problem
  */
-export function kangaroo(x1: number, v1: number, x2: number, v2: number) {
+
+export function kangaroo(
+  x1: number,
+  v1: number,
+  x2: number,
+  v2: number
+): string {
   // Let i the number of steps, then we have this equation
   // x1 + i * v1 = x2 + i * v2;
   // i = (x2 - x1) / (v1 - v2)

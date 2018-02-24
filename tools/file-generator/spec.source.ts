@@ -1,4 +1,11 @@
-export const specSource = (problem: string) => `import { } from './${problem}';
+export const specSource: (problem: string) => string = (
+  problem: string
+): string => `/**
+ * Test specs for ${problem} problem
+ * @url https://www.hackerrank.com/challenges/${problem}/problem
+ */
+
+import { solve } from './${problem}';
 
 describe('', () => {
   describe('', () => {
@@ -9,7 +16,7 @@ describe('', () => {
       expect().toEqual();
     });
   });
-  
+
   describe('', () => {
     it('should return correct when input ', () => {
       expect().toEqual();

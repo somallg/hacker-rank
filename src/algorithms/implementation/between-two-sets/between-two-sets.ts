@@ -1,7 +1,8 @@
 /**
  * @url https://www.hackerrank.com/challenges/between-two-sets/problem
  */
-export function getTotalX(a: number[], b: number[]) {
+
+export function getTotalX(a: number[], b: number[]): number {
   // Complete this function
   const maxA: number = Math.max.apply(null, a);
   const minB: number = Math.min.apply(null, b);

@@ -5,7 +5,7 @@
 export function separateNumbers(s: string): string {
   // Complete this function
   let res: string[] = [];
-  let l = 1;
+  let l: number = 1;
 
   while (l <= s.length / 2) {
     res = res.concat(canSeparateNumbers([], s, l));
@@ -16,7 +16,7 @@ export function separateNumbers(s: string): string {
 
   if (res && res.length > 0) {
     return `YES ${res.reduce(
-      (acc, e) => (acc.length < e.length || acc < e ? acc : e)
+      (acc: string, e: string) => (acc.length < e.length || acc < e ? acc : e)
     )}`;
   }
 
@@ -50,11 +50,16 @@ function canSeparateNumbers(
   );
 }
 
-export function addOne(s: string) {
-  const sum = s.split('').reduceRight(
+export interface Sum {
+  s: string;
+  carry: number;
+}
+
+export function addOne(s: string): string {
+  const sum: Sum = s.split('').reduceRight(
     (acc: { s: string; carry: number }, e: string) => {
       if (acc.carry > 0) {
-        const t = +e + acc.carry;
+        const t: number = +e + acc.carry;
         acc.s = `${t % 10}${acc.s}`;
         acc.carry = t > 9 ? 1 : 0;
       } else {

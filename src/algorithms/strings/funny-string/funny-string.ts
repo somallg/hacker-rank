@@ -4,12 +4,12 @@
 
 export function funnyString(s: string): string {
   // Complete this function
-  const r = s
+  const r: string = s
     .split('')
     .reverse()
     .join('');
 
-  const isFunny = checkFunnyString(s, r);
+  const isFunny: boolean = checkFunnyString(s, r);
 
   if (isFunny) {
     return 'Funny';
@@ -19,11 +19,11 @@ export function funnyString(s: string): string {
 }
 
 export function checkFunnyString(s: string, r: string): boolean {
-  let isFunny = true;
+  let isFunny: boolean = true;
 
-  for (let i = 0; i < s.length - 1; i = i + 1) {
-    const isFunnyS = Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
-    const isFunnyR = Math.abs(r.charCodeAt(i) - r.charCodeAt(i + 1));
+  for (let i: number = 0; i < s.length - 1; i = i + 1) {
+    const isFunnyS: number = Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
+    const isFunnyR: number = Math.abs(r.charCodeAt(i) - r.charCodeAt(i + 1));
 
     if (isFunnyS !== isFunnyR) {
       isFunny = false;

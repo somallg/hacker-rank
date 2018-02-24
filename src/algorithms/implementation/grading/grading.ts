@@ -1,7 +1,8 @@
 /**
  * @url https://www.hackerrank.com/challenges/grading/problem
  */
-export function solve(grades: number[]) {
+
+export function solveGrading(grades: number[]): number[] {
   return grades.map((e: number) => {
     if (e < 38) {
       return e;
@@ -13,6 +14,6 @@ export function solve(grades: number[]) {
   });
 }
 
-export function getNextMultiOf5(n: number) {
+export function getNextMultiOf5(n: number): number {
   return Math.floor((n + 5) / 5) * 5;
 }
