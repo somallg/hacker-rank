@@ -6,7 +6,6 @@ import chalk from 'chalk';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
-import { ConfigFile, ConfigOptions, Server, ServerCallback } from 'karma';
 import * as yargs from 'yargs';
 // tslint:disable-next-line
 import { Arguments } from 'yargs';
@@ -31,27 +30,8 @@ gulp.task('clean', () => {
   return del([gulpConfig.alljs, gulpConfig.alldef]);
 });
 
-gulp.task('test', (done: ServerCallback) => {
-  let options: ConfigFile | ConfigOptions = {
-    configFile: join(__dirname, '..', 'karma.conf.js')
-  };
-
-  if (args.watch && !!args.watch) {
-    options = {
-      ...options,
-      autoWatch: true,
-      singleRun: false
-    };
-  }
-
-  if (args.files) {
-    options = {
-      ...options,
-      files: [`${args.files}/**/*.spec.ts`]
-    };
-  }
-
-  new Server(options, done).start();
+gulp.task('test', () => {
+  return gulp.src(gulpConfig.src).pipe($.jest.default());
 });
 
 gulp.task('gen', () => {
