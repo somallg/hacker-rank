@@ -1,5 +1,5 @@
 module.exports = {
-  bail: false,
+  bail: true,
   collectCoverage: true,
   testEnvironment: 'node',
   transform: {

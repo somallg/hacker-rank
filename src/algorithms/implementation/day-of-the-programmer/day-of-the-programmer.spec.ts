@@ -3,24 +3,20 @@
  * @url https://www.hackerrank.com/challenges/day-of-the-programmer/problem
  */
 
-import { solve } from './day-of-the-programmer';
+import { dayOfTheProgrammer } from './day-of-the-programmer';
 
-describe('', () => {
-  describe('', () => {
-    it('should return correct when input ', () => {
-      expect().toEqual();
+describe('Day of the Programmer', () => {
+  describe('dayOfTheProgrammer', () => {
+    it('should return correct when input 2017', () => {
+      expect(dayOfTheProgrammer(2017)).toEqual('13.09.2017');
     });
-    it('should return incorrect when input ', () => {
-      expect().toEqual();
-    });
-  });
 
-  describe('', () => {
-    it('should return correct when input ', () => {
-      expect().toEqual();
+    it('should return correct when input 2016', () => {
+      expect(dayOfTheProgrammer(2016)).toEqual('12.09.2016');
     });
-    it('should return incorrect when input ', () => {
-      expect().toEqual();
+
+    it('should return correct when input 1800', () => {
+      expect(dayOfTheProgrammer(1800)).toEqual('12.09.1800');
     });
   });
 });

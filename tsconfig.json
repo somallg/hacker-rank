@@ -4,8 +4,7 @@
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
-      "es6",
-      "dom"
+      "es2015"
     ],
     "module": "commonjs",
     "noFallthroughCasesInSwitch": true,

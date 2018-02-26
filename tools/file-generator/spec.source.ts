@@ -1,3 +1,5 @@
+import { pascalize } from '../utils';
+
 export const specSource: (problem: string) => string = (
   problem: string
 ): string => `/**
@@ -5,10 +7,10 @@ export const specSource: (problem: string) => string = (
  * @url https://www.hackerrank.com/challenges/${problem}/problem
  */
 
-import { solve } from './${problem}';
+import { solve${pascalize(problem)} } from './${problem}';
 
-describe('', () => {
-  describe('', () => {
+describe('${pascalize(problem)}', () => {
+  describe('solve${pascalize(problem)}', () => {
     it('should return correct when input ', () => {
       expect().toEqual();
     });

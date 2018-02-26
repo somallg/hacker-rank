@@ -1,6 +1,4 @@
 import ReadWriteStream = NodeJS.ReadWriteStream;
-import { lstatSync, readdirSync } from 'fs';
-import { basename, join } from 'path';
 
 import chalk from 'chalk';
 import * as del from 'del';
@@ -12,22 +10,37 @@ import { Arguments } from 'yargs';
 
 import {
   fileSource,
-  gulpConfig,
-  IGulpLoadPlugins,
-  indexRootSource,
   indexSource,
-  prettierConfig,
+  indexRootSource,
   specSource
-} from './index';
+} from './file-generator';
+
+import { prettierConfig } from './prettier';
+
+import { getDirectories } from './utils';
+
+import { gulpConfig, IGulpLoadPlugins } from './index';
 
 const $: IGulpLoadPlugins = gulpLoadPlugins({ lazy: true });
 const args: yargs.Arguments = yargs.argv;
 const log: Function = console.log.bind(console);
 
-gulp.task('clean', () => {
+gulp.task('clean:js', () => {
   log(chalk.red('Cleaning js files'));
 
   return del([gulpConfig.alljs, gulpConfig.alldef]);
+});
+
+gulp.task('compile', ['clean:js'], () => {
+  log(`${chalk.blue('Compiling files')} ts --> js`);
+
+  const tsProject: Function = $.typescript.createProject('./tsconfig.json');
+
+  return gulp
+    .src([gulpConfig.tsSrc, `!${gulpConfig.tsSpec}`], { base: '.' })
+    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
+    .pipe<ReadWriteStream>(tsProject())
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('test', () => {
@@ -63,17 +76,6 @@ gulp.task('gen:index', () => {
 
     return 1;
   }
-
-  const isDirectory: (source: string) => boolean = (source: string): boolean =>
-    lstatSync(source).isDirectory();
-
-  const getDirectories: (source: string) => string[] = (
-    source: string
-  ): string[] =>
-    readdirSync(source)
-      .map((name: string) => join(source, name))
-      .filter(isDirectory)
-      .map((p: string) => basename(p)); // tslint:disable-line
 
   const dirs: string[] = getDirectories(d);
 
@@ -114,7 +116,9 @@ gulp.task('lint', () => {
   log(chalk.blue('Linting source files'));
 
   return gulp
-    .src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
+    .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
+      base: '.'
+    })
     .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
     .pipe<ReadWriteStream>($.tslint({ formatter: 'verbose', fix: !!args.fix }))
     .pipe<ReadWriteStream>($.tslint.report());
@@ -124,7 +128,9 @@ gulp.task('prettier', () => {
   log(chalk.blue('Prettier source files'));
 
   return gulp
-    .src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
+    .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
+      base: '.'
+    })
     .pipe<ReadWriteStream>(
       $.prettierPlugin(prettierConfig, { filter: true, validate: true })
     )
@@ -132,4 +138,4 @@ gulp.task('prettier', () => {
     .pipe<ReadWriteStream>(gulp.dest('.'));
 });
 
-gulp.task('enforce', ['prettier']);
+gulp.task('enforce', ['lint', 'prettier']);
