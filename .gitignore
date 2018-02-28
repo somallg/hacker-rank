@@ -1,5 +1,6 @@
-node_modules/
 .idea/
+coverage/
+node_modules/
 src/**/*.js
 src/**/*.d.ts
-coverage/
+.DS_Store

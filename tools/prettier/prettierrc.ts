@@ -1,13 +1,5 @@
-export interface PrettierConfig {
-  parser: string;
-  printWidth: number;
-  singleQuote: boolean;
-  arrowParens: string;
-}
-
-export const prettierConfig: PrettierConfig = {
+export const prettierConfig = {
   parser: 'typescript',
   printWidth: 80,
-  singleQuote: true,
-  arrowParens: 'always'
+  singleQuote: true
 };

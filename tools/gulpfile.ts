@@ -1,5 +1,3 @@
-import ReadWriteStream = NodeJS.ReadWriteStream;
-
 import chalk from 'chalk';
 import * as del from 'del';
 import * as gulp from 'gulp';
@@ -38,8 +36,13 @@ gulp.task('compile', ['clean:js'], () => {
 
   return gulp
     .src([gulpConfig.tsSrc, `!${gulpConfig.tsSpec}`], { base: '.' })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(tsProject())
+    .pipe(
+      $.plumber({
+        errorHandler: () => process.exit(1)
+      })
+    )
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(tsProject())
     .pipe(gulp.dest('.'));
 });
 
@@ -95,8 +98,8 @@ gulp.task('gen:jsdoc', () => {
   // if not then add jsdoc to that file
   return gulp
     .src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(gulp.dest('.'));
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('clean', () => {
@@ -119,9 +122,9 @@ gulp.task('lint', () => {
     .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
       base: '.'
     })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>($.tslint({ formatter: 'verbose', fix: !!args.fix }))
-    .pipe<ReadWriteStream>($.tslint.report());
+    .pipe($.if(args.verbose, $.print()))
+    .pipe($.tslint({ formatter: 'verbose', fix: !!args.fix }))
+    .pipe($.tslint.report());
 });
 
 gulp.task('prettier', () => {
@@ -131,11 +134,9 @@ gulp.task('prettier', () => {
     .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
       base: '.'
     })
-    .pipe<ReadWriteStream>(
-      $.prettierPlugin(prettierConfig, { filter: true, validate: true })
-    )
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(gulp.dest('.'));
+    .pipe($.prettierPlugin(prettierConfig, { filter: true, validate: true }))
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('enforce', ['lint', 'prettier']);

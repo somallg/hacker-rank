@@ -2506,7 +2506,7 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
-fancy-log@^1.1.0, fancy-log@^1.2.0:
+fancy-log@^1.1.0, fancy-log@^1.2.0, fancy-log@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/fancy-log/-/fancy-log-1.3.2.tgz#f41125e3d84f2e7d89a43d06d958c8f78be16be1"
   dependencies:
@@ -3262,6 +3262,15 @@ gulp-match@^1.0.3:
   resolved "https://registry.yarnpkg.com/gulp-match/-/gulp-match-1.0.3.tgz#91c7c0d7f29becd6606d57d80a7f8776a87aba8e"
   dependencies:
     minimatch "^3.0.3"
+
+gulp-plumber@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-plumber/-/gulp-plumber-1.2.0.tgz#18ea03912c9ee483f8a5499973b5954cd90f6ad8"
+  dependencies:
+    chalk "^1.1.3"
+    fancy-log "^1.3.2"
+    plugin-error "^0.1.2"
+    through2 "^2.0.3"
 
 gulp-prettier-plugin@^1.2.0:
   version "1.2.0"
@@ -7286,7 +7295,7 @@ through2@^0.6.0, through2@^0.6.1:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"
 
-through2@^2.0.0, through2@^2.0.1, through2@^2.0.2, through2@~2.0.0, through2@~2.0.1:
+through2@^2.0.0, through2@^2.0.1, through2@^2.0.2, through2@^2.0.3, through2@~2.0.0, through2@~2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
