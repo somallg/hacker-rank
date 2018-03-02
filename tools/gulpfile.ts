@@ -4,7 +4,6 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as yargs from 'yargs';
 // tslint:disable-next-line
-import { Arguments } from 'yargs';
 
 import {
   fileSource,
@@ -51,7 +50,7 @@ gulp.task('test', () => {
 });
 
 gulp.task('gen', () => {
-  const { d, p }: Arguments = args;
+  const { d, p }: yargs.Arguments = args;
   if (!d || !p) {
     log(
       chalk.red('Please provide directory name (--d) and problem name (--p)')
@@ -72,7 +71,7 @@ gulp.task('gen', () => {
 });
 
 gulp.task('gen:index', () => {
-  const { d }: Arguments = args;
+  const { d }: yargs.Arguments = args;
 
   if (!d) {
     log(chalk.red('Please provide directory name (--d)'));
@@ -105,7 +104,7 @@ gulp.task('gen:jsdoc', () => {
 gulp.task('clean', () => {
   log(chalk.blue('Cleaning problem files'));
 
-  const { d }: Arguments = args;
+  const { d }: yargs.Arguments = args;
   if (!d) {
     log(chalk.red('Please provide directory name'));
 
