@@ -3,7 +3,6 @@ import * as del from 'del';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as yargs from 'yargs';
-// tslint:disable-next-line
 
 import {
   fileSource,
@@ -46,7 +45,15 @@ gulp.task('compile', ['clean:js'], () => {
 });
 
 gulp.task('test', () => {
-  return gulp.src(gulpConfig.src).pipe($.jest.default());
+  const { f } = args;
+  let options = {};
+  if (f) {
+    options = {
+      testMatch: [`**/*${f}*/*.spec.ts`]
+    };
+  }
+
+  return gulp.src(gulpConfig.src).pipe($.jest.default(options));
 });
 
 gulp.task('gen', () => {
