@@ -2,7 +2,7 @@
  * @url https://www.hackerrank.com/challenges/strange-advertising/problem
  */
 
-const { memorized } = require('../../../util/memorized.js');
+var { memorized } = require('../../../util/memorized.js');
 
 function solveStrangeAdvertising(m) {
   var computeLike = memorized(n => {

@@ -3,7 +3,7 @@
  * @url https://www.hackerrank.com/challenges/permutation-equation/problem
  */
 
-var { solvePermutationEquation } = require('./permutation-equation');
+var { solvePermutationEquation } = require('./permutation-equation.js');
 
 describe('PermutationEquation', () => {
   describe('solvePermutationEquation', () => {
