@@ -1,0 +1,10 @@
+* Good Parts of JavaScript and the Web
+by Douglas Crockford
+
+This course teaches the history of JavaScript and covers many details of the language, with special attention on functions. You’ll also dive into how browsers and servers work, and learn more about security concerns.
+
+** Reference
+*** https://app.pluralsight.com/library/courses/good-parts-javascript-web/table-of-contents
+
+* 1st rule of functional programming
+** Let's the function do the works
