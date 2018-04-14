@@ -1,5 +1,3 @@
-import { exec } from 'child_process';
-
 export function addg(first) {
   function more(next) {
     if (next === undefined) {
@@ -53,7 +51,7 @@ export function arrayg2(first) {
     return [];
   }
 
-  return liftg(function (array, value) {
+  return liftg((array, value) => {
     array.push(value);
 
     return array;
