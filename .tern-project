@@ -1,0 +1,13 @@
+{
+  "libs" : [
+    "browser"
+  ],
+  "loadEagerly": [ "src/*.js", "*.js" ],
+  "plugins" : {
+    "commonjs" : {},
+    "node" : {},
+    "node_resolve" : {},
+    "jasmine": {},
+    "jasminematchers": {}
+  }
+}

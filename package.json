@@ -14,7 +14,8 @@
     "release": "standard-version",
     "semantic-release": "semantic-release",
     "test": "gulp test",
-    "enforce": "gulp enforce"
+    "enforce": "gulp enforce",
+    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
   },
   "config": {
     "commitizen": {
@@ -76,6 +77,8 @@
     "semantic-release": "11.0.2",
     "semantic-release-cli": "3.5.0",
     "standard-version": "4.3.0",
+    "tern-jasmine": "^0.3.0",
+    "tern-jasminematchers": "^0.1.7",
     "ts-jest": "^22.0.4",
     "ts-loader": "3.2.0",
     "ts-node": "4.1.0",
@@ -88,5 +91,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/somallg/hacker-rank.git"
+  },
+  "dependencies": {
+    "xxhashjs": "^0.2.2"
   }
 }
