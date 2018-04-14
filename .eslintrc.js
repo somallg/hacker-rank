@@ -4,7 +4,8 @@ module.exports = {
     'comma-dangle': 'off',
     'no-var': 'off',
     'no-mixed-operators': 'off',
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'vars-on-top': 'off'
   },
   env: {
     node: true,
