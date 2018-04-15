@@ -1,9 +1,14 @@
 var LinkedList = require('./linked-list.js');
 
+const range = length =>
+  Array(length)
+    .fill()
+    .map(Number.call, Number);
+
+const abcRange = length =>
+  range(length).map(num => String.fromCharCode(97 + num));
+
 describe('LinkedList', () => {
-  const range = length => Array(...{ length }).map(Number.call, Number);
-  const abcRange = length =>
-    range(length).map(num => String.fromCharCode(97 + num));
   let list;
 
   beforeEach(() => {
