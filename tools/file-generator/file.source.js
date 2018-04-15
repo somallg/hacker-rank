@@ -1,4 +1,4 @@
-const { pascalize } = require('../utils/string.util');
+import { pascalize } from '../utils/string.util';
 
 function fileSource(problem) {
   return `/**
@@ -9,11 +9,7 @@ function solve${pascalize(problem)}() {
 
 }
 
-module.exports = {
-  solve${pascalize(problem)}
-};`;
+export { solve${pascalize(problem)} };`;
 }
 
-module.exports = {
-  fileSource
-};
+export { fileSource };

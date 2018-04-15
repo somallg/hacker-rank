@@ -16,7 +16,4 @@ ${problems.map(p => `export * from './${p}';`).join('\n')}
 `;
 }
 
-module.exports = {
-  indexSource,
-  indexRootSource
-};
+export { indexSource, indexRootSource };

@@ -1,23 +1,24 @@
-// require('ts-node').register({
-//   typeCheck: true
-// });
-// require('./tools/gulpfile');
+import gulp from 'gulp';
+import chalk from 'chalk';
+import del from 'del';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import yargs from 'yargs';
 
-const chalk = require('chalk');
-const del = require('del');
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({ lazy: true });
-const args = require('yargs').argv;
+import { fileSource } from './tools/file-generator/file.source';
+import {
+  indexSource,
+  indexRootSource
+} from './tools/file-generator/index.source';
+import { specSource } from './tools/file-generator/spec.source';
+import { prettierConfig } from './tools/prettier/prettierrc';
+import { getDirectories } from './tools/utils/file.util';
+import { gulpConfig } from './tools/gulp.config';
 
+const $ = gulpLoadPlugins({ lazy: true });
+const { argv: args } = yargs;
 const log = console.log.bind(console);
 
-const { fileSource } = require('./tools/file-generator/file.source');
-const { indexSource } = require('./tools/file-generator/index.source');
-const { indexRootSource } = require('./tools/file-generator/index.source');
-const { specSource } = require('./tools/file-generator/spec.source');
-const { prettierConfig } = require('./tools/prettier/prettierrc');
-const { getDirectories } = require('./tools/utils/file.util');
-const { gulpConfig } = require('./tools/gulp.config');
+gulp.task('default', $.taskListing);
 
 gulp.task('clean:js', () => {
   log(chalk.red('Cleaning js files'));

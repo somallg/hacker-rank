@@ -12,6 +12,4 @@ function getDirectories(source) {
     .map(p => basename(p));
 }
 
-module.exports = {
-  getDirectories
-};
+export { getDirectories };

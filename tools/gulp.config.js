@@ -11,6 +11,4 @@ const gulpConfig = Object.freeze({
   alldef: `${src}/**/*.d.ts`
 });
 
-module.exports = {
-  gulpConfig
-};
+export { gulpConfig };

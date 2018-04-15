@@ -5,6 +5,4 @@ function pascalize(s) {
     .join('');
 }
 
-module.exports = {
-  pascalize
-};
+export { pascalize };

@@ -1,4 +1,4 @@
-var { pascalize } = require('../utils/string.util');
+import { pascalize } from '../utils/string.util';
 
 function specSource(problem) {
   return `/**
@@ -6,7 +6,7 @@ function specSource(problem) {
  * @url https://www.hackerrank.com/challenges/${problem}/problem
  */
 
-var { solve${pascalize(problem)} } = require('./${problem}');
+import { solve${pascalize(problem)} } from './${problem}';
 
 describe('${pascalize(problem)}', () => {
   describe('solve${pascalize(problem)}', () => {
@@ -22,6 +22,4 @@ describe('${pascalize(problem)}', () => {
 `;
 }
 
-module.exports = {
-  specSource
-};
+export { specSource };
