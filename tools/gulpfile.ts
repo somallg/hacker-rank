@@ -1,12 +1,8 @@
-import ReadWriteStream = NodeJS.ReadWriteStream;
-
 import chalk from 'chalk';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as yargs from 'yargs';
-// tslint:disable-next-line
-import { Arguments } from 'yargs';
 
 import {
   fileSource,
@@ -38,17 +34,30 @@ gulp.task('compile', ['clean:js'], () => {
 
   return gulp
     .src([gulpConfig.tsSrc, `!${gulpConfig.tsSpec}`], { base: '.' })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(tsProject())
+    .pipe(
+      $.plumber({
+        errorHandler: () => process.exit(1)
+      })
+    )
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(tsProject())
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('test', () => {
-  return gulp.src(gulpConfig.src).pipe($.jest.default());
+  const { f } = args;
+  let options = {};
+  if (f) {
+    options = {
+      testMatch: [`**/*${f}*/*.spec.ts`]
+    };
+  }
+
+  return gulp.src(gulpConfig.src).pipe($.jest.default(options));
 });
 
 gulp.task('gen', () => {
-  const { d, p }: Arguments = args;
+  const { d, p }: yargs.Arguments = args;
   if (!d || !p) {
     log(
       chalk.red('Please provide directory name (--d) and problem name (--p)')
@@ -69,7 +78,7 @@ gulp.task('gen', () => {
 });
 
 gulp.task('gen:index', () => {
-  const { d }: Arguments = args;
+  const { d }: yargs.Arguments = args;
 
   if (!d) {
     log(chalk.red('Please provide directory name (--d)'));
@@ -95,14 +104,14 @@ gulp.task('gen:jsdoc', () => {
   // if not then add jsdoc to that file
   return gulp
     .src([gulpConfig.tsSrc, gulpConfig.tsTools], { base: '.' })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(gulp.dest('.'));
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('clean', () => {
   log(chalk.blue('Cleaning problem files'));
 
-  const { d }: Arguments = args;
+  const { d }: yargs.Arguments = args;
   if (!d) {
     log(chalk.red('Please provide directory name'));
 
@@ -119,9 +128,9 @@ gulp.task('lint', () => {
     .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
       base: '.'
     })
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>($.tslint({ formatter: 'verbose', fix: !!args.fix }))
-    .pipe<ReadWriteStream>($.tslint.report());
+    .pipe($.if(args.verbose, $.print()))
+    .pipe($.tslint({ formatter: 'verbose', fix: !!args.fix }))
+    .pipe($.tslint.report());
 });
 
 gulp.task('prettier', () => {
@@ -131,11 +140,9 @@ gulp.task('prettier', () => {
     .src([gulpConfig.tsSrc, gulpConfig.tsTools, `!${gulpConfig.alldef}`], {
       base: '.'
     })
-    .pipe<ReadWriteStream>(
-      $.prettierPlugin(prettierConfig, { filter: true, validate: true })
-    )
-    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
-    .pipe<ReadWriteStream>(gulp.dest('.'));
+    .pipe($.prettierPlugin(prettierConfig, { filter: true, validate: true }))
+    .pipe($.if(args.verbose, $.print()))
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('enforce', ['lint', 'prettier']);

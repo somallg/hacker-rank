@@ -1,0 +1,24 @@
+* Four Semesters of Computer Science in 5 Hours, Part 2
+- https://frontendmasters.com/courses/computer-science-2/
+- https://btholt.github.io/four-semesters-of-cs-part-two/
+
+
+** Bloom Filters
+
+** Tree Traversals
+
+** Pathfinding
+
+** Graphs
+
+** Generating a Maze
+
+** Tries
+
+** Search for an Element in an Array
+
+** Heap Sort
+
+** Radix Sort
+
+** End

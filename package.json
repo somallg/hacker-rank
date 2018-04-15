@@ -6,14 +6,16 @@
   "author": "somallg",
   "license": "MIT",
   "scripts": {
-    "commit": "git-cz",
-    "precommit": "gulp enforce --verbose --fix",
+    "cz": "git-cz",
+    "precommit": "lint-staged",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "prepush": "yarn test",
     "compile": "gulp compile",
     "release": "standard-version",
     "semantic-release": "semantic-release",
-    "test": "gulp test"
+    "test": "gulp test",
+    "enforce": "gulp enforce",
+    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
   },
   "config": {
     "commitizen": {
@@ -51,22 +53,32 @@
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.1.0",
     "del": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
     "gulp": "3.9.1",
+    "gulp-eslint": "^4.0.2",
     "gulp-file": "^0.4.0",
     "gulp-if": "2.0.2",
     "gulp-jest": "^3.0.1",
     "gulp-load-plugins": "1.5.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-prettier-plugin": "^1.2.0",
     "gulp-print": "2.0.1",
     "gulp-tslint": "^8.1.2",
     "gulp-typescript": "3.2.3",
-    "husky": "0.14.3",
+    "husky": "^0.14.3",
     "jest": "^22.4.2",
     "jest-cli": "^22.4.2",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.10.2",
     "semantic-release": "11.0.2",
     "semantic-release-cli": "3.5.0",
     "standard-version": "4.3.0",
+    "tern-jasmine": "^0.3.0",
+    "tern-jasminematchers": "^0.1.7",
     "ts-jest": "^22.0.4",
     "ts-loader": "3.2.0",
     "ts-node": "4.1.0",
@@ -79,5 +91,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/somallg/hacker-rank.git"
+  },
+  "dependencies": {
+    "xxhashjs": "^0.2.2"
   }
 }

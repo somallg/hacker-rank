@@ -1,5 +1,5 @@
-node_modules/
 .idea/
-src/**/*.js
-src/**/*.d.ts
 coverage/
+node_modules/
+.DS_Store
+.tern-port

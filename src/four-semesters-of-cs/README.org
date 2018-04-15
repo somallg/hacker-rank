@@ -1,0 +1,20 @@
+* Four Semesters of Computer Science in 5 Hours
+by Brian Holt
+Reference:
+- https://frontendmasters.com/courses/computer-science/
+- http://btholt.github.io/four-semesters-of-cs/
+
+
+** Big O and Recursion
+
+** Sorting Algorithms
+*** Bubble Sort
+*** Insertion Sort: https://codepen.io/somallg/pen/PRgmGE?editors=0010
+** Data Structures
+*** Binary Search Tree: https://codepen.io/somallg/pen/VXJezg?editors=001
+*** AVL Tree: https://codepen.io/somallg/pen/JLQXpj?editors=001
+*** HashTable: https://codepen.io/somallg/pen/GxbZYE?editors=001
+** Functional Programming
+
+
+* Readmore: 2ality.com
