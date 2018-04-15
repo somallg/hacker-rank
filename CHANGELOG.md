@@ -1,3 +1,47 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/somallg/hacker-rank/compare/v1.2.0...v1.3.0) (2018-04-15)
+
+
+### Bug Fixes
+
+* **codility:** fix frog-jmp test ([4025d3a](https://github.com/somallg/hacker-rank/commit/4025d3a))
+* **eslint:** enable ++ operator ([c04f42d](https://github.com/somallg/hacker-rank/commit/c04f42d))
+* **implemation:** fix eslint styles ([cd459c4](https://github.com/somallg/hacker-rank/commit/cd459c4))
+* **lint-staged:** fix config to apply for js file only ([5c674b5](https://github.com/somallg/hacker-rank/commit/5c674b5))
+* fix array-list and linked-list test case error ([aeec8f5](https://github.com/somallg/hacker-rank/commit/aeec8f5))
+
+
+### Features
+
+* **codility:** add cyclic-rotation problem ([c58d6ac](https://github.com/somallg/hacker-rank/commit/c58d6ac))
+* **codility:** add lession 01 binary-gap ([12f40a6](https://github.com/somallg/hacker-rank/commit/12f40a6))
+* **codility:** add lession 02 odd-occurrences-in-array ([5a51922](https://github.com/somallg/hacker-rank/commit/5a51922))
+* **codility:** add lession 04: perm-check ([5e86d28](https://github.com/somallg/hacker-rank/commit/5e86d28))
+* **codility:** add lession-03 frog-jmp problem ([3f1b873](https://github.com/somallg/hacker-rank/commit/3f1b873))
+* **codility:** add lession-03 perm-missing-elem problem ([1309432](https://github.com/somallg/hacker-rank/commit/1309432))
+* **codility:** add lession-03 tape-equilibrium problem ([35087d9](https://github.com/somallg/hacker-rank/commit/35087d9))
+* **four-semesters-of-cs:** initial setup ([dd8d49d](https://github.com/somallg/hacker-rank/commit/dd8d49d))
+* **four-semesters-of-cs-part-two:** init part two ([dd880cb](https://github.com/somallg/hacker-rank/commit/dd880cb))
+* **good-parts:** add function challenges series by Douglas Crockford ([91f18a6](https://github.com/somallg/hacker-rank/commit/91f18a6))
+* **gulp:** add option --f to run only files match that option ([14dc11a](https://github.com/somallg/hacker-rank/commit/14dc11a))
+* **gulp:** switch from ts to es6 code ([28c0f65](https://github.com/somallg/hacker-rank/commit/28c0f65))
+* **implemation:** add angry-professor problem ([a0bcd45](https://github.com/somallg/hacker-rank/commit/a0bcd45))
+* **implemation:** add beautiful-days-at-the-movies ([b9ce267](https://github.com/somallg/hacker-rank/commit/b9ce267))
+* **implemation:** add circular-array-rotation problem ([04551fc](https://github.com/somallg/hacker-rank/commit/04551fc))
+* **implemation:** add jumping-on-the-clouds-revisited problem ([93ded77](https://github.com/somallg/hacker-rank/commit/93ded77))
+* **implemation:** add permutation-equation problem ([923382c](https://github.com/somallg/hacker-rank/commit/923382c))
+* **implemation:** add save-the-prisoner problem ([b0689d6](https://github.com/somallg/hacker-rank/commit/b0689d6))
+* **implemation:** add strange-advertising problem ([bdbf0a6](https://github.com/somallg/hacker-rank/commit/bdbf0a6))
+* **implemation:** add utopian-tree problem ([07f0fdd](https://github.com/somallg/hacker-rank/commit/07f0fdd))
+* **implementation:** add cats-and-a-mouse problem ([a968e4f](https://github.com/somallg/hacker-rank/commit/a968e4f))
+* **implementation:** add counting-valley problem ([538597d](https://github.com/somallg/hacker-rank/commit/538597d))
+* update master branch ([713dfe4](https://github.com/somallg/hacker-rank/commit/713dfe4))
+* **implementation:** add designer-pdf-viewer problem ([721eff3](https://github.com/somallg/hacker-rank/commit/721eff3))
+* **implementation:** add electronics-shop problem ([4bede23](https://github.com/somallg/hacker-rank/commit/4bede23))
+* **implementation:** add the-hurdle-race problem ([f0fc60b](https://github.com/somallg/hacker-rank/commit/f0fc60b))
+* **the-little-javascripter:** add Y combinator code ([a191cb9](https://github.com/somallg/hacker-rank/commit/a191cb9))
+* **util:** add memorized function ([7530f74](https://github.com/somallg/hacker-rank/commit/7530f74))
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/somallg/hacker-rank/compare/v1.1.1...v1.2.0) (2018-02-27)
 
