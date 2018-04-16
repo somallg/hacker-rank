@@ -1,4 +1,4 @@
-var BloomFilter = require('./bloom-filter.js');
+import BloomFilter from './bloom-filter';
 
 describe('BloomFilter', () => {
   let bf;

@@ -1,4 +1,4 @@
-var Tree = require('./avl-tree.js');
+import { Tree } from './avl-tree';
 
 describe('AVL Tree', () => {
   it('creates a correct tree', () => {

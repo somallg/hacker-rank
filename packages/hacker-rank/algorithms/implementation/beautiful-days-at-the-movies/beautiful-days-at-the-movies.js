@@ -6,7 +6,7 @@ function reversed(x) {
   let y = 0;
   let div = x;
 
-  while (x > 0) {
+  while (div > 0) {
     y = y * 10 + div % 10;
     div = Math.floor(div / 10);
   }
