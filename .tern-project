@@ -1,12 +1,7 @@
 {
-  "libs" : [
-    "browser"
-  ],
-  "loadEagerly": [ "src/*.js", "*.js" ],
   "plugins" : {
-    "commonjs" : {},
     "node" : {},
-    "node_resolve" : {},
+    "es_modules": {},
     "jasmine": {},
     "jasminematchers": {}
   }

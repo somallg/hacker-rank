@@ -1,1 +1,0 @@
-export { prettierConfig } from './prettierrc';

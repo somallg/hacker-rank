@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'airbnb-base',
+  extends: ['airbnb-base', 'prettier'],
   rules: {
     'comma-dangle': 'off',
     'no-var': 'off',
@@ -15,7 +15,9 @@ module.exports = {
     'consistent-return': 'off',
     'no-lonely-if': 'off',
     'no-use-before-define': 'off',
-    'no-shadow': 'off'
+    'no-shadow': 'off',
+    'import/prefer-default-export': 'off',
+    'no-unused-vars': 'off'
   },
   env: {
     node: true,

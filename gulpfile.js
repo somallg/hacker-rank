@@ -4,15 +4,15 @@ import del from 'del';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import yargs from 'yargs';
 
-import { fileSource } from './tools/file-generator/file.source';
+import { fileSource } from './packages/tools/file-generator/file.source';
 import {
   indexSource,
   indexRootSource
-} from './tools/file-generator/index.source';
-import { specSource } from './tools/file-generator/spec.source';
-import { prettierConfig } from './tools/prettier/prettierrc';
-import { getDirectories } from './tools/utils/file.util';
-import { gulpConfig } from './tools/gulp.config';
+} from './packages/tools/file-generator/index.source';
+import { specSource } from './packages/tools/file-generator/spec.source';
+import { prettierConfig } from './packages/tools/prettier/prettierrc';
+import { getDirectories } from './packages/tools/utils/file.util';
+import { gulpConfig } from './packages/tools/gulp.config';
 
 const $ = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -33,9 +33,11 @@ gulp.task('compile', ['clean:js'], () => {
 
   return gulp
     .src([gulpConfig.jsSrc, `!${gulpConfig.jsSpec}`], { base: '.' })
-    .pipe($.plumber({
-      errorHandler: () => process.exit(1)
-    }))
+    .pipe(
+      $.plumber({
+        errorHandler: () => process.exit(1)
+      })
+    )
     .pipe($.if(args.verbose, $.print()))
     .pipe(tsProject())
     .pipe(gulp.dest('.'));
@@ -56,7 +58,9 @@ gulp.task('test', () => {
 gulp.task('gen', () => {
   const { d, p } = args;
   if (!d || !p) {
-    log(chalk.red('Please provide directory name (--d) and problem name (--p)'));
+    log(
+      chalk.red('Please provide directory name (--d) and problem name (--p)')
+    );
 
     return 1;
   }
@@ -98,7 +102,8 @@ gulp.task('gen:jsdoc', () =>
   gulp
     .src([gulpConfig.jsSrc, gulpConfig.jsTools], { base: '.' })
     .pipe($.if(args.verbose, $.print()))
-    .pipe(gulp.dest('.')));
+    .pipe(gulp.dest('.'))
+);
 
 gulp.task('clean', () => {
   log(chalk.blue('Cleaning problem files'));
