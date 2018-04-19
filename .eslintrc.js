@@ -17,7 +17,8 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-shadow': 'off',
     'import/prefer-default-export': 'off',
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'no-nested-ternary': 'off'
   },
   env: {
     node: true,
