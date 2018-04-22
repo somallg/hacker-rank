@@ -3,7 +3,7 @@
  * @url https://app.codility.com/programmers/lessons/3-time_complexity/frog_jmp/
  */
 
-var { solveFrogJmp } = require('./frog-jmp');
+import { solveFrogJmp } from './frog-jmp';
 
 describe('FrogJmp', () => {
   describe('solveFrogJmp', () => {

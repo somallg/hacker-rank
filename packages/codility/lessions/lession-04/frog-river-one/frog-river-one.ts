@@ -1,13 +1,12 @@
 /**
- * @url https://www.hackerrank.com/challenges/frog-river-one/problem
  */
 
-function solveFrogRiverOne(x, a) {
+function solveFrogRiverOne(x: number, a: number[]): number {
   const m = new Map();
   let i = 0;
   for (i = 0; i < a.length && m.size < x; i++) {
     if (!m.has(a[i])) {
-      m.set(a[i]);
+      m.set(a[i], a[i]);
     }
   }
 

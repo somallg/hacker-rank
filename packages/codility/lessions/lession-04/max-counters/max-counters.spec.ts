@@ -1,6 +1,5 @@
 /**
  * Test specs for max-counters problem
- * @url https://www.hackerrank.com/challenges/max-counters/problem
  */
 
 import { solveMaxCounters } from './max-counters';

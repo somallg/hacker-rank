@@ -1,8 +1,7 @@
 /**
- * @url https://www.hackerrank.com/challenges/max-counters/problem
  */
 
-function solveMaxCounters(n, array) {
+function solveMaxCounters(n: number, array: number[]): number[] {
   const result = Array(n).fill(0);
   let max = -1;
   let maxCounter = false;

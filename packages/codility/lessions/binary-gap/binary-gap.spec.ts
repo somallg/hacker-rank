@@ -1,6 +1,5 @@
 /**
  * Test specs for binary-gap problem
- * @url https://www.hackerrank.com/challenges/binary-gap/problem
  */
 
 import { solveBinaryGap } from './binary-gap';

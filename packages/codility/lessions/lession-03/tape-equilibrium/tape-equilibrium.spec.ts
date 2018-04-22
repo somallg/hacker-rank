@@ -1,6 +1,5 @@
 /**
  * Test specs for tape-equilibrium problem
- * @url https://www.hackerrank.com/challenges/tape-equilibrium/problem
  */
 
 import { solveTapeEquilibrium } from './tape-equilibrium';

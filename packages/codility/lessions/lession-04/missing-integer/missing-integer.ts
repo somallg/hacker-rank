@@ -1,8 +1,7 @@
 /**
- * @url https://www.hackerrank.com/challenges/missing-integer/problem
  */
 
-function solveMissingInteger(array) {
+function solveMissingInteger(array: number[]): number {
   const set = new Set(array);
   let result = 1;
 

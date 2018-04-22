@@ -1,4 +1,10 @@
-function solveBinaryGap(n) {
+interface IBinaryGap {
+  result: string[][];
+  temp: string[];
+  isBinaryGap: boolean;
+}
+
+function solveBinaryGap(n: number): number {
   return Number(n)
     .toString(2)
     .split('')
@@ -17,7 +23,7 @@ function solveBinaryGap(n) {
 
         return acc;
       },
-      { result: [], temp: [], isBinaryGap: false }
+      { result: [], temp: [], isBinaryGap: false } as IBinaryGap
     )
     .result.map(e => e.length)
     .reduce((a, b) => (a > b ? a : b), 0);

@@ -1,6 +1,5 @@
 /**
  * Test specs for missing-integer problem
- * @url https://www.hackerrank.com/challenges/missing-integer/problem
  */
 
 import { solveMissingInteger } from './missing-integer';

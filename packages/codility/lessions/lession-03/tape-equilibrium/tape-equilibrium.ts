@@ -1,10 +1,10 @@
-export function solveTapeEquilibrium(a) {
-  function add(a, b) {
+function solveTapeEquilibrium(a: number[]): number {
+  function add(a: number, b: number): number {
     return a + b;
   }
 
-  function liftf(fn, value) {
-    return function(n) {
+  function liftf(fn: Function, value: number): Function {
+    return function(n: number): number {
       value = fn(value, n);
       return value;
     };
@@ -15,8 +15,10 @@ export function solveTapeEquilibrium(a) {
 
   return a
     .slice(0, a.length - 1)
-    .map(addf)
+    .map(e => addf(e))
     .map(e => sumA - 2 * e)
     .map(Math.abs)
     .reduce((a, b) => Math.min(a, b));
 }
+
+export { solveTapeEquilibrium };

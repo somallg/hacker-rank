@@ -1,6 +1,5 @@
 /**
  * Test specs for cyclic-rotation problem
- * @url https://www.hackerrank.com/challenges/cyclic-rotation/problem
  */
 
 import { solveCyclicRotation } from './cyclic-rotation';
