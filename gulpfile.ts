@@ -21,13 +21,13 @@ const log = console.log.bind(console);
 gulp.task('default', $.taskListing);
 
 gulp.task('clean:js', () => {
-  log(Chalk.red('Cleaning js files'));
+  log(chalk.red('Cleaning js files'));
 
   return del([gulpConfig.alljs, gulpConfig.alldef]);
 });
 
 gulp.task('compile', ['clean:js'], () => {
-  log(`${Chalk.blue('Compiling files')} ts --> js`);
+  log(`${chalk.blue('Compiling files')} ts --> js`);
 
   let tsProject = $.typescript.createProject('./tsconfig.json');
 
@@ -59,13 +59,13 @@ gulp.task('gen', () => {
   const { d, p } = args;
   if (!d || !p) {
     log(
-      Chalk.red('Please provide directory name (--d) and problem name (--p)')
+      chalk.red('Please provide directory name (--d) and problem name (--p)')
     );
 
     return 1;
   }
 
-  log(Chalk.blue('Generating problem files'));
+  log(chalk.blue('Generating problem files'));
 
   return $.file(
     [
@@ -80,7 +80,7 @@ gulp.task('gen:index', () => {
   const { d } = args;
 
   if (!d) {
-    log(Chalk.red('Please provide directory name (--d)'));
+    log(chalk.red('Please provide directory name (--d)'));
 
     return 1;
   }
@@ -106,11 +106,11 @@ gulp.task('gen:jsdoc', () =>
 );
 
 gulp.task('clean', () => {
-  log(Chalk.blue('Cleaning problem files'));
+  log(chalk.blue('Cleaning problem files'));
 
   const { d } = args;
   if (!d) {
-    log(Chalk.red('Please provide directory name'));
+    log(chalk.red('Please provide directory name'));
 
     return 1;
   }
@@ -119,7 +119,7 @@ gulp.task('clean', () => {
 });
 
 gulp.task('lint', () => {
-  log(Chalk.blue('Linting source files'));
+  log(chalk.blue('Linting source files'));
 
   return gulp
     .src([gulpConfig.jsSrc, gulpConfig.jsTools, `!${gulpConfig.alldef}`], {
@@ -132,7 +132,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('prettier', () => {
-  log(Chalk.blue('Prettier source files'));
+  log(chalk.blue('Prettier source files'));
 
   return gulp
     .src([gulpConfig.jsSrc, gulpConfig.jsTools, `!${gulpConfig.alldef}`], {
