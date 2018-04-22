@@ -1,6 +1,6 @@
 import { pascalize } from '../utils/string.util';
 
-function specSource(problem) {
+function specSource(problem: string): string {
   return `/**
  * Test specs for ${problem} problem
  * @url https://www.hackerrank.com/challenges/${problem}/problem

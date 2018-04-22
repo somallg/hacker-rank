@@ -1,6 +1,6 @@
 import { pascalize } from '../utils/string.util';
 
-function fileSource(problem) {
+function fileSource(problem: string): string {
   return `/**
  * @url https://www.hackerrank.com/challenges/${problem}/problem
  */

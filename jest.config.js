@@ -2,7 +2,10 @@ module.exports = {
   bail: true,
   collectCoverage: true,
   testEnvironment: 'node',
-  testMatch: ['**/*.spec.js'],
-  moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  },
+  testMatch: ['**/*.spec.ts'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   verbose: true
 };

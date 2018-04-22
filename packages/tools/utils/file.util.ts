@@ -1,11 +1,11 @@
-const { lstatSync, readdirSync } = require('fs');
-const { basename, join } = require('path');
+import { lstatSync, readdirSync } from 'fs';
+import { basename, join } from 'path';
 
-function isDirectory(source) {
+function isDirectory(source: string): boolean {
   return lstatSync(source).isDirectory();
 }
 
-function getDirectories(source) {
+function getDirectories(source: string): string[] {
   return readdirSync(source)
     .map(name => join(source, name))
     .filter(isDirectory)
