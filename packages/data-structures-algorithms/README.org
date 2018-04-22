@@ -1,0 +1,5 @@
+* Data Structures and Algorithms in JavaScript
+Bianca Gandolfo
+- Link: https://frontendmasters.com/courses/data-structures-algorithms/
+- Slide: http://slides.com/bgando/recursion-oojs#/0/6
+- Exercises: https://github.com/kuychaco/algoClass
