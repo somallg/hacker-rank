@@ -1,18 +1,18 @@
-import * as gulp from 'gulp';
 import chalk from 'chalk';
 import * as del from 'del';
+import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import * as yargs from 'yargs';
 
 import { fileSource } from './packages/tools/file-generator/file.source';
 import {
-  indexSource,
-  indexRootSource
+  indexRootSource,
+  indexSource
 } from './packages/tools/file-generator/index.source';
 import { specSource } from './packages/tools/file-generator/spec.source';
+import { gulpConfig } from './packages/tools/gulp.config';
 import { prettierConfig } from './packages/tools/prettier/prettierrc';
 import { getDirectories } from './packages/tools/utils/file.util';
-import { gulpConfig } from './packages/tools/gulp.config';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -29,7 +29,7 @@ gulp.task('clean:js', () => {
 gulp.task('compile', ['clean:js'], () => {
   log(`${chalk.blue('Compiling files')} ts --> js`);
 
-  let tsProject = $.typescript.createProject('./tsconfig.json');
+  const tsProject = $.typescript.createProject('./tsconfig.json');
 
   return gulp
     .src([gulpConfig.jsSrc, `!${gulpConfig.jsSpec}`], { base: '.' })
@@ -69,8 +69,8 @@ gulp.task('gen', () => {
 
   return $.file(
     [
-      { name: `${p}.spec.js`, source: specSource(p) },
-      { name: `${p}.js`, source: fileSource(p) }
+      { name: `${p}.spec.ts`, source: specSource(p) },
+      { name: `${p}.ts`, source: fileSource(p) }
     ],
     { src: true }
   ).pipe(gulp.dest(`./${d}/${p}`));

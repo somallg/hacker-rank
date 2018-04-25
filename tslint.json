@@ -1,17 +1,10 @@
 {
   "extends": [
-    "tslint-config-airbnb",
+    "tslint:recommended",
     "tslint-config-prettier"
   ],
   "rules": {
-    "typedef": [
-      true,
-      "call-signature",
-      "parameter"
-    ],
-    "no-parameter-reassignment": false,
-    "no-increment-decrement": false,
-    "ter-prefer-arrow-callback": false,
-    "prefer-const": false
+    "interface-name": false,
+    "ban-types": false
   }
 }
