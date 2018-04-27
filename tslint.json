@@ -4,7 +4,6 @@
     "tslint-config-prettier"
   ],
   "rules": {
-    "interface-name": false,
-    "ban-types": false
+    "interface-name": false
   }
 }
