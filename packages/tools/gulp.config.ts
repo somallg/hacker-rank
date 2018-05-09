@@ -1,7 +1,9 @@
 const src = 'packages';
 const tools = 'tools';
+const dist = 'dist';
 
 const gulpConfig = Object.freeze({
+  dist,
   src,
   tools,
   jsSrc: `${src}/**/*.js`,

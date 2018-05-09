@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "outDir": "build/dist",
+    "outDir": "dist",
     "module": "commonjs",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": true,
+    "allowJs": false,
     "experimentalDecorators": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "packages",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -20,7 +19,7 @@
   },
   "exclude": [
     "node_modules",
-    "build",
+    "dist",
     "scripts",
     "webpack",
     "jest"

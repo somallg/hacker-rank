@@ -1,9 +1,10 @@
 {
   "extends": [
-    "tslint:recommended",
+    "tslint-config-airbnb",
     "tslint-config-prettier"
   ],
   "rules": {
-    "interface-name": false
+    "interface-name": false,
+    "prefer-const": false
   }
 }

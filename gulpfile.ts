@@ -2,6 +2,8 @@ import chalk from 'chalk';
 import * as del from 'del';
 import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
+import * as rollup from 'rollup';
+import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
 import { fileSource } from './packages/tools/file-generator/file.source';
@@ -23,24 +25,44 @@ gulp.task('default', $.taskListing);
 gulp.task('clean:js', () => {
   log(chalk.red('Cleaning js files'));
 
-  return del([gulpConfig.alljs, gulpConfig.alldef]);
+  return del(gulpConfig.dist);
 });
 
-gulp.task('compile', ['clean:js'], () => {
-  log(`${chalk.blue('Compiling files')} ts --> js`);
+gulp.task('compile', () => {
+  const { f } = args;
 
-  const tsProject = $.typescript.createProject('./tsconfig.json');
+  if (!f) {
+    log(chalk.red('--f is required'));
+    return 1;
+  }
+
+  log(chalk.blue(`Compiling files matching ${f}`));
 
   return gulp
-    .src([gulpConfig.jsSrc, `!${gulpConfig.jsSpec}`], { base: '.' })
+    .src([`**/*${f}*.ts`, `!**/*${f}*.spec.ts`], { base: '.', read: false })
+    .pipe($.print())
     .pipe(
-      $.plumber({
-        errorHandler: () => process.exit(1)
-      })
-    )
-    .pipe($.if(args.verbose, $.print()))
-    .pipe(tsProject())
-    .pipe(gulp.dest('.'));
+      $.tap((file: { path: string }) =>
+        rollup
+          .rollup({
+            input: file.path,
+            plugins: [
+              (rollupTypescript as any)({
+                tsconfig: './tsconfig.rollup.json',
+                clean: true
+              })
+            ]
+          } as any)
+          .then(bundle => {
+            return bundle.generate({
+              format: 'es'
+            });
+          })
+          .then(({ code }) => {
+            console.log(code);
+          })
+      )
+    );
 });
 
 gulp.task('test', () => {
