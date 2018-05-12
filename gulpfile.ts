@@ -39,7 +39,13 @@ gulp.task('compile', () => {
   log(chalk.blue(`Compiling files matching ${f}`));
 
   return gulp
-    .src([`**/*${f}*.ts`, `!**/*${f}*.spec.ts`], { base: '.', read: false })
+    .src(
+      [
+        `${gulpConfig.src}/**/*${f}*.ts`,
+        `!${gulpConfig.src}/**/*${f}*.spec.ts`
+      ],
+      { base: '.', read: false }
+    )
     .pipe($.print())
     .pipe(
       $.tap((file: { path: string }) =>
