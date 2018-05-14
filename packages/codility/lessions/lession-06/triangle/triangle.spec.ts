@@ -13,5 +13,9 @@ describe('Triangle', () => {
     it('should return 0 when input ', () => {
       expect(solveTriangle([10, 50, 5, 1])).toEqual(0);
     });
+
+    it('should return 0 when input ', () => {
+      expect(solveTriangle([10, 60, 5, 1])).toEqual(0);
+    });
   });
 });

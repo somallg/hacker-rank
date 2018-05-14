@@ -1,0 +1,13 @@
+{
+  "linters": {
+    "*.*rc": ["prettier --parser json --write", "git add"],
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix --format verbose",
+      "yarn jest --findRelatedTests",
+      "git add"
+    ]
+  },
+  "concurrent": false,
+  "renderer": "verbose"
+}
