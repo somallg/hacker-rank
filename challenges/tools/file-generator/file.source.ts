@@ -5,8 +5,8 @@ function fileSource(problem: string): string {
  * @url https://www.hackerrank.com/challenges/${problem}/problem
  */
 
-function solve${pascalize(problem)}() {
-
+function solve${pascalize(problem)}(arr: number[]): number {
+  return 1;
 }
 
 export { solve${pascalize(problem)} };`;

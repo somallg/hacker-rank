@@ -3,7 +3,7 @@
 
 import { Stack } from '@challenges/codility';
 
-function solveDominator(arr: number[]): number {
+function findLeaderAndIndex(arr: number[]): number[][] {
   const candiateStack = arr.reduce((acc, n) => {
     acc.push(n);
 
@@ -28,11 +28,17 @@ function solveDominator(arr: number[]): number {
       .filter(([n]) => n === candiate);
 
     if (candidateFound.length > arr.length >>> 1) {
-      return candidateFound[0][1];
+      return candidateFound;
     }
   }
 
-  return -1;
+  return [];
 }
 
-export { solveDominator };
+function solveDominator(arr: number[]): number {
+  const leaderWithIndex = findLeaderAndIndex(arr);
+
+  return leaderWithIndex.length === 0 ? -1 : leaderWithIndex[0][1];
+}
+
+export { findLeaderAndIndex, solveDominator };
