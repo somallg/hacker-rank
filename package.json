@@ -9,13 +9,15 @@
     "cz": "git-cz",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prepush": "yarn test",
     "compile": "yarn gulp compile --f",
     "release": "standard-version",
     "semantic-release": "semantic-release",
     "test": "yarn gulp test",
     "test:f": "yarn gulp test --f",
     "enforce": "yarn gulp enforce",
-    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false --testPathPattern"
+    "debug":
+      "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false --testPathPattern"
   },
   "config": {
     "commitizen": {

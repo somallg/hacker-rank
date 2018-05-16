@@ -6,15 +6,15 @@ import * as rollup from 'rollup';
 import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
-import { fileSource } from './packages/tools/file-generator/file.source';
+import { fileSource } from './challenges/tools/file-generator/file.source';
 import {
   indexRootSource,
   indexSource
-} from './packages/tools/file-generator/index.source';
-import { specSource } from './packages/tools/file-generator/spec.source';
-import { gulpConfig } from './packages/tools/gulp.config';
-import { prettierConfig } from './packages/tools/prettier/prettierrc';
-import { getDirectories } from './packages/tools/utils/file.util';
+} from './challenges/tools/file-generator/index.source';
+import { specSource } from './challenges/tools/file-generator/spec.source';
+import { gulpConfig } from './challenges/tools/gulp.config';
+import { prettierConfig } from './challenges/tools/prettier/prettierrc';
+import { getDirectories } from './challenges/tools/utils/file.util';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -76,7 +76,8 @@ gulp.task('test', () => {
   let options = {};
   if (f) {
     options = {
-      testMatch: [`**/*${f}*.spec.ts`]
+      testMatch: [`**/*${f}*.spec.ts`],
+      rootDir: process.cwd()
     };
   }
 
