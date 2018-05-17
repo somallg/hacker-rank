@@ -76,8 +76,7 @@ gulp.task('test', () => {
   let options = {};
   if (f) {
     options = {
-      testMatch: [`**/*${f}*.spec.ts`],
-      rootDir: process.cwd()
+      testMatch: [`**/*${f}*.spec.ts`]
     };
   }
 
