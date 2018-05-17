@@ -12,8 +12,6 @@ function solveMinAvgTwoSlice(arr: number[]): number {
   let avg = 0;
   const n = arr.length;
 
-  debugger;
-
   for (let i = 0; i < n - 2; i = i + 1) {
     // try slice of length 2
     avg = average(arr[i], arr[i + 1]);

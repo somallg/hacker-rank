@@ -23,32 +23,28 @@ describe('${pascalize(problem)}', () => {
     });
 
     describe('Correctness tests', () => {
-      it('should return _ for Extreme Empty input []', () => {
-        expect(solve${pascalize(problem)}([])).toEqual(_);
-      });
-
-      it('should return _ for Extreme Simple input [1]', () => {
-        expect(solve${pascalize(problem)}([1])).toEqual(_);
-      });
-
-      it('should return _ for Duplicates input [2, 2]', () => {
-        expect(solve${pascalize(problem)}([2, 2])).toEqual(_);
-      });
-
-      it('should return _ for Extreme Double input [2, 1]', () => {
-        expect(solve${pascalize(problem)}([2, 1])).toEqual(_);
-      });
-
-      it('should return _ for No Intersections input [0, 0]', () => {
-        expect(solve${pascalize(problem)}([0, 0])).toEqual(_);
-      });
-
-      it('should return _ for Sample input [1, 2, 3, 4]', () => {
+      it('should return _ for Sample 1 input [1, 2, 3, 4]', () => {
         expect(solve${pascalize(problem)}([1, 2, 3, 4])).toEqual(_);
       });
 
-      it('should return _ for Sample input [4, 3, 2, 1]', () => {
+      it('should return _ for Sample 2 input [4, 3, 2, 1]', () => {
         expect(solve${pascalize(problem)}([4, 3, 2, 1])).toEqual(_);
+      });
+
+      it('should return _ for Sample 3 input [4, 3, 2, 1]', () => {
+        expect(solve${pascalize(problem)}([4, 3, 2, 1])).toEqual(_);
+      });
+
+      it('should return _ for Extreme input []', () => {
+        expect(solve${pascalize(problem)}([])).toEqual(_);
+      });
+
+      it('should return _ for All Negative input [2, 1, 0]', () => {
+        expect(solve${pascalize(problem)}([2, 1])).toEqual(_);
+      });
+
+      it('should return _ for All Positive input [2, 1, 0]', () => {
+        expect(solve${pascalize(problem)}([2, 1])).toEqual(_);
       });
     });
 

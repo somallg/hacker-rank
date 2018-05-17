@@ -38,4 +38,4 @@ function solveMaxDoubleSliceSum(arr: number[]): number {
   }, 0);
 }
 
-export { solveMaxDoubleSliceSum };
+export { reduceMaxSum, solveMaxDoubleSliceSum };
