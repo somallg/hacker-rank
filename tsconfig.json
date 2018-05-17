@@ -5,7 +5,7 @@
     "module": "commonjs",
     "target": "es6",
     "lib": ["es6", "dom"],
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "allowJs": false,
     "experimentalDecorators": true,
     "jsx": "react",
