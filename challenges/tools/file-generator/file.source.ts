@@ -6,7 +6,9 @@ function fileSource(problem: string): string {
  */
 
 function solve${pascalize(problem)}(arr: number[]): number {
-  return 1;
+  let result = 0;
+
+  return result;
 }
 
 export { solve${pascalize(problem)} };`;
