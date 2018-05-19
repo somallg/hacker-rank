@@ -20,4 +20,4 @@ function solveMinPerimeterRectangle(n: number): number {
     .reduce((acc, perimeter) => Math.min(acc, perimeter));
 }
 
-export { solveMinPerimeterRectangle };
+export { getFactors, solveMinPerimeterRectangle };

@@ -1,12 +1,19 @@
 /**
  */
 
+function getPeaks(arr: number[]): boolean[] {
+  return arr.map(
+    (n, index) =>
+      index > 0 &&
+      index < arr.length - 1 &&
+      n > arr[index - 1] &&
+      n > arr[index + 1]
+  );
+}
+
 function solveFlags(arr: number[]): number {
   const l = arr.length;
-  const peaks = arr.map(
-    (n, index) =>
-      index > 0 && index < l - 1 && n > arr[index - 1] && n > arr[index + 1]
-  );
+  const peaks = getPeaks(arr);
 
   // check flag
   let flags = 0;
@@ -36,4 +43,4 @@ function checkFlags(nbFlags: number, arr: number[], peaks: boolean[]): boolean {
   return flags === 0;
 }
 
-export { solveFlags };
+export { getPeaks, solveFlags };
