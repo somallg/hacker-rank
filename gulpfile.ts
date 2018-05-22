@@ -84,7 +84,7 @@ gulp.task('test', () => {
 });
 
 gulp.task('gen', () => {
-  const { d, p } = args;
+  const { d, p, c } = args;
   if (!d || !p) {
     log(
       chalk.red('Please provide directory name (--d) and problem name (--p)')
@@ -97,8 +97,8 @@ gulp.task('gen', () => {
 
   return $.file(
     [
-      { name: `${p}.spec.ts`, source: specSource(p) },
-      { name: `${p}.ts`, source: fileSource(p) }
+      { name: `${p}.spec.ts`, source: specSource(c, p) },
+      { name: `${p}.ts`, source: fileSource(c, p) }
     ],
     { src: true }
   ).pipe(gulp.dest(`./${d}/${p}`));

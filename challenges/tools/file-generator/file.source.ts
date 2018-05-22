@@ -1,17 +1,21 @@
-import { pascalize } from '../utils/string.util';
+import { getFunctionName } from './function.source';
+import { getUrl } from './url.source';
 
-function fileSource(problem: string): string {
+function fileSource(challenge = 'codility', problem: string): string {
+  const functionName = getFunctionName(challenge, problem);
+  const url = getUrl(challenge, problem);
+
   return `/**
- * @url https://www.hackerrank.com/challenges/${problem}/problem
+ *${url}
  */
 
-function solve${pascalize(problem)}(arr: number[]): number {
+function ${functionName}(arr: number[]): number {
   let result = 0;
 
   return result;
 }
 
-export { solve${pascalize(problem)} };`;
+export { ${functionName} };`;
 }
 
 export { fileSource };
