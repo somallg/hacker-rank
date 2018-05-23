@@ -1,6 +1,6 @@
 module.exports = {
   bail: true,
-  collectCoverage: true,
+  collectCoverage: false,
   testEnvironment: 'node',
   transform: {
     '^.+\\.tsx?$': 'ts-jest'

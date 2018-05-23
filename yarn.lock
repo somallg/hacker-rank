@@ -3384,13 +3384,6 @@ gulp-if@2.0.2:
     ternary-stream "^2.0.1"
     through2 "^2.0.1"
 
-gulp-jest@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-jest/-/gulp-jest-3.0.1.tgz#88f5c9e52cdf77cc5500a29d9e74397aa51c679b"
-  dependencies:
-    gulp-util "^3.0.0"
-    through2 "^2.0.1"
-
 gulp-load-plugins@1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/gulp-load-plugins/-/gulp-load-plugins-1.5.0.tgz#4c419f7e5764d9a0e33061bab9618f81b73d4171"

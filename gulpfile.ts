@@ -73,14 +73,20 @@ gulp.task('compile', () => {
 
 gulp.task('test', () => {
   const { f } = args;
-  let options = {};
+  let optionsCLI: any = {
+    maxWorkers: 2
+  };
   if (f) {
-    options = {
+    optionsCLI = {
+      ...optionsCLI,
       testMatch: [`**/*${f}*.spec.ts`]
     };
   }
 
-  return gulp.src(gulpConfig.src).pipe($.jest.default(options));
+  const jest = require('jest-cli');
+  const projects = [process.cwd()]; // path to find project config file
+
+  return jest.runCLI(optionsCLI, projects);
 });
 
 gulp.task('gen', () => {

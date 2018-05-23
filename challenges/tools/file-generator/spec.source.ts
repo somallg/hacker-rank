@@ -3,6 +3,11 @@ import { pascalize } from '../utils/string.util';
 import { getFunctionName } from './function.source';
 import { getUrl } from './url.source';
 
+const MEDIUM_SIZE_1 = 100;
+const LARGE_SIZE_1 = 10e3;
+const LARGE_SIZE_2 = 50e3;
+const LARGE_SIZE_3 = 100e3;
+
 function specSource(challenge = 'codility', problem: string): string {
   const functionName = getFunctionName(challenge, problem);
   const url = getUrl(challenge, problem);
@@ -55,21 +60,21 @@ describe('${pascalize(challenge)} - ${pascalize(problem)}', () => {
     });
 
     describe('Performance tests', () => {
-      it('should run for Medium input of 100 items', () => {
-        ${functionName}(generateArray(100));
-      }, 100);
+      it('should run for Medium 1 input of ${MEDIUM_SIZE_1} items', () => {
+        ${functionName}(generateArray(${MEDIUM_SIZE_1}));
+      });
 
-      it('should run for Large 1 input of 10E3 items', () => {
-        ${functionName}(generateArray(10E3));
-      }, 100);
+      it('should run for Large 1 input of ${LARGE_SIZE_1} items', () => {
+        ${functionName}(generateArray(${LARGE_SIZE_1}));
+      });
 
-      it('should run for Large 2 input of 50E3 items', () => {
-        ${functionName}(generateArray(50E3));
-      }, 100);
+      it('should run for Large 2 input of ${LARGE_SIZE_2} items', () => {
+        ${functionName}(generateArray(${LARGE_SIZE_2}));
+      });
 
-      it('should run for Large 3 input of 100E3 items', () => {
-        ${functionName}(generateArray(100E3));
-      }, 100);
+      it('should run for Large 3 input of ${LARGE_SIZE_3} items', () => {
+        ${functionName}(generateArray(${LARGE_SIZE_3}));
+      });
     });
   });
 });
