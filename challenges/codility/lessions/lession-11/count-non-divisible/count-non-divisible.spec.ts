@@ -44,37 +44,21 @@ describe('Codility - CountNonDivisible', () => {
     });
 
     describe('Performance tests', () => {
-      it(
-        'should run for Medium input of 100 items',
-        () => {
-          expect(solution(generateArray(100)).length).toEqual(100);
-        },
-        100
-      );
+      it('should run for Medium input of 100 items', () => {
+        expect(solution(generateArray(100)).length).toEqual(100);
+      });
 
-      it(
-        'should run for Large 1 input of 10E3 items',
-        () => {
-          expect(solution(generateArray(10e3)).length).toEqual(10e3);
-        },
-        100
-      );
+      it('should run for Large 1 input of 10e3 items', () => {
+        expect(solution(generateArray(10e3)).length).toEqual(10e3);
+      });
 
-      it(
-        'should run for Large 2 input of 50E3 items',
-        () => {
-          expect(solution(generateArray(50e3)).length).toEqual(50e3);
-        },
-        100
-      );
+      it('should run for Large 2 input of 50e3 items', () => {
+        expect(solution(generateArray(50e3)).length).toEqual(50e3);
+      });
 
-      it(
-        'should run for Large 3 input of 100E3 items',
-        () => {
-          expect(solution(generateArray(100e3)).length).toEqual(100e3);
-        },
-        100
-      );
+      it('should run for Large 3 input of 100E3 items', () => {
+        expect(solution(generateArray(100e3)).length).toEqual(100e3);
+      });
     });
   });
 });
