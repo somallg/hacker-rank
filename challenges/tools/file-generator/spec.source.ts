@@ -3,10 +3,10 @@ import { pascalize } from '../utils/string.util';
 import { getFunctionName } from './function.source';
 import { getUrl } from './url.source';
 
-const MEDIUM_SIZE_1 = 100;
-const LARGE_SIZE_1 = 10e3;
-const LARGE_SIZE_2 = 50e3;
-const LARGE_SIZE_3 = 100e3;
+const MEDIUM_SIZE_1 = '100';
+const LARGE_SIZE_1 = '10e3';
+const LARGE_SIZE_2 = '50e3';
+const LARGE_SIZE_3 = '100e3';
 
 function specSource(challenge = 'codility', problem: string): string {
   const functionName = getFunctionName(challenge, problem);
