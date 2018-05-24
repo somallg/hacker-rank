@@ -3,9 +3,11 @@
  */
 
 function gcd(a: number, b: number, res: number): number {
-  if (a === b) {
-    return res * a;
+  if (a < 1 || b < 1) {
     // tslint:disable:no-else-after-return
+    return res;
+  } else if (a === b) {
+    return res * a;
   } else if ((a & 1) === 0 && (b & 1) === 0) {
     return gcd(a >>> 1, b >>> 1, res << 1);
   } else if ((a & 1) === 0) {
