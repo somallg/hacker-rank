@@ -8,4 +8,8 @@ function generateArray(length: number, maxExclusive = length, random = true) {
   return res;
 }
 
-export { generateArray };
+function zip<T>(arrayA: T[], arrayB: T[]): T[][] {
+  return arrayA.map((a, index) => [a, arrayB[index]]);
+}
+
+export { generateArray, zip };
