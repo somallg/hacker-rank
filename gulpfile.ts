@@ -15,6 +15,7 @@ import { specSource } from './challenges/tools/file-generator/spec.source';
 import { gulpConfig } from './challenges/tools/gulp.config';
 import { prettierConfig } from './challenges/tools/prettier/prettierrc';
 import { getDirectories } from './challenges/tools/utils/file.util';
+import { pbcopy } from './challenges/tools/utils/pbcopy';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -65,8 +66,18 @@ gulp.task('compile', () => {
             });
           })
           .then(({ code }) => {
-            console.log(code);
+            return pbcopy(code.replace(/export.*/, ''));
           })
+          .then(() =>
+            console.log(
+              chalk.green(`Copied compiled content of ${f} to clipboard`)
+            )
+          )
+          .catch(err =>
+            console.error(
+              new Error(`Could not copy compiled content of ${f} to clipboard`)
+            )
+          )
       )
     );
 });
@@ -101,13 +112,15 @@ gulp.task('gen', () => {
 
   log(chalk.blue('Generating problem files'));
 
-  return $.file(
-    [
-      { name: `${p}.spec.ts`, source: specSource(c, p) },
-      { name: `${p}.ts`, source: fileSource(c, p) }
-    ],
-    { src: true }
-  ).pipe(gulp.dest(`./${d}/${p}`));
+  return $
+    .file(
+      [
+        { name: `${p}.spec.ts`, source: specSource(c, p) },
+        { name: `${p}.ts`, source: fileSource(c, p) }
+      ],
+      { src: true }
+    )
+    .pipe(gulp.dest(`./${d}/${p}`));
 });
 
 gulp.task('gen:index', () => {
