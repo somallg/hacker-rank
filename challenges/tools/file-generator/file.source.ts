@@ -9,7 +9,7 @@ function fileSource(challenge = 'codility', problem: string): string {
  *${url}
  */
 
-function ${functionName}(arr: number[]): number {
+function ${functionName}(array: number[]): number {
   let result = 0;
 
   return result;
