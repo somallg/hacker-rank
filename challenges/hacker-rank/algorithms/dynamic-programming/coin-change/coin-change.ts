@@ -1,53 +1,6 @@
 /**
- * HackerRank - CoinChange
+ * HackerRank - CoinChange bottom up version
  */
-
-// type CoinChangeFunction = (
-//   currentIndex: number,
-//   changeFor: number,
-//   coins: number[]
-// ) => number;
-
-// function memorized(fn: Function): CoinChangeFunction {
-//   const memo: number[][] = [];
-
-//   return (changeFor: number, currentIndex: number, coins: number[]) => {
-//     if (memo[changeFor] === undefined) {
-//       memo[changeFor] = [];
-//     }
-
-//     let cachedValue = memo[changeFor][currentIndex];
-
-//     if (cachedValue === undefined) {
-//       cachedValue = fn(changeFor, currentIndex, coins);
-//       memo[changeFor][currentIndex] = cachedValue;
-//     }
-//     return cachedValue;
-//   };
-// }
-
-// function solveCoinChange(n: number, coins: number[]): number {
-//   const solveCoinChangeRec = memorized(
-//     (changeFor: number, currentIndex: number, coins: number[]) => {
-//       if (changeFor < 0 || currentIndex < 0) {
-//         return 0;
-//       }
-
-//       if (changeFor === 0) {
-//         return 1;
-//       }
-
-//       const currentCoin = coins[currentIndex];
-
-//       return currentCoin <= changeFor
-//         ? solveCoinChangeRec(changeFor, currentIndex - 1, coins) +
-//             solveCoinChangeRec(changeFor - currentCoin, currentIndex, coins)
-//         : solveCoinChangeRec(changeFor, currentIndex - 1, coins);
-//     }
-//   );
-
-//   return solveCoinChangeRec(n, coins.length - 1, coins);
-// }
 
 function solveCoinChange(n: number, coins: number[]): number {
   const dp: number[][] = [];
