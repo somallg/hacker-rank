@@ -1,12 +1,11 @@
-function memorized(fn: Function): Function {
-  const cached = new Map();
+function memorized<K, V>(fn: (x: K) => V): (x: K) => V {
+  const memo = new Map<K, V>();
 
-  return (n: any): any => {
-    if (!cached.has(n)) {
-      cached.set(n, fn(n));
-    }
+  return (x: K): V => {
+    const [cachedValue = fn(x)] = [memo.get(x)];
+    memo.set(x, cachedValue);
 
-    return cached.get(n);
+    return cachedValue;
   };
 }
 
