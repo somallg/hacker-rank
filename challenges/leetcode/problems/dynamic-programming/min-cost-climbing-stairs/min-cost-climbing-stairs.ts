@@ -1,28 +1,16 @@
 /**
- * Leetcode - MinCostClimbingStairs
+ * Leetcode - MinCostClimbingStairs bottom up version O(n) time complexity
  */
 
-import { memorized } from '@challenges/util';
-
 function minCostClimbingStairs(cost: number[]): number {
-  const minCostClimbingStairsRec = memorized(
-    (currentStep: number): number => {
-      const n = cost.length;
-      if (currentStep >= n) {
-        return 0;
-      }
+  const n = cost.length;
+  const dp = [cost[0], cost[1]];
 
-      const currentCost = currentStep < 0 ? 0 : cost[currentStep];
-      const nextOneStepCost =
-        currentCost + minCostClimbingStairsRec(currentStep + 1);
-      const nextTwoStepCost =
-        currentCost + minCostClimbingStairsRec(currentStep + 2);
+  for (let i = 2; i < n; i = i + 1) {
+    dp[i] = cost[i] + Math.min(dp[i - 1], dp[i - 2]);
+  }
 
-      return Math.min(nextOneStepCost, nextTwoStepCost);
-    }
-  );
-
-  return minCostClimbingStairsRec(-1);
+  return Math.min(dp[n - 1], dp[n - 2]);
 }
 
 export { minCostClimbingStairs };
