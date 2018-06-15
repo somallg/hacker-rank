@@ -7,6 +7,7 @@ import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
 import { fileSource } from './challenges/tools/file-generator/file.source';
+import { mainSource } from './challenges/tools/file-generator/main.source';
 import {
   indexRootSource,
   indexSource
@@ -112,15 +113,16 @@ gulp.task('gen', () => {
 
   log(chalk.blue('Generating problem files'));
 
-  return $
-    .file(
-      [
-        { name: `${p}.spec.ts`, source: specSource(c, p) },
-        { name: `${p}.ts`, source: fileSource(c, p) }
-      ],
-      { src: true }
-    )
-    .pipe(gulp.dest(`./${d}/${p}`));
+  const filesToGen = [
+    { name: `${p}.spec.ts`, source: specSource(c, p) },
+    { name: `${p}.ts`, source: fileSource(c, p) }
+  ];
+
+  if (c && c === 'spoj') {
+    filesToGen.push({ name: `main.ts`, source: mainSource(c, p) });
+  }
+
+  return $.file(filesToGen, { src: true }).pipe(gulp.dest(`./${d}/${p}`));
 });
 
 gulp.task('gen:index', () => {
