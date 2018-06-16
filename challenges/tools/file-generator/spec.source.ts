@@ -50,11 +50,11 @@ describe('${pascalize(challenge)} - ${pascalize(problem)}', () => {
         expect(${functionName}([])).toEqual(_);
       });
 
-      it('should return _ for All Negative input [2, 1, 0]', () => {
-        expect(${functionName}([2, 1])).toEqual(_);
+      it('should return _ for All Negative input [-2, -1]', () => {
+        expect(${functionName}([-2, -1])).toEqual(_);
       });
 
-      it('should return _ for All Positive input [2, 1, 0]', () => {
+      it('should return _ for All Positive input [2, 1]', () => {
         expect(${functionName}([2, 1])).toEqual(_);
       });
     });

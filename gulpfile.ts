@@ -42,10 +42,7 @@ gulp.task('compile', () => {
 
   return gulp
     .src(
-      [
-        `${gulpConfig.src}/**/*${f}*.ts`,
-        `!${gulpConfig.src}/**/*${f}*.spec.ts`
-      ],
+      [`${gulpConfig.src}/**/${f}.ts`, `!${gulpConfig.src}/**/${f}.spec.ts`],
       { base: '.', read: false }
     )
     .pipe($.print())
@@ -91,7 +88,7 @@ gulp.task('test', () => {
   if (f) {
     optionsCLI = {
       ...optionsCLI,
-      testMatch: [`**/*${f}*.spec.ts`]
+      testMatch: [`**/${f}.spec.ts`]
     };
   }
 
@@ -119,7 +116,7 @@ gulp.task('gen', () => {
   ];
 
   if (c && c === 'spoj') {
-    filesToGen.push({ name: `main.ts`, source: mainSource(c, p) });
+    filesToGen.push({ name: `${p}.main.ts`, source: mainSource(c, p) });
   }
 
   return $.file(filesToGen, { src: true }).pipe(gulp.dest(`./${d}/${p}`));
