@@ -11,47 +11,38 @@ process.stdin.resume();
 process.stdin.setEncoding('utf-8');
 
 let inputString = '';
-let currentLine = 0;
 
-process.stdin.on('data', inputStdin => {
-  inputString += inputStdin;
+process.stdin.on('data', (inputStdin: string) => {
+  inputString = inputString + inputStdin;
 });
 
-process.stdin.on('end', _ => {
-  inputString = inputString.replace(/\s*$/, '')
-    .split('\n')
-    .map(str => str.replace(/\s*$/, ''));
+process.stdin.on('end', () => {
+  const input = inputString
+    .replace(/s*$/, '')
+    .split("\n")
+    .map(str => str.replace(/s*$/, ''));
 
-  main();
+  main(input);
 });
-
-function readLine() {
-  return inputString[currentLine++];
-}
 
 // Complete the ${functionName} function below.
-function ${functionName}() {
-}
-
-function main() {
-  const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
-
-  const n = parseInt(readLine(), 10);
-
-  const k = parseInt(readLine(), 10);
-
-  let array = [];
-
-  for (let i = 0; i < n; i++) {
-    const arrayItem = parseInt(readLine(), 10);
-    array.push(arrayItem);
+function ${functionName}(array: number[]): string {
+  let result = [];
+  for (let i = 0; i < array.length; i = i + 1) {
+    if (array[i] === 42) {
+      break;
+    } else {
+      result.push(array[i]);
+    }
   }
 
-  let result = ${functionName}(array);
+  return result.join("\n");
+}
 
-  ws.write(result + '\n');
+function main(input: string[]) {
+  const result = ${functionName}(input.map(Number));
 
-  ws.end();
+  console.log(result);
 }`;
 }
 

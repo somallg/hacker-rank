@@ -71,11 +71,13 @@ gulp.task('compile', () => {
               chalk.green(`Copied compiled content of ${f} to clipboard`)
             )
           )
-          .catch(err =>
+          .catch(err => {
             console.error(
-              new Error(`Could not copy compiled content of ${f} to clipboard`)
-            )
-          )
+              new Error(
+                `Could not copy compiled content of ${f} to clipboard. Reason: ${err}`
+              )
+            );
+          })
       )
     );
 });

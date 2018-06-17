@@ -97,15 +97,17 @@ function mulArray(arrayA: number[], arrayB: number[]): number[] {
   return mulArrayRec(arrayB, arrayA);
 }
 
-const solveExtraLongFactorialsRec = memorized((n: number): number[] => {
-  if (n < 2) {
-    return [n];
-  }
+const solveExtraLongFactorialsRec = memorized(
+  (n: number): number[] => {
+    if (n < 2) {
+      return [n];
+    }
 
-  const digits = toDigits(n);
-  const factN1 = solveExtraLongFactorialsRec(n - 1);
-  return mulArray(digits, factN1);
-});
+    const digits = toDigits(n);
+    const factN1 = solveExtraLongFactorialsRec(n - 1);
+    return mulArray(digits, factN1);
+  }
+);
 
 function solveExtraLongFactorials(n: number): string {
   return solveExtraLongFactorialsRec(n).reduceRight(
