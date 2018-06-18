@@ -6,7 +6,7 @@ function getFunctionName(challenge: string, problem: string): string {
       codility: 'solution',
       hackerearth: `solve${pascalize(problem)}`,
       hackerrank: `solve${pascalize(problem)}`,
-      interviewbit: `${pascalize(problem)}`,
+      interviewbit: `${camelize(problem)}`,
       leetcode: `${camelize(problem)}`,
       spoj: `${camelize(problem)}`
     }[challenge] || `${camelize(problem)}`
