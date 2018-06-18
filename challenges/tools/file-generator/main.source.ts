@@ -1,6 +1,6 @@
 import { getFunctionName } from './function.source';
 
-function mainSource(challenge = 'codility', problem: string) {
+function mainSource(challenge: string, problem: string) {
   const functionName = getFunctionName(challenge, problem);
 
   return `'use strict';

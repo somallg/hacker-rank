@@ -17,6 +17,7 @@ import { gulpConfig } from './challenges/tools/gulp.config';
 import { prettierConfig } from './challenges/tools/prettier/prettierrc';
 import { getDirectories } from './challenges/tools/utils/file.util';
 import { pbcopy } from './challenges/tools/utils/pbcopy';
+import { getChallengeName } from './challenges/tools/utils/challenge.util';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -74,7 +75,9 @@ gulp.task('compile', () => {
           .catch(err => {
             console.error(
               new Error(
-                `Could not copy compiled content of ${f} to clipboard. Reason: ${err}`
+                `Could not copy compiled content of ${f} to clipboard. Reason: ${
+                  err.message
+                }`
               )
             );
           })
@@ -101,8 +104,8 @@ gulp.task('test', () => {
 });
 
 gulp.task('gen', () => {
-  const { d, p, c } = args;
-  if (!d || !p) {
+  const { d: directory, p: problem } = args;
+  if (!directory || !problem) {
     log(
       chalk.red('Please provide directory name (--d) and problem name (--p)')
     );
@@ -110,18 +113,30 @@ gulp.task('gen', () => {
     return 1;
   }
 
+  const challengeName = getChallengeName(directory);
+
+  if (!challengeName) {
+    log(chalk.red('Please provide correct directory name (--d)'));
+    return 1;
+  }
+
   log(chalk.blue('Generating problem files'));
 
   const filesToGen = [
-    { name: `${p}.spec.ts`, source: specSource(c, p) },
-    { name: `${p}.ts`, source: fileSource(c, p) }
+    { name: `${problem}.spec.ts`, source: specSource(challengeName, problem) },
+    { name: `${problem}.ts`, source: fileSource(challengeName, problem) }
   ];
 
-  if (c && c === 'spoj') {
-    filesToGen.push({ name: `${p}.main.ts`, source: mainSource(c, p) });
+  if (challengeName === 'spoj') {
+    filesToGen.push({
+      name: `${problem}.main.ts`,
+      source: mainSource(challengeName, problem)
+    });
   }
 
-  return $.file(filesToGen, { src: true }).pipe(gulp.dest(`./${d}/${p}`));
+  return $
+    .file(filesToGen, { src: true })
+    .pipe(gulp.dest(`./${directory}/${problem}`));
 });
 
 gulp.task('gen:index', () => {
