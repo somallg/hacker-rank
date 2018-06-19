@@ -3526,12 +3526,6 @@ gulp-print@2.0.1:
     gulp-util "^3.0.6"
     map-stream "~0.0.6"
 
-gulp-tap@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-tap/-/gulp-tap-1.0.1.tgz#e671124e1259b4cea219ed1ca97b7f585c334690"
-  dependencies:
-    through2 "^2.0.3"
-
 gulp-task-listing@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gulp-task-listing/-/gulp-task-listing-1.0.1.tgz#8d3d88a93381715d80d66d08d9c55587d889f2ba"

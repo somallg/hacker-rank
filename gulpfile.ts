@@ -7,17 +7,18 @@ import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
 import { fileSource } from './challenges/tools/file-generator/file.source';
-import { mainSource } from './challenges/tools/file-generator/main.source';
 import {
   indexRootSource,
   indexSource
 } from './challenges/tools/file-generator/index.source';
+import { mainSource } from './challenges/tools/file-generator/main.source';
 import { specSource } from './challenges/tools/file-generator/spec.source';
+import { getChallengeName } from './challenges/tools/utils/challenge.util';
+import { getDirectories } from './challenges/tools/utils/file.util';
+
 import { gulpConfig } from './challenges/tools/gulp.config';
 import { prettierConfig } from './challenges/tools/prettier/prettierrc';
-import { getDirectories } from './challenges/tools/utils/file.util';
 import { pbcopy } from './challenges/tools/utils/pbcopy';
-import { getChallengeName } from './challenges/tools/utils/challenge.util';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
@@ -32,75 +33,67 @@ gulp.task('clean:js', () => {
 });
 
 gulp.task('compile', () => {
-  const { f } = args;
+  const { f: filePath } = args;
 
-  if (!f) {
-    log(chalk.red('--f is required'));
+  if (!filePath) {
+    log(chalk.red('--f <path to file> is required'));
     return 1;
   }
 
-  log(chalk.blue(`Compiling files matching ${f}`));
+  log(chalk.blue(`Compiling --f ${filePath}`));
 
-  return gulp
-    .src(
-      [`${gulpConfig.src}/**/${f}.ts`, `!${gulpConfig.src}/**/${f}.spec.ts`],
-      { base: '.', read: false }
-    )
-    .pipe($.print())
-    .pipe(
-      $.tap((file: { path: string }) =>
-        rollup
-          .rollup({
-            input: file.path,
-            plugins: [
-              (rollupTypescript as any)({
-                tsconfig: './tsconfig.rollup.json',
-                clean: true
-              })
-            ]
-          } as any)
-          .then(bundle => {
-            return bundle.generate({
-              format: 'es'
-            });
-          })
-          .then(({ code }) => {
-            return pbcopy(code.replace(/export.*/, ''));
-          })
-          .then(() =>
-            console.log(
-              chalk.green(`Copied compiled content of ${f} to clipboard`)
-            )
-          )
-          .catch(err => {
-            console.error(
-              new Error(
-                `Could not copy compiled content of ${f} to clipboard. Reason: ${
-                  err.message
-                }`
-              )
-            );
-          })
+  return rollup
+    .rollup({
+      input: filePath,
+      plugins: [
+        (rollupTypescript as any)({
+          clean: true,
+          tsconfig: './tsconfig.rollup.json'
+        })
+      ]
+    } as any)
+    .then(bundle => {
+      return bundle.generate({
+        format: 'es'
+      });
+    })
+    .then(({ code }) => {
+      return pbcopy(code.replace(/export.*/, ''));
+    })
+    .then(() =>
+      // tslint:disable-next-line
+      console.log(
+        chalk.green(`Copied compiled version of ${filePath} to clipboard`)
       )
-    );
+    )
+    .catch(err => {
+      // tslint:disable-next-line
+      console.error(
+        new Error(
+          `Could not copy compiled content of ${filePath} to clipboard. Reason: ${
+            err.message
+          }`
+        )
+      );
+    });
 });
 
 gulp.task('test', () => {
-  const { f } = args;
+  const { f: fileName } = args;
+
   let optionsCLI: any = {
     maxWorkers: 2
   };
-  if (f) {
+
+  if (fileName) {
     optionsCLI = {
       ...optionsCLI,
-      testMatch: [`**/${f}.spec.ts`]
+      runTestsByPath: true,
+      testRegex: `${fileName}.spec.ts`
     };
   }
 
-  const jest = require('jest-cli');
-  const projects = [process.cwd()]; // path to find project config file
-
-  return jest.runCLI(optionsCLI, projects);
+  return require('jest-cli').runCLI(optionsCLI, [process.cwd()]);
 });
 
 gulp.task('gen', () => {
@@ -185,7 +178,7 @@ gulp.task('lint', () => {
   log(chalk.blue('Linting source files'));
 
   return gulp
-    .src([gulpConfig.jsSrc, gulpConfig.jsTools, `!${gulpConfig.alldef}`], {
+    .src([gulpConfig.jsSrc, gulpConfig.jsTools], {
       base: '.'
     })
     .pipe($.if(args.verbose, $.print()))
@@ -198,7 +191,7 @@ gulp.task('prettier', () => {
   log(chalk.blue('Prettier source files'));
 
   return gulp
-    .src([gulpConfig.jsSrc, gulpConfig.jsTools, `!${gulpConfig.alldef}`], {
+    .src([gulpConfig.jsSrc, gulpConfig.jsTools], {
       base: '.'
     })
     .pipe($.prettierPlugin(prettierConfig, { filter: true, validate: true }))
