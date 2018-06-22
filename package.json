@@ -16,7 +16,7 @@
     "test:f": "yarn gulp test --f",
     "enforce": "yarn gulp enforce",
     "debug":
-      "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false --runTestsByPath",
+      "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
     "gulp:debug": "node --inspect-brk node_modules/.bin/gulp",
     "gen": "yarn gulp gen"
   },
