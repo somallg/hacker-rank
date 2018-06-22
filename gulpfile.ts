@@ -44,7 +44,7 @@ gulp.task('compile', () => {
 
   return rollup
     .rollup({
-      input: filePath,
+      input: `${filePath}.ts`,
       plugins: [
         (rollupTypescript as any)({
           clean: true,
@@ -88,8 +88,8 @@ gulp.task('test', () => {
   if (fileName) {
     optionsCLI = {
       ...optionsCLI,
-      runTestsByPath: true,
-      testRegex: `${fileName}.spec.ts`
+      _: [`${fileName}.spec.ts`],
+      runTestsByPath: true
     };
   }
 
