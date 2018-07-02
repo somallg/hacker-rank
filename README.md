@@ -1,5 +1,6 @@
 # Hacker Rank
 
+[![CircleCI](https://circleci.com/gh/somallg/hacker-rank.svg?style=svg)](https://circleci.com/gh/somallg/hacker-rank)
 [![Build Status](https://travis-ci.org/somallg/hacker-rank.svg?branch=dev)](https://travis-ci.org/somallg/hacker-rank)
 
 ## What ?
