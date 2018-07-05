@@ -3,7 +3,7 @@
  */
 
 function isOverlapped([x1, y1]: number[], [x2, y2]: number[]) {
-  return (y1 >= x2 && y1 <= y2) || (x1 >= x2 && x1 <= y2);
+  return Math.max(x1, x2) <= Math.min(y1, y2);
 }
 
 function mergeOverlappedIntervals([x1, y1]: number[], [x2, y2]: number[]) {

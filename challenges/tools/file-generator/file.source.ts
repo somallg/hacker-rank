@@ -10,6 +10,7 @@ function fileSource(challenge = 'codility', problem: string): string {
  */
 
 function ${functionName}(array: number[]): number {
+  const l = array.length;
   let result = 0;
 
   return result;
