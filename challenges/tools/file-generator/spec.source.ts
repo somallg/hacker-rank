@@ -46,8 +46,12 @@ describe('${pascalize(challenge)} - ${pascalize(problem)}', () => {
         expect(${functionName}([4, 3, 2, 1])).toEqual(_);
       });
 
-      it('should return _ for Extreme input []', () => {
+      it('should return _ for Extreme 1 input []', () => {
         expect(${functionName}([])).toEqual(_);
+      });
+
+      it('should return _ for Extreme 2 input [1]', () => {
+        expect(${functionName}([1])).toEqual(_);
       });
 
       it('should return _ for All Negative input [-4, -3, -2, -1]', () => {
