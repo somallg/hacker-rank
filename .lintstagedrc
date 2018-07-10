@@ -1,7 +1,5 @@
 {
   "linters": {
-    "*.json": ["prettier --parser json --write", "git add"],
-    "*.*rc": ["prettier --parser json --write", "git add"],
     "*.js": ["prettier --write", "git add"],
     "*.ts": [
       "prettier --write",

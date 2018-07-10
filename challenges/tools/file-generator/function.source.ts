@@ -1,6 +1,6 @@
 import { camelize, pascalize } from '../utils/string.util';
 
-function getFunctionName(challenge: string, problem: string): string {
+function getFunctionName(challengeName: string, problem: string): string {
   return (
     {
       codility: 'solution',
@@ -9,7 +9,7 @@ function getFunctionName(challenge: string, problem: string): string {
       interviewbit: `${camelize(problem)}`,
       leetcode: `${camelize(problem)}`,
       spoj: `${camelize(problem)}`
-    }[challenge] || `${camelize(problem)}`
+    }[challengeName] || `${camelize(problem)}`
   );
 }
 
