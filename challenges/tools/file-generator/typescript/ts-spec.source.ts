@@ -15,18 +15,18 @@ const tsSpecSource: SourceFn = ({
 
 import {
   Fixture,
-  getTestCaseDescription,
   getPerformanceTestCaseDescription,
+  getTestCaseDescription,
   generateArray
 } from '@challenges/util';
 
-import * as fixture from './${problem}.fixture.json';
 import { ${functionName} } from './${problem}';
+import * as fixture from './${problem}.fixture.json';
 
 describe('${pascalize(challengeName)} - ${pascalize(problem)}', () => {
   describe('${functionName}', () => {
     describe('Example tests', () => {
-      (fixture as Fixture).exampleTests.forEach((testCase) => {
+      (fixture as Fixture).exampleTests.forEach(testCase => {
         it(\`\${getTestCaseDescription(testCase)}\`, () => {
           expect(${functionName}(testCase.input)).toEqual(testCase.output);
         });
@@ -34,7 +34,7 @@ describe('${pascalize(challengeName)} - ${pascalize(problem)}', () => {
     });
 
     describe('Correctness tests', () => {
-      (fixture as Fixture).correctnessTests.forEach((testCase) => {
+      (fixture as Fixture).correctnessTests.forEach(testCase => {
         it(\`\${getTestCaseDescription(testCase)}\`, () => {
           expect(${functionName}(testCase.input)).toEqual(testCase.output);
         });
@@ -42,7 +42,7 @@ describe('${pascalize(challengeName)} - ${pascalize(problem)}', () => {
     });
 
     xdescribe('Performance tests', () => {
-      (fixture as Fixture).performanceTests.forEach((testCase) => {
+      (fixture as Fixture).performanceTests.forEach(testCase => {
         it(\`\${getPerformanceTestCaseDescription(testCase)}\`, () => {
           ${functionName}(generateArray(testCase.inputSize));
         });
