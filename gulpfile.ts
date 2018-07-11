@@ -109,34 +109,41 @@ gulp.task('gen', () => {
 
   log(chalk.blue('Generating problem files'));
 
-  return $
-    .file(generateSourceFiles(challengeName, problem, lang), { src: true })
-    .pipe(gulp.dest(`./${directory}/${problem}`));
+  return $.file(generateSourceFiles(challengeName, problem, lang), {
+    src: true
+  }).pipe(gulp.dest(`./${directory}/${problem}`));
 });
 
 gulp.task('lint', () => {
   log(chalk.blue('Linting source files'));
 
   return gulp
-    .src([gulpConfig.jsSrc, gulpConfig.jsTools], {
+    .src([`!${gulpConfig.packagesNodeModules}`, gulpConfig.tsSrc], {
       base: '.'
     })
     .pipe($.if(args.verbose, $.print()))
-    .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError());
+    .pipe(
+      $.tslint({
+        formatter: 'verbose'
+      })
+    )
+    .pipe(
+      $.tslint.report({
+        summarizeFailureOutput: true
+      })
+    );
 });
 
 gulp.task('prettier', () => {
   log(chalk.blue('Prettier source files'));
 
   return gulp
-    .src([gulpConfig.jsSrc, gulpConfig.jsTools], {
+    .src([`!${gulpConfig.packagesNodeModules}`, gulpConfig.tsSrc], {
       base: '.'
     })
     .pipe($.prettierPlugin(prettierConfig, { filter: true, validate: true }))
     .pipe($.if(args.verbose, $.print()))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest(file => file.base));
 });
 
 gulp.task('enforce', ['lint', 'prettier']);

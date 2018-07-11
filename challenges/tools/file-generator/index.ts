@@ -1,10 +1,10 @@
-import { SourceFn, SourceFileConfig } from './type';
+import { SourceFileConfig, SourceFn } from './type';
 
 import { getFunctionName } from './function.source';
 import { getUrl } from './url.source';
 
-import { tsFileSource, tsFixtureSource, tsSpecSource } from './typescript';
 import { pyFileSource, pySpecSource } from './python';
+import { tsFileSource, tsFixtureSource, tsSpecSource } from './typescript';
 
 import { snakelize } from '../utils/string.util';
 
@@ -25,6 +25,16 @@ function getSourceFileConfigList(
   lang = 'typescript'
 ): SourceFileConfig[] {
   return {
+    python: [
+      {
+        name: `${snakelize(problem)}.py`,
+        sourceFn: pyFileSource
+      },
+      {
+        name: `${snakelize(problem)}_spec.py`,
+        sourceFn: pySpecSource
+      }
+    ],
     typescript: [
       {
         name: `${problem}.ts`,
@@ -38,18 +48,8 @@ function getSourceFileConfigList(
         name: `${problem}.spec.ts`,
         sourceFn: tsSpecSource
       }
-    ],
-    python: [
-      {
-        name: `${snakelize(problem)}.py`,
-        sourceFn: pyFileSource
-      },
-      {
-        name: `${snakelize(problem)}_spec.py`,
-        sourceFn: pySpecSource
-      }
     ]
-  }[
+  }[lang];
 }
 
 function generateSourceFiles(
