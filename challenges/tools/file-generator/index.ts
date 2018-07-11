@@ -42,13 +42,12 @@ function getSourceFileConfigList(
     python: [
       {
         name: `${snakelize(problem)}.py`,
-        sourceFn: pyFileSource,
-        a: 10
+        sourceFn: pyFileSource
       },
       {
         name: `${snakelize(problem)}_spec.py`,
         sourceFn: pySpecSource
-      } as SourceFileConfig
+      }
     ]
   }[
 }
