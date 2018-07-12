@@ -25,29 +25,23 @@ import * as fixture from './${problem}.fixture.json';
 
 describe('${pascalize(challengeName)} - ${pascalize(problem)}', () => {
   describe('${functionName}', () => {
-    describe('Example tests', () => {
-      (fixture as Fixture).exampleTests.forEach(testCase => {
-        it(\`\${getTestCaseDescription(testCase)}\`, () => {
-          expect(${functionName}(testCase.input)).toEqual(testCase.output);
-        });
-      });
-    });
+    describe('Example tests', () =>
+      (fixture as Fixture<number, number>).exampleTests.forEach(testCase =>
+        it(\`\${getTestCaseDescription(testCase)}\`, () =>
+          expect(${functionName}(testCase.input)).toEqual(testCase.output))
+      ));
 
-    describe('Correctness tests', () => {
-      (fixture as Fixture).correctnessTests.forEach(testCase => {
-        it(\`\${getTestCaseDescription(testCase)}\`, () => {
-          expect(${functionName}(testCase.input)).toEqual(testCase.output);
-        });
-      });
-    });
+    describe('Correctness tests', () =>
+      (fixture as Fixture<number, number>).correctnessTests.forEach(testCase =>
+        it(\`\${getTestCaseDescription(testCase)}\`, () =>
+          expect(${functionName}(testCase.input)).toEqual(testCase.output))
+      ));
 
-    xdescribe('Performance tests', () => {
-      (fixture as Fixture).performanceTests.forEach(testCase => {
-        it(\`\${getPerformanceTestCaseDescription(testCase)}\`, () => {
-          ${functionName}(generateArray(testCase.inputSize));
-        });
-      });
-    });
+    xdescribe('Performance tests', () =>
+      (fixture as Fixture<number, number>).performanceTests.forEach(testCase =>
+        it(\`\${getPerformanceTestCaseDescription(testCase)}\`, () =>
+          expect(${functionName}(generateArray(testCase.inputSize))).toBeDefined())
+      ));
   });
 });
 `;
