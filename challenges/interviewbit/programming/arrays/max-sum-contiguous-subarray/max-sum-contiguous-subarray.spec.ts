@@ -10,7 +10,7 @@ import { maxSumContiguousSubarray } from './max-sum-contiguous-subarray';
 describe('Interviewbit - MaxSumContiguousSubarray', () => {
   describe('maxSumContiguousSubarray', () => {
     describe('Example tests', () => {
-      it('should return 6 for Example 1 input [-2,1,-3,4,-1,2,1,-5,4]', () => {
+      it('should return 6 for Example 1 input [-2, 1, -3, 4, -1, 2, 1, -5, 4]', () => {
         expect(
           maxSumContiguousSubarray([-2, 1, -3, 4, -1, 2, 1, -5, 4])
         ).toEqual(6);
