@@ -31,7 +31,7 @@ function getUrl(challengeName: string, problem: string) {
   return (
     ({
       hackerrank: ` @url https://www.hackerrank.com/challenges/${problem}/problem`
-    } as SwitchOptions)[challengeName] || ''
+    } as SwitchOptions)[challengeName] || strings.classify(problem)
   );
 }
 

@@ -6,9 +6,7 @@ import * as rollup from 'rollup';
 import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
-import { gulpConfig } from './challenges/tools/gulp.config';
-import { prettierConfig } from './challenges/tools/prettier/prettierrc';
-import { pbcopy } from './challenges/tools/utils/pbcopy';
+import { gulpConfig, pbcopy, prettierConfig } from './packages/tools';
 
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;

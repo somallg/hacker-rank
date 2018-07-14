@@ -2,9 +2,9 @@
  * Codility - Gcd
  */
 
+/* tslint:disable:no-bitwise */
 function gcd(a: number, b: number, res: number): number {
   if (a < 1 || b < 1) {
-    // tslint:disable:no-else-after-return
     return res;
   } else if (a === b) {
     return res * a;

@@ -10,6 +10,6 @@ module.exports = {
   moduleNameMapper: {
     '^@challenges/(.*)$': '<rootDir>/$1'
   },
-  rootDir: './challenges',
+  rootDir: './packages',
   verbose: true
 };

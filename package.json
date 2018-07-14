@@ -1,6 +1,6 @@
 {
   "name": "hacker-rank",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Submissions of HackerRank problems written in TypeScript",
   "main": "index.js",
   "author": "somallg",
