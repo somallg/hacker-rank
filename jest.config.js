@@ -11,5 +11,6 @@ module.exports = {
     '^@challenges/(.*)$': '<rootDir>/$1'
   },
   rootDir: './packages',
+  testPathIgnorePatterns: ['/node_modules/', '/schematics/challenges/'],
   verbose: true
 };
