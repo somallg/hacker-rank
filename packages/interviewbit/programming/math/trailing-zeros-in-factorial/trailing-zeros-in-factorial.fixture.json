@@ -1,42 +1,37 @@
 {
-  "name": "MaxMinArray Fixture",
+  "name": "TrailingZerosInFactorial Fixture",
   "exampleTests": [
     {
       "name": "Example 1",
-      "input": [1, 3, 4],
+      "input": 5,
       "output": 1
     },
     {
       "name": "Example 2",
-      "input": [1, 2, 3, 4],
-      "output": 1
+      "input": 4617,
+      "output": 1151
+    },
+    {
+      "name": "Example 3",
+      "input": 9247,
+      "output": 2307
     }
   ],
   "correctnessTests": [
     {
       "name": "Sample 1",
-      "input": [1, 2],
-      "output": 1
-    },
-    {
-      "name": "Sample 2",
-      "input": [1, 2, 3],
-      "output": 2
-    },
-    {
-      "name": "Sample 3",
-      "input": [1, 2, 3, 4],
-      "output": 3
-    },
-    {
-      "name": "Extreme 1",
-      "input": [],
+      "input": 1,
       "output": 0
     },
     {
-      "name": "Extreme 2",
-      "input": [1],
-      "output": 1
+      "name": "Sample 2",
+      "input": 3,
+      "output": 0
+    },
+    {
+      "name": "Extreme 1",
+      "input": 0,
+      "output": 0
     }
   ],
   "performanceTests": [
