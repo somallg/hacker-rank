@@ -6,9 +6,6 @@ import * as rollup from 'rollup';
 import * as rollupTypescript from 'rollup-plugin-typescript2';
 import * as yargs from 'yargs';
 
-import { generateSourceFiles } from './challenges/tools/file-generator';
-import { getChallengeName } from './challenges/tools/utils/challenge.util';
-
 import { gulpConfig } from './challenges/tools/gulp.config';
 import { prettierConfig } from './challenges/tools/prettier/prettierrc';
 import { pbcopy } from './challenges/tools/utils/pbcopy';
@@ -88,30 +85,6 @@ gulp.task('test', () => {
   }
 
   return require('jest-cli').runCLI(optionsCLI, [process.cwd()]);
-});
-
-gulp.task('gen', () => {
-  const { d: directory, p: problem, l: lang } = args;
-  if (!directory || !problem) {
-    log(
-      chalk.red('Please provide directory name (--d) and problem name (--p)')
-    );
-
-    return 1;
-  }
-
-  const challengeName = getChallengeName(directory);
-
-  if (!challengeName) {
-    log(chalk.red('Please provide correct directory name (--d)'));
-    return 1;
-  }
-
-  log(chalk.blue('Generating problem files'));
-
-  return $.file(generateSourceFiles(challengeName, problem, lang), {
-    src: true
-  }).pipe(gulp.dest(`./${directory}/${problem}`));
 });
 
 gulp.task('lint', () => {
