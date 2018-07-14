@@ -18,7 +18,7 @@
     "enforce": "yarn gulp enforce",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
     "gulp:debug": "node --inspect-brk node_modules/.bin/gulp",
-    "gen": "yarn gulp gen"
+    "gen": "schematics @schematics/challenges:file-generator"
   },
   "config": {
     "commitizen": {
@@ -43,6 +43,7 @@
     "xxhashjs": "^0.2.2"
   },
   "devDependencies": {
+    "@angular-devkit/schematics-cli": "^0.6.8",
     "@commitlint/cli": "5.2.8",
     "@commitlint/config-angular": "^6.0.2",
     "@semantic-release/changelog": "1.0.0",
