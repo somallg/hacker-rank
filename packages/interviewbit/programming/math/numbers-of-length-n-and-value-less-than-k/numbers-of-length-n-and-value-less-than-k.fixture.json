@@ -12,9 +12,14 @@
       "output": 5
     },
     {
-      "name": "Example 2",
+      "name": "Example 3",
       "input": [[0, 1, 2, 4, 5], 3, 210],
       "output": 30
+    },
+    {
+      "name": "Example 4",
+      "input": [[0, 1, 2, 5], 1, 123],
+      "output": 4
     }
   ],
   "correctnessTests": [
