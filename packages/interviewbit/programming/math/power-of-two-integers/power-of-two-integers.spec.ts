@@ -33,29 +33,3 @@ describe('Interviewbit - PowerOfTwoIntegers', () => {
       ));
   });
 });
-
-// function powerOfTwoIntegers(n: number): number {
-//   if (n <= 1) {
-//     return 1;
-//   }
-
-//   let p = 2;
-//   let a = 2;
-
-//   while (p < 32) {
-//     a = 2;
-//     let temp = a;
-
-//     while (temp < n) {
-//       temp = a ** p;
-//       if (temp === n) {
-//         return 1;
-//       }
-//       a = a + 1;
-//     }
-
-//     p = p + 1;
-//   }
-
-//   return 0;
-// }
