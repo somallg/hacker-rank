@@ -5,9 +5,9 @@
 
 import {
   Fixture,
+  generateArray,
   getPerformanceTestCaseDescription,
-  getTestCaseDescription,
-  generateArray
+  getTestCaseDescription
 } from '@challenges/util';
 
 import { <%= functionName %> } from './<%= problem %>';
