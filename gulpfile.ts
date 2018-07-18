@@ -78,6 +78,7 @@ gulp.task('test', () => {
     optionsCLI = {
       ...optionsCLI,
       _: [`${fileName}.spec.ts`],
+      coverage: false,
       runTestsByPath: true
     };
   }
