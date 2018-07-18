@@ -16,6 +16,7 @@ script:
   - yarn test
 after_success:
   - yarn codecov
+  - cat ./packages/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - yarn semantic-release
 branches:
   except:

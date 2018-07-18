@@ -45,3 +45,7 @@ jobs:
       - run:
           name: Upload code coverage
           command: yarn codecov
+
+      - run:
+          name: Upload coveralls
+          command: cat ./packages/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
