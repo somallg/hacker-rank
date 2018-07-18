@@ -27,6 +27,7 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: Install project dependencies
           command: |
             yarn install
             yarn lerna bootstrap
@@ -37,4 +38,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test --maxWorkers=2
+      - run:
+          name: Run unit tests
+          command: yarn test --maxWorkers=2
+
+      - run:
+          name: Upload code coverage
+          command: yarn codecov

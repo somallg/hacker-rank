@@ -18,7 +18,8 @@
     "enforce": "gulp enforce",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
     "gulp:debug": "node --inspect-brk node_modules/.bin/gulp",
-    "gen": "schematics @schematics/challenges:file-generator"
+    "gen": "schematics @schematics/challenges:file-generator",
+    "codecov": "codecov"
   },
   "config": {
     "commitizen": {
@@ -57,6 +58,7 @@
     "@types/yargs": "^11.0.0",
     "bignumber.js": "^7.2.1",
     "chalk": "2.3.0",
+    "codecov": "^3.0.4",
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.1.0",
     "del": "^3.0.0",
