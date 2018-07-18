@@ -1,9 +1,26 @@
-function memorized<K, V>(fn: (x: K) => V): (x: K) => V {
-  const memo = new Map<K, V>();
+type Immutable = string | number;
 
-  return (x: K): V => {
-    const [cachedValue = fn(x)] = [memo.get(x)];
-    memo.set(x, cachedValue);
+type MemoFn<InputType, OutputType> = (x: InputType) => OutputType;
+
+function id<InputType>(x: InputType): Immutable {
+  if (typeof x === 'number') {
+    return x;
+  } else if (typeof x === 'string') {
+    return x;
+  }
+
+  return JSON.stringify(x);
+}
+
+function memorized<InputType, OutputType>(
+  fn: MemoFn<InputType, OutputType>,
+  keyFn = id
+): MemoFn<InputType, OutputType> {
+  const memo = new Map<Immutable, OutputType>();
+
+  return (x: InputType): OutputType => {
+    const [cachedValue = fn(x)] = [memo.get(keyFn(x))];
+    memo.set(keyFn(x), cachedValue);
 
     return cachedValue;
   };
