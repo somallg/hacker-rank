@@ -1,7 +1,7 @@
-interface TestCase<I, O> {
+interface TestCase<InputType, OutputType> {
   name: string;
-  input: I;
-  output: O;
+  input: InputType;
+  output: OutputType;
 }
 
 interface PerformanceTestCase {
@@ -9,10 +9,10 @@ interface PerformanceTestCase {
   inputSize: number;
 }
 
-interface Fixture<I, O> {
+interface Fixture<InputType, OutputType> {
   name: string;
-  exampleTests: TestCase<I, O>[];
-  correctnessTests: TestCase<I, O>[];
+  exampleTests: Array<TestCase<InputType, OutputType>>;
+  correctnessTests: Array<TestCase<InputType, OutputType>>;
   performanceTests: PerformanceTestCase[];
 }
 
@@ -24,13 +24,17 @@ function prettyFormatArray(array: any[]): string {
     .join(', ');
 }
 
-function prettyFormat<I, O>(inputOrOutput: I | O): string {
+function prettyFormat<InputType, OutputType>(
+  inputOrOutput: InputType | OutputType
+): string {
   return Array.isArray(inputOrOutput)
     ? `[${prettyFormatArray(inputOrOutput)}]`
     : JSON.stringify(inputOrOutput);
 }
 
-function getTestCaseDescription<I, O>(testCase: TestCase<I, O>): string {
+function getTestCaseDescription<InputType, OutputType>(
+  testCase: TestCase<InputType, OutputType>
+): string {
   return `should return ${prettyFormat(testCase.output)} for ${
     testCase.name
   } input: ${prettyFormat(testCase.input)}`;
