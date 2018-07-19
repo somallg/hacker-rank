@@ -1,6 +1,9 @@
 {
   "lerna": "2.10.1",
-  "packages": ["challenges/*"],
+  "packages": [
+    "packages/*",
+    "packages/schematics/*"
+  ],
   "npmClient": "yarn",
   "version": "0.0.0"
 }

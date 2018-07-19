@@ -1,0 +1,40 @@
+[FORMAT]
+
+# Number of spaces of indent required inside a hanging  or continued line.
+indent-after-paren=2
+
+# String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
+# tab).
+indent-string='  '
+
+[BASIC]
+
+# Naming style matching correct argument names
+argument-naming-style=camelCase
+
+# Naming style matching correct attribute names
+attr-naming-style=camelCase
+
+# Naming style matching correct class attribute names
+class-attribute-naming-style=camelCase
+
+# Naming style matching correct class names
+class-naming-style=PascalCase
+
+# Naming style matching correct constant names
+const-naming-style=any
+
+# Naming style matching correct function names
+function-naming-style=camelCase
+
+# Naming style matching correct inline iteration names
+inlinevar-naming-style=any
+
+# Naming style matching correct method names
+method-naming-style=camelCase
+
+# Naming style matching correct module names
+module-naming-style=any
+
+# Naming style matching correct variable names
+variable-naming-style=any

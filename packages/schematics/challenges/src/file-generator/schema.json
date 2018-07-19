@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "MyFullSchematicsSchema",
+  "title": "My Full Schematics Schema",
+  "type": "object",
+  "properties": {
+    "directory": {
+      "description": "The path to create problem files.",
+      "type": "string",
+      "format": "path",
+      "alias": "d"
+    },
+    "problem": {
+      "description": "The name of the problem.",
+      "type": "string",
+      "alias": "p"
+    },
+    "lang": {
+      "description": "Specifes the programming language.",
+      "type": "string",
+      "default": "typescript",
+      "alias": "l"
+    }
+  },
+  "required": [
+    "directory", "problem"
+  ]
+}

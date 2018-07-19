@@ -1,0 +1,25 @@
+* Learning Path
+Link Google Drive: em add về drive của mình rồi xài Goolge Sync download về
+
+** HTML CSS
+*** FreeCodeCamp: Responsive Web Design Certification (300 hours)
+** JavaScript Core:
+*** understand-javascript (anh dang upload)
+*** javascript-foundations
+*** es6-right-parts
+*** debugging-javascript
+*** Books: https://github.com/getify/You-Dont-Know-JS (read online)
+
+** React:
+*** react
+*** react-native (sử dụng React để viết app trên mobile)
+
+** Algorithms:
+*** computer-science
+
+** Advanced:
+*** testing-javascript
+*** functional-javascript-v2
+*** rethinking-async-js
+*** asynchronous-javascript
+*** advanced-async-js

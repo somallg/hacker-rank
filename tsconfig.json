@@ -18,7 +18,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "paths": {
-      "@challenges/*": ["challenges/*"]
+      "@challenges/*": ["packages/*"]
     }
   },
   "exclude": ["node_modules", "dist", "scripts", "webpack", "jest"]
