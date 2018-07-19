@@ -46,7 +46,7 @@ gulp.task('compile', () => {
       });
     })
     .then(({ code }) => {
-      return pbcopy(code.replace(/export.*/, ''));
+      return pbcopy(code.replace(/export.*/, '').trim());
     })
     .then(() =>
       // tslint:disable-next-line
