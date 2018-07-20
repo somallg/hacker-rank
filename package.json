@@ -13,7 +13,7 @@
     "release": "standard-version",
     "semantic-release": "semantic-release",
     "test": "jest --colors",
-    "test:f": "jest --runTestsByPath --colors",
+    "test:f": "jest --runTestsByPath --colors --coverage false",
     "lint": "gulp lint",
     "enforce": "gulp enforce",
     "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
