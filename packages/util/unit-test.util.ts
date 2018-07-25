@@ -2,18 +2,35 @@ interface TestCase<InputType, OutputType> {
   name: string;
   input: InputType;
   output: OutputType;
-}
-
-interface PerformanceTestCase {
-  name: string;
   inputSize: number;
 }
 
+interface PerformanceTestCase<InputType, OutputType>
+  extends TestCase<InputType, OutputType> {
+  inputSize: number;
+}
+
+interface GenericTests<InputType, OutputType> {
+  name: string;
+  testCases: Array<TestCase<InputType, OutputType>>;
+}
+
+interface ExampleTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
+interface CorrectnessTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
+interface PerformanceTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
 interface Fixture<InputType, OutputType> {
   name: string;
-  exampleTests: Array<TestCase<InputType, OutputType>>;
-  correctnessTests: Array<TestCase<InputType, OutputType>>;
-  performanceTests: PerformanceTestCase[];
+  testCategories: [
+    ExampleTests<InputType, OutputType>,
+    CorrectnessTests<InputType, OutputType>,
+    PerformanceTests<InputType, OutputType>
+  ];
 }
 
 function prettyFormatArray(array: any[]): string {

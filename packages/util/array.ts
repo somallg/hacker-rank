@@ -20,11 +20,11 @@ function generateArray(
   return res;
 }
 
-function generateMatrix(length: number, max = length) {
+function generateMatrix(length: number, maxExclusive = length) {
   const result = [];
 
   for (let i = 0; i < length; i = i + 1) {
-    result[i] = generateArray(length, max);
+    result[i] = generateArray(length, maxExclusive);
   }
 
   return result;
