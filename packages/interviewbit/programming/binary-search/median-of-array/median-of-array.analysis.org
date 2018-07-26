@@ -1,0 +1,28 @@
+| Question                                       | Answer                                                                                                                       |
+|------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?                                | Cho 2 sorted array A va B, tim so trung vi cua  A va B (mang cach chap 2 array lai voi nhau)                                 |
+| So trung vi la gi ?                            | La so trong 1 phan bo sao cho so phan tu nho hon no va so phan tu lon hon no bang nhau                                       |
+| Y tuong gi khong ?                             | A va B deu da duoc sap xep, 1 trong nhung dieu kien can de ta ap dung thuat toan tim kiem nhi phan                           |
+| Neu nhu ap dung tim kiem nhi phan thi lam gi ? | Gia su len(A + B) la so le?, tu do start = min(A[0], B[0]), end = max(A[-1], B[-1])                                          |
+| Tiep theo lam gi ?                             | Tiep theo nhu ta da tim so middle vao tim xem co bao nhieu phan tu nho hon hoac bang middle trong A va B                     |
+| Can bao nhieu de la so trung vi ?              | len(A + B) - 1 / 2 do len(A+B) da la so le                                                                                   |
+| Ta suy ra dieu kien gi cho middle ?            | Neu so luong so nho hon middle <= len(A+B)-1/2 ta tang start, khong thi tang end, cuoi cung tra ve start                     |
+| Phan tich y tuong tren ?                       | Do phuc tap cho vong lap ngoai tim start, end la O(30) vi moi phan tu trong A, B thuoc [0..2**31-1]                          |
+| Do phuc tap cua ham dem luong phan tu ?        | O(log(n)) + O(log(m))                                                                                                        |
+| Overall ?                                      | O(log(n + m))                                                                                                                |
+| Han che gi khong ?                             | Ta dang gia thiet la so phan tu trong A, B tu [0..2**31-1], khong hieu. qua.                                                 |
+| Co cach nao khac khong ?                       | Cho i tu [0..m], j [0..n], vi A, B la sorted ta se co i phan tu nho hon A[i] trong A, j phan tu nho hon B[j] trong B         |
+| And?                                           | Neu ta co the tim duoc i, j sao cho , ta co the dat [A[0]...A[i]] va B[0]..B[j] vao lam 1 phan va A[i+1]..A[n], B[j+1]..B[m] |
+| Va dieu kien 2 la gi?                          | Tat ca phan tu ben trai deu lon hon phan tu ben phai, phan tu ben trai = phan tu ben phai (hoac = ben phai + 1)              |
+| Tu do thi sao ?                                | Neu phan tu trai = phan tu phai => median can tim la A[i] + B[j] / 2                                                         |
+| Neu = phan tu ben phai + 1                     | thi median chinh la Max(A[i], B[j])                                                                                          |
+| Tu do ta can lam gi ?                          | Ta can tim i, j thoa man dieu kien tren ?                                                                                    |
+| How to tim i ?                                 | Binary search i trong [0...n]                                                                                                |
+| How to tim j tu i ?                            | Binary search A[i] trong B ta se ra duoc j => neu i + j < n + m ta tiep tuc tang i khong thi giam j                          |
+| #+BEGIN_SRC javascript let i = 1 #+END_SRC     |                                                                                                                              |
+| ~let i = 10;~ +a strike through+               |                                                                                                                              |
+| ~javascript function f() { return 1; }~        |                                                                                                                              |
+
+#+BEGIN_SRC javascript
+let i = 10;
+#+END_SRC
