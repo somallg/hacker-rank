@@ -5,7 +5,7 @@ import json
 import importlib
 
 dirName = os.path.dirname(__file__)
-<%= functionName %> = importlib.import_module(<%= underscore(problem) %>).<%= functionName %>
+<%= functionName %> = importlib.import_module('<%= underscore(problem) %>').<%= functionName %>
 
 # UNIT TEST DO NOT EDIT
 def printTestCase(testFunction, testCase, assertEqual):
