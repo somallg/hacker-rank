@@ -1,0 +1,9 @@
+| Question                      | Answer                                                                                                                                                                |
+|-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?               | Cho 1 chuoi ky tu kiem tra xem chuoi do co phai la palindrome khong                                                                                                   |
+| The nao la chuoi palindrome ? | Chuoi s la palindrome khi vao chi khi ~reverse(s) === s~                                                                                                              |
+| Yeu cau dac biet gi khong ?   | Ta chi tinh ky tu alphabet ve so, khong tinh viet hoa hay viet thuong                                                                                                 |
+| Y tuong gi khong ?            | Ta can lam 2 viec: 1) loai bo het ky tu dac biet, va chuyen ky tu ve viet thuong. 2) kiem tra so do co phai palindrome hay khong                                      |
+| Voi viec 1, ta can lam gi ?   | ta co the su dung ~s.replace()~ de loai bo cac ky tu dac biet va ~s.toLowerCase()~ de bien chuoi ve chu thuong                                                        |
+| Voi viec 2, ta can lam gi ?   | Cho i chay tu [0..len(s) / 2] neu nhu ~s[i] !== s[len(s) - i - 1]~ thi tra ve false khong thi tra ve true                                                             |
+| Phan tich y tuong tren ?      | ~s.replace~ va ~s.toLowerCase~ co do phuc tap la O(n), vong lap cua ta cung co do phu tap la ~O(n)~ cuoi cung do phuc tap la ~O(n)~ ve thoi gian, va ~O(1)~ ve bo nho |
