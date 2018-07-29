@@ -1,0 +1,7 @@
+| Question                    | Answer                                                                                                                                  |
+|-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?             | Trien khai ham ~strStr~ cho 2 chuoi ky tu A va B, tim vi tri cua B trong A                                                              |
+| Yeu cau dac biet gi khong ? | Trong truong hop A hoc B rong thi tra ve -1                                                                                             |
+| Y tuong gi khong ?          | Neu len(A) < len(B) ta chi can tra ve -1 vi khong the nao B la substring cua A                                                          |
+| Con truong hop con lai ?    | Ta duyet i tu [0..len(B) - 1] kiem tra cho j tu [i..len(B) + i] xem ~A[j] == B[j - i]~ neu khong thi ta tiep tuc tai vi tri i tiep theo |
+| Phan tich y tuong tren ?    | Voi moi ky tu trong B ta kiem tra voi len(A) ky tu trong A do do do phuc tap la ~O(m * n)~ voi m = len(B), n = len(A)                   |
