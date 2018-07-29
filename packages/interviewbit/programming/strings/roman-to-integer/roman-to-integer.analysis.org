@@ -1,0 +1,11 @@
+| Question                 | Answer                                                                                                                                              |
+|--------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?          | Cho 1 so roman, chuyen doi sang so tu nhien                                                                                                         |
+| So roman la gi ?         | So roman gom cac so ~I II III IV V VI VII VIII IX X~                                                                                                |
+| Y tuong gi khong ?       | Ta tao 1 map cac so roman voi so tu nhien va duyet chuoi tu dau den cuoi moi lan gap so thi cong lai                                                |
+| Co gi dac biet khong ?   | Co, cac so dac biet nhu ~IV~ hay ~IX~ la ky hieu tru so dac biet hon va bang so gia tri so o sau tru di gia tri so o truoc                          |
+| Vi du cho ~IIV~          | Ta chi ap dung cho 2 so lien tiep nen ~IIV~ = 1 + 4 = 5                                                                                             |
+| Phan tich y tuong tren ? | Ta phai duyet tung vi tri 1 va kiem tra gia tri o ben phai noi nhung cuoi cung van la ~O(n)~                                                        |
+| Cong thuc tong quat ?    | Ta duyet tung phan cua so roman, khi gia tri so do nho hon so dang sau thi result = -gia tri roman neu khong thi result += gia tri                  |
+| Bai hoc rut ra ?         | Can rut ra cong thuc tong quat cho tung phan tu, su dung for loop thay vi while loop                                                                |
+| Tai sao ?                | Trong truong hop bien de duyet thay doi dua tren phan tu sau do, ta can rut ra cong thuc cho phan tu hien tai thay vi su dung while va tu tang bien |
