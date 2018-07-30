@@ -1,0 +1,11 @@
+| Question                                               | Answer                                                                                                 |
+|--------------------------------------------------------+--------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?                                        | cho 2 chuoi ky tu bieu dien so nhi phan a, b, tinh tong cua a + b duoi dang so nhi phan                |
+| Y tuong gi khong ?                                     | Loop tu cuoi len dau, va thuc hien cac phep cong cho tung ky tu                                        |
+| Co bao nhieu cac de cong binary ?                      | 4 cach, la 1) 0 + 0 = 0 2) 0 + 1 = 1 3) 1 + 0 = 1 4) 1 + 1 = 10 (0 nho 1)                              |
+| Voi moi vong lap ta can lam gi ?                       | Ta can tinh sum = bitA + bitB + carry                                                                  |
+| Gia tri cua sum se quyet dinh bit tai vi tri dang cong | Dung vay, neu sum = 0 thi bit = 0; neu sum = 1; thi bit la 1 neu sum = 2 thi bit la 0 sum = 3 bit la 1 |
+| Suy ra gia tri cua bit theo sum la ?                   | sum % 2                                                                                                |
+| Carry moi thi sao ?                                    | neu sum >= 2 thi carry = 1 khong thi carry = 0 ta suy ra carray = sum / 2                              |
+| Xong chua?                                             | Da xong                                                                                                |
+| Phan tich y tuong tren ?                               | Ta can loop ca 2 chuoi a, b nen do phuc tap la ~O(n)~                                                  |
