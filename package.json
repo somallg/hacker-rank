@@ -16,8 +16,8 @@
     "test:f": "jest --colors --runTestsByPath",
     "lint": "gulp lint",
     "enforce": "gulp enforce",
-    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
-    "gulp:debug": "node --inspect-brk node_modules/.bin/gulp",
+    "debug": "node --inspect node_modules/.bin/jest --runInBand --coverage false",
+    "gulp:debug": "node --inspect node_modules/.bin/gulp",
     "gen": "schematics @schematics/challenges:file-generator",
     "coverage": "browser-sync start --s --ss packages/coverage/lcov-report"
   },
