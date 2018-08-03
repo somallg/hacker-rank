@@ -24,13 +24,13 @@ describe('Interviewbit - ImplementStrstr', () => {
                 expect(implementStrstr(a, b)).toEqual(testCase.output);
               });
             } else {
-              // it(`${getPerformanceTestCaseDescription(testCase)}`, () =>
-              //   expect(
-              //     implementStrstr(
-              //       'ab'.repeat(testCase.inputSize),
-              //       'ab'.repeat(testCase.inputSize / 2)
-              //     )
-              //   ).toBeDefined());
+              it(`${getPerformanceTestCaseDescription(testCase)}`, () =>
+                expect(
+                  implementStrstr(
+                    'ab'.repeat(testCase.inputSize),
+                    'ab'.repeat(testCase.inputSize / 2)
+                  )
+                ).toBeDefined());
             }
           });
         });
