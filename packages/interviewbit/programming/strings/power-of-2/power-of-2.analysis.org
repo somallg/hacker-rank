@@ -1,0 +1,64 @@
+* DONE Doc va hieu yeu cau
+  CLOSED: [2018-08-07 Tue 16:00] DEADLINE: <2018-08-07 Tue 16:00>
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 15:57]--[2018-08-07 Tue 15:59] =>  0:02
+  :END:
+** Yeu cau la gi ?
+Cho 1 so duoi dang chuoi ky tu. Tim xem so do co co phai la su ngu cua 2 hay khong. Nghia la ton tai ~k >= 1~ sao cho ~n = 2 ^ k~
+
+* DONE Setup Test case
+  CLOSED: [2018-08-07 Tue 16:15]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 16:02]--[2018-08-07 Tue 16:04] =>  0:02
+  :END:
+
+* DONE Dua ra solution brute force
+  CLOSED: [2018-08-07 Tue 16:15]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 16:05]--[2018-08-07 Tue 16:14] =>  0:09
+  :END:
+
+** Cach 1
+Cac don gian la parse n sang Number sau do loop ~n = n / 2~ den khi cuoi cung
+neu trong qua trinh nay co truong hop ~n % 2 === 1~ co nguy la n khong phai la boi cua 2, ta tra ve 0. Truong hop con lai tra ve 1
+Do phuc tap: O(log(n)) ve thoi gian va O(1) ve bo nho
+Cach nay se gap van de vi chuoi n co the overflow gioi han so
+
+** Cach 2
+Khong convert n ve number ma thuc hien phep chia cho tung ky tu cua chuoi n.
+Vi du n = '128', ta lam 2 viec
+1. Kiem tra so cuoi co chan hay khong
+2. Neu so cuoi khong chan tra ve 0
+3. Neu so cuoi chan thi thuc hien chia tu dau den cuoi (nhu hoc o cap 1). s[0] = 1 chia 2, ra 0 du 1; s[1] = 2; du 1 ra duoc 12 / 2 = 6 du 0; s[2]=8/2 = 4 du 0. Cuoi cung ra la '064'
+
+*** Phan tich Do phuc tap?
+- Do phuc tap thoi gian, ta se can O(log(n)) cho vong lap n / 2. Moi vong lap n / 2 ta lai can loop tu 0 den len(n). Ta se duoc la O(log(n) * len(n)). Len(n) <= log(n) => O(log(n) * log(n))
+- Do phuc tap ve bo nho, ta can ~O(log(n))~ chuoi moi
+
+* DONE Toi ua thuat toan
+  CLOSED: [2018-08-07 Tue 16:15]
+Done
+* DONE Bat dau code
+  CLOSED: [2018-08-07 Tue 17:01]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 16:46]--[2018-08-07 Tue 17:01] =>  0:15
+  :END:
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-07 Tue 17:01]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 17:01]--[2018-08-07 Tue 17:05] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 17:10]
+| Headline                    |   Time |
+|-----------------------------+--------|
+| *Total time*                | *0:32* |
+|-----------------------------+--------|
+| Doc va hieu yeu cau         |   0:02 |
+| Setup Test case             |   0:02 |
+| Dua ra solution brute force |   0:09 |
+| Bat dau code                |   0:15 |
+| Test va fix bug neu co      |   0:04 |
+#+END:
