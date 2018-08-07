@@ -1,3 +1,10 @@
+/*
+ * Utils function which generate an array of size length
+ * Depend on the value of random, if random is true
+ * then it generata an array where each element of the array
+ * in range [startFrom, ...maxExclusive - 1].
+ * If random is false then it return an array [0...0] of size length
+ */
 function generateArray(
   length: number,
   maxExclusive = length,
@@ -13,11 +20,11 @@ function generateArray(
   return res;
 }
 
-function generateMatrix(length: number, max = length) {
+function generateMatrix(length: number, maxExclusive = length) {
   const result = [];
 
   for (let i = 0; i < length; i = i + 1) {
-    result[i] = generateArray(length, max);
+    result[i] = generateArray(length, maxExclusive);
   }
 
   return result;

@@ -1,0 +1,7 @@
+| Question                 | Answer                                                                                                                                   |
+|--------------------------+------------------------------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?          | Cho 1 chuoi ky tu s, dao nguoc chuoi nay theo tu                                                                                         |
+| The nao la 1 tu ?        | 1 cum cac ky tu duoc ngan cach nhau bang dau cach ~' '~ duoc goi la 1 tu                                                                 |
+| Y tuong ?                | Ta lam 2 viec: 1) chia chuoi ky tu sang mang cac tu, 2) loop i tu [O..l/2] vao swap cac tu trong mang                                    |
+| Phan tich y tuong tren ? | Tach chuoi su dung split can ~O(n)~ va vong lap cung la ~O(n)~                                                                           |
+| Y tuong khac khong ?     | Khong su dung ~s.split~ ta can duyet chuoi ky tu du cuoi len dau. Moi khi gap duoc dau cach ~' '~ ta bo qua, nho lai ky tu nao khac cach |

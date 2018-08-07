@@ -1,0 +1,65 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-07 Tue 21:24]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:22]--[2018-08-07 Tue 21:23] =>  0:01
+  :END:
+** Yeu cau la gi ?
+Cho 1 mang cac chuoi ky tu (array of strings), tim prefix dai nhat trong tat ca cac chuoi trong mang.
+Vi du, cho mang ~["abcdefgh", "abcefgh"]~ thi prefix dai nhat la ~"abc"~
+
+* DONE Setup Test Case
+  CLOSED: [2018-08-07 Tue 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:24]--[2018-08-07 Tue 21:28] =>  0:04
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-07 Tue 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:28]--[2018-08-07 Tue 21:35] =>  0:07
+  :END:
+Cho i tu [0..minLen(strings)], duyet dung chuoi trong mang va kiem tra ~strings[j][i] === strings[j + 1][i]~
+Neu tat ca j thoa man dieu kien thi ta tang i.
+Neu co j khong thoa man dieu kien thi tra ve strings[j] tu [0..i-1]
+
+* DONE Toi uu thuat toan, so sanh cac thuat toan
+  CLOSED: [2018-08-07 Tue 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:35]--[2018-08-07 Tue 21:35] =>  0:00
+  :END:
+
+That toan brute force co do phuc tap la ~O(len(strings) * minLen(strings))~ voi len(strings) la do dai cua mang va minLen(strings) la do dai toi thieu cua cac phan tu trong mang strigns
+Hien tai khong toi uu hoa duoc thuat toan nua
+
+* DONE Bat dau Code
+  CLOSED: [2018-08-07 Tue 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:35]--[2018-08-07 Tue 21:41] =>  0:06
+  :END:
+
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-07 Tue 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-07 Tue 21:41]--[2018-08-07 Tue 21:53] =>  0:12
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 21:53]
+| Headline                    |   Time |
+|-----------------------------+--------|
+| *Total time*                | *0:30* |
+|-----------------------------+--------|
+| Doc va phan tich yeu cau    |   0:01 |
+| Setup Test Case             |   0:04 |
+| Dua ra brute force solution |   0:07 |
+| Bat dau Code                |   0:06 |
+| Test va fix bug neu co      |   0:12 |
+#+END:

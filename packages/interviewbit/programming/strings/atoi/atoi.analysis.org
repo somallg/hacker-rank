@@ -1,0 +1,6 @@
+| Question                    | Answer                                                                                                            |
+|-----------------------------+-------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?             | Viet ham chuyen 1 chuoi ky tu sang so                                                                             |
+| Yeu cau dac biet gi khong ? | Chuoi ky tu co the chua cac ky tu dac biet khong phai la so, trong truong hop do bo qua ky tu dac biet            |
+| Y tuong gi khong ?          | Duyet tu dau den cuoi den khi gap ky tu so, tu do ta loop den khi nao het chuoi hoac khong phai ky tu so thi thoi |
+| Phan tich y tuong tren ?    | Ta se can ~O(n)~ do phuc tap                                                                                |

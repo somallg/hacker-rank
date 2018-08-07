@@ -1,0 +1,8 @@
+| Question                 | Answer                                                                                                              |
+|--------------------------+---------------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?          | Cho chuoi ky tu s bao gom ky tu alphabet thuong/hoa va dau cach ~' '~, tra ve do dai cua tu cuoi cung               |
+| Dinh nghia 1 tu ?        | Chuoi ky tu cach nhau boi ~' '~ se duoc tinh la tu, tu cuoi cung la tu khong co dau cach nao ben phai               |
+| Y tuong gi khong ?       | Chia chuoi theo ky tu cach ~' '~ va tra ve phan tu cuoi cung neu len > 1, neu khong co word nao tra ve 0            |
+| Phan tich y tuong tren ? | Su dung ~s.split()~ co do phuc tap la ~O(n)~                                                                        |
+| Y tuong khac khong ?     | Loop i tu [len(s) - 1..0], loai bo het dau cach, bat dau dem ky tu alphabet cho den khi gap dau cach hoac ~i === 0~ |
+| Do phuc tap ?            | Cung la ~O(n)~ trong truong hop s chi chua 1 tu                                                                     |

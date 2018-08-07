@@ -1,19 +1,36 @@
-interface TestCase<I, O> {
+interface TestCase<InputType, OutputType> {
   name: string;
-  input: I;
-  output: O;
-}
-
-interface PerformanceTestCase {
-  name: string;
+  input: InputType;
+  output: OutputType;
   inputSize: number;
 }
 
-interface Fixture<I, O> {
+interface PerformanceTestCase<InputType, OutputType>
+  extends TestCase<InputType, OutputType> {
+  inputSize: number;
+}
+
+interface GenericTests<InputType, OutputType> {
   name: string;
-  exampleTests: TestCase<I, O>[];
-  correctnessTests: TestCase<I, O>[];
-  performanceTests: PerformanceTestCase[];
+  testCases: Array<TestCase<InputType, OutputType>>;
+}
+
+interface ExampleTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
+interface CorrectnessTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
+interface PerformanceTests<InputType, OutputType>
+  extends GenericTests<InputType, OutputType> {}
+
+interface Fixture<InputType, OutputType> {
+  name: string;
+  testCategories: [
+    ExampleTests<InputType, OutputType>,
+    CorrectnessTests<InputType, OutputType>,
+    PerformanceTests<InputType, OutputType>
+  ];
 }
 
 function prettyFormatArray(array: any[]): string {
@@ -24,13 +41,17 @@ function prettyFormatArray(array: any[]): string {
     .join(', ');
 }
 
-function prettyFormat<I, O>(inputOrOutput: I | O): string {
+function prettyFormat<InputType, OutputType>(
+  inputOrOutput: InputType | OutputType
+): string {
   return Array.isArray(inputOrOutput)
     ? `[${prettyFormatArray(inputOrOutput)}]`
     : JSON.stringify(inputOrOutput);
 }
 
-function getTestCaseDescription<I, O>(testCase: TestCase<I, O>): string {
+function getTestCaseDescription<InputType, OutputType>(
+  testCase: TestCase<InputType, OutputType>
+): string {
   return `should return ${prettyFormat(testCase.output)} for ${
     testCase.name
   } input: ${prettyFormat(testCase.input)}`;
