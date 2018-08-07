@@ -1,3 +1,43 @@
+# [1.6.0](https://github.com/somallg/hacker-rank/compare/v1.5.0...v1.6.0) (2018-08-07)
+
+
+### Bug Fixes
+
+* **file-generator:** tweak fixture schema ([020167d](https://github.com/somallg/hacker-rank/commit/020167d))
+* **interviewbit:** solved implemen-strstr in O(n) with KMP method ([1bc9249](https://github.com/somallg/hacker-rank/commit/1bc9249))
+* **tools:** tweak node debug break point ([230d08b](https://github.com/somallg/hacker-rank/commit/230d08b))
+
+
+### Features
+
+* **interviewbit:** solved allocate-books ([db8dd8d](https://github.com/somallg/hacker-rank/commit/db8dd8d))
+* **interviewbit:** solved count-element-occurence ([363959a](https://github.com/somallg/hacker-rank/commit/363959a))
+* **interviewbit:** solved implement-power-function ([e1f5862](https://github.com/somallg/hacker-rank/commit/e1f5862))
+* **interviewbit:** solved largest-coprime-divisor ([6dda26d](https://github.com/somallg/hacker-rank/commit/6dda26d))
+* **interviewbit:** solved matrix-median ([8f476d3](https://github.com/somallg/hacker-rank/commit/8f476d3))
+* **interviewbit:** solved matrix-search problem ([e313a03](https://github.com/somallg/hacker-rank/commit/e313a03))
+* **interviewbit:** solved median-of-array ([d112de6](https://github.com/somallg/hacker-rank/commit/d112de6))
+* **interviewbit:** solved painters-partition-problem ([28eca9f](https://github.com/somallg/hacker-rank/commit/28eca9f))
+* **interviewbit:** solved power-of-2 ([499e4b4](https://github.com/somallg/hacker-rank/commit/499e4b4))
+* **interviewbit:** solved pretty-json ([03b6c1d](https://github.com/somallg/hacker-rank/commit/03b6c1d))
+* **interviewbit:** solved pretty-print ([c4831b0](https://github.com/somallg/hacker-rank/commit/c4831b0))
+* **interviewbit:** solved rotated-sorted-array-search ([af6c54e](https://github.com/somallg/hacker-rank/commit/af6c54e))
+* **interviewbit:** solved search-for-a-range O(logn) time ([67829c9](https://github.com/somallg/hacker-rank/commit/67829c9))
+* **interviewbit:** solved sorted-insert-position ([ebdb195](https://github.com/somallg/hacker-rank/commit/ebdb195))
+* **interviewbit:** solved sorted-permutation-rank ([3bca314](https://github.com/somallg/hacker-rank/commit/3bca314))
+* **interviewbit:** solved sorted-permutation-rank-with-repeats ([e337138](https://github.com/somallg/hacker-rank/commit/e337138))
+* **interviewbit:** solved square-root-of-integer problem ([10f8217](https://github.com/somallg/hacker-rank/commit/10f8217))
+* **interviewbit:** solved strings/add-binary-strings ([7b72f56](https://github.com/somallg/hacker-rank/commit/7b72f56))
+* **interviewbit:** solved strings/atoi ([bd5efe0](https://github.com/somallg/hacker-rank/commit/bd5efe0))
+* **interviewbit:** solved strings/implement-strstr with O(m * n) ([1c973c2](https://github.com/somallg/hacker-rank/commit/1c973c2))
+* **interviewbit:** solved strings/length-of-last-word ([c3e7a83](https://github.com/somallg/hacker-rank/commit/c3e7a83))
+* **interviewbit:** solved strings/longest-common-prefix O(n ^ 2) ([3b74a81](https://github.com/somallg/hacker-rank/commit/3b74a81))
+* **interviewbit:** solved strings/minimum-characters ([c45e997](https://github.com/somallg/hacker-rank/commit/c45e997))
+* **interviewbit:** solved strings/palindrome-string ([93a3f1d](https://github.com/somallg/hacker-rank/commit/93a3f1d))
+* **interviewbit:** solved strings/reverse-the-string ([9adcc88](https://github.com/somallg/hacker-rank/commit/9adcc88))
+* **interviewbit:** solved strings/roman-to-integer ([f4fa10f](https://github.com/somallg/hacker-rank/commit/f4fa10f))
+* **interviewbit:** solved zigzag-string O(n) ([e45cf64](https://github.com/somallg/hacker-rank/commit/e45cf64))
+
 # [1.5.0](https://github.com/somallg/hacker-rank/compare/v1.4.0...v1.5.0) (2018-07-19)
 
 
