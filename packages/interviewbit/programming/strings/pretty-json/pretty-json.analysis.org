@@ -1,0 +1,6 @@
+| Question                    | Answer                                                                                                     |
+|-----------------------------+------------------------------------------------------------------------------------------------------------|
+| Yeu cau la gi ?             | Cho 1 json object, can pretty print no ra                                                                  |
+| Yeu cau dac biet gi khong ? | Khi gap ~[~ hoac ~{~ can tang indent voi ~\t~                                                              |
+| Y tuong gi khong ?          | Duyet string tu dau toi cau, khi gap ~[~ hoac ~}~ thi tang indent, khi gap dau ~,~ thi push vao string moi |
+| Phan tich y tuong tren ?    | O(n)                                                                                                       |
