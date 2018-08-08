@@ -1,0 +1,74 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-08 Wed 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 21:42]--[2018-08-08 Wed 21:53] =>  0:11
+  :END:
+Day count-and-say la day so tu nhien co quy tac nhu sau:
+countAndSay[i] = doc va noi cua(countAndSay[i - 1])
+
+So dau tien la 1
+So so tiep la: doc va noi cua (1)
+Voi ham doc vao noi la:
+1 => co 1 so 1 => 11
+11 => co 2 so 1 => 21
+21 => co 1 so 2, 1 so 1 => 1211
+1211 => co 1 so 1, 1 so 2, va 2 so 1 => 111221
+
+Cho so n, tinh phan tu cua day countAndSay o vi tri nth (index tu 1)
+V/d: n = 2 tra ve 11
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-08 Wed 21:53]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 21:53]--[2018-08-08 Wed 21:53] =>  0:00
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-08 Wed 21:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 21:53]--[2018-08-08 Wed 21:58] =>  0:05
+  :END:
+Ta se co 2 phan:
+
+1. Loop i tu 1 den n;
+kq[1] = 1;
+kq[i] = countAndSay(kq[i - 1]);
+
+2. Con lai phair viet ham ~countAndSay(s)~.
+Duyet string s, bat dau tu i = 0; dem xem co bao nhieu phan tu bang s[0], ta ra duoc j
+kq = kq + j + i; // i.e 111 thi j = 3 va i = 1 nen kq = 31
+Lam tang i = j; lam tiep tuc cho den het string thi thoi
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-08 Wed 22:02]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 22:00]--[2018-08-08 Wed 22:02] =>  0:02
+  :END:
+Co cach nao de toi uu hoa khong ?
+Khong, do phuc tap cua thuat toan phu thuoc vao  loop 1 va function countAndSay
+Loop 1 co do phuc tap la ~O(n)~
+countAndSay co do phuc tap la ~O(n)~
+Chot lai do phuc tap it nhat la ~O(n ^ 2)~
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-08 Wed 22:07]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 22:02]--[2018-08-08 Wed 22:07] =>  0:05
+  :END:
+Coding
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-08 Wed 22:15]
+  :LOGBOOK:
+  CLOCK: [2018-08-08 Wed 22:07]--[2018-08-08 Wed 22:15] =>  0:08
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-08 Wed 22:17]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *0:31* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:11 |
+| Dua ra brute force solution            |   0:05 |
+| Toi uu vao so sanh cac thuat toan      |   0:02 |
+| Bat dau code thuat toan thich hop nhat |   0:05 |
+| Test va fix bug neu co                 |   0:08 |
+#+END:

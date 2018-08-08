@@ -4,3 +4,22 @@
 | Yeu cau dac biet gi khong ? |        |
 | Y tuong gi khong ?          |        |
 | Phan tich y tuong tren ?    |        |
+
+* TODO Doc va phan tich yeu cau
+
+* TODO TDD: Setup test case
+
+* TODO Dua ra brute force solution
+
+* TODO Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
