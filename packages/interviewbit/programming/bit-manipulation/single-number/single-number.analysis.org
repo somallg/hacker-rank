@@ -1,0 +1,69 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-09 Thu 22:35]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:31]--[2018-08-09 Thu 22:35] =>  0:04
+  :END:
+Cho mot mang cac so tu nhien, tat ca cac so se xuat hien 2 lan, duy nhat 1 so xuat hien duy nhat 1 lan.
+Tim so duy nhat do.
+Vi du: array = [1, 2, 2, 3, 1]
+Tra ve 3
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-09 Thu 22:39]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:35]--[2018-08-09 Thu 22:39] =>  0:04
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-09 Thu 22:44]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:39]--[2018-08-09 Thu 22:44] =>  0:05
+  :END:
+Duyet tung phan tu trong mang
+Moi phan tu ta lai tim xem co xuat hien trong mang hay khong
+Do phuc tap ~O(n ^ 2)~
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-09 Thu 22:45]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:45]--[2018-08-09 Thu 22:45] =>  0:00
+  :END:
+Ta can tim so chi suat hien duy nhat 1 minh, cac so con lai suat hien 2 lan
+Toan tu xor ~^~ co 3 dac tinh thu vi do la:
+1. a ^ a = 0
+2. 0 ^ b = b
+3. a ^ b ^ c = a ^ c ^ b
+
+Goi x la so can tim (x chi xuat hien 1 lan)
+Mang se duoc viet la array = [a0, a1, a1, ..., x, a0]
+Khi xor cac phan tu ta co ~a0 ^ a1 ^ a1 ^ ... x ^ a0~
+Thay doi vi tri bang cach ghep cac so lap lai 2 lan ta duoc:
+~(a0 ^ a0) ^ (a1 ^ a1) ^ ... x ^ .. (ak ^ ak)~
+Cuoi cung ta se duoc ~0 ^ 0 ^ ... x ^ 0 = x~
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-09 Thu 22:45]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:45]--[2018-08-09 Thu 22:45] =>  0:00
+  :END:
+Coding done su dung ~array.reduce~
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-09 Thu 22:45]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:45]--[2018-08-09 Thu 22:45] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-09 Thu 22:45]
+| Headline                    |   Time |
+|-----------------------------+--------|
+| *Total time*                | *0:13* |
+|-----------------------------+--------|
+| Doc va phan tich yeu cau    |   0:04 |
+| TDD: Setup test case        |   0:04 |
+| Dua ra brute force solution |   0:05 |
+#+END:
