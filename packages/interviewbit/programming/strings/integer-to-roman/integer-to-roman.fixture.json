@@ -1,0 +1,73 @@
+{
+  "name": "IntegerToRoman Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": 5,
+          "output": "V"
+        },
+        {
+          "name": "Example 2",
+          "input": 14,
+          "output": "XIV"
+        },
+        {
+          "name": "Example 3",
+          "input": 10,
+          "output": "X"
+        },
+        {
+          "name": "Example 4",
+          "input": 1000,
+          "output": "M"
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": 12,
+          "output": "XII"
+        },
+        {
+          "name": "Sample 2",
+          "input": 123,
+          "output": "CXXIII"
+        },
+        {
+          "name": "Sample 3",
+          "input": 1234,
+          "output": "MCCXXXIV"
+        },
+        {
+          "name": "Extreme 1",
+          "input": 0,
+          "output": ""
+        },
+        {
+          "name": "Extreme 2",
+          "input": 3999,
+          "output": "MMMCMXCIX"
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 100
+        },
+        {
+          "name": "Medium 2",
+          "inputSize": 1e3
+        }
+      ]
+    }
+  ]
+}

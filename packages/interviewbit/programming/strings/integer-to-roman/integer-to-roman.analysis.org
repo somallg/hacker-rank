@@ -1,0 +1,81 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-09 Thu 21:33]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 21:32]--[2018-08-09 Thu 21:33] =>  0:01
+  :END:
+
+Cho 1 số tự nhiên n từ ~1..3999~ biến đổi n về dạng số Roman.
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-09 Thu 21:36]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 21:33]--[2018-08-09 Thu 21:36] =>  0:03
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-09 Thu 21:47]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 21:38]--[2018-08-09 Thu 21:47] =>  0:09
+  :END:
+Ta co quy luat cho so Lo Ma la.
+Tu 1 -> 9 duoc bieu dien la: 1 -> I, 2 -> II, 3 -> III, 4 -> IV, ...9 -> IX
+Tu 10 -> 99 duoc bieu dien la X -> 10, L -> 50, XL -> 90
+Tu 100 -> 999 duoc bieu dien bang ca so co ban la C -> 100, D -> 500
+Tu 1000 -> 9999 duoc bieu dien bang so co ban la, M -> 1000
+
+Tu do ta ra duoc dap an de convert nhu sau:
+1. Dem so dau tien ben trai goi la n0
+2. Tinh n0 la hang don vi, hang tram hay hang nghin m0
+3. Xuy ra bieu dien cua n0 duoi dang so La Ma bang cach map m0 de ra so co ban cho hang nao, va tu n0 de suy ra can lap lai ra sao
+
+Vi du: n = 123
+n0 = 1, m0 = 100 (hang tram) => don vi co ban la C, D
+n0 = 1 => chi co 1 C
+
+n1 = 2, m1 = 10 (hang chuc) => don vi co ban la X, L, C
+n1 = 2 => ta co XX
+
+n2 = 8, m1 = 1 (hang don vi) => don vi co ban la I, V, X
+n2 > 5 => can su dung V + bieu dien (n2 - 3) = VIII
+
+Trong truong hop n2 = 9 (dacbit) ta suy ra la IX
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-09 Thu 22:28]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:17]--[2018-08-09 Thu 22:28] =>  0:11
+  CLOCK: [2018-08-09 Thu 21:47]--[2018-08-09 Thu 21:48] =>  0:01
+  :END:
+Su dung mapping giua so tu nhien va so la ma
+numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+letters = ['M',  'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+
+ta se co numbers[i] ung voi bieu dien romain la letters[i]
+numbers[0] = 1000 => letters[0] = 'M'
+Su dung cac nay ta thuc hien
+1. loop i tu [0..len(numbers]]
+2. neu n >= number[i], kq = kq + letters[i], n = n - numbers[i], tang i
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-09 Thu 22:03]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 21:48]--[2018-08-09 Thu 22:03] =>  0:15
+  :END:
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-09 Thu 22:17]
+  :LOGBOOK:
+  CLOCK: [2018-08-09 Thu 22:03]--[2018-08-09 Thu 22:17] =>  0:14
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-09 Thu 22:28]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *0:54* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:01 |
+| TDD: Setup test case                   |   0:03 |
+| Dua ra brute force solution            |   0:09 |
+| Toi uu vao so sanh cac thuat toan      |   0:12 |
+| Bat dau code thuat toan thich hop nhat |   0:15 |
+| Test va fix bug neu co                 |   0:14 |
+#+END:
