@@ -1,0 +1,65 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-10 Fri 17:46]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 17:35]--[2018-08-10 Fri 17:46] =>  0:11
+  :END:
+- Cho mot mang gom gom cac chu ~words~ va do dai ~L~, can giua cac tu (words) sao cho moi dong khong duoc qua do dai L
+- Khi chon chu thi ta can chon nhieu nhat co the moi dong
+- Moi dong khi can giua, cac chu deu nhat co the
+- Neu nhu khoang cach khong the chia deu thi so luong khoang cach ben trai se nhieu hon ben phai
+- Dong cuoi cung se duoc can trai va khong co dau cach the nao giua cac so
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-10 Fri 17:51]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 17:46]--[2018-08-10 Fri 17:51] =>  0:05
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-10 Fri 17:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 17:51]--[2018-08-10 Fri 17:58] =>  0:07
+  :END:
+Brute force solution co 2 buoc
+- Buoc 1: lay cang nhieu words vao 1 dong nhat co the
+  - Loop tung chu trong mang, tinh do dai cho moi dong
+  - 2 tu se co do dai it nhat la len(word1) + len(word2) + 1 (space)
+  - Khi loop den wordi neu len + len(wordi) + 1 <= L thi push wordi vao dong dang lap
+  - Neu khong thi push wordi vao dong moi
+  - Done
+- Buoc 2: can chinh tinh tu trong mang
+  - Duyet tung mang o buoc 1
+  - Tinh so luong dau cach: nbSpaces = L / Sum(words),
+  - neu nbSpaces la so tu nhien thi noi cac phan tu trong mang
+  - neu khong phan du ra se duoc cho vao ben trai
+  - den phan tu cuoi cung thi chi can trai
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-10 Fri 17:59]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 17:59]--[2018-08-10 Fri 17:59] =>  0:00
+  :END:
+Chua nghi ra cach toi uu
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-10 Fri 18:14]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 17:59]--[2018-08-10 Fri 18:14] =>  0:15
+  :END:
+Coding done
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-11 Sat 00:03]
+  :LOGBOOK:
+  CLOCK: [2018-08-10 Fri 18:14]--[2018-08-11 Sat 00:03] =>  5:49
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
