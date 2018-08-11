@@ -1,0 +1,88 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-11 Sat 17:11]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 17:09]--[2018-08-11 Sat 17:11] =>  0:02
+  :END:
+Cho 1 so tu nhien 32-bits, tim xem co bao nhieu so 1 trong bieu dien nhi phan cua so do
+V/d:
+- n = 11
+- Bieu dien nhi phan la ~1011~
+- Tra ve 3
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-11 Sat 18:56]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 18:45]--[2018-08-11 Sat 18:56] =>  0:11
+  :END:
+Setup
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-11 Sat 18:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 18:56]--[2018-08-11 Sat 18:58] =>  0:02
+  :END:
+Ta duyet gia tri cua n nhu sau:
+- n > 0 bat dau duyet
+- lay bit cuoi cung cua n: lastBit = n & 1;
+- Neu ~lastBit === 1~, ta tang ket qua, neu khong khong tang
+- Giam n: n = n >>> 1
+- Het vong lap tra ve result
+
+* Toi uu vao so sanh cac thuat toan
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 19:10]--[2018-08-11 Sat 19:16] =>  0:06
+  CLOCK: [2018-08-11 Sat 18:58]--[2018-08-11 Sat 18:59] =>  0:01
+  :END:
+Giai phap tren co do phuc tap la ~O(log(n))~
+Lien quan den cac thu thuat ve bit, ta co, neu x la so can tim, thi
+- (x - 1) toggle 1 bit duoc set dau tien trong x, vi du
+#+BEGIN_SRC js
+x =     10101001010100
+//                 ^
+//                 | bit dau tien duoc set cau x
+
+x - 1 = 10101001010011
+//                 ^
+//                 | bit dau tien duoc unset
+#+END_SRC
+- Khi do neu ta lam x & (x - 1), tru bit 1 dau tien (tinh tu phai) cac lai deu khong bi doi
+#+BEGIN_SRC js
+x      = 10101001010100
+//       &&&&&&&&&&&&&&
+x - 1  = 10101001010011
+//                  ^
+//                  | bit dau tien duoc unset
+result = 10101001010000
+#+END_SRC
+
+Tu do ta co giai phap toi uu hon
+1. Duyet n > 0
+2. result += 1
+3. n = n & (n - 1)
+Done
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-11 Sat 19:00]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 18:59]--[2018-08-11 Sat 19:00] =>  0:01
+  :END:
+Coding
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-11 Sat 19:16]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 19:00]--[2018-08-11 Sat 19:16] =>  0:16
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-11 Sat 19:16]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *0:39* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:02 |
+| TDD: Setup test case                   |   0:11 |
+| Dua ra brute force solution            |   0:02 |
+| Toi uu vao so sanh cac thuat toan      |   0:07 |
+| Bat dau code thuat toan thich hop nhat |   0:01 |
+| Test va fix bug neu co                 |   0:16 |
+#+END:
