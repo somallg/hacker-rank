@@ -1,0 +1,68 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-11 Sat 00:12]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 00:03]--[2018-08-11 Sat 00:12] =>  0:09
+  :END:
+Cho 1 chuoi ky tu, kiem tra xem chuoi do co phai la so hay khong
+
+V/d:
+- "0" => true
+- " 0.1 " => true
+- "abc" => false
+- "1 a" => false
+- "2e10" => true
+
+Ta se co 3 kha nang, de chuoi la so:
+- Khong chua ky tu nao khac 0-9
+- Neu nhu chua e thi ben trai e phai la valid number co the la float, ben phai e cung la valid number so tu nhien
+- So float khi co dau cham va ben trai dau cham la so tu nhien, ben phai cung la so tu nhien
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-11 Sat 00:21]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 00:12]--[2018-08-11 Sat 00:21] =>  0:09
+  :END:
+Done
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-11 Sat 00:24]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 00:21]--[2018-08-11 Sat 00:24] =>  0:03
+  :END:
+Kiem tra lan luot cac ky tu trong chuoi:
+- Neu chi co 0-9 tra ve true
+- Neu chua '.' thi kiem tra ben trai phai la so tu nhien, ben phai cung la so tu nhien
+- Neu chua 'e' thi kiem tra ben trai e la so float, va ben phai la so tu nhien
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-11 Sat 00:25]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 00:24]--[2018-08-11 Sat 00:25] =>  0:01
+  :END:
+Do phuc tap ~O(n)~ nen chua can toi uu hoa hon
+
+* DONE Bat dau code thuat toan thich hop nhat
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 16:00]--[2018-08-11 Sat 16:17] => 0:17
+  :END:
+Coding
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-11 Sat 17:08]
+  :LOGBOOK:
+  CLOCK: [2018-08-11 Sat 16:17]--[2018-08-11 Sat 17:08] =>  0:51
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-11 Sat 17:09]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *1:30* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:09 |
+| TDD: Setup test case                   |   0:09 |
+| Dua ra brute force solution            |   0:03 |
+| Toi uu vao so sanh cac thuat toan      |   0:01 |
+| Bat dau code thuat toan thich hop nhat |   0:17 |
+| Test va fix bug neu co                 |   0:51 |
+#+END:
