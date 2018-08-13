@@ -1,0 +1,60 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-13 Mon 21:29]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:27]--[2018-08-13 Mon 21:29] =>  0:02
+  :END:
+- Cho 1 mang cac so tu nhien co n phan tu
+- n trong khoang [2...100e3]
+- Moi phan tu trong mang thuoc [0...1e9]
+Tim x gia tri cua phep tinh ~^~ xor giua 2 phan tu trong mang, sao cho x la nho nhat
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-13 Mon 21:32]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:29]--[2018-08-13 Mon 21:32] =>  0:03
+  :END:
+Setup test
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-13 Mon 21:41]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:32]--[2018-08-13 Mon 21:41] =>  0:09
+  :END:
+- xor cua a va b nho nhat khi a va b co nhieu bit giong nhau nhat, khi do thi a ^ b se tien gan den 0
+Ta can tim so a, b gan nhau nhat, bang cach sort mang va tinh xor cua tinh phan tu lien tiep, tra ve xor co gia tri nho nhat
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-13 Mon 21:49]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:41]--[2018-08-13 Mon 21:49] =>  0:08
+  :END:
+- Giai phap brute force, ta co:
+  - Do phuc tap ve thoi gian: ~O(n * log(n))~ de sap xep mang va ~O(n)~ de tim so min
+  - Do phuc tap ve du lieu: ~O(n)~
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-13 Mon 21:49]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:49]--[2018-08-13 Mon 21:49] =>  0:00
+  :END:
+Coding done
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-13 Mon 21:49]
+  :LOGBOOK:
+  CLOCK: [2018-08-13 Mon 21:49]--[2018-08-13 Mon 21:49] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-13 Mon 21:49]
+| Headline                          |   Time |
+|-----------------------------------+--------|
+| *Total time*                      | *0:22* |
+|-----------------------------------+--------|
+| Doc va phan tich yeu cau          |   0:02 |
+| TDD: Setup test case              |   0:03 |
+| Dua ra brute force solution       |   0:09 |
+| Toi uu vao so sanh cac thuat toan |   0:08 |
+#+END:
