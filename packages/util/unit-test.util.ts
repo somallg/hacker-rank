@@ -1,3 +1,7 @@
+type TestFn<InputType, OutputType> = (input: InputType) => OutputType;
+
+type GeneratorFn<InputType> = (inputSize: number) => InputType;
+
 interface TestCase<InputType, OutputType> {
   name: string;
   input: InputType;
@@ -5,32 +9,23 @@ interface TestCase<InputType, OutputType> {
   inputSize: number;
 }
 
-interface PerformanceTestCase<InputType, OutputType>
-  extends TestCase<InputType, OutputType> {
-  inputSize: number;
-}
-
-interface GenericTests<InputType, OutputType> {
+interface TestCategory<InputType, OutputType> {
   name: string;
+  isPerformanceTest: boolean;
   testCases: Array<TestCase<InputType, OutputType>>;
 }
 
-interface ExampleTests<InputType, OutputType>
-  extends GenericTests<InputType, OutputType> {}
-
-interface CorrectnessTests<InputType, OutputType>
-  extends GenericTests<InputType, OutputType> {}
-
-interface PerformanceTests<InputType, OutputType>
-  extends GenericTests<InputType, OutputType> {}
-
 interface Fixture<InputType, OutputType> {
   name: string;
-  testCategories: [
-    ExampleTests<InputType, OutputType>,
-    CorrectnessTests<InputType, OutputType>,
-    PerformanceTests<InputType, OutputType>
-  ];
+  testCategories: Array<TestCategory<InputType, OutputType>>;
+}
+
+interface TestExecutor<InputType, OutputType> {
+  executeTests: (
+    functionName: string,
+    functionToTest: TestFn<InputType, OutputType>,
+    generatorFn?: GeneratorFn<InputType>
+  ) => void;
 }
 
 function prettyFormatArray(array: any[]): string {
@@ -57,18 +52,64 @@ function getTestCaseDescription<InputType, OutputType>(
   } input: ${prettyFormat(testCase.input)}`;
 }
 
-function getPerformanceTestCaseDescription(
-  testCase: PerformanceTestCase
+function getPerformanceTestCaseDescription<InputType, OutputType>(
+  testCase: TestCase<InputType, OutputType>
 ): string {
   return `should run for ${
     testCase.name
   } input of size ${testCase.inputSize.toLocaleString()}`;
 }
 
-export {
-  TestCase,
-  PerformanceTestCase,
-  Fixture,
-  getTestCaseDescription,
-  getPerformanceTestCaseDescription
-};
+function runSampleTests<InputType, OutputType>(
+  fn: TestFn<InputType, OutputType>,
+  testCategory: TestCategory<InputType, OutputType>
+) {
+  testCategory.testCases.forEach(testCase => {
+    it(`${getTestCaseDescription(testCase)}`, () =>
+      expect(fn.call(null, testCase.input)).toEqual(testCase.output));
+  });
+}
+
+function runPerformanceTests<InputType, OutputType>(
+  fn: TestFn<InputType, OutputType>,
+  testCategory: TestCategory<InputType, OutputType>,
+  generatorFn: GeneratorFn<InputType>
+) {
+  testCategory.testCases.forEach(testCase => {
+    it(`${getPerformanceTestCaseDescription(testCase)}`, () =>
+      expect(fn.call(null, generatorFn(testCase.inputSize))).toBeDefined());
+  });
+}
+
+function getTestCategories<InputType, OutputType>(
+  fixture: Fixture<InputType, OutputType>
+) {
+  return fixture.testCategories;
+}
+
+function createTestExecutor<InputType, OutputType>(
+  functionName: string,
+  functionToTest: TestFn<InputType, OutputType>,
+  generatorFn?: GeneratorFn<InputType>
+) {
+  return function executeTests(fixture: Fixture<InputType, OutputType>) {
+    const [
+      exampleTests,
+      correctnessTests,
+      performanceTests
+    ] = getTestCategories(fixture);
+
+    describe(functionName, () => {
+      [exampleTests, correctnessTests].forEach(test => {
+        describe(`${test.name}`, () => runSampleTests(functionToTest, test));
+      });
+
+      if (generatorFn !== undefined) {
+        describe(`${performanceTests.name}`, () =>
+          runPerformanceTests(functionToTest, performanceTests, generatorFn));
+      }
+    });
+  };
+}
+
+export { createTestExecutor, Fixture };
