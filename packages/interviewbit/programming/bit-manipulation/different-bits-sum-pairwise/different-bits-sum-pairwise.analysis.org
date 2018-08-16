@@ -1,0 +1,87 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-16 Thu 21:21]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:16]--[2018-08-16 Thu 21:21] =>  0:05
+  :END:
+- Cho ham so ~f(x, y)~ la so luong bit khac nhau cua 2 so x va y.
+Vi du: f(2, 7) = 2 vi bin(2) = 010 va bin(7) = 111; bit dau tien va bit thu 3 khac nhau nen kq la 2
+- Cho mang gom cac so tu nhien tinh tong f(x, y) cua tat ca cac cap so trong mang
+- Vi du: A = [1, 3, 5]
+- Kq tra ve f(1, 1) + f(1, 3) + f(1, 5) + ... + f(5, 5) = 8
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-16 Thu 21:25]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:21]--[2018-08-16 Thu 21:25] =>  0:04
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-16 Thu 21:35]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:25]--[2018-08-16 Thu 21:35] =>  0:10
+  :END:
+
+** Phan tich:
+- Can phai suy nghi theo huong binary
+- gia su array = [x, y, z], vay f(x, y, z) ta co the bieu dien duoc khong ?
+- Nhac lai f(x, y) so luong bit khac nhau cua x va y
+- Vi du tai bit dau tien, x0 = 1; y0 = 0 => khac nhau co 2 (x0, y0) va (y0, x0)
+- Ta co 1 bit 1 va 1 bit 0 => co 2 su khac nhau
+- Trong truong hop co them z0 = 1
+- Ta co 2 bit 1, va 1 bit khong vay tong so luong bit khac nhau la 4 (x0 !== y0, z0 !== y0), va nguoc lai
+- Tuong tu neu co t0 = y0 = 0, ta co [x0, z0], va [y0, t0] => co 8 bit khac nhau la:
+1. x0 != y0
+2. x0 != t0
+3. z0 != y0
+4. z0 != t0
+5. va nguoc lai
+- Tu do ta suy ra so luong bit khac nhau tai 1 vi tri la so luong bit 1 * soluong bit 0
+
+** Loi giai
+1. Duyet i tu 0 den 31
+2. Voi moi gia tri cua i tinh so luong bit 1 va bit 0 tai index i
+3. kq += 2 * (bit1 + bit0)
+4. tra ve kq % 10e9 + 7
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-16 Thu 21:36]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:35]--[2018-08-16 Thu 21:36] =>  0:01
+  :END:
+
+** Phan tich giai phap
+- Do phuc tap ve thoi gian ~O(32 * n)~
+- Do phuc tap ve du lieu ~O(1)~
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-16 Thu 21:51]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:36]--[2018-08-16 Thu 21:51] =>  0:15
+  :END:
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-16 Thu 21:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-16 Thu 21:50]--[2018-08-16 Thu 21:58] =>  0:08
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-16 Thu 22:00]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *0:43* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:05 |
+| TDD: Setup test case                   |   0:04 |
+| Dua ra brute force solution            |   0:10 |
+| Toi uu vao so sanh cac thuat toan      |   0:01 |
+| Bat dau code thuat toan thich hop nhat |   0:15 |
+| Test va fix bug neu co                 |   0:08 |
+#+END:
