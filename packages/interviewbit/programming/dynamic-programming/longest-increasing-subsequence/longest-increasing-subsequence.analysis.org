@@ -1,0 +1,78 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-17 Fri 20:24]
+  :LOGBOOK:
+  CLOCK: [2018-08-17 Fri 20:22]--[2018-08-17 Fri 20:24] =>  0:02
+  :END:
+- Cho 1 mang n, tim x phan mang cua n sao cho do dai cua x la lon nhat va cac phan tu trong x la tang dan (khong bang nhau)
+- V/d: [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+- Ta co nhung phan mang tang dan la
+s1 = [0, 2, 6, 9, 13, 15]
+s2 = [0, 4, 6, 9, 11, 15]
+s3 = [0, 4, 6, 9, 13, 15]
+
+Ca 3 deu co do dai la 6 nen tra ve ket qua la 6
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-17 Fri 20:29]
+  :LOGBOOK:
+  CLOCK: [2018-08-17 Fri 20:24]--[2018-08-17 Fri 20:29] =>  0:05
+  :END:
+Done
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-18 Sat 22:06]
+  :LOGBOOK:
+  CLOCK: [2018-08-18 Sat 21:23]--[2018-08-18 Sat 22:06] =>  0:43
+  :END:
+
+** Recursive solution?
+- Generate tat ca cac kha nang bat dau o startIndex, va lay array nao co do dai lon nhat
+- De quy voi array va endIndex, nghia la rec(endIndex) se cho ta ket qua tu 0 den endIndex
+- Vi/du endIndex = 0; thi tu 0 -> 0 ta chi co 1 phan tu duy nhat la array[0]
+- endIndex = 1; ta se co array[0] va array[1] neu (array[1] > array[0])
+- Tuong tu cho den khi endIndex = array.length - 1;
+- Tai endIndex = i; ta can xem la neu cho array[endIndex] vao ket qua thi ket qua co bi doi hay khong?
+** Giai phap khac cung su dung de qui
+- Ta nhan thay la ket co 2 phan ben trai ve ben phai co the co dan duoc tron g khoang 0..n-1
+- Ta can fix 1 dau lai vi du ben phai
+- Bai toan tro thanh: tim phan mang co do dai lon nhat ket thuc tai index i
+- Thuat toan:
+- Neu endIndex = 0, ta tra ve [array[0]]; vi khong co phan tu nao khac
+- voi endIndex, ta tim tat ca cac mang co do dai lon nhat ket thuc boi [0..endIndex-1], goi la candidates
+- Ta can suy ra ket qua cho endIndex, dua vao candidates
+- De array[endIndex] la phan tu cuoi cung trong ket qua tra ve, ta se tim trong candiates cac phan tu c sao cho c[-1] < array[endIndex];
+- Sau do ta lay phan tu co do dai lon nhat goi la c0
+- c0 + array[endIndex] se cho ta ket qua can tim cua pham so
+** Tu do giai phap cho bai toan
+- Ta tim max cua mang tra ve boi ham tren voi i chay tu [0..n-1]
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-18 Sat 22:12]
+  :LOGBOOK:
+  CLOCK: [2018-08-18 Sat 22:06]--[2018-08-18 Sat 22:12] =>  0:06
+  :END:
+
+** Suy ra cong thuc thu giai phap de quy
+- dp[i] = max(dp[j]) voi j chay tu [0..i-1], va array[j] < array[i]
+
+
+* TODO Bat dau code thuat toan thich hop nhat
+  :LOGBOOK:
+  CLOCK: [2018-08-18 Sat 22:12]
+  :END:
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
