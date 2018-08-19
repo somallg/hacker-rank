@@ -1,0 +1,117 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-19 Sun 14:55]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 14:48]--[2018-08-19 Sun 14:55] =>  0:07
+  :END:
+- Cho 2 chuoi ky tu ~A~ va ~B~, tim so buoc it nhat de chuyen A thanh B (moi mot hang dong duoc tinh la 1 buoc)
+- Biet rang ta co the lam mot trong 3 hanh dong la:
+  1. Them 1 ky tu vao chuoi
+  2. Xoa 1 ky tu
+  3. Thay the 1 ky tu
+- Vi du:
+A: "Anshuman"
+B: "Antihuman"
+Ta can 2 buoc la:
+1. Doi ~s~ thanh ~t~
+2. Them ~i~ vao sau ~t~
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-19 Sun 15:01]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 14:55]--[2018-08-19 Sun 15:01] =>  0:06
+  :END:
+Done
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-19 Sun 15:20]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 15:01]--[2018-08-19 Sun 15:20] =>  0:19
+  :END:
+
+** Giai phap cho DP
+- Voi bai toan ve DP, voi moi mot vi tri (sub-problem), ta se co nhung lua chon can lam.
+- De ra duoc dap an toi uu, ta can xem xet tung lua chon 1 de chon ra giai phap toi uu tai index dang set
+- Tu do suy ra dap an toi uu cho van de
+
+** Ap dung cho bai toan nay
+- Truoc tien, ta can tim giai phap brute force
+- De cho A bien thanh B, thi prefix A se phai bang prefix B
+- Do do, tai index i, ta so sanh A[i], B[i], ta co 2 kha nang
+- Neu A[i] == B[i], khong can lam gi va sang i tiep theo
+- Neu A[i] != B[i], ta can lam 1 trong 3 kha nang:
+  1. Them B[i] vao vi tri i cua A, va tiep tuc voi phan con lai cua A va B
+  2. Xoa ky tu A[i] trong A va tiep tuc voi phan con lai cua A va B
+  3. Thay A[i] bang B[i] va tiep tuc voi phan con lai cua A va B
+  4. Tra ve kha nang nao cho ta ket qua nho nhat
+
+** Pseudo code
+#+BEGIN_SRC js
+function editDistance(a, b, i, j) {
+  if (a[i] === b[i]) {
+    return editDistance(a, b, i + 1, j + 1);
+  } else {
+    return Math.min(
+      1 + editDistance(a, b, i + 1, j), // delete
+      1 + editDistance(a, b, i, j + 1), // insert
+      1 + editDistance(a, b, i + 1, j + 1) // replace
+    );
+  }
+}
+#+END_SRC
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-19 Sun 15:23]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 15:20]--[2018-08-19 Sun 15:23] =>  0:03
+  :END:
+** Recursive + Memorized
+- Phuong an tren khong tot do phuc tap cap so ngu
+- Ap dung DP bang cach memorized:
+  1. a, b la khong doi
+  2. ta co the memorized dua vao i, j
+- Phan tich DP va memorized
+- Do phuc tap ve thoi gian ~O(len(a) * len(b))~
+- Do phuc tap ve luu tru ~O(len(a) * len(b))~
+** DP Bottom up
+- Xay dung mang dp cho bai toan
+- dp: number[][] = []
+- Lap i tu [0..len(a)], lap j tu [0..len(b)]
+- Neu i = 0, dp[i][j] = len(b) - j;
+- Neu j = 0, dp[j][i] = len(a) - i;
+- dp[i][j] = dp[i - 1][j - 1] neu a[i] = a[j]
+- Neu khong, ta co con thuc
+#+BEGIN_SRC js
+dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+#+END_SRC
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-19 Sun 21:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 15:23]--[2018-08-19 Sun 21:58] =>  6:35
+  :END:
+Coding
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-19 Sun 21:58]
+  :LOGBOOK:
+  CLOCK: [2018-08-19 Sun 21:58]--[2018-08-19 Sun 21:58] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-19 Sun 21:58]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *7:10* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:07 |
+| TDD: Setup test case                   |   0:06 |
+| Dua ra brute force solution            |   0:19 |
+| Toi uu vao so sanh cac thuat toan      |   0:03 |
+| Bat dau code thuat toan thich hop nhat |   6:35 |
+#+END:
