@@ -1,0 +1,86 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-20 Mon 13:52]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 13:48]--[2018-08-20 Mon 13:52] =>  0:04
+  :END:
+- Cho 1 ma tran ~m * n~, tim so luong duong khac nhau de dua tu dinh ben trai vi tri (1, 1) den cuoi cung ben phai vi tri (m, n)
+- Biet rang, tai vi tri (x, y), ta co the di chuyen theo 2 cach la:
+  1. (x + 1, y)
+  2. (x, y + 1)
+- Trong ma tran, 0 chi vi tri rong, va 1 chi vi tri co vat can. Va ta khong the di qua vat can
+- V/d:
+input = [
+  [0,0,0],
+  [0,1,0],
+  [0,0,0]
+]
+output = 2
+Ta chi co 2 cach de di tu dau trai den cuoi phai
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-20 Mon 13:56]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 13:52]--[2018-08-20 Mon 13:56] =>  0:04
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-20 Mon 13:59]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 13:56]--[2018-08-20 Mon 13:59] =>  0:03
+  :END:
+**  Y tuong
+- Tai vi tri (x, y) ta co 2 cach de di chuyen: (x + 1, y), (x, y + 1)
+- Ta suy ra code cho de quy la:
+#+BEGIN_SRC js
+function uniquePaths(i, j) {
+  if (i >= m || j >= n) {
+     return 1;
+  }
+
+  return uniquePaths(i + 1, j) + uniquePaths(i, j + 1);
+}
+#+END_SRC
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-20 Mon 15:03]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 13:59]--[2018-08-20 Mon 15:03] =>  1:04
+  :END:
+** Co su dung DP duoc khong?
+Muon biet co phai DP ta can tra loi 2 cau hoi la:
+1. Optimal sub-structure ?
+2. Overlapping sub-problem ?
+
+Cau hoi 1. thoa man vi muon tim neu da co ket cho (0, 0) ... (i-1, j-1) ta co the suy ra ket qua cho (i, j)
+Cau hoi 2. ta co van de goi nhau vi/du uniquePaths(4, 4) => ta se can tin uniquePaths(4, 5) va uniquePaths(4, 6) nhu trong hinh
+[[./unique-paths.png]]
+
+Ta co the su dung DP duoc
+** Cong thuc cho DP la gi ?
+#+BEGIN_SRC js
+dp[i][j] = dp[i][j - 1] + dp[i - 1][j];
+#+END_SRC
+- Van chua duoc vi ta can phai kiem tra truong hop (i, j - 1), (i - 1, j) la vat can, bang cach dat gia tri khi setup
+#+BEGIN_SRC js
+dp[i][j] = matrix[i][j] === 1 ? 0 : 1;
+#+END_SRC
+- Va khi duyet dp ta cung can kiem tra xem vi tri i, j co phai vat can khong
+* TODO Bat dau code thuat toan thich hop nhat
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 15:03]
+  :END:
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
