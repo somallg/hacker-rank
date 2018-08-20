@@ -7,6 +7,7 @@ interface TestCase<InputType, OutputType> {
   input: InputType;
   output: OutputType;
   inputSize: number;
+  timeLimit: number;
 }
 
 interface TestCategory<InputType, OutputType> {
@@ -15,18 +16,18 @@ interface TestCategory<InputType, OutputType> {
   testCases: Array<TestCase<InputType, OutputType>>;
 }
 
-interface Fixture<InputType, OutputType> {
+interface TestFixture<InputType, OutputType> {
   name: string;
   testCategories: Array<TestCategory<InputType, OutputType>>;
 }
 
-interface TestExecutor<InputType, OutputType> {
-  executeTests: (
-    functionName: string,
-    functionToTest: TestFn<InputType, OutputType>,
-    generatorFn?: GeneratorFn<InputType>
-  ) => void;
-}
+// interface TestExecutor<InputType, OutputType> {
+//   executeTests: (
+//     functionName: string,
+//     functionToTest: TestFn<InputType, OutputType>,
+//     generatorFn?: GeneratorFn<InputType>
+//   ) => void;
+// }
 
 function prettyFormatArray(array: any[]): string {
   return array
@@ -55,7 +56,7 @@ function getTestCaseDescription<InputType, OutputType>(
 function getPerformanceTestCaseDescription<InputType, OutputType>(
   testCase: TestCase<InputType, OutputType>
 ): string {
-  return `should run for ${
+  return `should run under ${testCase.timeLimit}ms for ${
     testCase.name
   } input of size ${testCase.inputSize.toLocaleString()}`;
 }
@@ -76,28 +77,34 @@ function runPerformanceTests<InputType, OutputType>(
   generatorFn: GeneratorFn<InputType>
 ) {
   testCategory.testCases.forEach(testCase => {
-    it(`${getPerformanceTestCaseDescription(testCase)}`, () =>
-      expect(fn.call(null, generatorFn(testCase.inputSize))).toBeDefined());
+    it(`${getPerformanceTestCaseDescription(testCase)}`, () => {
+      const start = Date.now();
+      fn.call(null, generatorFn(testCase.inputSize));
+      const end = Date.now();
+      expect(end - start).toBeLessThanOrEqual(testCase.timeLimit);
+    });
   });
 }
 
 function getTestCategories<InputType, OutputType>(
-  fixture: Fixture<InputType, OutputType>
+  fixture: TestFixture<InputType, OutputType>
 ) {
   return fixture.testCategories;
 }
 
 function createTestExecutor<InputType, OutputType>(
-  functionName: string,
-  functionToTest: TestFn<InputType, OutputType>,
-  generatorFn?: GeneratorFn<InputType>
+  testFixture: TestFixture<InputType, OutputType>
 ) {
-  return function executeTests(fixture: Fixture<InputType, OutputType>) {
+  return function executeTests(
+    functionName: string,
+    functionToTest: TestFn<InputType, OutputType>,
+    generatorFn?: GeneratorFn<InputType>
+  ) {
     const [
       exampleTests,
       correctnessTests,
       performanceTests
-    ] = getTestCategories(fixture);
+    ] = getTestCategories(testFixture);
 
     describe(functionName, () => {
       [exampleTests, correctnessTests].forEach(test => {
@@ -112,4 +119,4 @@ function createTestExecutor<InputType, OutputType>(
   };
 }
 
-export { createTestExecutor, Fixture };
+export { createTestExecutor, TestFixture };

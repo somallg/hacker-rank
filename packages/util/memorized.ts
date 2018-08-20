@@ -19,8 +19,11 @@ function memorized<InputType, OutputType>(
   const memo = new Map<Immutable, OutputType>();
 
   return (x: InputType): OutputType => {
-    const [cachedValue = fn(x)] = [memo.get(keyFn(x))];
-    memo.set(keyFn(x), cachedValue);
+    let cachedValue = memo.get(keyFn(x)) as OutputType;
+    if (cachedValue === undefined) {
+      cachedValue = fn(x);
+      memo.set(keyFn(x), cachedValue);
+    }
 
     return cachedValue;
   };
