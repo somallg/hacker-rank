@@ -1,0 +1,98 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-20 Mon 11:14]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 10:56]--[2018-08-20 Mon 11:14] =>  0:18
+  :END:
+- Cho 1 ma tran ~m * n~ gom cac so tu nhien khong am, tim duong tu vi tri top (0, 0) cho den vi tri cuoi cung (m-1, n-1) sao cho tong cua cac gia tri
+- Biet ta chi co the di xuong hoac sang phai
+- Vi du
+input:
+    [  1 3 2
+       4 3 1
+       5 6 1
+    ]
+output: 8
+1 -> 3 -> 2 -> 1 -> 1
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-20 Mon 11:16]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 11:14]--[2018-08-20 Mon 11:16] =>  0:02
+  :END:
+Done
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-20 Mon 11:26]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 11:16]--[2018-08-20 Mon 11:26] =>  0:10
+  :END:
+- Tai 1 vi tri ta se co 2 kha nang:
+  1. La di sang phai
+  2. La di xuong duoi
+- Neu nhu ta da den dong cuoi cung, thi chi co the sang phai
+- Neu ta den cot cuoi cung thi chi co the di xuong duoi
+- Ta co pseudo code la
+
+#+BEGIN_SRC js
+function minSum(i, j) {
+  if (i === n - 1) {
+    return matrix[i][j] + minSum(i, j + 1);
+  }
+  if (j === m - 1) {
+    return matrix[i][j] + minSum(i + 1, j);
+  }
+  return matrix[i][j] + Math.min(minSum(i + 1, j), minSum(i, j + 1));
+}
+#+END_SRC
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-20 Mon 11:35]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 11:27]--[2018-08-20 Mon 11:35] =>  0:08
+  :END:
+- Ta can code giai phap rec truoc
+- Ta co the su dung memo vao rec
+- Cac tot hon la su dung bottom up dp
+- Ta can suy ra cong thuc cho dp la
+#+BEGIN_SRC js
+dp[i][j] = matrix[i][j] + Math.min(dp[i - 1][j], dp[i][j - 1]);
+#+END_SRC
+- Xac dinh cac can bien cho mang dp
+  1. Neu i = 0; ta chi co the sang phai do do; dp[0][j] = matrix[0][j] + dp[0][j - 1];
+  2. Neu j = 0; tuong tu ta chi co the di xuong nen; dp[i][0] = matrix[i][0] + dp[i - 1][0];
+
+** Phan tich giai phap
+- Do phuc tap ve thoi gian ~O(m * n)~
+- Do phuc tap ve du lieu ~O(m * n)~
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-20 Mon 13:43]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 11:35]--[2018-08-20 Mon 13:43] =>  2:08
+  :END:
+Coding
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-20 Mon 13:43]
+  :LOGBOOK:
+  CLOCK: [2018-08-20 Mon 13:43]--[2018-08-20 Mon 13:43] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-20 Mon 13:44]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *2:46* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:18 |
+| TDD: Setup test case                   |   0:02 |
+| Dua ra brute force solution            |   0:10 |
+| Toi uu vao so sanh cac thuat toan      |   0:08 |
+| Bat dau code thuat toan thich hop nhat |   2:08 |
+#+END:
