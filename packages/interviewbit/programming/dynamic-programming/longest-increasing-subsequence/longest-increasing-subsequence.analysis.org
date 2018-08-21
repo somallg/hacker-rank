@@ -63,9 +63,10 @@ Done
 - dp[i] = max(dp[j]) voi j chay tu [0..i-1], va array[j] < array[i]
 
 
-* TODO Bat dau code thuat toan thich hop nhat
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-19 Sun 14:48]
   :LOGBOOK:
-  CLOCK: [2018-08-18 Sat 22:12]
+  CLOCK: [2018-08-18 Sat 22:12]--[2018-08-19 Sun 14:48] => 16:36
   :END:
 
 * TODO Test va fix bug neu co

@@ -1,48 +1,53 @@
 {
-  "name": "MinXorValue Fixture",
+  "name": "DivideIntegers Fixture",
   "testCategories": [
     {
-      "name": "Example",
+      "name": "Example Tests",
       "testCases": [
         {
           "name": "Example 1",
-          "input": [0, 2, 5, 7],
+          "input": [5, 2],
           "output": 2
         },
         {
           "name": "Example 2",
-          "input": [0, 4, 7, 9],
-          "output": 3
+          "input": [1, 2],
+          "output": 0
         },
         {
           "name": "Example 3",
-          "input": [15, 5, 1, 10, 2],
-          "output": 3
+          "input": [-2147483648, -10000000],
+          "output": 214
         }
       ]
     },
     {
-      "name": "Correctness",
+      "name": "Correctness Tests",
       "testCases": [
         {
           "name": "Sample 1",
-          "input": [1, 2, 3, 4],
-          "output": 1
+          "input": [10, 3],
+          "output": 3
+        },
+        {
+          "name": "Sample 2",
+          "input": [10, -3],
+          "output": -3
         },
         {
           "name": "Extreme 1",
-          "input": [],
-          "output": 0
+          "input": [1, 0],
+          "output": 2147483647
         },
         {
           "name": "Extreme 2",
-          "input": [1, 1, 1, 1],
-          "output": 0
+          "input": [-1, 0],
+          "output": 2147483647
         }
       ]
     },
     {
-      "name": "Performance",
+      "name": "Performance Tests",
       "testCases": [
         {
           "name": "Medium 1",

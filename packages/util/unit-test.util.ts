@@ -21,14 +21,6 @@ interface TestFixture<InputType, OutputType> {
   testCategories: Array<TestCategory<InputType, OutputType>>;
 }
 
-// interface TestExecutor<InputType, OutputType> {
-//   executeTests: (
-//     functionName: string,
-//     functionToTest: TestFn<InputType, OutputType>,
-//     generatorFn?: GeneratorFn<InputType>
-//   ) => void;
-// }
-
 function prettyFormatArray(array: any[]): string {
   return array
     .map(
@@ -54,9 +46,10 @@ function getTestCaseDescription<InputType, OutputType>(
 }
 
 function getPerformanceTestCaseDescription<InputType, OutputType>(
-  testCase: TestCase<InputType, OutputType>
+  testCase: TestCase<InputType, OutputType>,
+  timeLimit = 200
 ): string {
-  return `should run under ${testCase.timeLimit}ms for ${
+  return `should run under ${timeLimit || 200}ms for ${
     testCase.name
   } input of size ${testCase.inputSize.toLocaleString()}`;
 }
@@ -76,20 +69,16 @@ function runPerformanceTests<InputType, OutputType>(
   testCategory: TestCategory<InputType, OutputType>,
   generatorFn: GeneratorFn<InputType>
 ) {
-  testCategory.testCases.forEach(testCase => {
-    it(`${getPerformanceTestCaseDescription(testCase)}`, () => {
+  testCategory.testCases.forEach((testCase, index) => {
+    const timeLimit = testCase.timeLimit || (index + 1) * 100;
+
+    it(`${getPerformanceTestCaseDescription(testCase, timeLimit)}`, () => {
       const start = Date.now();
       fn.call(null, generatorFn(testCase.inputSize));
       const end = Date.now();
-      expect(end - start).toBeLessThanOrEqual(testCase.timeLimit);
+      expect(end - start).toBeLessThanOrEqual(timeLimit);
     });
   });
-}
-
-function getTestCategories<InputType, OutputType>(
-  fixture: TestFixture<InputType, OutputType>
-) {
-  return fixture.testCategories;
 }
 
 function createTestExecutor<InputType, OutputType>(
@@ -104,7 +93,7 @@ function createTestExecutor<InputType, OutputType>(
       exampleTests,
       correctnessTests,
       performanceTests
-    ] = getTestCategories(testFixture);
+    ] = testFixture.testCategories;
 
     describe(functionName, () => {
       [exampleTests, correctnessTests].forEach(test => {

@@ -1,0 +1,83 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-15 Wed 20:42]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 20:40]--[2018-08-15 Wed 20:42] =>  0:02
+  :END:
+** Yeu cau la gi ?
+Cho 2 so tu nhien a, b, tinh ~a / b~ ma khong su dung cac toan tu chia ~/~, nhan ~*~ va modulo ~%~
+** Yeu cau dac biet ?
+Trong truong hop ket qua qua 32bit bo nho tra ve ~INT_MAX~
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-15 Wed 20:45]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 20:42]--[2018-08-15 Wed 20:45] =>  0:03
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-15 Wed 20:55]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 20:45]--[2018-08-15 Wed 20:55] =>  0:10
+  :END:
+
+** Gia su c = a/b, ta se co gi ?
+Ta co ~a = b * c = b + b * (c - 1) = b + b + ... b~, bai toan tro thanh su dung brute force de sao cho so lan ~b + b ...~ c lan nho hon hoac bang a
+
+** Giai phap
+1. Cho bien count = 0;
+2. Lap b cho den khi b < a
+3. Neu b == a; tra ve count;
+4. Neu khong count++; a = a - b;
+5. Neu out khoi vong lap nghia la b > a; ta tra ve count (gia tri lon nhat de b <= a)
+6. Neu count vuot 32bit tra ve INT_MAX
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-15 Wed 20:57]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 20:55]--[2018-08-15 Wed 20:57] =>  0:02
+  :END:
+
+** Phan tich giai phap brute force
+- Do phuc tap thoi gian: ~O(a)~
+- Do phuc tap du lieu: ~O(1)~
+- Trong truong hop a = INT_MAX ~ 2e9 (2 ty) va b = 1 thi thuat toan khong tot
+
+** Cach toi uu hon?
+Ta co ~a = b * c + remainder~, neu nhu ta bieu dien c (kq can tim) duoi dang binary, ta se duoc
+- c = a0 + a1 * 2 ^ 1 + ... ai * 2 ^ i + ... an * 2 ^ n (a 0, 1)
+- a = b * c + r = b * (a0 + a1 * 2 ^ 1 + ... 2 ^ n) + r
+    = b * 2 ^ n + b * 2 ^ (n - 1) + ...
+    = (b << n) + b << (n - 1) + ... + b * 2 ^ 0
+
+- Tu do ta co loi giai toi uu cho van de
+  1. Tim bit n lon nhat sao cho b << n < a, ta se ra duoc bit ngoai cung ben trai cua kq can tim
+  2. Tiep tuc tim bit thu 2 bang cac lap lai: a = a - (b << n)
+  3. Cu nhu vay cho den khi nao a = 1 | 0; ta se co bit cuoi cung
+
+** Phan tich thuat toan toi uu
+- Do phuc tap thoi gian: ~O(log(a))~
+- Do phuc tap du lieu: ~O(1)~
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-15 Wed 22:20]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 22:20]--[2018-08-15 Wed 22:20] =>  0:00
+  :END:
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-15 Wed 22:20]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 22:20]--[2018-08-15 Wed 22:20] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-15 Wed 22:20]
+| Headline                          |   Time |
+|-----------------------------------+--------|
+| *Total time*                      | *0:17* |
+|-----------------------------------+--------|
+| Doc va phan tich yeu cau          |   0:02 |
+| TDD: Setup test case              |   0:03 |
+| Dua ra brute force solution       |   0:10 |
+| Toi uu vao so sanh cac thuat toan |   0:02 |
+#+END:
