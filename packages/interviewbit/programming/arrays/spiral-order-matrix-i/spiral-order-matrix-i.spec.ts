@@ -3,46 +3,13 @@
  * Interviewbit - SpiralOrderMatrixI
  */
 
-import {
-  Fixture,
-  getTestCaseDescription,
-  getPerformanceTestCaseDescription,
-  generateMatrix
-} from '@challenges/util';
+import * as ut from '@challenges/util';
 
-import * as fixture from './spiral-order-matrix-i.fixture.json';
 import { spiralOrderMatrixI } from './spiral-order-matrix-i';
+import * as fixture from './spiral-order-matrix-i.fixture.json';
 
 describe('Interviewbit - SpiralOrderMatrixI', () => {
-  describe('spiralOrderMatrixI', () => {
-    describe('Example tests', () => {
-      (fixture as Fixture<number[][], number[]>).exampleTests.forEach(
-        testCase => {
-          it(`${getTestCaseDescription(testCase)}`, () => {
-            expect(spiralOrderMatrixI(testCase.input)).toEqual(testCase.output);
-          });
-        }
-      );
-    });
-
-    describe('Correctness tests', () => {
-      (fixture as Fixture<number[][], number[]>).correctnessTests.forEach(
-        testCase => {
-          it(`${getTestCaseDescription(testCase)}`, () => {
-            expect(spiralOrderMatrixI(testCase.input)).toEqual(testCase.output);
-          });
-        }
-      );
-    });
-
-    describe('Performance tests', () => {
-      (fixture as Fixture<number[][], number[]>).performanceTests.forEach(
-        testCase => {
-          it(`${getPerformanceTestCaseDescription(testCase)}`, () => {
-            spiralOrderMatrixI(generateMatrix(testCase.inputSize));
-          });
-        }
-      );
-    });
-  });
+  // prettier-ignore
+  ut.createTestExecutor(fixture as ut.TestFixture<number[][], number[]>)
+    .executeTests(spiralOrderMatrixI, ut.generateMatrix);
 });

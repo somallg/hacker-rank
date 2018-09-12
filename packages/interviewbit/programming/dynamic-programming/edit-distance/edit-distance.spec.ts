@@ -3,15 +3,16 @@
  * EditDistance
  */
 
-import { createTestExecutor, TestFixture } from '@challenges/util';
+import * as ut from '@challenges/util';
 
 import { editDistance } from './edit-distance';
 
 import * as fixture from './edit-distance.fixture.json';
-const testFixture = fixture as TestFixture<[string, string], number>;
+const testFixture = fixture as ut.TestFixture<[string, string], number>;
 
 describe('Interviewbit - EditDistance', () => {
-  createTestExecutor(testFixture)(editDistance.name, ([a, b]) =>
-    editDistance(a, b)
+  ut.createTestExecutor(testFixture).executeTests(
+    ([a, b]) => editDistance(a, b),
+    editDistance.name
   );
 });

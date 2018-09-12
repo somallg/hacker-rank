@@ -10,7 +10,7 @@ function n3RepeatNumber(array: number[]): number {
 
   let result = -1;
   count.forEach((value, key) => {
-    if (value > l / 3) {
+    if (value > Math.floor(l / 3) && result === -1) {
       result = key;
     }
   });

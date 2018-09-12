@@ -3,17 +3,17 @@
  * JustifiedText
  */
 
-import { createTestExecutor, TestFixture } from '@challenges/util';
+import * as ut from '@challenges/util';
 
 import { justifiedText } from './justified-text';
 
 import * as fixture from './justified-text.fixture.json';
-const testFixture = fixture as TestFixture<[string[], number], string[]>;
 
 describe('Interviewbit - JustifiedText', () => {
-  describe('justifiedText', () => {
-    createTestExecutor(testFixture)(justifiedText.name, ([words, len]) =>
-      justifiedText(words, len)
-    );
-  });
+  // prettier-ignore
+  ut.createTestExecutor(fixture as ut.TestFixture<[string[], number], string[]>)
+    .executeTests(
+      ([words, len]) => justifiedText(words, len),
+      justifiedText.name
+  );
 });

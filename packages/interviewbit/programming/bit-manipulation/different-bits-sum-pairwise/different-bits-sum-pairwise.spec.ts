@@ -3,17 +3,16 @@
  * DifferentBitsSumPairwise
  */
 
-import { createTestExecutor, Fixture, generateArray } from '@challenges/util';
+import * as ut from '@challenges/util';
 
 import { differentBitsSumPairwise } from './different-bits-sum-pairwise';
 
 import * as fixture from './different-bits-sum-pairwise.fixture.json';
-const testFixture = fixture as Fixture<number[], number>;
+const testFixture = fixture as ut.TestFixture<number[], number>;
 
 describe('Interviewbit - DifferentBitsSumPairwise', () => {
-  createTestExecutor<number[], number>(
-    differentBitsSumPairwise.name,
+  ut.createTestExecutor(testFixture).executeTests(
     differentBitsSumPairwise,
-    generateArray
-  )(testFixture);
+    ut.generateArray
+  );
 });

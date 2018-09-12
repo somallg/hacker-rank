@@ -12,13 +12,22 @@ interface TestCase<InputType, OutputType> {
 
 interface TestCategory<InputType, OutputType> {
   name: string;
-  isPerformanceTest: boolean;
+  focus: boolean;
   testCases: Array<TestCase<InputType, OutputType>>;
 }
 
 interface TestFixture<InputType, OutputType> {
   name: string;
   testCategories: Array<TestCategory<InputType, OutputType>>;
+  skip?: boolean;
+}
+
+interface TestExecutor<InputType, OutputType> {
+  executeTests: (
+    functionToTest: TestFn<InputType, OutputType>,
+    functionName?: string | GeneratorFn<InputType>,
+    generatorFn?: GeneratorFn<InputType>
+  ) => Thenable<void> | void;
 }
 
 function prettyFormatArray(array: any[]): string {
@@ -70,7 +79,7 @@ function runPerformanceTests<InputType, OutputType>(
   generatorFn: GeneratorFn<InputType>
 ) {
   testCategory.testCases.forEach((testCase, index) => {
-    const timeLimit = testCase.timeLimit || (index + 1) * 100;
+    const timeLimit = testCase.timeLimit || (index + 1) * 200;
 
     it(`${getPerformanceTestCaseDescription(testCase, timeLimit)}`, () => {
       const start = Date.now();
@@ -82,30 +91,65 @@ function runPerformanceTests<InputType, OutputType>(
 }
 
 function createTestExecutor<InputType, OutputType>(
-  testFixture: TestFixture<InputType, OutputType>
-) {
-  return function executeTests(
-    functionName: string,
+  fixture: TestFixture<InputType, OutputType>
+): TestExecutor<InputType, OutputType> {
+  return { executeTests };
+
+  function executeTests(
     functionToTest: TestFn<InputType, OutputType>,
+    functionNameOrGenerator?: string | GeneratorFn<InputType>,
     generatorFn?: GeneratorFn<InputType>
-  ) {
-    const [
-      exampleTests,
-      correctnessTests,
-      performanceTests
-    ] = testFixture.testCategories;
+  ): Thenable<void> {
+    if (Boolean(fixture.skip)) {
+      [it, xit] = [xit, it];
+    }
 
-    describe(functionName, () => {
-      [exampleTests, correctnessTests].forEach(test => {
-        describe(`${test.name}`, () => runSampleTests(functionToTest, test));
+    return Box(fixture)
+      .then(testFixture => testFixture.testCategories)
+      .then(([exampleTests, correctnessTests, performanceTests]) => {
+        if (functionNameOrGenerator === undefined) {
+          functionNameOrGenerator = functionToTest.name;
+        }
+
+        if (typeof functionNameOrGenerator === 'function') {
+          generatorFn = functionNameOrGenerator;
+          functionNameOrGenerator = functionToTest.name;
+        }
+
+        describe(functionNameOrGenerator, () => {
+          [exampleTests, correctnessTests].forEach(test => {
+            describe(`${test.name}`, () =>
+              runSampleTests(functionToTest, test));
+          });
+
+          if (typeof generatorFn === 'function') {
+            if (performanceTests.focus) {
+              [describe, fdescribe] = [fdescribe, describe];
+              [it, fit] = [fit, it];
+            }
+
+            describe(`${performanceTests.name}`, () =>
+              runPerformanceTests(
+                functionToTest,
+                performanceTests,
+                generatorFn as GeneratorFn<InputType>
+              ));
+          }
+        });
       });
-
-      if (generatorFn !== undefined) {
-        describe(`${performanceTests.name}`, () =>
-          runPerformanceTests(functionToTest, performanceTests, generatorFn));
-      }
-    });
-  };
+  }
 }
 
-export { createTestExecutor, TestFixture };
+function Box<T>(data: T): Thenable<T> {
+  return { then: <V>(fn: (data: T) => V) => Box<V>(fn(data)) };
+}
+
+interface Thenable<T> {
+  then: <V>(fn: (data: T) => V) => Thenable<V>;
+}
+
+function identityf<T>(data: T): T {
+  return data;
+}
+
+export { createTestExecutor, identityf, TestFixture };

@@ -5,6 +5,9 @@
  * in range [startFrom, ...maxExclusive - 1].
  * If random is false then it return an array [0...0] of size length
  */
+
+export { generateArray, generateStringArray, generateMatrix, zip };
+
 function generateArray(
   length: number,
   maxExclusive = length,
@@ -20,6 +23,10 @@ function generateArray(
   return res;
 }
 
+function generateStringArray(length: number): string[] {
+  return generateArray(length).map(String);
+}
+
 function generateMatrix(length: number, maxExclusive = length) {
   const result = [];
 
@@ -33,5 +40,3 @@ function generateMatrix(length: number, maxExclusive = length) {
 function zip<T>(arrayA: T[], arrayB: T[]): T[][] {
   return arrayA.map((a, index) => [a, arrayB[index]]);
 }
-
-export { generateArray, generateMatrix, zip };

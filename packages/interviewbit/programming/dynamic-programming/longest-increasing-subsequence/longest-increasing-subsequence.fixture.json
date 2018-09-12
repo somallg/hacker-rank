@@ -62,7 +62,7 @@
         {
           "name": "Large 1",
           "inputSize": 10e3,
-          "timeLimit": 500
+          "timeLimit": 800
         }
       ]
     }

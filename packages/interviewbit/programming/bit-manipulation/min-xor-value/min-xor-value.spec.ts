@@ -3,17 +3,16 @@
  * MinXorValue
  */
 
-import {
-  createTestExecutor,
-  generateArray,
-  TestFixture
-} from '@challenges/util';
+import * as ut from '@challenges/util';
 
 import { minXorValue } from './min-xor-value';
 
 import * as fixture from './min-xor-value.fixture.json';
-const testFixture = fixture as TestFixture<number[], number>;
+const testFixture = fixture as ut.TestFixture<number[], number>;
 
 describe('Interviewbit - MinXorValue', () => {
-  createTestExecutor(testFixture)(minXorValue.name, minXorValue, generateArray);
+  ut.createTestExecutor(testFixture).executeTests(
+    minXorValue,
+    ut.generateArray
+  );
 });

@@ -5,3 +5,52 @@
 | Y tuong ?                | Ta lam 2 viec: 1) chia chuoi ky tu sang mang cac tu, 2) loop i tu [O..l/2] vao swap cac tu trong mang                                    |
 | Phan tich y tuong tren ? | Tach chuoi su dung split can ~O(n)~ va vong lap cung la ~O(n)~                                                                           |
 | Y tuong khac khong ?     | Khong su dung ~s.split~ ta can duyet chuoi ky tu du cuoi len dau. Moi khi gap duoc dau cach ~' '~ ta bo qua, nho lai ky tu nao khac cach |
+
+
+#+BEGIN_SRC plantuml :file abc.png
+scale 640*480
+Alice -> Bob: ahihi
+Bob --> Alice: hihi
+Alicea -> Bob: another one
+Alice --> Bob: booh
+#+END_SRC
+
+#+RESULTS:
+[[file:abc.png]]
+
+#+begin_src gnuplot :exports code :file file.png
+reset
+
+set title "Putting it All Together"
+
+set xlabel "X"
+set xrange [-8:8]
+set xtics -8,2,8
+
+
+set ylabel "Y"
+set yrange [-20:70]
+set ytics -20,10,70
+
+f(x) = x**2
+g(x) = x**3
+h(x) = 10*sqrt(abs(x))
+
+plot f(x) w lp lw 1, g(x) w p lw 2, h(x) w l lw 3
+#+end_src
+
+#+RESULTS:
+[[file:file.png]]
+
+
+#+BEGIN_SRC js
+function fac(n) {
+    if (n <= 1) {
+        return 1;
+    }
+
+    return n * fac(n - 1);
+}
+
+return console.log(fac(10));
+#+END_SRC

@@ -3,46 +3,13 @@
  * Interviewbit - NextPermutation
  */
 
-import {
-  Fixture,
-  getTestCaseDescription,
-  getPerformanceTestCaseDescription,
-  generateArray
-} from '@challenges/util';
+import * as ut from '@challenges/util';
 
-import * as fixture from './next-permutation.fixture.json';
 import { nextPermutation } from './next-permutation';
+import * as fixture from './next-permutation.fixture.json';
 
 describe('Interviewbit - NextPermutation', () => {
-  describe('nextPermutation', () => {
-    describe('Example tests', () => {
-      (fixture as Fixture<number[], number[]>).exampleTests.forEach(
-        testCase => {
-          it(`${getTestCaseDescription(testCase)}`, () => {
-            expect(nextPermutation(testCase.input)).toEqual(testCase.output);
-          });
-        }
-      );
-    });
-
-    describe('Correctness tests', () => {
-      (fixture as Fixture<number[], number[]>).correctnessTests.forEach(
-        testCase => {
-          it(`${getTestCaseDescription(testCase)}`, () => {
-            expect(nextPermutation(testCase.input)).toEqual(testCase.output);
-          });
-        }
-      );
-    });
-
-    describe('Performance tests', () => {
-      (fixture as Fixture<number[], number[]>).performanceTests.forEach(
-        testCase => {
-          it(`${getPerformanceTestCaseDescription(testCase)}`, () => {
-            nextPermutation(generateArray(testCase.inputSize));
-          });
-        }
-      );
-    });
-  });
+  // prettier-ignore
+  ut.createTestExecutor(fixture as ut.TestFixture<number[], number[]>)
+    .executeTests(nextPermutation, ut.generateArray);
 });

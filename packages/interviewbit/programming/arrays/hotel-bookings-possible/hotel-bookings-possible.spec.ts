@@ -3,28 +3,22 @@
  * Interviewbit - HotelBookingsPossible
  */
 
-import {
-  createTestExecutor,
-  generateArray,
-  TestFixture
-} from '@challenges/util';
+import * as ut from '@challenges/util';
 
 import { hotelBookingsPossible } from './hotel-bookings-possible';
 import * as fixture from './hotel-bookings-possible.fixture.json';
 
-const testFixture = fixture as TestFixture<
-  [number[], number[], number],
-  number
->;
+// prettier-ignore
+const testFixture = fixture as ut.TestFixture<[number[], number[], number], number>;
 
 describe('Interviewbit - HotelBookingsPossible', () => {
-  createTestExecutor(testFixture)(
-    hotelBookingsPossible.name,
+  ut.createTestExecutor(testFixture).executeTests(
     ([arrivals, departures, k]) =>
       hotelBookingsPossible(arrivals, departures, k),
+    hotelBookingsPossible.name,
     inputSize => [
-      generateArray(inputSize),
-      generateArray(inputSize),
+      ut.generateArray(inputSize),
+      ut.generateArray(inputSize),
       inputSize / 2
     ]
   );
