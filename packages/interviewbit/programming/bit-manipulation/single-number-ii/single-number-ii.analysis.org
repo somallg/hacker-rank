@@ -1,0 +1,74 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-08-14 Tue 21:59]
+  :LOGBOOK:
+  CLOCK: [2018-08-14 Tue 21:57]--[2018-08-14 Tue 21:59] =>  0:02
+  :END:
+Cho mot mang cac so tu nhien.
+Cac phan tu se xuat hien 3 lan duy nhat 1 phan tu chi xuat hiet 1 lan.
+Tim phan tu xuat hien 1 lan nay
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-08-14 Tue 22:02]
+  :LOGBOOK:
+  CLOCK: [2018-08-14 Tue 21:59]--[2018-08-14 Tue 22:02] =>  0:03
+  :END:
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-08-15 Wed 10:54]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 10:20]--[2018-08-15 Wed 10:54] =>  0:34
+  :END:
+** Neu xor tung phan tu cua mang lai thi duoc gi?
+   1. Cac phan tu lap 3 => a1 ^ a1 ^ a1 = a1
+   2. Cuoi cung se ra: a1 ^ a2 ^ ... x ^ ak (x la phan tu can tim)
+   3. Ket qua la xor cua cac phan phu
+** Lam sao de giu la duoc x ?
+** Neu xor 3 lan cac phan tu cua mang thi sao ?
+   - Khong duoc nhu tren da phan tich
+** Cac phan tu trong mang ra sao ?
+   - X la so ta can tim, cac so con lai se xuat hien 3 lan
+** Neu trai dai tung so nay ra duoi dang nhi phan thi nhiem vu cua ta la gi ?
+   - Nhiem vu ta can lam sao de to hop lai cac bit de cho, ket qua bang X
+** Tai bit thu i (index 0 tu phai sang) neu bit ith cua X la 1, vay bit ith o kq la gi ?
+   - Cung phai la 1 neu nhu muon kq = X
+** Co bao nhieu so 1 truong truong hop nay ?
+   - Cac so khac xuat hien 3 lan nen tai vi tri i, neu so k so co bit la 1 tai vi tri i thi se co ~3 * k + 1~ so 1 xuat hien
+   - Tuong so bit 0 la j ta se co 3 * j lan xuat hien (vi bit X la 1)
+** Tu do tao suy ra duoc giai phap khong?
+   1. loop i tu [0...31] (the hien vi tri bit)
+   2. dem so luong so 1 tai vi tri i goi la ones
+   3. Neu ~(ones - 1) % 3 === 0~, thi kq tai index ith se la 1, neu khong la 0
+   4. done loop i
+   5. tra ve ket qua
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-08-15 Wed 10:59]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 10:54]--[2018-08-15 Wed 10:59] =>  0:05
+  :END:
+** Phan tich do phuc tap cua thuat toan brute force ?
+   1. Do phuc tap ve thoi gian ~32 * O(n)~ = ~O(n)~
+   2. Do phuc tap ve du lieu: ~O(1)~
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-08-15 Wed 11:12]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 10:59]--[2018-08-15 Wed 11:12] =>  0:13
+  :END:
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-08-15 Wed 11:12]
+  :LOGBOOK:
+  CLOCK: [2018-08-15 Wed 11:12]--[2018-08-15 Wed 11:12] =>  0:00
+  :END:
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-15 Wed 11:12]
+| Headline                               |   Time |
+|----------------------------------------+--------|
+| *Total time*                           | *0:57* |
+|----------------------------------------+--------|
+| Doc va phan tich yeu cau               |   0:02 |
+| TDD: Setup test case                   |   0:03 |
+| Dua ra brute force solution            |   0:34 |
+| Toi uu vao so sanh cac thuat toan      |   0:05 |
+| Bat dau code thuat toan thich hop nhat |   0:13 |
+#+END:
