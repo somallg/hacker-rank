@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "TestFixtureSchematicsSchema",
+  "title": "Test Fixture Schematics Schema",
+  "type": "object",
+  "properties": {
+    "directory": {
+      "description": "The path to create problem files.",
+      "type": "string",
+      "format": "path",
+      "alias": "d"
+    }
+  },
+  "required": [
+    "directory"
+  ]
+}
