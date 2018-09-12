@@ -5,6 +5,16 @@
       "description": "A schematic to generate template files for various coding challenge sites.",
       "factory": "./file-generator",
       "schema": "./file-generator/schema.json"
+    },
+    "fix-spec": {
+      "description": "A schematic to fix spec file",
+      "factory": "./fix-spec/index#fixSpec",
+      "schema": "./fix-spec/schema.json"
+    },
+    "test-fixture": {
+      "description": "A schematic to fix test fixture structure",
+      "factory": "./test-fixture",
+      "schema": "./test-fixture/schema.json"
     }
   }
 }

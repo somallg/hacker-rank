@@ -4,6 +4,7 @@
   "description": "A schematics to generate default template for differents coding challenge sites",
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "watch": "tsc -w -p tsconfig.json",
     "test": "yarn build && jasmine src/**/*_spec.js"
   },
   "keywords": [
