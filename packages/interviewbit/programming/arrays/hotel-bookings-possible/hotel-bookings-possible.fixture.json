@@ -46,8 +46,7 @@
         },
         {
           "name": "Large 1",
-          "inputSize": 10e3,
-          "timeLimit": 100
+          "inputSize": 10e3
         },
         {
           "name": "Large 2",

@@ -37,7 +37,7 @@
         {
           "name": "Medium 1",
           "inputSize": 100,
-          "timeLimit": 50
+          "timeLimit": 100
         },
         {
           "name": "Medium 2",

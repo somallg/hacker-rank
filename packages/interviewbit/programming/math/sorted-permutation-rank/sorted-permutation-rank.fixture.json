@@ -57,12 +57,12 @@
         {
           "name": "Medium 1",
           "inputSize": 100,
-          "timeLimit": 100
+          "timeLimit": 200
         },
         {
           "name": "Medium 2",
           "inputSize": 1000,
-          "timeLimit": 100
+          "timeLimit": 500
         }
       ]
     }

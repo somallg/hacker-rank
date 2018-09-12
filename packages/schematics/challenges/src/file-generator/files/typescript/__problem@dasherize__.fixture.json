@@ -61,18 +61,15 @@
         },
         {
           "name": "Large 1",
-          "inputSize": 10e3,
-          "timeLimit": 200
+          "inputSize": 10e3
         },
         {
           "name": "Large 2",
-          "inputSize": 50e3,
-          "timeLimit": 500
+          "inputSize": 50e3
         },
         {
           "name": "Large 3",
-          "inputSize": 100e3,
-          "timeLimit": 1000
+          "inputSize": 100e3
         }
       ]
     }

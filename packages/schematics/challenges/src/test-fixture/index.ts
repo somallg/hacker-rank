@@ -32,10 +32,7 @@ export default function(options: TestFixtureOptions): Rule {
             },
             {
               name: 'Performance Tests',
-              testCases: fixtureData.performanceTests.map((t: any) => ({
-                ...t,
-                timeLimit: 100
-              }))
+              testCases: fixtureData.performanceTests
             }
           ]
         };

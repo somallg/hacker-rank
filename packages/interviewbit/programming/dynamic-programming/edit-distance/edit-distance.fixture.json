@@ -47,17 +47,17 @@
         {
           "name": "Medium 1",
           "inputSize": 100,
-          "timeLimit": 100
+          "timeLimit": 200
         },
         {
           "name": "Medium 2",
           "inputSize": 1e3,
-          "timeLimit": 100
+          "timeLimit": 400
         },
         {
           "name": "Large 1",
           "inputSize": 10e3,
-          "timeLimit": 200
+          "timeLimit": 600
         }
       ]
     }

@@ -51,23 +51,19 @@
         },
         {
           "name": "Large 1",
-          "inputSize": 10000,
-          "timeLimit": 100
+          "inputSize": 10e3
         },
         {
           "name": "Large 2",
-          "inputSize": 50000,
-          "timeLimit": 100
+          "inputSize": 50e3
         },
         {
           "name": "Large 3",
-          "inputSize": 100000,
-          "timeLimit": 100
+          "inputSize": 100e3
         },
         {
           "name": "Extreme Large 1",
-          "inputSize": 1000000,
-          "timeLimit": 100
+          "inputSize": 1e6
         }
       ]
     }
