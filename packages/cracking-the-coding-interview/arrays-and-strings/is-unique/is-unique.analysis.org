@@ -1,0 +1,43 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-13 Thu 10:55]
+  :LOGBOOK:
+  CLOCK: [2018-12-13 Thu 10:53]--[2018-12-13 Thu 10:55] =>  0:02
+  :END:
+1. ASCII string hay Unicode
+2. Su dung Map/Object de store
+3. Trong truong hop so luong ky tu tu a - z (26) ta co the su dung bit vector de kiem tra. Kiem tra ky tu co khong bang: checker & (1 << val) va danh dau voi check |= (1 << val)
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-13 Thu 10:55]
+  :LOGBOOK:
+  CLOCK: [2018-12-13 Thu 10:55]--[2018-12-13 Thu 10:55] =>  0:00
+  :END:
+Done
+* DONE Dua ra brute force solution
+  CLOSED: [2018-12-13 Thu 10:55]
+  :LOGBOOK:
+  CLOCK: [2018-12-13 Thu 10:55]--[2018-12-13 Thu 10:55] =>  0:00
+  :END:
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-12-13 Thu 10:55]
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-12-13 Thu 10:55]
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-12-13 Thu 10:55]
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:

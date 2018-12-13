@@ -1,0 +1,67 @@
+{
+  "name": "CheckPermutation Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": ["dog", "god"],
+          "output": true
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": ["ab", "ba"],
+          "output": true
+        },
+        {
+          "name": "Sample 2",
+          "input": ["ab", "ac"],
+          "output": false
+        },
+        {
+          "name": "Extreme 1",
+          "input": ["", ""],
+          "output": true
+        },
+        {
+          "name": "Extreme 2",
+          "input": ["", "a"],
+          "output": false
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 100,
+          "timeLimit": 10
+        },
+        {
+          "name": "Medium 2",
+          "inputSize": 1e3,
+          "timeLimit": 100
+        },
+        {
+          "name": "Large 1",
+          "inputSize": 10e3
+        },
+        {
+          "name": "Large 2",
+          "inputSize": 50e3
+        },
+        {
+          "name": "Large 3",
+          "inputSize": 100e3
+        }
+      ]
+    }
+  ]
+}

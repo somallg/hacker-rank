@@ -1,0 +1,35 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-13 Thu 11:00]
+1. Kiem tra permutation can bo qua ky tu hoa/thuong
+2. Ky tu trang co can thiet khong?
+3. 2 chuoi co do dai khac nhau se khong the la hoan vi cua nhau duoc
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-13 Thu 11:06]
+
+* TODO Dua ra brute force solution
+1. Ta nhan thay 2 strings la hoan vi cua nhau vay ca 2 se cung so luong ky tu nhung co thu tu sap sep khac nhau. Ta se sap sep 2 chuoi khi do ca 2 se cung ve 1 thu tu va so sanh 2 chuoi da duoc sort voi nhau
+Cach nay co loi the la: clean, co the code de dang, de doc hieu. Nhung hieu nang chua phai la tot nhat. Ta se di den cach 2
+
+2. Kiem tra 2 chuoi co cung so luong ky tu. De lam duoc viec nay, ta can duyet trung chuoi 1 va dem so luong ky tu trong moi chuoi, sau do so sanh 2 ket qua
+
+
+* TODO Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
