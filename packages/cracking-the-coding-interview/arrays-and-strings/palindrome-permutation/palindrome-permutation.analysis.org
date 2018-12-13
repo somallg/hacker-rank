@@ -1,0 +1,37 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-13 Thu 13:29]
+1. Kiem tra 1 chuoi co phai la hoan vi cua chuoi palindrome hay khong
+2. Chuoi palindrome la chuoi ma doc xuoi hay nguoc deu nhu nhau
+
+Do do dieu kieu can la cac ky tu se phai xuat hien chan lan, va nhieu nhat 1 ky tu duoc quyen xuat hien le lan
+V/d: tactcoapapa la hoan vi cua chuoi palindrome vi co 2 Ts, 4 As, 2 Cs, 2 Ps va 1 O. O se la trung tam cua moi chuoi palindrome
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-13 Thu 13:30]
+
+* TODO Dua ra brute force solution
+1. Tinh so luong tung ky tu trong chuoi. Neu co nhiu nhat 1 phan tu xuat hien le lan, tra ve true khong thi false
+
+2. Ta co the vua loop vua kiem tra bien cout, cuoi cung kiem tra gia tri bien count thay vi lap lai mang de dem so luong count le
+
+3. Voi gia tri count ta chi can biet no chan hay le (khong quan tam den gia tri). Nghia la ta chi co 2 gia tri giong nhu so binary (hay bat/tat den). Voi suy nghi do, ta co the luu bien dem duoi dang binary. Moi ky tu xuat hietn ta se, bat bit tuong ung voi no (1 << val). Cuoi cung, ta kiem tra xem bien den co nhieu nhat 1 bit 1. Ta co cach nhanh de kiem tra do la n & n - 1 === 0 thi n chi co 1 bit 1
+
+* TODO Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
