@@ -1,0 +1,28 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-14 Fri 17:03]
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-14 Fri 17:04]
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-12-14 Fri 17:06]
+1. Duyet tung ky tu trong chuoi
+2. Voi moi ky tu, dem so luong ky tu lap lai lien tiep thanh count
+3. THem ky tu + count vao ket qua
+4. Tiep tuc tai index + count
+5. Kiem tra compress voi ky tu ban dau neu nho hon thi tra ve ky tu compress
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-12-14 Fri 17:06]
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-12-14 Fri 17:06]
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
