@@ -1,0 +1,41 @@
+| Question                    | Answer |
+|-----------------------------+--------|
+| Yeu cau la gi ?             |        |
+| Yeu cau dac biet gi khong ? |        |
+| Y tuong gi khong ?          |        |
+| Phan tich y tuong tren ?    |        |
+
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-14 Fri 16:39]
+Yeu cau: kiem tra xem co the chuyen hoa 1 string s sang string t ma chi can dung duy nhat 1 phep bien doi khong. Co loai loai bien doi la: them, sua, xoa
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-14 Fri 16:39]
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-12-14 Fri 16:41]
+1. Duyet tung ky tu trong chuoi s
+2. voi moi ky tu nay ta thu 3 cach bien doi.
+3. Neu 1 trong ba cach bien doi tra ve bang ky tu t thi tra ve true.
+4. Neu khong kien tra cho ky tu tiep theo.
+5. Neu den cuoi cung ma khong the bang duoc t thi tra ve false
+=> Cach nay khong on, va cham
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-12-14 Fri 16:44]
+Ta khong can phai thu 3 phep bien doi cho tung ky tu mot.
+Ta nhan thay neu chi 1 phep bien doi de s -> t, thi se co 3 kha nang du tren do dai cua chuoi s va t la:
+1. Neu len(s) === len(t) => thi de tra ve true s va t chi khac nhau 1 ky tu
+2. Neu len(s) === len(t) + 1 => tat ca ky tu cua t phai trung trong s
+3. Neu len(s) === len(t) - 1 => tat ca ky tu cua s phai o trong t
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
