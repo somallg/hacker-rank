@@ -1,0 +1,30 @@
+* DONE Doc va phan tich yeu cau
+  CLOSED: [2018-12-17 Mon 11:37]
+Neu nhu s2 la 1 phep xoay cua s1 thi ta can hoi diem xoay hay tam xoay la o dau.
+Vi du, neu ta xoay waterbottle sau wat ta se duoc erbottlewat. Trong phep xoay nay, ta cat s1 thanh 2 phan x va y sau do bien doi chung de thanh s2
+s1 = xy = waterbottle (x = wat, y = errbottle)
+s2 = yx = errbottlewat
+Do do, chung ta cung kiem tra xem co cach nao de chia s1 thanh s2 hay khong. Du chia theo cach nao di nua thi ta se luon co, yx la substring cua xyxy hoac s2 la substring cua s1s1
+
+* DONE TDD: Setup test case
+  CLOSED: [2018-12-17 Mon 11:38]
+
+* DONE Dua ra brute force solution
+  CLOSED: [2018-12-17 Mon 11:38]
+Ta chi can kiem tra s2 co phai la substring cua s1s1 hay khong
+
+* DONE Toi uu vao so sanh cac thuat toan
+  CLOSED: [2018-12-17 Mon 11:38]
+
+* DONE Bat dau code thuat toan thich hop nhat
+  CLOSED: [2018-12-17 Mon 11:38]
+
+* DONE Test va fix bug neu co
+  CLOSED: [2018-12-17 Mon 11:38]
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
