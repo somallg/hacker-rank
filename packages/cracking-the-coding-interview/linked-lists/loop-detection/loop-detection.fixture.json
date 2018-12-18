@@ -1,0 +1,57 @@
+{
+  "name": "LoopDetection Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": [1, 3, 4, 5, 6],
+          "output": true
+        },
+        {
+          "name": "Example 2",
+          "input": [1, 2, 3, 4],
+          "output": true
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": [1, 2, 3, 4],
+          "output": true
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 100,
+          "timeLimit": 10
+        },
+        {
+          "name": "Medium 2",
+          "inputSize": 1e3,
+          "timeLimit": 100
+        },
+        {
+          "name": "Large 1",
+          "inputSize": 10e3
+        },
+        {
+          "name": "Large 2",
+          "inputSize": 50e3
+        },
+        {
+          "name": "Large 3",
+          "inputSize": 100e3
+        }
+      ]
+    }
+  ]
+}
