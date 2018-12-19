@@ -1,36 +1,33 @@
 /**
  * StackMin
  */
-
-class Stack<T> {
-  private readonly data: T[];
-
-  constructor() {
-    this.data = [];
-  }
-
-  public push(value: T): void {
-    this.data.push(value);
-  }
-
-  public pop(): T | undefined {
-    return this.data.pop();
-  }
-
-  public peek(): T {
-    return this.data[this.data.length - 1];
-  }
-
-  public isEmpty(): boolean {
-    return this.data.length === 0;
-  }
-}
+import { Stack } from '../stack';
 
 // tslint:disable-next-line
-class StackWithMin extends Stack<NodeWithMin> {
-  public pushValue(value: number): void {
-    const newMin = Math.min(value, this.getMin());
-    super.push(new NodeWithMin(value, newMin));
+class StackWithMin extends Stack<number> {
+  private minStack: Stack<number>;
+
+  constructor() {
+    super();
+    this.minStack = new Stack();
+  }
+
+  public push(value: number): void {
+    if (value <= this.getMin()) {
+      this.minStack.push(value);
+    }
+
+    super.push(value);
+  }
+
+  public pop(): number | undefined {
+    const value = super.pop();
+
+    if (value === this.minStack.peek()) {
+      this.minStack.pop();
+    }
+
+    return value;
   }
 
   public getMin(): number {
@@ -38,25 +35,14 @@ class StackWithMin extends Stack<NodeWithMin> {
       return Number.MAX_SAFE_INTEGER;
     }
 
-    return this.peek().min;
-  }
-}
-
-// tslint:disable-next-line
-class NodeWithMin {
-  public value: number;
-  public min: number;
-
-  constructor(value: number, min: number) {
-    this.value = value;
-    this.min = min;
+    return this.minStack.peek();
   }
 }
 
 function stackMin(array: number[]): number {
   const stackWithMin = new StackWithMin();
 
-  array.forEach(n => stackWithMin.pushValue(n));
+  array.forEach(n => stackWithMin.push(n));
 
   stackWithMin.pop();
   stackWithMin.pop();
