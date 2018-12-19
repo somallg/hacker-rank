@@ -6,7 +6,7 @@
 | Phan tich y tuong tren ?    |        |
 
 * TODO Doc va phan tich yeu cau
-
+Ta su dung ky thuuat Fast/Slow runner
 * TODO TDD: Setup test case
 
 * TODO Dua ra brute force solution

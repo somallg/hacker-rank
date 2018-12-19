@@ -4,16 +4,16 @@
 
 import { LinkedListNode } from '../index';
 
-function createLoop(array: number[]): LinkedListNode {
+function createLoop(array: number[]): LinkedListNode | null {
   if (array.length <= 0) {
-    return new LinkedListNode(0);
+    return null;
   }
 
   const [head, ...rest] = array;
 
   const headNode = new LinkedListNode(head);
 
-  const seed = Math.round(Math.random() * (array.length - 1)) + 1;
+  const seed = 2;
 
   let loopNode = null;
   let previous = headNode;
@@ -22,7 +22,7 @@ function createLoop(array: number[]): LinkedListNode {
     const node = new LinkedListNode(n);
     previous.next = node;
     previous = node;
-    if (index === seed) {
+    if (index + 1 === seed) {
       loopNode = node;
     }
   });
@@ -32,7 +32,7 @@ function createLoop(array: number[]): LinkedListNode {
   return headNode;
 }
 
-function isLoop(head: LinkedListNode): LinkedListNode | null {
+function isLoop(head: LinkedListNode | null): LinkedListNode | null {
   let slow: LinkedListNode | null = head;
   let fast: LinkedListNode | null = head;
 

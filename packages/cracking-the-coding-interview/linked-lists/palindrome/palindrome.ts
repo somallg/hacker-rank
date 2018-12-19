@@ -2,15 +2,7 @@
  * Palindrome
  */
 
-class LinkedListNode {
-  public next: LinkedListNode | null;
-  public data: number;
-
-  constructor(data: number) {
-    this.next = null;
-    this.data = data;
-  }
-}
+import { LinkedListNode } from '../index';
 
 // tslint:disable-next-line
 class ResultNode {
@@ -24,16 +16,17 @@ class ResultNode {
 }
 
 function createLinkedList(array: number[]): LinkedListNode {
-  const head = new LinkedListNode(array[0]);
+  const [head, ...rest] = array;
+  const headNode = new LinkedListNode(head);
 
-  let previous = head;
-  for (let i = 1; i < array.length; i += 1) {
-    const node = new LinkedListNode(array[i]);
+  let previous = headNode;
+  rest.forEach(n => {
+    const node = new LinkedListNode(n);
     previous.next = node;
     previous = node;
-  }
+  });
 
-  return head;
+  return headNode;
 }
 
 function isPalindromeRecurse(
