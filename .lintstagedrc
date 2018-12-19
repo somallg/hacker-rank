@@ -8,6 +8,5 @@
       "git add"
     ]
   },
-  "concurrent": false,
-  "renderer": "verbose"
+  "concurrent": false
 }
