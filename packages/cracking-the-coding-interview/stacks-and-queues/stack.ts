@@ -5,8 +5,10 @@ class Stack<T> {
     this.data = [];
   }
 
-  public push(value: T): void {
-    this.data.push(value);
+  public push(value: T | undefined): void {
+    if (value) {
+      this.data.push(value);
+    }
   }
 
   public pop(): T | undefined {

@@ -1,0 +1,22 @@
+* Doc va phan tich yeu cau
+
+1. Implement MyQueue bang cach su dung 2stack
+Overall cua class MyQueue se gome
+
+class MyQueue {
+
+  add();
+
+  remove();
+
+  peek();
+
+  isEmpty();
+
+}
+
+2. Diem khac nhau lon nhat giua queue va stack la thu tu item ra va vao.
+Do do ta co the su dung 2 stack de dam bao thu tu ra vao cua queue la LIFO
+a. Khi them item vao queue, ta chi can them vao s1 (newest item on top)
+b. Khi lay item ra, neu s2 khong con item thi tao pop tu s1 push vao s2, dao nguoc thu tu cua s1 vao s2 (oldest first)
+c. Tu do pop tu s2 se ra duoc oldest item
