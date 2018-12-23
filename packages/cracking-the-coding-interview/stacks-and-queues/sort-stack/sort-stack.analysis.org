@@ -1,0 +1,25 @@
+* Doc va phan tich yeu cau
+Bai toan yeu cau thuc hien thuat toan sort bang cach su dung stack.
+Neu nhu ta co 3 stacks trong do s1 la stack khoi diem, s2 la stack da duoc sort va s3 la stack trung gian, khi do ta se tim tung gia tri minimun cua s1 va chuyen sang s3. Sau khi xong roi chuyen sang s2.
+Nhung ta chi ca the su dung 1 stack nen cach nay khong hieu qua. Ta can nghi den cach khac hieu qua hon.
+
+Thay vi tim so nho nhat trong stack s1, ta van sap xep duoc s1 theo thu tu bang vao day vao s2. Bang cach nao ?
+Voi moi phan tu trong s1, ta se dat no vao vi tri cuoi cung trong s2.
+Gia du: s1 = 5 10 7, s2 = 12 8 3 1, ta can lam cac buoc la
+1. s1.pop() => 5
+2. Dat 5 vao vi tri cuoi cung cua no (truoc 3)
+3. Pop 12 ra khoi s2 va dat vao s1
+4. Pop 8 ra khoi s2 va dat vao s1
+5. Khi do s1 = 8 12 10 7, s2 = 5 3 1
+6. Lam tuong tu cho 8 va 12
+
+
+* TDD: Setup test case
+
+* Dua ra brute force solution
+
+* Toi uu vao so sanh cac thuat toan
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
