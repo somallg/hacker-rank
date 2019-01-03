@@ -1,4 +1,4 @@
-var HashTableSet = require('./hash-table.js');
+import { HashTableSet } from './hash-table';
 
 describe('hash table set', () => {
   it('hash', () => {
@@ -13,6 +13,7 @@ describe('hash table set', () => {
       table.hash('a much longer strings than the other ones', 2)
     ).toBeLessThan(3);
   });
+
   it('add and check', () => {
     const table = new HashTableSet();
     table.add('hi');

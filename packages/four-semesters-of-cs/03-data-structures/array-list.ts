@@ -1,32 +1,35 @@
 class ArrayList {
+  public length: number;
+  private readonly data: object;
+
   constructor() {
     this.length = 0;
     this.data = {};
   }
 
-  push(value) {
+  public push(value: any): void {
     this.data[this.length] = value;
     this.length = this.length + 1;
   }
 
-  pop() {
+  public pop(): any {
     const ans = this.data[this.length - 1];
     delete this.data[this.length - 1];
     this.length--;
     return ans;
   }
 
-  get(index) {
+  public get(index: number): any {
     return this.data[index];
   }
 
-  delete(index) {
+  public delete(index: number): any {
     const ans = this.data[index];
     this._collapseTo(index);
     return ans;
   }
 
-  _collapseTo(index) {
+  private _collapseTo(index: number): void {
     for (let i = index; i < this.length; i = i + 1) {
       this.data[i] = this.data[i + 1];
     }
@@ -36,4 +39,4 @@ class ArrayList {
   }
 }
 
-module.exports = ArrayList;
+export { ArrayList };

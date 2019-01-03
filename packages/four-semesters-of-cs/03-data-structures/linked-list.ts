@@ -1,46 +1,62 @@
 class Node {
-  constructor(value) {
+  public value: any;
+  public next: Node | null;
+
+  constructor(value: any) {
     this.value = value;
     this.next = null;
   }
 }
 
+// tslint:disable-next-line
 class LinkedList {
+  public tail: Node | null;
+  public head: Node | null;
+  public length: number;
+
   constructor() {
     this.tail = this.head = null;
     this.length = 0;
   }
 
-  push(value) {
+  public push(value: any): void {
     const node = new Node(value);
     this.length = this.length + 1;
     if (!this.head) {
       this.head = node;
-    } else {
+    } else if (this.tail) {
       this.tail.next = node;
     }
     this.tail = node;
   }
 
-  pop() {
-    if (!this.head) return null;
+  public pop(): Node | null {
+    if (!this.head) {
+      return null;
+    }
+
     if (this.head === this.tail) {
       const node = this.head;
       this.head = this.tail = null;
       return node.value;
     }
+
     const penultimate = this._find(
       null,
       (value, nodeValue, i, current) => current.next === this.tail
     );
-    const ans = penultimate.next.value;
-    penultimate.next = null;
+    const ans = penultimate && penultimate.next ? penultimate.next.value : null;
+
+    if (penultimate) {
+      penultimate.next = null;
+    }
+
     this.tail = penultimate;
     this.length--;
     return ans;
   }
 
-  _find(value, test = this.test) {
+  public _find(value: any, test = this.test) {
     let current = this.head;
     let i = 0;
     while (current) {
@@ -53,13 +69,15 @@ class LinkedList {
     return null;
   }
 
-  get(index) {
+  public get(index: number): any {
     const node = this._find(index, this.testIndex);
-    if (!node) return null;
+    if (!node) {
+      return null;
+    }
     return node.value;
   }
 
-  delete(index) {
+  public delete(index: number): any {
     if (index === 0) {
       const head = this.head;
       if (head) {
@@ -68,30 +86,43 @@ class LinkedList {
         this.head = null;
       }
       this.length--;
-      return head.value;
+
+      return head ? head.value : 0;
     }
 
     const node = this._find(index - 1, this.testIndex);
-    const excise = node.next;
-    if (!excise) return null;
-    node.next = excise.next;
-    if (!node.next.next) this.tail = node.next;
+    const excise = node ? node.next : null;
+
+    if (!excise) {
+      return null;
+    }
+
+    if (node) {
+      node.next = excise.next;
+    }
+
+    if (node && node.next && !node.next.next) {
+      this.tail = node.next;
+    }
+
     this.length--;
     return excise.value;
   }
 
-  test(search, nodeValue) {
+  public test(search: any, nodeValue: any, index: number, current: Node) {
     return search === nodeValue;
   }
 
-  testIndex(search, __, i) {
+  public testIndex(search: any, _: any, i: any): boolean {
     return search === i;
   }
 
-  serialize() {
-    const ans = [];
+  public serialize(): any {
+    const ans: any = [];
     let current = this.head;
-    if (!current) return ans;
+    if (!current) {
+      return ans;
+    }
     while (current) {
       ans.push(current.value);
       current = current.next;
@@ -100,4 +131,4 @@ class LinkedList {
   }
 }
 
-module.exports = LinkedList;
+export { LinkedList };

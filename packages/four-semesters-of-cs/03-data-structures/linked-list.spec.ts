@@ -1,30 +1,30 @@
-var LinkedList = require('./linked-list.js');
+import { LinkedList } from './linked-list';
 
-const range = length =>
+const range = (length: number) =>
   Array(length)
-    .fill()
+    .fill(0)
     .map(Number.call, Number);
 
-const abcRange = length =>
+const abcRange = (length: number) =>
   range(length).map(num => String.fromCharCode(97 + num));
 
 describe('LinkedList', () => {
-  let list;
+  let list: LinkedList;
 
   beforeEach(() => {
     list = new LinkedList();
   });
 
-  it('constructor', () => {
+  it('should constructor', () => {
     expect(list).toEqual(jasmine.any(LinkedList));
   });
 
-  it('push', () => {
+  it('should push', () => {
     abcRange(26).map(character => list.push(character));
     expect(list.length).toEqual(26);
   });
 
-  it('pop', () => {
+  it('should pop', () => {
     abcRange(13).map(character => list.push(character));
     expect(list.length).toEqual(13);
     range(10).map(() => list.pop());
@@ -32,7 +32,7 @@ describe('LinkedList', () => {
     expect(list.pop()).toEqual('c');
   });
 
-  it('get', () => {
+  it('should get', () => {
     list.push('first');
     expect(list.get(0)).toEqual('first');
     list.push('second');
@@ -46,7 +46,7 @@ describe('LinkedList', () => {
     expect(list.get(list.length - 1)).toEqual('y');
   });
 
-  it('delete', () => {
+  it('should delete', () => {
     abcRange(26).map(character => list.push(character));
     list.delete(13);
     expect(list.length).toEqual(25);

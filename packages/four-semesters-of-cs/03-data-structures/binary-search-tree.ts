@@ -1,16 +1,24 @@
 class Node {
-  constructor(value, left = null, right = null) {
+  public value: any;
+  public left: Node | null;
+  public right: Node | null;
+
+  constructor(value: any, left = null, right = null) {
     this.value = value;
     this.right = right;
     this.left = left;
   }
 }
+
+// tslint:disable-next-line
 class Tree {
+  public root: Node | null;
+
   constructor() {
     this.root = null;
   }
 
-  add(value) {
+  public add(value: any): void {
     if (this.root === null) {
       this.root = new Node(value);
       return value;
@@ -39,9 +47,9 @@ class Tree {
     }
   }
 
-  toObject() {
-    return this.root;
+  public toObject(): Node {
+    return this.root || new Node(0);
   }
 }
 
-module.exports = { Tree };
+export { Tree };
