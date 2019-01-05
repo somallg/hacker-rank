@@ -1,0 +1,22 @@
+* Doc va phan tich yeu cau
+
+Cach 1: su dung 1 queue cho cho bai toan.
+Moi khi co Dog/Cat ta cho can enqueue vao q.
+Voi cach nay thi dequeueAny de nho cho.
+Trong truong hop cua dequeueDog/dequeueCat can phai duyet queue
+cho den khi gap duoc phan tu can thiet
+
+Cach 2: su dung 1 queue cho Dog va 1 queue cho Cat
+dequeueDog/dequeueCat tro nen de dang hon rat nhieu
+Trong khi do dequeueAny, ta can kiem tra xem con vat nao co thoi than vao trc.
+Bang cach su dung timeStamp
+
+* TDD: Setup test case
+
+* Dua ra brute force solution
+
+* Toi uu vao so sanh cac thuat toan
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co

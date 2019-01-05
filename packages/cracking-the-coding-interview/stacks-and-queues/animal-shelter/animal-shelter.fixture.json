@@ -1,0 +1,52 @@
+{
+  "name": "AnimalShelter Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": [0, 0, 1, 0],
+          "output": "Dog 3"
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": [1, 1, 1, 1],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 100,
+          "timeLimit": 10
+        },
+        {
+          "name": "Medium 2",
+          "inputSize": 1e3,
+          "timeLimit": 100
+        },
+        {
+          "name": "Large 1",
+          "inputSize": 10e3
+        },
+        {
+          "name": "Large 2",
+          "inputSize": 50e3
+        },
+        {
+          "name": "Large 3",
+          "inputSize": 100e3
+        }
+      ]
+    }
+  ]
+}
