@@ -1,4 +1,6 @@
-function addg(first?: number | undefined): Function {
+import { BinaryFunction } from './function.util';
+
+function addg(first?: number): (n?: number) => number | any {
   if (first === undefined) {
     return () => undefined;
   }
@@ -16,13 +18,15 @@ function addg(first?: number | undefined): Function {
   return more;
 }
 
-function liftg(binary: Function): Function {
-  return (first: number) => {
+function liftg(
+  binary: BinaryFunction<any, any>
+): (first?: any) => (next?: number) => number | any {
+  return (first?: any) => {
     if (first === undefined) {
       return first;
     }
 
-    return function more(next: number) {
+    return function more(next?: number) {
       if (next === undefined) {
         return first;
       }
@@ -33,10 +37,10 @@ function liftg(binary: Function): Function {
   };
 }
 
-function arrayg(first?: number): Function {
+function arrayg(first?: number): (n?: number) => number | any {
   const arr: number[] = [];
 
-  const more = (next?: number): Function => {
+  const more = (next?: number): any => {
     if (next === undefined) {
       return () => arr;
     }
@@ -49,28 +53,27 @@ function arrayg(first?: number): Function {
   return more(first);
 }
 
-function arrayg2(first?: number): Function {
+function arrayg2(first?: number): any {
   if (first === undefined) {
     return () => [];
   }
 
   return liftg((array: number[], value: number) => {
     array.push(value);
-
     return array;
   })([first]);
 }
 
-function continuize(fn: Function): Function {
-  return (callback: Function, arg: any) => {
-    callback(fn(arg));
-  };
+function continuize(
+  fn: (arg: any) => any
+): (cb: (arg: any) => any, arg: any) => any {
+  return (callback: (arg: any) => any, arg: any) => callback(fn(arg));
 }
 
-function continuizeES6(fn: Function): Function {
-  return (callback: Function, ...arg: any[]) => {
-    callback(fn(...arg));
-  };
+function continuizeES6(
+  fn: (...args: any[]) => any
+): (cb: (arg: any) => any, ...args: any[]) => any {
+  return (callback: (arg: any) => any, ...args: any[]) => callback(fn(...args));
 }
 
 export { addg, liftg, arrayg, arrayg2, continuize, continuizeES6 };

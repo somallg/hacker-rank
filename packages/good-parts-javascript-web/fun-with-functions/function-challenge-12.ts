@@ -1,12 +1,12 @@
 function pubsub() {
-  const subscribes: any[] = [];
+  const subscribers: any[] = [];
 
   return Object.freeze({
-    subscribe(subscribers: any) {
-      subscribers.push(subscribers);
+    subscribe(subscriber: any) {
+      subscribers.push(subscriber);
     },
     publish(publication: any) {
-      subscribes.forEach(sub => {
+      subscribers.forEach(sub => {
         try {
           sub(publication);
         } catch (ignore) {

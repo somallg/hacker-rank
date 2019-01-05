@@ -1,5 +1,6 @@
-import { addf } from './function-challenge-01';
 import { UnaryFunction } from './function.util';
+
+import { addf } from './function-challenge-01';
 
 import {
   fibonaccif,

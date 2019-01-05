@@ -1,8 +1,12 @@
-import { identityf } from './function-challenge-01';
-import { limit } from './function-challenge-03';
-import { element, from } from './function-challenge-04';
-import { concat } from './function-challenge-05';
 import { UnaryFunction } from './function.util';
+
+import { identityf } from './function-challenge-01';
+
+import { limit } from './function-challenge-03';
+
+import { element, from } from './function-challenge-04';
+
+import { concat } from './function-challenge-05';
 
 function gensymf(symbol: string): () => string {
   const nb = from(1);

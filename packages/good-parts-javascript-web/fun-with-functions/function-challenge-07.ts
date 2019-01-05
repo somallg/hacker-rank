@@ -14,7 +14,7 @@ function counter(n: number) {
   };
 }
 
-function revocable(binary: BinaryFunction | undefined) {
+function revocable(binary: BinaryFunction<number, number> | undefined) {
   return {
     invoke(a: number, b: number) {
       if (binary !== undefined) {
