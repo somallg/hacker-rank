@@ -1,4 +1,4 @@
-const src = 'challenges';
+const src = 'packages';
 const tools = 'tools';
 
 const gulpConfig = Object.freeze({
