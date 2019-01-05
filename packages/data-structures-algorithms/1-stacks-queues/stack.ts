@@ -1,6 +1,6 @@
 class Stack<T> {
-  private capacity: number;
-  private storage: { [key: string]: T };
+  private readonly capacity: number;
+  private readonly storage: { [key: string]: T };
   private length: number;
 
   constructor(capacity = Infinity) {
@@ -9,7 +9,7 @@ class Stack<T> {
     this.length = 0;
   }
 
-  push(value: T): number | string {
+  public push(value: T): number | string {
     if (this.length < this.capacity) {
       // tslint:disable:no-increment-decrement
       this.storage[this.length++] = value;
@@ -19,7 +19,7 @@ class Stack<T> {
     return 'Max capacity already reached. Remove element before adding a new one.';
   }
 
-  pop(): T {
+  public pop(): T {
     const value = this.storage[--this.length];
     delete this.storage[this.length];
 
@@ -30,11 +30,11 @@ class Stack<T> {
     return value;
   }
 
-  peek(): T {
+  public peek(): T {
     return this.storage[this.length - 1];
   }
 
-  count(): number {
+  public count(): number {
     return this.length;
   }
 }

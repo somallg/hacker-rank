@@ -1,6 +1,6 @@
 class Queue<T> {
-  private capacity: number;
-  private storage: { [key: string]: T };
+  private readonly capacity: number;
+  private readonly storage: { [key: string]: T };
   private head: number;
   private tail: number;
 
@@ -11,7 +11,7 @@ class Queue<T> {
     this.head = 0;
   }
 
-  euqueue(value: T): number | string {
+  public enqueue(value: T): number | string {
     if (this.tail < this.capacity) {
       // tslint:disable:no-increment-decrement
       this.storage[this.tail++] = value;
@@ -21,7 +21,7 @@ class Queue<T> {
     return 'Max capacity already reached. Remove element before adding a new one.';
   }
 
-  dequeue(): T {
+  public dequeue(): T {
     const value = this.storage[this.head];
     delete this.storage[this.head];
 
@@ -32,11 +32,11 @@ class Queue<T> {
     return value;
   }
 
-  peek(): T {
+  public peek(): T {
     return this.storage[this.head];
   }
 
-  count(): number {
+  public count(): number {
     return this.tail - this.head;
   }
 }

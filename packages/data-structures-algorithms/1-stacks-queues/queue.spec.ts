@@ -4,9 +4,9 @@ describe('Queue', () => {
   it('should work', () => {
     const myQueue = new Queue<string>();
 
-    myQueue.euqueue('Salad');
-    myQueue.euqueue('Meat');
-    myQueue.euqueue('Fish');
+    myQueue.enqueue('Salad');
+    myQueue.enqueue('Meat');
+    myQueue.enqueue('Fish');
 
     expect(myQueue.count()).toEqual(3);
     expect(myQueue.peek()).toEqual('Salad');
