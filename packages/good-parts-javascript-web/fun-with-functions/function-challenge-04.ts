@@ -1,4 +1,4 @@
-function from(start: number): Function {
+function from(start: number): () => number {
   // tslint:disable-next-line
   return () => start++;
 }
@@ -10,7 +10,7 @@ function* fromES6(start: number): IterableIterator<number> {
   }
 }
 
-function to(gen: Function, end: number): Function {
+function to(gen: () => number, end: number): () => number | undefined {
   return () => {
     const value = gen();
 
@@ -22,15 +22,18 @@ function to(gen: Function, end: number): Function {
   };
 }
 
-function fromTo(start: number, end: number): Function {
+function fromTo(start: number, end: number): () => number | undefined {
   return to(from(start), end);
 }
 
-function element(array: any[], gen = fromTo(0, array.length)): Function {
+function element(
+  array: any[],
+  gen = fromTo(0, array.length)
+): () => any | undefined {
   return () => {
     const index = gen();
 
-    if (index <= array.length - 1 && index !== undefined) {
+    if (index !== undefined && index <= array.length - 1) {
       return array[index];
     }
 

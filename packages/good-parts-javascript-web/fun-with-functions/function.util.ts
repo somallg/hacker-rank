@@ -1,9 +1,11 @@
-type InputType = number | undefined;
-type OutputType = number | undefined;
+type UnaryFunction<InputType, OutputType> = (value: InputType) => OutputType;
 
-type UnaryFunction = (value: InputType) => OutputType;
-type BinaryFunction = (first: InputType, second: InputType) => OutputType;
-type TernaryFunction = (
+type BinaryFunction<InputType, OutputType> = (
+  first: InputType,
+  second: InputType
+) => OutputType;
+
+type TernaryFunction<InputType, OutputType> = (
   first: InputType,
   second: InputType,
   third: InputType

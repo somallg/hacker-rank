@@ -12,15 +12,17 @@ function mul(first: number, second: number): number {
   return first * second;
 }
 
-function identityf(n: number): Function {
+function identityf(n: number): () => number {
   return () => n;
 }
 
-function addf(first: number): Function {
+function addf(first: number): (n: number) => number {
   return (second: number): number => first + second;
 }
 
-function liftf(binary: BinaryFunction): Function {
+function liftf(
+  binary: BinaryFunction<number, number>
+): (n: number) => (m: number) => number {
   return (first: number) => (second: number) => binary(first, second);
 }
 

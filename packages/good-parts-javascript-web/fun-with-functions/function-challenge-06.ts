@@ -4,12 +4,15 @@ import { element, from } from './function-challenge-04';
 import { concat } from './function-challenge-05';
 import { UnaryFunction } from './function.util';
 
-function gensymf(symbol: string) {
+function gensymf(symbol: string): () => string {
   const nb = from(1);
   return () => symbol + nb();
 }
 
-function gensymff(unary: UnaryFunction, seed: number): Function {
+function gensymff(
+  unary: UnaryFunction<number, number>,
+  seed: number
+): (s: string) => () => string {
   return (symbol: string) => {
     let num = seed;
     return () => {
@@ -19,7 +22,7 @@ function gensymff(unary: UnaryFunction, seed: number): Function {
   };
 }
 
-function fibonaccif(first: number, second: number): Function {
+function fibonaccif(first: number, second: number): () => number {
   let i = 0;
   return () => {
     let next;
@@ -42,7 +45,7 @@ function fibonaccif(first: number, second: number): Function {
   };
 }
 
-function fibonaccif2(a: number, b: number): Function {
+function fibonaccif2(a: number, b: number): () => number | undefined {
   return concat(concat(limit(identityf(a), 1), limit(identityf(b), 1)), () => {
     const next = a + b;
     /* tslint:disable:no-parameter-reassignment */
@@ -53,7 +56,7 @@ function fibonaccif2(a: number, b: number): Function {
   });
 }
 
-function fibonacci3(a: number, b: number) {
+function fibonaccif3(a: number, b: number) {
   return concat(element([a, b]), () => {
     const next = a + b;
     a = b;
@@ -63,4 +66,4 @@ function fibonacci3(a: number, b: number) {
   });
 }
 
-export { gensymf, gensymff, fibonaccif, fibonaccif2, fibonacci3 };
+export { gensymf, gensymff, fibonaccif, fibonaccif2, fibonaccif3 };

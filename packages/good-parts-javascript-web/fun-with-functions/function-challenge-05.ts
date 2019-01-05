@@ -1,6 +1,9 @@
 import { element } from './function-challenge-04';
 
-function collect(gen: Function, array: number[]): Function {
+function collect(
+  gen: () => number | undefined,
+  array: number[]
+): () => number | undefined {
   return () => {
     const value = gen();
     if (value !== undefined) {
@@ -11,7 +14,10 @@ function collect(gen: Function, array: number[]): Function {
   };
 }
 
-function filter(gen: Function, pred: Function): Function {
+function filter(
+  gen: () => number | undefined,
+  pred: (n: number) => boolean
+): () => any {
   const rec = (): any => {
     const value = gen();
 
@@ -25,7 +31,10 @@ function filter(gen: Function, pred: Function): Function {
   return rec;
 }
 
-function concat(gen1: Function, gen2: Function): Function {
+function concat(
+  gen1: (a?: number, b?: number) => number | undefined,
+  gen2: (a?: number, b?: number) => number | undefined
+): () => number | undefined {
   let gen = gen1;
   return () => {
     const value = gen();
@@ -39,7 +48,7 @@ function concat(gen1: Function, gen2: Function): Function {
   };
 }
 
-function concatES6(...gens: Function[]): Function {
+function concatES6(...gens: Array<() => number | undefined>): () => number {
   const next = element(gens);
   let gen = next();
 
