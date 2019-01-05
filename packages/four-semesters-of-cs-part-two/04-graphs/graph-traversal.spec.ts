@@ -1,9 +1,9 @@
-import { findMostCommonTitle } from './graph-traversal';
+import { findMostCommonTitle, User } from './graph-traversal';
 
 const getUser = (id: number) => (id <= 1000 && id > 0 ? list[id - 1] : null);
 
 /* tslint:disable */
-const list = [
+const list: User[] = [
   {
     id: 1,
     name: 'Leia Goede',

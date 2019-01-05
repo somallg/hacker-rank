@@ -1,15 +1,18 @@
 import { BloomFilter } from './bloom-filter';
 
 describe('BloomFilter', () => {
-  let bf;
+  let bf: BloomFilter;
+
   beforeEach(() => {
     bf = new BloomFilter();
   });
+
   it('returns false when empty', () => {
     expect(bf.contains('Brian')).toBe(false);
     expect(bf.contains('Sarah')).toBe(false);
     expect(bf.contains('Simona')).toBe(false);
   });
+
   it('handles one item', () => {
     expect(bf.contains('Brian')).toBe(false);
     bf.add('Brian');
@@ -17,6 +20,7 @@ describe('BloomFilter', () => {
     expect(bf.contains('Sarah')).toBe(false);
     expect(bf.contains('Simona')).toBe(false);
   });
+
   it('handles many items', () => {
     const names = [
       'Brian',

@@ -8,7 +8,7 @@ interface User {
 }
 /* tslint:enable */
 
-type GetUserFunction = (id: number) => User;
+type GetUserFunction = (id: number) => User | null;
 
 const findMostCommonTitle = (
   myId: number,
@@ -24,12 +24,14 @@ const findMostCommonTitle = (
       .filter(e => !seen.has(e)) // only not seen userId
       .map(id => getUser(id))
       .map(user => {
-        seen.add(user.id);
-        jobs[user.title] = jobs[user.title] ? jobs[user.title] + 1 : 1;
+        seen.add(user ? user.id : 0);
+        jobs[user ? user.title : ''] = jobs[user ? user.title : '']
+          ? jobs[user ? user.title : ''] + 1
+          : 1;
 
         return user;
       })
-      .map(user => user.connections)
+      .map(user => (user ? user.connections : []))
       .reduce((acc, user) => acc.concat(user), []);
   }
 
@@ -52,4 +54,4 @@ const findMostCommonTitle = (
     ).job;
 };
 
-export { findMostCommonTitle };
+export { findMostCommonTitle, User };
