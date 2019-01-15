@@ -41,14 +41,18 @@ function solveGenomicRangeQuery(
     <GenomicOccurrence[]>[{ A: 0, C: 0, G: 0, T: 0 }]
   );
 
-  // tslint:disable-next-line
-  return start.map((e, i) => [e, end[i]]).map(([start, end]) => {
-    const startOcc: GenomicOccurrence = occurence[start];
-    const endOcc: GenomicOccurrence = occurence[end + 1];
-    const rangeOcc: GenomicOccurrence = diffGenomic(endOcc, startOcc);
+  return (
+    start
+      .map((e: number, i: number) => [e, end[i]])
+      // tslint:disable-next-line
+      .map(([start, end]: number[]) => {
+        const startOcc: GenomicOccurrence = occurence[start];
+        const endOcc: GenomicOccurrence = occurence[end + 1];
+        const rangeOcc: GenomicOccurrence = diffGenomic(endOcc, startOcc);
 
-    return rangeOcc.A > 0 ? 1 : rangeOcc.C > 0 ? 2 : rangeOcc.G > 0 ? 3 : 4;
-  });
+        return rangeOcc.A > 0 ? 1 : rangeOcc.C > 0 ? 2 : rangeOcc.G > 0 ? 3 : 4;
+      })
+  );
 }
 
 export { solveGenomicRangeQuery };

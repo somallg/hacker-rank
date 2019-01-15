@@ -9,7 +9,11 @@ interface User {
 
 type GetUserFunction = (id: number) => User | undefined;
 
-const findMostCommonTitle: (myId: number, getUser: GetUserFunction, degreesOfSeparation: number) => string = (
+const findMostCommonTitle: (
+  myId: number,
+  getUser: GetUserFunction,
+  degreesOfSeparation: number
+) => string = (
   myId: number,
   getUser: GetUserFunction,
   degreesOfSeparation: number

@@ -35,20 +35,12 @@ describe('Brackets', () => {
       expect(solveBrackets('{{{{')).toEqual(0);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        expect(solveBrackets(generateString(50e3, '{'))).toEqual(0);
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      expect(solveBrackets(generateString(50e3, '{'))).toEqual(0);
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        expect(solveBrackets(generateString(100e3, '{'))).toEqual(0);
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      expect(solveBrackets(generateString(100e3, '{'))).toEqual(0);
+    }, 100);
   });
 });

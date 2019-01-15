@@ -40,37 +40,21 @@ describe('Flags', () => {
     });
 
     describe('Performance tests', () => {
-      it(
-        'should run for Medium input of 100 items',
-        () => {
-          solveFlags(generateArray(100));
-        },
-        100
-      );
+      it('should run for Medium input of 100 items', () => {
+        solveFlags(generateArray(100));
+      }, 100);
 
-      it(
-        'should run for Large 1 input of 10E3 items',
-        () => {
-          solveFlags(generateArray(10e3));
-        },
-        100
-      );
+      it('should run for Large 1 input of 10E3 items', () => {
+        solveFlags(generateArray(10e3));
+      }, 100);
 
-      it(
-        'should run for Large 2 input of 50E3 items',
-        () => {
-          solveFlags(generateArray(50e3));
-        },
-        100
-      );
+      it('should run for Large 2 input of 50E3 items', () => {
+        solveFlags(generateArray(50e3));
+      }, 100);
 
-      it(
-        'should run for Large 3 input of 100E3 items',
-        () => {
-          solveFlags(generateArray(100e3));
-        },
-        100
-      );
+      it('should run for Large 3 input of 100E3 items', () => {
+        solveFlags(generateArray(100e3));
+      }, 100);
     });
   });
 });

@@ -16,12 +16,8 @@ describe('String Util', () => {
       expect(generateString(100).length).toEqual(100);
     });
 
-    it(
-      'should generate a string of length 100E3 in reasonable time',
-      () => {
-        expect(generateString(100e3).length).toEqual(100e3);
-      },
-      100
-    );
+    it('should generate a string of length 100E3 in reasonable time', () => {
+      expect(generateString(100e3).length).toEqual(100e3);
+    }, 100);
   });
 });

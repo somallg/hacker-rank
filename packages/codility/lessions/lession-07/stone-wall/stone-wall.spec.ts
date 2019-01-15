@@ -39,20 +39,12 @@ describe('StoneWall', () => {
       expect(solveStoneWall([1, 2, 3, 4])).toEqual(4);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        solveStoneWall(generateArray(50e3));
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      solveStoneWall(generateArray(50e3));
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        solveStoneWall(generateArray(100e3));
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      solveStoneWall(generateArray(100e3));
+    }, 100);
   });
 });

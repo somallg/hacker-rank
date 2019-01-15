@@ -1,6 +1,10 @@
 /**
  */
 
+function max(a: number, b: number): number {
+  return Math.max(a, b);
+}
+
 function getPreviousToLeft(arr: number[], index: number): number {
   return arr[index - 1] === undefined ? 0 : arr[index - 1];
 }
@@ -18,15 +22,15 @@ function solveMaxSliceSum(arr: number[]): number {
   const maxSumEndAtIndex: number = arr
     // @ts-ignore
     .reduce(reduceMaxSum(getPreviousToLeft), [])
-    .reduce(Math.max);
+    .reduce(max, -Infinity);
 
   const maxSumStartAtIndex: number = arr
     .reverse()
     // @ts-ignore
     .reduce(reduceMaxSum(getPreviousToLeft), [])
-    .reduce(Math.max);
+    .reduce(max, -Infinity);
 
-  return Math.max(maxSumStartAtIndex, maxSumEndAtIndex);
+  return max(maxSumStartAtIndex, maxSumEndAtIndex);
 }
 
 export { solveMaxSliceSum };

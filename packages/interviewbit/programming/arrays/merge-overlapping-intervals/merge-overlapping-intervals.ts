@@ -17,8 +17,8 @@ function mergeOverlappingIntervals(array: number[][]): number[][] {
   const l: number = array.length;
   const result: number[][] = [];
 
-  array.sort(
-    ([a1, b1]: number[], [a2, b2]: number[]) => (a1 === a2 ? b1 - b2 : a1 - a2)
+  array.sort(([a1, b1]: number[], [a2, b2]: number[]) =>
+    a1 === a2 ? b1 - b2 : a1 - a2
   );
 
   let i: number = 0;

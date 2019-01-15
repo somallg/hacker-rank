@@ -32,20 +32,12 @@ describe('Dominator', () => {
       expect(solveDominator([1, 2, 3, 4, 4, 4, 4])).toEqual(3);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        solveDominator(generateArray(50e3));
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      solveDominator(generateArray(50e3));
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        solveDominator(generateArray(100e3));
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      solveDominator(generateArray(100e3));
+    }, 100);
   });
 });

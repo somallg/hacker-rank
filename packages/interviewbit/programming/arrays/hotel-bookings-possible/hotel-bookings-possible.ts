@@ -34,9 +34,8 @@ function hotelBookingsPossible(
     });
   }
 
-  bookings.sort(
-    (a: Booking, b: Booking) =>
-      a.value !== b.value ? a.value - b.value : a.event - b.event
+  bookings.sort((a: Booking, b: Booking) =>
+    a.value !== b.value ? a.value - b.value : a.event - b.event
   );
 
   // tslint:disable-next-line

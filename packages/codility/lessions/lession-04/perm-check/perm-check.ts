@@ -6,7 +6,14 @@ function solvePermCheck(a: number[]): number {
   const tmp: number[] = Array(n).fill(0);
 
   // tslint:disable-next-line
-  return tmp.map((_: number, i: number) => ++tmp[a[i] - 1]).every((e: number) => e === 1) ? 1 : 0;
+  return (
+    tmp
+      // tslint:disable-next-line
+      .map((_: number, i: number) => ++tmp[a[i] - 1])
+      .every((e: number) => e === 1)
+      ? 1
+      : 0
+  );
 }
 
 export { solvePermCheck };

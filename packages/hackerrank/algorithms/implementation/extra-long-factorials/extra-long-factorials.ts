@@ -18,24 +18,26 @@ function toDigits(n: number): number[] {
 }
 
 function mulNumberArray(n: number, array: number[]): number[] {
-  const tmp: Carry = array.map((e: number) => e * n).reduce(
-    (acc: Carry, e: number) => {
-      /* tslint:disable:no-parameter-reassignment */
-      e = e + acc.carry;
-      if (e > 9) {
-        acc.carry = Math.floor(e / 10);
-        e = e % 10;
-      } else {
-        acc.carry = 0;
-      }
+  const tmp: Carry = array
+    .map((e: number) => e * n)
+    .reduce(
+      (acc: Carry, e: number) => {
+        /* tslint:disable:no-parameter-reassignment */
+        e = e + acc.carry;
+        if (e > 9) {
+          acc.carry = Math.floor(e / 10);
+          e = e % 10;
+        } else {
+          acc.carry = 0;
+        }
 
-      acc.res.push(e);
+        acc.res.push(e);
 
-      return acc;
-    },
-    // tslint:disable-next-line
-    <Carry>{ res: [], carry: 0 }
-  );
+        return acc;
+      },
+      // tslint:disable-next-line
+      <Carry>{ res: [], carry: 0 }
+    );
 
   if (tmp.carry) {
     tmp.res.push(tmp.carry);

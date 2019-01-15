@@ -12,7 +12,8 @@ describe('ElizaSpeak', () => {
       expect(getChunks(2, 6)).toEqual([[0, 2], [2, 4], [4, 6]]);
     });
   });
-  describe('solveElizaSpeak', () => {
+
+  xdescribe('solveElizaSpeak', () => {
     it('should return when input ', () => {
       return solveElizaSpeak().then((data: string) => {
         console.log(data); // tslint:disable-line

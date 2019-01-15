@@ -51,10 +51,6 @@
         {
           "name": "Large 2",
           "inputSize": 50e3
-        },
-        {
-          "name": "Large 3",
-          "inputSize": 100e3
         }
       ]
     }

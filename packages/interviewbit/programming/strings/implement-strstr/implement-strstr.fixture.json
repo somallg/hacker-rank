@@ -29,7 +29,10 @@
         },
         {
           "name": "Example 5",
-          "input": ["aabaaaababaabbbabbabbbaabababaaaaaababaaabbabbabbabbaaaabbbbbbaabbabbbbbabababbaaabbaabbbababbb", "bba"],
+          "input": [
+            "aabaaaababaabbbabbabbbaabababaaaaaababaaabbabbabbabbaaaabbbbbbaabbabbbbbabababbaaabbaabbbababbb",
+            "bba"
+          ],
           "output": 13
         }
       ]

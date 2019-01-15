@@ -6,10 +6,7 @@
       "testCases": [
         {
           "name": "Example 1",
-          "input": [
-            6,
-            9
-          ],
+          "input": [6, 9],
           "output": 3
         }
       ]
@@ -19,34 +16,22 @@
       "testCases": [
         {
           "name": "Sample 1",
-          "input": [
-            1,
-            2
-          ],
+          "input": [1, 2],
           "output": 1
         },
         {
           "name": "Sample 2",
-          "input": [
-            3,
-            4
-          ],
+          "input": [3, 4],
           "output": 1
         },
         {
           "name": "Extreme 1",
-          "input": [
-            1,
-            1
-          ],
+          "input": [1, 1],
           "output": 1
         },
         {
           "name": "Extreme 2",
-          "input": [
-            0,
-            2
-          ],
+          "input": [0, 2],
           "output": 2
         }
       ]

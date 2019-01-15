@@ -6,6 +6,7 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import * as VinylFile from 'vinyl';
 
 import { Bundle, OutputChunk, rollup } from 'rollup';
+// tslint:disable-next-line
 import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
 
 import * as yargs from 'yargs';
@@ -102,6 +103,7 @@ gulp.task('lint', () => {
     .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
     .pipe<ReadWriteStream>(
       $.tslint({
+        configuration: './tslint.json',
         fix: true,
         formatter: 'stylish'
       })

@@ -8,7 +8,12 @@ describe('DijkstraAlgorithm', () => {
   describe('solveDijkstraAlgorithm', () => {
     it('should works', () => {
       // tslint:disable
-      const graph: { a: { fin: number }; b: { a: number; fin: number }; start: { a: number; b: number }; fin: {} } = {
+      const graph: {
+        a: { fin: number };
+        b: { a: number; fin: number };
+        start: { a: number; b: number };
+        fin: {};
+      } = {
         start: {
           a: 6,
           b: 2
@@ -42,7 +47,14 @@ describe('DijkstraAlgorithm', () => {
 
     it('should works', () => {
       // tslint:disable
-      const graph: { a: { c: number }; b: { a: number; d: number }; c: { d: number; fin: number }; d: { fin: number }; start: { a: number; b: number }; fin: {} } = {
+      const graph: {
+        a: { c: number };
+        b: { a: number; d: number };
+        c: { d: number; fin: number };
+        d: { fin: number };
+        start: { a: number; b: number };
+        fin: {};
+      } = {
         start: {
           a: 5,
           b: 2
@@ -64,7 +76,13 @@ describe('DijkstraAlgorithm', () => {
         fin: {}
       };
 
-      const costs: { a: number; b: number; c: number; d: number; fin: number } = {
+      const costs: {
+        a: number;
+        b: number;
+        c: number;
+        d: number;
+        fin: number;
+      } = {
         a: 5,
         b: 2,
         c: Infinity,

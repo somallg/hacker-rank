@@ -28,20 +28,12 @@ describe('EquiLeader', () => {
       expect(solveEquiLeader([1, 2, 3, 4])).toEqual(0);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        solveEquiLeader(generateArray(50e3));
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      solveEquiLeader(generateArray(50e3));
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        solveEquiLeader(generateArray(100e3));
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      solveEquiLeader(generateArray(100e3));
+    }, 100);
   });
 });

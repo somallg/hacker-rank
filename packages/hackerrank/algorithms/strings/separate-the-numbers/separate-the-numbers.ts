@@ -15,8 +15,8 @@ export function separateNumbers(s: string): string {
   res = res.filter((r: string) => r !== '-1');
 
   if (res && res.length > 0) {
-    return `YES ${res.reduce(
-      (acc: string, e: string) => (acc.length < e.length || acc < e ? acc : e)
+    return `YES ${res.reduce((acc: string, e: string) =>
+      acc.length < e.length || acc < e ? acc : e
     )}`;
   }
 

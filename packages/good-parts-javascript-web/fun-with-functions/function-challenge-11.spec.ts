@@ -16,11 +16,11 @@ describe('Function Challenge 11', () => {
 
     it('should access to private variable', () => {
       const v: Vector<string> = vector();
-      let arr: [] = [];
+      let arr: string[] = [];
 
       v.append('1');
       v.append('2');
-      v.append('2');
+      v.append('3');
       // @ts-ignore
       v.store('push', function(): void {
         // tslint:disable:no-invalid-this
@@ -29,9 +29,9 @@ describe('Function Challenge 11', () => {
       });
       v.append('0');
       expect(arr.length).toEqual(3);
-      expect(arr[0]).toEqual(1);
-      expect(arr[1]).toEqual(2);
-      expect(arr[2]).toEqual(3);
+      expect(arr[0]).toEqual('1');
+      expect(arr[1]).toEqual('2');
+      expect(arr[2]).toEqual('3');
     });
   });
 });

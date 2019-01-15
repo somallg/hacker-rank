@@ -3,7 +3,7 @@
     "*.js": ["prettier --write", "git add"],
     "*.ts": [
       "prettier --write",
-      "tslint --fix --format verbose",
+      "tslint --fix --format stylish",
       "yarn jest --findRelatedTests",
       "git add"
     ]

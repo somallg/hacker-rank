@@ -33,11 +33,8 @@ interface TestExecutor<InputType, OutputType> {
 // tslint:disable:no-any
 function prettyFormatArray(array: any[]): string {
   return array
-    .map(
-      (param: any) =>
-        Array.isArray(param)
-          ? `\n${' '.repeat(12)}[${param.join(', ')}]`
-          : param
+    .map((param: any) =>
+      Array.isArray(param) ? `\n${' '.repeat(12)}[${param.join(', ')}]` : param
     )
     .join(', ');
 }
@@ -74,7 +71,9 @@ function runSampleTests<InputType, OutputType>(
   testCategory.testCases.forEach(
     (testCase: TestCase<InputType, OutputType>) => {
       it(`${getTestCaseDescription(testCase)}`, () =>
-        expect(fn.call(undefined, testCase.input)).toEqual(testCase.output));
+        expect(fn.call(undefined, testCase.input)).toEqual(
+          testCase.output === null ? undefined : testCase.output
+        ));
     }
   );
 }

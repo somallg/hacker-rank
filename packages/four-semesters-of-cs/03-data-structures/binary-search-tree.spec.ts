@@ -12,13 +12,13 @@ describe('Binary Search Tree', () => {
 
     if (objs.left) {
       expect(objs.left.value).toEqual(1);
-      expect(objs.left.left).toBeNull();
+      expect(objs.left.left).toBeUndefined();
     }
 
     if (objs.left && objs.left.right) {
       expect(objs.left.right.value).toEqual(2);
-      expect(objs.left.right.left).toBeNull();
-      expect(objs.left.right.right).toBeNull();
+      expect(objs.left.right.left).toBeUndefined();
+      expect(objs.left.right.right).toBeUndefined();
     }
 
     if (objs.right) {
@@ -27,7 +27,7 @@ describe('Binary Search Tree', () => {
 
     if (objs.right && objs.right.left) {
       expect(objs.right.left.value).toEqual(4);
-      expect(objs.right.left.left).toBeNull();
+      expect(objs.right.left.left).toBeUndefined();
     }
 
     if (
@@ -38,18 +38,18 @@ describe('Binary Search Tree', () => {
     ) {
       expect(objs.right.left.right.value).toEqual(6);
       expect(objs.right.left.right.left.value).toEqual(5);
-      expect(objs.right.left.right.left.right).toBeNull();
-      expect(objs.right.left.right.left.left).toBeNull();
+      expect(objs.right.left.right.left.right).toBeUndefined();
+      expect(objs.right.left.right.left.left).toBeUndefined();
     }
 
     if (objs.right && objs.right.right) {
       expect(objs.right.right.value).toEqual(10);
-      expect(objs.right.right.right).toBeNull();
+      expect(objs.right.right.right).toBeUndefined();
     }
 
     if (objs.right && objs.right.right && objs.right.right.left) {
       expect(objs.right.right.left.value).toEqual(9);
-      expect(objs.right.right.left.right).toBeNull();
+      expect(objs.right.right.left.right).toBeUndefined();
     }
 
     if (
@@ -60,8 +60,8 @@ describe('Binary Search Tree', () => {
       objs.right.right.left.left
     ) {
       expect(objs.right.right.left.left.value).toEqual(8);
-      expect(objs.right.right.left.left.right).toBeNull();
-      expect(objs.right.right.left.left.left).toBeNull();
+      expect(objs.right.right.left.left.right).toBeUndefined();
+      expect(objs.right.right.left.left.left).toBeUndefined();
     }
   });
 });

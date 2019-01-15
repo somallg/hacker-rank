@@ -37,16 +37,18 @@ function getFullFactors(n: number, factors: number[]): number[] {
 }
 
 function prefixSumPeaks(peaks: boolean[]): number[] {
-  return peaks.map((isPeak: boolean) => (isPeak ? 1 : 0)).reduce(
-    (acc: number[], peak: number, index: number) => {
-      const previousSum: number =
-        acc[index - 1] === undefined ? 0 : acc[index - 1];
-      acc.push(previousSum + peak);
+  return peaks
+    .map((isPeak: boolean) => (isPeak ? 1 : 0))
+    .reduce(
+      (acc: number[], peak: number, index: number) => {
+        const previousSum: number =
+          acc[index - 1] === undefined ? 0 : acc[index - 1];
+        acc.push(previousSum + peak);
 
-      return acc;
-    },
-    <number[]>[]
-  );
+        return acc;
+      },
+      <number[]>[]
+    );
 }
 
 function solvePeaks(arr: number[]): number {

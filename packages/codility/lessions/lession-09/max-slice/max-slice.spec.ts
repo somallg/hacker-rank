@@ -32,20 +32,12 @@ describe('MaxSlice', () => {
       expect(solveMaxSlice([-1, -2, -3, -4, 1])).toEqual(1);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        solveMaxSlice(generateArray(50e3));
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      solveMaxSlice(generateArray(50e3));
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        solveMaxSlice(generateArray(100e3));
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      solveMaxSlice(generateArray(100e3));
+    }, 100);
   });
 });

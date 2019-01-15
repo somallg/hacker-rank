@@ -39,7 +39,10 @@ describe('Function Challenge 06', () => {
   describe('gensymff', () => {
     const inc: (n: number) => number = addf(1);
     // tslint:disable-next-line
-    const gensymf: (s: string) => () => string = gensymff(inc as UnaryFunction<number, number>, 0);
+    const gensymf: (s: string) => () => string = gensymff(
+      <UnaryFunction<number, number>>inc,
+      0
+    );
     const genG: () => string = gensymf('G');
     const genH: () => string = gensymf('H');
 

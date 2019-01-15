@@ -15,14 +15,14 @@ describe('AVL Tree', () => {
 
     if (objs.left && objs.left.left) {
       expect(objs.left.left.value).toEqual(1);
-      expect(objs.left.left.left).toBeNull();
-      expect(objs.left.left.right).toBeNull();
+      expect(objs.left.left.left).toBeUndefined();
+      expect(objs.left.left.right).toBeUndefined();
     }
 
     if (objs.left && objs.left.right) {
       expect(objs.left.right.value).toEqual(3);
-      expect(objs.left.right.left).toBeNull();
-      expect(objs.left.right.right).toBeNull();
+      expect(objs.left.right.left).toBeUndefined();
+      expect(objs.left.right.right).toBeUndefined();
     }
 
     if (objs.right) {
@@ -31,13 +31,13 @@ describe('AVL Tree', () => {
 
     if (objs.right && objs.right.left) {
       expect(objs.right.left.value).toEqual(6);
-      expect(objs.right.left.right).toBeNull();
+      expect(objs.right.left.right).toBeUndefined();
     }
 
     if (objs.right && objs.right.left && objs.right.left.left) {
       expect(objs.right.left.left.value).toEqual(5);
-      expect(objs.right.left.left.left).toBeNull();
-      expect(objs.right.left.left.right).toBeNull();
+      expect(objs.right.left.left.left).toBeUndefined();
+      expect(objs.right.left.left.right).toBeUndefined();
     }
 
     if (objs.right && objs.right.right) {
@@ -46,14 +46,14 @@ describe('AVL Tree', () => {
 
     if (objs.right && objs.right.right && objs.right.right.left) {
       expect(objs.right.right.left.value).toEqual(8);
-      expect(objs.right.right.left.left).toBeNull();
-      expect(objs.right.right.left.right).toBeNull();
+      expect(objs.right.right.left.left).toBeUndefined();
+      expect(objs.right.right.left.right).toBeUndefined();
     }
 
     if (objs.right && objs.right.right && objs.right.right.right) {
       expect(objs.right.right.right.value).toEqual(10);
-      expect(objs.right.right.right.left).toBeNull();
-      expect(objs.right.right.right.right).toBeNull();
+      expect(objs.right.right.right.left).toBeUndefined();
+      expect(objs.right.right.right.right).toBeUndefined();
     }
   });
 });

@@ -10,10 +10,10 @@ function getModifier(key: string): [number, number] {
   return key === 'n'
     ? [0, 1]
     : key === 'e'
-      ? [1, 0]
-      : key === 's'
-        ? [0, -1]
-        : [-1, 0];
+    ? [1, 0]
+    : key === 's'
+    ? [0, -1]
+    : [-1, 0];
 }
 
 function getOpposite(key: string): string {

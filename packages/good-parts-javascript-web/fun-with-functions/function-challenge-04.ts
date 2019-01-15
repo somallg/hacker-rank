@@ -17,7 +17,7 @@ function to(
   return (): number | undefined => {
     const value: number | undefined = gen();
 
-    if (value && value < end) {
+    if (value !== undefined && value < end) {
       return value;
     }
 

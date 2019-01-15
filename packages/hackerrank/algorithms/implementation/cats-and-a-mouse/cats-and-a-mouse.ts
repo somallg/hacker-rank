@@ -9,6 +9,6 @@ export function solveCatsAndAMouse(x: number, y: number, z: number): string {
   return distanceAtoC === distanceBtoC
     ? 'Mouse C'
     : distanceAtoC < distanceBtoC
-      ? 'Cat A'
-      : 'Cat B';
+    ? 'Cat A'
+    : 'Cat B';
 }

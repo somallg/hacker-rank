@@ -32,20 +32,12 @@ describe('Fish', () => {
       expect(solveFish([4, 3, 2, 1, 5], [0, 1, 1, 0, 0])).toEqual(2);
     });
 
-    it(
-      'should run for Large input 50E3 items',
-      () => {
-        solveFish(generateArray(50e3), generateArray(50e3));
-      },
-      100
-    );
+    it('should run for Large input 50E3 items', () => {
+      solveFish(generateArray(50e3), generateArray(50e3));
+    }, 100);
 
-    it(
-      'should run for Extra Large input 100E3 items',
-      () => {
-        solveFish(generateArray(100e3), generateArray(100e3));
-      },
-      100
-    );
+    it('should run for Extra Large input 100E3 items', () => {
+      solveFish(generateArray(100e3), generateArray(100e3));
+    }, 100);
   });
 });

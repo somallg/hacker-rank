@@ -14,7 +14,7 @@
     "semantic-release": "semantic-release",
     "test": "jest --colors --maxWorkers=2",
     "test:f": "jest --colors --runTestsByPath",
-    "lint": "tslint -p tsconfig.json -c tslint.json -t verbose",
+    "lint": "tslint -p tsconfig.json -c tslint.json -t stylish",
     "gulp:lint": "gulp lint",
     "enforce": "gulp enforce",
     "debug": "ndb jest --runInBand --coverage false",
