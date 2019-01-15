@@ -38,31 +38,29 @@ gulp.task('compile', () => {
 
   log(chalk.blue(`Compiling --f ${filePath}`));
 
-  return (
+  return rollup({
+    input: filePath,
     // @ts-ignore
-    rollup({
-      input: filePath,
-      plugins: [
-        rollupPluginTypescript2({
-          clean: true,
-          tsconfig: './tsconfig.rollup.json'
-        })
-      ]
-    })
-      .then((bundle: Bundle) => bundle.generate({ format: 'es' }))
-      .then(({ code }: OutputChunk) =>
-        pbcopy(code.replace(/export.*/, '').trim())
-      )
-      .then(() =>
-        log(chalk.green(`Copied compiled version of ${filePath} to clipboard`))
-      )
-      .catch((err: Error) => {
-        // tslint:disable-next-line
-        console.error(
-          new Error(`Could not compile ${filePath}. Reason: ${err.message}`)
-        );
+    plugins: [
+      rollupPluginTypescript2({
+        clean: true,
+        tsconfig: './tsconfig.rollup.json'
       })
-  );
+    ]
+  })
+    .then((bundle: Bundle) => bundle.generate({ format: 'es' }))
+    .then(({ code }: OutputChunk) =>
+      pbcopy(code.replace(/export.*/, '').trim())
+    )
+    .then(() =>
+      log(chalk.green(`Copied compiled version of ${filePath} to clipboard`))
+    )
+    .catch((err: Error) => {
+      // tslint:disable-next-line
+      console.error(
+        new Error(`Could not compile ${filePath}. Reason: ${err.message}`)
+      );
+    });
 });
 
 gulp.task('test', () => {
