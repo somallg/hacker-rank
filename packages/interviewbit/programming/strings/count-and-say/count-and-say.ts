@@ -3,12 +3,12 @@
  */
 
 function countAndSayString(s: string): string {
-  const l = s.length;
-  let result = '';
-  let i = 0;
+  const l: number = s.length;
+  let result: string = '';
+  let i: number = 0;
 
   while (i < l) {
-    let j = i;
+    let j: number = i;
     while (j < l && s[j] === s[i]) {
       j += 1;
     }
@@ -25,9 +25,9 @@ function countAndSay(n: number): string {
   if (n <= 0) {
     return '';
   }
-  const dp = ['1'];
+  const dp: string[] = ['1'];
 
-  for (let i = 1; i < n; i += 1) {
+  for (let i: number = 1; i < n; i += 1) {
     dp[i] = countAndSayString(dp[i - 1]);
   }
 

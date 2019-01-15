@@ -5,13 +5,15 @@
 import { fibonacci } from '../fibonacci/fibonacci';
 
 function solution(arrA: number[], arrB: number[]): number[] {
-  const length = arrA.reduce((acc, a) => Math.max(acc, a));
+  const length: number = arrA.reduce((acc: number, a: number) =>
+    Math.max(acc, a)
+  );
 
-  const fibArray = fibonacci(length);
+  const fibArray: number[] = fibonacci(length);
 
   return arrA
-    .map((a, index) => [a, 2 ** arrB[index]])
-    .map(([ladder, modulo]) => fibArray[ladder] % modulo);
+    .map((a: number, index: number) => [a, 2 ** arrB[index]])
+    .map(([ladder, modulo]: number[]) => fibArray[ladder] % modulo);
 }
 
 export { solution };

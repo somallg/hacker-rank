@@ -1,4 +1,4 @@
-const prettierConfig = {
+const prettierConfig: { singleQuote: boolean } = {
   singleQuote: true
 };
 

@@ -1,16 +1,23 @@
+// tslint:disable:no-implicit-dependencies
 import chalk from 'chalk';
-import * as del from 'del';
-import * as gulp from 'gulp';
-import * as gulpLoadPlugins from 'gulp-load-plugins';
-import * as rollup from 'rollup';
-import * as rollupTypescript from 'rollup-plugin-typescript2';
+import del from 'del';
+import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import * as VinylFile from 'vinyl';
+
+import { Bundle, OutputChunk, rollup } from 'rollup';
+import rollupPluginTypescript2 from 'rollup-plugin-typescript2';
+
 import * as yargs from 'yargs';
 
 import { gulpConfig, pbcopy, prettierConfig } from './packages/tools';
+import ReadWriteStream = NodeJS.ReadWriteStream;
 
+// tslint:disable:no-any
 const $: any = gulpLoadPlugins({ lazy: true });
 const { argv: args } = yargs;
-const log = console.log.bind(console);
+// tslint:disable:no-console
+const log: (arg: string) => void = console.log.bind(console);
 
 gulp.task('default', $.taskListing);
 
@@ -21,53 +28,45 @@ gulp.task('clean:js', () => {
 });
 
 gulp.task('compile', () => {
-  const { f: filePath } = args;
+  const { f: filePath }: yargs.Arguments = args;
 
   if (!filePath) {
-    log(chalk.red('--f <path to file> is required'));
+    log(chalk.red('--f <<file path>> is required'));
+
     return 1;
   }
 
   log(chalk.blue(`Compiling --f ${filePath}`));
 
-  return rollup
-    .rollup({
-      input: `${filePath}.ts`,
+  return (
+    // @ts-ignore
+    rollup({
+      input: filePath,
       plugins: [
-        (rollupTypescript as any)({
+        rollupPluginTypescript2({
           clean: true,
           tsconfig: './tsconfig.rollup.json'
         })
       ]
-    } as any)
-    .then(bundle => {
-      return bundle.generate({
-        format: 'es'
-      });
     })
-    .then(({ code }) => {
-      return pbcopy(code.replace(/export.*/, '').trim());
-    })
-    .then(() =>
-      // tslint:disable-next-line
-      console.log(
-        chalk.green(`Copied compiled version of ${filePath} to clipboard`)
+      .then((bundle: Bundle) => bundle.generate({ format: 'es' }))
+      .then(({ code }: OutputChunk) =>
+        pbcopy(code.replace(/export.*/, '').trim())
       )
-    )
-    .catch(err => {
-      // tslint:disable-next-line
-      console.error(
-        new Error(
-          `Could not copy compiled content of ${filePath} to clipboard. Reason: ${
-            err.message
-          }`
-        )
-      );
-    });
+      .then(() =>
+        log(chalk.green(`Copied compiled version of ${filePath} to clipboard`))
+      )
+      .catch((err: Error) => {
+        // tslint:disable-next-line
+        console.error(
+          new Error(`Could not compile ${filePath}. Reason: ${err.message}`)
+        );
+      })
+  );
 });
 
 gulp.task('test', () => {
-  const { f: fileName } = args;
+  const { f: fileName }: yargs.Arguments = args;
 
   let optionsCLI: any = {
     bail: true,
@@ -83,6 +82,7 @@ gulp.task('test', () => {
     };
   }
 
+  // tslint:disable-next-line
   return require('jest-cli').runCLI(optionsCLI, [process.cwd()]);
 });
 
@@ -90,19 +90,29 @@ gulp.task('lint', () => {
   log(chalk.blue('Linting source files'));
 
   return gulp
-    .src([`!${gulpConfig.packagesNodeModules}`, gulpConfig.tsSrc], {
-      base: '.'
-    })
-    .pipe($.if(args.verbose, $.print()))
-    .pipe(
+    .src(
+      [
+        `!${gulpConfig.packagesNodeModules}`,
+        `!${gulpConfig.schematicsFiles}`,
+        gulpConfig.tsSpec,
+        gulpConfig.tsSrc
+      ],
+      {
+        base: '.'
+      }
+    )
+    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
+    .pipe<ReadWriteStream>(
       $.tslint({
-        formatter: 'verbose'
+        fix: true,
+        formatter: 'stylish'
       })
     )
-    .pipe(
-      $.tslint.report({
-        summarizeFailureOutput: true
-      })
+    .pipe<ReadWriteStream>(
+      typeof $.tslint.report === 'function' &&
+        $.tslint.report({
+          summarizeFailureOutput: true
+        })
     );
 });
 
@@ -113,9 +123,11 @@ gulp.task('prettier', () => {
     .src([`!${gulpConfig.packagesNodeModules}`, gulpConfig.tsSrc], {
       base: '.'
     })
-    .pipe($.prettierPlugin(prettierConfig, { filter: true, validate: true }))
-    .pipe($.if(args.verbose, $.print()))
-    .pipe(gulp.dest(file => file.base));
+    .pipe<ReadWriteStream>(
+      $.prettierPlugin(prettierConfig, { filter: true, validate: true })
+    )
+    .pipe<ReadWriteStream>($.if(args.verbose, $.print()))
+    .pipe<ReadWriteStream>(gulp.dest((file: VinylFile) => file.base));
 });
 
 gulp.task('enforce', ['lint', 'prettier']);

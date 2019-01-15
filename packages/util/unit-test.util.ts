@@ -13,27 +13,31 @@ interface TestCase<InputType, OutputType> {
 interface TestCategory<InputType, OutputType> {
   name: string;
   focus: boolean;
-  testCases: Array<TestCase<InputType, OutputType>>;
+  testCases: TestCase<InputType, OutputType>[];
 }
 
 interface TestFixture<InputType, OutputType> {
   name: string;
-  testCategories: Array<TestCategory<InputType, OutputType>>;
+  testCategories: TestCategory<InputType, OutputType>[];
   skip?: boolean;
 }
 
 interface TestExecutor<InputType, OutputType> {
-  executeTests: (
+  executeTests(
     functionToTest: TestFn<InputType, OutputType>,
     functionName?: string | GeneratorFn<InputType>,
     generatorFn?: GeneratorFn<InputType>
-  ) => Thenable<void> | void;
+  ): Thenable<void> | void;
 }
 
+// tslint:disable:no-any
 function prettyFormatArray(array: any[]): string {
   return array
     .map(
-      (param: any) => (Array.isArray(param) ? `[${param.join(', ')}]` : param)
+      (param: any) =>
+        Array.isArray(param)
+          ? `\n${' '.repeat(12)}[${param.join(', ')}]`
+          : param
     )
     .join(', ');
 }
@@ -56,7 +60,7 @@ function getTestCaseDescription<InputType, OutputType>(
 
 function getPerformanceTestCaseDescription<InputType, OutputType>(
   testCase: TestCase<InputType, OutputType>,
-  timeLimit = 200
+  timeLimit: number = 200
 ): string {
   return `should run under ${timeLimit || 200}ms for ${
     testCase.name
@@ -66,28 +70,32 @@ function getPerformanceTestCaseDescription<InputType, OutputType>(
 function runSampleTests<InputType, OutputType>(
   fn: TestFn<InputType, OutputType>,
   testCategory: TestCategory<InputType, OutputType>
-) {
-  testCategory.testCases.forEach(testCase => {
-    it(`${getTestCaseDescription(testCase)}`, () =>
-      expect(fn.call(null, testCase.input)).toEqual(testCase.output));
-  });
+): void {
+  testCategory.testCases.forEach(
+    (testCase: TestCase<InputType, OutputType>) => {
+      it(`${getTestCaseDescription(testCase)}`, () =>
+        expect(fn.call(undefined, testCase.input)).toEqual(testCase.output));
+    }
+  );
 }
 
 function runPerformanceTests<InputType, OutputType>(
   fn: TestFn<InputType, OutputType>,
   testCategory: TestCategory<InputType, OutputType>,
   generatorFn: GeneratorFn<InputType>
-) {
-  testCategory.testCases.forEach((testCase, index) => {
-    const timeLimit = testCase.timeLimit || (index + 1) * 200;
+): void {
+  testCategory.testCases.forEach(
+    (testCase: TestCase<InputType, OutputType>, index: number) => {
+      const timeLimit: number = testCase.timeLimit || (index + 1) * 200;
 
-    it(`${getPerformanceTestCaseDescription(testCase, timeLimit)}`, () => {
-      const start = Date.now();
-      fn.call(null, generatorFn(testCase.inputSize));
-      const end = Date.now();
-      expect(end - start).toBeLessThanOrEqual(timeLimit);
-    });
-  });
+      it(`${getPerformanceTestCaseDescription(testCase, timeLimit)}`, () => {
+        const start: number = Date.now();
+        fn.call(undefined, generatorFn(testCase.inputSize));
+        const end: number = Date.now();
+        expect(end - start).toBeLessThanOrEqual(timeLimit);
+      });
+    }
+  );
 }
 
 function createTestExecutor<InputType, OutputType>(
@@ -104,48 +112,60 @@ function createTestExecutor<InputType, OutputType>(
       [it, xit] = [xit, it];
     }
 
-    return Box(fixture)
-      .then(testFixture => testFixture.testCategories)
-      .then(([exampleTests, correctnessTests, performanceTests]) => {
-        if (functionNameOrGenerator === undefined) {
-          functionNameOrGenerator = functionToTest.name;
-        }
-
-        if (typeof functionNameOrGenerator === 'function') {
-          generatorFn = functionNameOrGenerator;
-          functionNameOrGenerator = functionToTest.name;
-        }
-
-        describe(functionNameOrGenerator, () => {
-          [exampleTests, correctnessTests].forEach(test => {
-            describe(`${test.name}`, () =>
-              runSampleTests(functionToTest, test));
-          });
-
-          if (typeof generatorFn === 'function') {
-            if (performanceTests.focus) {
-              [describe, fdescribe] = [fdescribe, describe];
-              [it, fit] = [fit, it];
-            }
-
-            describe(`${performanceTests.name}`, () =>
-              runPerformanceTests(
-                functionToTest,
-                performanceTests,
-                generatorFn as GeneratorFn<InputType>
-              ));
+    return createBox(fixture)
+      .then(
+        (testFixture: TestFixture<InputType, OutputType>) =>
+          testFixture.testCategories
+      )
+      .then(
+        // prettier-ignore
+        ([exampleTests, correctnessTests, performanceTests]: TestCategory<InputType ,OutputType>[]) => {
+          // tslint:disable:no-parameter-reassignment
+          if (functionNameOrGenerator === undefined) {
+            functionNameOrGenerator = functionToTest.name;
           }
-        });
-      });
+
+          if (typeof functionNameOrGenerator === 'function') {
+            generatorFn = functionNameOrGenerator;
+            functionNameOrGenerator = functionToTest.name;
+          }
+
+          describe(functionNameOrGenerator, () => {
+            [exampleTests, correctnessTests].forEach(
+              (test: TestCategory<InputType, OutputType>) => {
+                describe(`${test.name}`, () =>
+                  runSampleTests(functionToTest, test));
+              }
+            );
+
+            if (typeof generatorFn === 'function') {
+              if (performanceTests.focus) {
+                [describe, fdescribe] = [fdescribe, describe];
+                [it, fit] = [fit, it];
+              }
+
+              describe(`${performanceTests.name}`, () =>
+                runPerformanceTests(
+                  functionToTest,
+                  performanceTests,
+                  // prettier-ignore
+                  <GeneratorFn<InputType>>generatorFn
+                ));
+            }
+          });
+        }
+      );
   }
 }
 
-function Box<T>(data: T): Thenable<T> {
-  return { then: <V>(fn: (data: T) => V) => Box<V>(fn(data)) };
+function createBox<T>(data: T): Thenable<T> {
+  return {
+    then: <V>(fn: (data: T) => V): Thenable<V> => createBox<V>(fn(data))
+  };
 }
 
 interface Thenable<T> {
-  then: <V>(fn: (data: T) => V) => Thenable<V>;
+  then<V>(fn: (data: T) => V): Thenable<V>;
 }
 
 function identityf<T>(data: T): T {

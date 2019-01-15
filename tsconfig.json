@@ -4,6 +4,7 @@
     "outDir": "dist",
     "module": "commonjs",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "target": "es6",
     "lib": ["es6", "dom"],
     "inlineSourceMap": true,
@@ -22,5 +23,13 @@
       "@challenges/*": ["packages/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "scripts", "webpack", "jest"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "scripts",
+    "webpack",
+    "jest",
+    "**/__problem@dasherize__.spec.ts",
+    "**/__problem@dasherize__.ts"
+  ]
 }

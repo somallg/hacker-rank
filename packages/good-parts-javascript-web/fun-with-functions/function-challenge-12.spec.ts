@@ -1,9 +1,9 @@
-import { pubsub } from './function-challenge-12';
+import { Publisher, pubsub } from './function-challenge-12';
 
 describe('Function Challenge 12', () => {
   describe('pubsub', () => {
     it('should work', () => {
-      const pubSub = pubsub();
+      const pubSub: Publisher<string> = pubsub();
       const messages: string[] = [];
 
       pubSub.subscribe((arg: string) => {

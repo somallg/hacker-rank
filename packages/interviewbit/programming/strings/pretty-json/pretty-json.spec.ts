@@ -3,17 +3,18 @@
  * PrettyJson
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateString,
+  TestFixture
+} from '@challenges/util';
 
 import { prettyJson } from './pretty-json';
-
 import * as fixture from './pretty-json.fixture.json';
 
 describe('Interviewbit - PrettyJson', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<string, string[]>)
-    .executeTests(
-      prettyJson,
-      ut.generateString
-    );
+  createTestExecutor(<TestFixture<string, string[]>>fixture).executeTests(
+    prettyJson,
+    generateString
+  );
 });

@@ -1,6 +1,8 @@
+import { BinaryFunction } from './function.util';
+
 import { add, mul } from './function-challenge-01';
 
-import { addm, liftm, makeO } from './function-challenge-08';
+import { addm, liftm, makeO, ObjectO } from './function-challenge-08';
 
 describe('Function Challenge 08', () => {
   describe('makeO', () => {
@@ -28,8 +30,9 @@ describe('Function Challenge 08', () => {
 
   describe('liftm', () => {
     // tslint:disable-next-line
-    const addm = liftm(add, '+');
-    const mulm = liftm(mul, '*');
+    const addm: BinaryFunction<any, ObjectO> = liftm(add, '+');
+    // tslint:disable-next-line
+    const mulm: BinaryFunction<any, ObjectO> = liftm(mul, '*');
 
     it('should return correct', () => {
       expect(addm(makeO(3), makeO(4))).toEqual({

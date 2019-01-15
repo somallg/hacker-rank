@@ -3,8 +3,8 @@
  * Interviewbit - WaysToDecode
  */
 
-import { solveWaysToDecode } from './ways-to-decode';
 import { generateArray } from '@challenges/util';
+import { solveWaysToDecode } from './ways-to-decode';
 
 describe('Interviewbit - WaysToDecode', () => {
   describe('solveWaysToDecode', () => {

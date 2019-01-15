@@ -3,16 +3,19 @@
  * RouteBetweenNodes
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { routeBetweenNodes } from './route-between-nodes';
 import * as fixture from './route-between-nodes.fixture.json';
 
+type Input = [number[][], number, number];
+type Output = boolean;
+
 describe('CrackingTheCodingInterview - RouteBetweenNodes', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number[][], number, number], boolean>)
+  createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
-      ([nums, startIndex, endIndex]) => routeBetweenNodes(nums, startIndex, endIndex),
+      ([nums, startIndex, endIndex]: Input) => routeBetweenNodes(nums, startIndex, endIndex),
       routeBetweenNodes.name
     );
 });

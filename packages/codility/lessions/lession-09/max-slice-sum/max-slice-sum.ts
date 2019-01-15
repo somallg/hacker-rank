@@ -1,18 +1,13 @@
 /**
  */
 
-function getPreviousToLeft(arr: number[], index: number, array: number[]) {
+function getPreviousToLeft(arr: number[], index: number): number {
   return arr[index - 1] === undefined ? 0 : arr[index - 1];
 }
 
-function reduceMaxSum(fn: Function) {
-  return function(
-    arr: number[],
-    element: number,
-    index: number,
-    array: number[]
-  ) {
-    const previousSum = fn(arr, index, array);
+function reduceMaxSum(fn: (arr: number[], ele: number) => number): Function {
+  return (arr: number[], element: number, index: number): number[] => {
+    const previousSum: number = fn(arr, index);
     arr.push(Math.max(element, previousSum + element));
 
     return arr;
@@ -20,14 +15,16 @@ function reduceMaxSum(fn: Function) {
 }
 
 function solveMaxSliceSum(arr: number[]): number {
-  const maxSumEndAtIndex = arr
+  const maxSumEndAtIndex: number = arr
+    // @ts-ignore
     .reduce(reduceMaxSum(getPreviousToLeft), [])
-    .reduce((a, b) => Math.max(a, b));
+    .reduce(Math.max);
 
-  const maxSumStartAtIndex = arr
+  const maxSumStartAtIndex: number = arr
     .reverse()
+    // @ts-ignore
     .reduce(reduceMaxSum(getPreviousToLeft), [])
-    .reduce((a, b) => Math.max(a, b));
+    .reduce(Math.max);
 
   return Math.max(maxSumStartAtIndex, maxSumEndAtIndex);
 }

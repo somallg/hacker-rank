@@ -3,13 +3,13 @@
  */
 
 function n3RepeatNumber(array: number[]): number {
-  const l = array.length;
-  const count = new Map<number, number>();
+  const l: number = array.length;
+  const count: Map<number, number> = new Map<number, number>();
 
-  array.forEach(n => count.set(n, 1 + (count.get(n) || 0)));
+  array.forEach((n: number) => count.set(n, (count.get(n) || 0) + 1));
 
-  let result = -1;
-  count.forEach((value, key) => {
+  let result: number = -1;
+  count.forEach((value: number, key: number) => {
     if (value > Math.floor(l / 3) && result === -1) {
       result = key;
     }

@@ -2,14 +2,15 @@
  * Test specs for reverse-integer problem
  * Interviewbit - ReverseInteger
  */
-import * as ut from '@challenges/util';
+
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
 import { reverseInteger } from './reverse-integer';
 import * as fixture from './reverse-integer.fixture.json';
 
 describe('Interviewbit - ReverseInteger', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number>).executeTests(
+  createTestExecutor(<TestFixture<number, number>>fixture).executeTests(
     reverseInteger,
-    ut.identityf
+    identityf
   );
 });

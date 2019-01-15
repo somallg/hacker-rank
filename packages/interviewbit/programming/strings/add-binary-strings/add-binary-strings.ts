@@ -3,22 +3,22 @@
  */
 
 function addBinaryStrings(a: string, b: string): string {
-  const toBitsA = a.split('').map(Number);
-  const toBitsB = b.split('').map(Number);
-  const lenA = toBitsA.length;
-  const lenB = toBitsB.length;
+  const toBitsA: number[] = a.split('').map(Number);
+  const toBitsB: number[] = b.split('').map(Number);
+  const lenA: number = toBitsA.length;
+  const lenB: number = toBitsB.length;
   if (lenA === 0 && lenB === 0) {
     return '';
   }
-  const lenMax = Math.max(lenA, lenB);
+  const lenMax: number = Math.max(lenA, lenB);
 
-  let result = '';
-  let carry = 0;
+  let result: string = '';
+  let carry: number = 0;
 
-  for (let i = 0; i < lenMax; i = i + 1) {
-    const aBit = i >= lenA ? 0 : toBitsA[lenA - i - 1];
-    const bBit = i >= lenB ? 0 : toBitsB[lenB - i - 1];
-    const sum = (aBit + bBit + carry) % 2;
+  for (let i: number = 0; i < lenMax; i = i + 1) {
+    const aBit: number = i >= lenA ? 0 : toBitsA[lenA - i - 1];
+    const bBit: number = i >= lenB ? 0 : toBitsB[lenB - i - 1];
+    const sum: number = (aBit + bBit + carry) % 2;
     carry = (aBit + bBit + carry) >>> 1;
     result = `${sum}${result}`;
   }

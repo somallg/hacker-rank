@@ -3,17 +3,24 @@
  * SearchForARange
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { searchForARange } from './search-for-a-range';
 import * as fixture from './search-for-a-range.fixture.json';
 
+type Input = [number[], number];
+type Output = number[];
+
 describe('Interviewbit - SearchForARange', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number[], number], number[]>)
+  createTestExecutor(<TestFixture<Input, Output>>fixture)
     .executeTests(
-      ([array, target]) => searchForARange(array, target),
+      ([array, target]: Input) => searchForARange(array, target),
       searchForARange.name,
-      inputSize => [ut.generateArray(inputSize, 1), inputSize >>> 1]
+      (inputSize: number)=> [generateArray(inputSize, 1), inputSize >>> 1]
     );
 });

@@ -3,19 +3,19 @@
  */
 
 function matrixSearch(matrix: number[][], target: number): number {
-  const m = matrix.length;
+  const m: number = matrix.length;
   if (m === 0) {
     return 0;
   }
-  const n = matrix[0].length;
-  let start = 0;
-  let end = m * n - 1;
+  const n: number = matrix[0].length;
+  let start: number = 0;
+  let end: number = m * n - 1;
 
   while (start <= end) {
     // tslint:disable:no-bitwise
-    const middle = (start + end) >>> 1;
-    const row = Math.floor(middle / n);
-    const col = middle % n;
+    const middle: number = (start + end) >>> 1;
+    const row: number = Math.floor(middle / n);
+    const col: number = middle % n;
 
     if (matrix[row][col] < target) {
       start = middle + 1;

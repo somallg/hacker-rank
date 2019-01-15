@@ -11,23 +11,25 @@ type CoinChangeFunction = (
 function memorized(fn: Function): CoinChangeFunction {
   const memo: number[][] = [];
 
-  return (currentIndex: number, changeFor: number, coins: number[]) => {
+  return (currentIndex: number, changeFor: number, coins: number[]): number => {
     if (memo[currentIndex] === undefined) {
       memo[currentIndex] = [];
     }
 
-    let cachedValue = memo[currentIndex][changeFor];
+    let cachedValue: number = memo[currentIndex][changeFor];
 
     if (cachedValue === undefined) {
       cachedValue = fn(currentIndex, changeFor, coins);
       memo[currentIndex][changeFor] = cachedValue;
     }
+
     return cachedValue;
   };
 }
 
 function solveCoinChangeRec(n: number, coins: number[]): number {
-  const solveCoinChangeMemo = memorized(
+  const solveCoinChangeMemo: CoinChangeFunction = memorized(
+    // tslint:disable-next-line
     (currentIndex: number, changeFor: number, coins: number[]) => {
       if (changeFor < 0 || currentIndex < 0) {
         return 0;
@@ -37,7 +39,7 @@ function solveCoinChangeRec(n: number, coins: number[]): number {
         return 1;
       }
 
-      const currentCoin = coins[currentIndex];
+      const currentCoin: number = coins[currentIndex];
 
       return currentCoin <= changeFor
         ? solveCoinChangeMemo(currentIndex - 1, changeFor, coins) +

@@ -11,7 +11,7 @@ function isPositiveFloat(s: string): boolean {
     return false;
   }
 
-  const dotIndex = s.indexOf('.');
+  const dotIndex: number = s.indexOf('.');
   if (dotIndex !== -1) {
     return (
       (isInteger(s.substr(0, dotIndex)) || dotIndex === 0) &&
@@ -35,7 +35,7 @@ function isExponential(s: string): boolean {
     return false;
   }
 
-  const eIndex = s.indexOf('e');
+  const eIndex: number = s.indexOf('e');
   if (eIndex !== -1) {
     return (
       isFloatOrInteger(s.substr(0, eIndex)) && isInteger(s.substr(eIndex + 1))
@@ -68,11 +68,12 @@ function isPositiveInteger(s: string): boolean {
 
   return s
     .split('')
-    .map(d => d.charCodeAt(0))
-    .every(c => c >= 48 && c <= 57);
+    .map((d: string) => d.charCodeAt(0))
+    .every((c: number) => c >= 48 && c <= 57);
 }
 
 function validNumber(s: string): number {
+  // tslint:disable-next-line
   s = s.trim();
 
   return isInteger(s) || isFloat(s) || isExponential(s) ? 1 : 0;

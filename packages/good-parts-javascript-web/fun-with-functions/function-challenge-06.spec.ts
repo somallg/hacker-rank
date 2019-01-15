@@ -12,8 +12,8 @@ import {
 
 describe('Function Challenge 06', () => {
   describe('gensymf', () => {
-    const geng = gensymf('G');
-    const genh = gensymf('H');
+    const geng: () => string = gensymf('G');
+    const genh: () => string = gensymf('H');
 
     describe('genG', () => {
       it('should return G1', () => {
@@ -37,11 +37,11 @@ describe('Function Challenge 06', () => {
   });
 
   describe('gensymff', () => {
-    const inc = addf(1);
+    const inc: (n: number) => number = addf(1);
     // tslint:disable-next-line
-    const gensymf = gensymff(inc as UnaryFunction<number, number>, 0);
-    const genG = gensymf('G');
-    const genH = gensymf('H');
+    const gensymf: (s: string) => () => string = gensymff(inc as UnaryFunction<number, number>, 0);
+    const genG: () => string = gensymf('G');
+    const genH: () => string = gensymf('H');
 
     describe('geng', () => {
       it('should return G1', () => {
@@ -65,7 +65,7 @@ describe('Function Challenge 06', () => {
   });
 
   describe('fibonaccif', () => {
-    const fib = fibonaccif(0, 1);
+    const fib: () => number = fibonaccif(0, 1);
 
     describe('fib', () => {
       it('should return 0', () => {
@@ -95,7 +95,7 @@ describe('Function Challenge 06', () => {
   });
 
   describe('fibonaccif2', () => {
-    const fib = fibonaccif2(0, 1);
+    const fib: () => number | undefined = fibonaccif2(0, 1);
 
     describe('fib', () => {
       it('should return 0', () => {
@@ -125,7 +125,7 @@ describe('Function Challenge 06', () => {
   });
 
   describe('fibonaccif3', () => {
-    const fib = fibonaccif3(0, 1);
+    const fib: () => number | undefined = fibonaccif3(0, 1);
 
     describe('fib', () => {
       it('should return 0', () => {

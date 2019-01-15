@@ -1,26 +1,26 @@
 class Stack<T> {
-  storage: T[];
-  length: number;
+  public storage: T[];
+  public length: number;
 
   constructor() {
     this.storage = [];
     this.length = 0;
   }
 
-  push(e: T) {
+  public push(e: T): void {
     this.storage.push(e);
     this.length = this.length + 1;
   }
 
-  pop(): T {
+  public pop(): T {
     this.length = Math.max(0, this.length - 1);
-    const res = this.storage[this.length];
+    const res: T = this.storage[this.length];
     this.storage.length = this.length;
 
     return res;
   }
 
-  peek(): T {
+  public peek(): T {
     return this.storage[this.length - 1];
   }
 }

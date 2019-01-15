@@ -5,15 +5,14 @@
 type PredicateFn = (middle: number) => boolean;
 
 function searchForARange(array: number[], target: number): number[] {
-  const l = array.length;
+  const l: number = array.length;
 
   function searchByPredicate(predicateFn: PredicateFn): number {
-    let start = 0;
-    let end = l - 1;
+    let start: number = 0;
+    let end: number = l - 1;
 
     while (start <= end) {
-      // tslint:disable:no-bitwise
-      const middle = (start + end) >>> 1;
+      const middle: number = (start + end) >>> 1;
       if (predicateFn(middle)) {
         start = middle + 1;
       } else {
@@ -24,11 +23,11 @@ function searchForARange(array: number[], target: number): number[] {
     return start;
   }
 
-  const startIndex = searchByPredicate(middle => {
+  const startIndex: number = searchByPredicate((middle: number) => {
     return array[middle] < target;
   });
 
-  const endIndex = searchByPredicate(middle => {
+  const endIndex: number = searchByPredicate((middle: number) => {
     return array[middle] <= target;
   });
 

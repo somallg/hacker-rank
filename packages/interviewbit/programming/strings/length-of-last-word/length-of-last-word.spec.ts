@@ -3,17 +3,13 @@
  * LengthOfLastWord
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { lengthOfLastWord } from './length-of-last-word';
-
 import * as fixture from './length-of-last-word.fixture.json';
 
 describe('Interviewbit - LengthOfLastWord', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<string, number>)
-    .executeTests(
-      lengthOfLastWord,
-      inputSize => 'A'.repeat(inputSize)
-    );
+  createTestExecutor(<TestFixture<string, number>>fixture)
+      .executeTests(lengthOfLastWord, (inputSize: number) => 'A'.repeat(inputSize));
 });

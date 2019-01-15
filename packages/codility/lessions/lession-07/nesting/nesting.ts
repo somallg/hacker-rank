@@ -12,15 +12,15 @@ function getOpenningString(s: string): string {
 }
 
 function solveNesting(s: string): number {
-  const n = s.length;
-  const stack = new Stack<string>();
+  const n: number = s.length;
+  const stack: Stack<string> = new Stack<string>();
 
   if (!n) {
     return 1;
   }
 
-  for (let i = 0; i < n; i = i + 1) {
-    const currentString = s[i];
+  for (let i: number = 0; i < n; i = i + 1) {
+    const currentString: string = s[i];
 
     if (isOpenningString(currentString)) {
       stack.push(currentString);

@@ -1,16 +1,17 @@
 interface Element {
   id: number;
+  name: string;
 }
 
 function linearSearch(id: number, array: Element[]): Element | undefined {
-  return array.filter(element => element.id === id)[0];
+  return array.filter((element: Element) => element.id === id)[0];
 }
 
 function binarySearch(id: number, array: Element[]): Element | undefined {
-  let min = 0;
-  let max = array.length - 1;
-  let index;
-  let element;
+  let min: number = 0;
+  let max: number = array.length - 1;
+  let index: number;
+  let element: Element;
 
   while (min <= max) {
     index = Math.floor((min + max) / 2);
@@ -27,4 +28,4 @@ function binarySearch(id: number, array: Element[]): Element | undefined {
   return undefined;
 }
 
-export { linearSearch, binarySearch };
+export { binarySearch, Element, linearSearch };

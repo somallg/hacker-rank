@@ -2,10 +2,10 @@
  */
 
 function solveMaxSlice(arr: number[]): number {
-  let maxEnding = 0;
-  let maxSlice = 0;
+  let maxEnding: number = 0;
+  let maxSlice: number = 0;
 
-  arr.forEach(a => {
+  arr.forEach((a: number) => {
     maxEnding = Math.max(0, maxEnding + a);
     maxSlice = Math.max(maxSlice, maxEnding);
   });

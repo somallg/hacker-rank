@@ -4,9 +4,10 @@
 
 function isPossible(k: number, tMax: number, timeTaken: number[]): boolean {
   // find out if it is possible to paint in time T or less
-  let timeSoFar = 0;
-  timeTaken.forEach(t => {
+  let timeSoFar: number = 0;
+  timeTaken.forEach((t: number) => {
     if (timeSoFar + t > tMax) {
+      // tslint:disable-next-line
       k = k - 1;
       timeSoFar = t;
     } else {
@@ -25,15 +26,13 @@ function paintersPartitionProblem(
   if (k === 0) {
     return 0;
   }
-  const sum = l.reduce((acc, a) => acc + a);
-  const maxElement = l.reduce((acc, a) => Math.max(acc, a));
-
-  let start = maxElement;
-  let end = sum;
+  const sum: number = l.reduce((acc: number, a: number) => acc + a);
+  let start: number = l.reduce((acc: number, a: number) => Math.max(acc, a));
+  let end: number = sum;
 
   while (start <= end) {
     // tslint:disable:no-bitwise
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
 
     if (isPossible(k, middle, l)) {
       end = middle - 1;

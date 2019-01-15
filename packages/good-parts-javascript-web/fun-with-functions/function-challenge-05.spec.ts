@@ -4,8 +4,8 @@ import { collect, concat, concatES6, filter } from './function-challenge-05';
 
 describe('Function Challenge 05', () => {
   describe('collect', () => {
-    const array: any[] = [];
-    const col = collect(fromTo(0, 2), array);
+    const array: number[] = [];
+    const col: () => number | undefined = collect(fromTo(0, 2), array);
 
     it('should return 0', () => {
       expect(col()).toEqual(0);
@@ -25,7 +25,10 @@ describe('Function Challenge 05', () => {
   });
 
   describe('filter', () => {
-    const fil = filter(fromTo(0, 5), (value: number) => value % 3 === 0);
+    const fil: () => number | undefined = filter(
+      fromTo(0, 5),
+      (value: number) => value % 3 === 0
+    );
 
     it('should return 0', () => {
       expect(fil()).toEqual(0);
@@ -41,7 +44,7 @@ describe('Function Challenge 05', () => {
   });
 
   describe('concat', () => {
-    const con = concat(fromTo(0, 3), fromTo(0, 2));
+    const con: () => number | undefined = concat(fromTo(0, 3), fromTo(0, 2));
 
     it('should return 0', () => {
       expect(con()).toEqual(0);
@@ -65,7 +68,7 @@ describe('Function Challenge 05', () => {
   });
 
   describe('concatES6', () => {
-    const con = concatES6(fromTo(0, 3), fromTo(0, 2));
+    const con: () => number | undefined = concatES6(fromTo(0, 3), fromTo(0, 2));
 
     it('should return 0', () => {
       expect(con()).toEqual(0);

@@ -3,20 +3,20 @@
  */
 
 function maxDistance(array: number[]): number {
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return -1;
   }
 
-  const indexes = array
-    .map((n, index) => [n, index])
-    .sort((a, b) => a[0] - b[0])
-    .map(([, index]) => index);
+  const indexes: number[] = array
+    .map((n: number, index: number) => [n, index])
+    .sort((a: number[], b: number[]) => a[0] - b[0])
+    .map(([, index]: number[]) => index);
 
-  let i = 0;
-  let result = 0;
+  let i: number = 0;
+  let result: number = 0;
   while (i < l) {
-    let j = i + 1;
+    let j: number = i + 1;
     while (j < l && indexes[j] >= indexes[i]) {
       j = j + 1;
       result = Math.max(result, indexes[j - 1] - indexes[i]);

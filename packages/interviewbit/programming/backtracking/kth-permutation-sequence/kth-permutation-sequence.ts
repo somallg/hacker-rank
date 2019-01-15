@@ -15,7 +15,7 @@
 function calculateFactorial(n: number): number[] {
   const dp: number[] = Array(n + 1).fill(1);
 
-  for (let i = 2; i <= n; i = i + 1) {
+  for (let i: number = 2; i <= n; i = i + 1) {
     dp[i] = i * dp[i - 1];
   }
 
@@ -23,13 +23,18 @@ function calculateFactorial(n: number): number[] {
 }
 
 function kthPermutationSequence(n: number, k: number): string {
-  const kthSequence = (k: number, numbers: number[]): number[] => {
+  const kthSequence: (k: number, numbers: number[]) => number[] = (
+    // tslint:disable-next-line
+    k: number,
+    // tslint:disable-next-line
+    numbers: number[]
+  ): number[] => {
     if (numbers.length === 0) {
       return [];
     }
 
-    const nbPermutation = factorials[numbers.length - 1];
-    const position = Math.floor(k / nbPermutation);
+    const nbPermutation: number = factorials[numbers.length - 1];
+    const position: number = Math.floor(k / nbPermutation);
     result.push(numbers[position]);
 
     numbers.splice(position, 1); // remove item at postion
@@ -37,10 +42,10 @@ function kthPermutationSequence(n: number, k: number): string {
     return kthSequence(k % nbPermutation, numbers);
   };
 
-  const factorials = calculateFactorial(n);
-  const numbers = Array(n)
+  const factorials: number[] = calculateFactorial(n);
+  const numbers: number[] = Array(n)
     .fill(0)
-    .map((_, i) => i + 1);
+    .map((_: number, i: number) => i + 1);
   const result: number[] = [];
 
   kthSequence(k - 1, numbers);

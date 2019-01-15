@@ -3,7 +3,7 @@
  */
 
 export function gemstones(arr: string[]): number {
-  const gems: { [key: string]: number } = arr.reduce((acc: any, e: string) => {
+  const gems: { [key: string]: number } = arr.reduce((acc: {}, e: string) => {
     const check: { [key: string]: boolean } = {};
     e.split('').forEach((g: string) => {
       if (!check[g]) {
@@ -11,6 +11,7 @@ export function gemstones(arr: string[]): number {
       }
       check[g] = true;
     });
+
     return acc;
   }, {});
 

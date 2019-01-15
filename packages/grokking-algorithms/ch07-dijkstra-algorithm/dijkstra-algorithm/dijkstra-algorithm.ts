@@ -2,9 +2,9 @@
  */
 
 function findLowestCostNode(costs: object, processed: object): string {
-  let ret = '';
-  Object.keys(costs).forEach(key => {
-    const cost = ret ? costs[ret] : Infinity;
+  let ret: string = '';
+  Object.keys(costs).forEach((key: string) => {
+    const cost: object = ret ? costs[ret] : Infinity;
     if (costs[key] < cost && processed[key] === undefined) {
       ret = key;
     }
@@ -21,16 +21,20 @@ function rebuildPath(obj: object, key: string): string[] {
   return [...rebuildPath(obj, obj[key]), key];
 }
 
-function solveDijkstraAlgorithm(graph: object, costs: object, parent: object) {
-  const processed = {};
-  let node = findLowestCostNode(costs, processed);
+function solveDijkstraAlgorithm(
+  graph: object,
+  costs: object,
+  parent: object
+): string {
+  const processed: object = {};
+  let node: string = findLowestCostNode(costs, processed);
 
   while (node !== 'fin') {
-    const cost = costs[node];
-    const neighbors = graph[node];
+    const cost: object = costs[node];
+    const neighbors: object = graph[node];
 
-    Object.keys(neighbors).forEach(n => {
-      const newCost = cost + neighbors[n];
+    Object.keys(neighbors).forEach((n: string) => {
+      const newCost: number = cost + neighbors[n];
       if (newCost < costs[n]) {
         costs[n] = newCost;
         parent[n] = node;

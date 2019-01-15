@@ -3,7 +3,7 @@ class Stack<T> {
   private readonly storage: { [key: string]: T };
   private length: number;
 
-  constructor(capacity = Infinity) {
+  constructor(capacity: number = Infinity) {
     this.storage = {};
     this.capacity = capacity;
     this.length = 0;
@@ -13,6 +13,7 @@ class Stack<T> {
     if (this.length < this.capacity) {
       // tslint:disable:no-increment-decrement
       this.storage[this.length++] = value;
+
       return this.length;
     }
 
@@ -20,7 +21,8 @@ class Stack<T> {
   }
 
   public pop(): T {
-    const value = this.storage[--this.length];
+    const value: T = this.storage[--this.length];
+    // tslint:disable:no-dynamic-delete
     delete this.storage[this.length];
 
     if (this.length < 0) {

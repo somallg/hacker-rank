@@ -2,16 +2,18 @@
  * PalindromePermutation
  */
 
-function toggleBitVector(bitVector: number, index: number) {
+function toggleBitVector(bitVector: number, index: number): number {
   if (index < 0) {
     return bitVector;
   }
 
-  const mask = 1 << index;
+  const mask: number = 1 << index;
 
   if ((bitVector & mask) === 0) {
+    // tslint:disable-next-line
     bitVector |= mask;
   } else {
+    // tslint:disable-next-line
     bitVector &= ~mask;
   }
 
@@ -27,9 +29,9 @@ function palindromePermutation(s: string): boolean {
     return true;
   }
 
-  const bitVector = s
+  const bitVector: number = s
     .split('')
-    .map(c => c.charCodeAt(0) - 'a'.charCodeAt(0))
+    .map((c: string) => c.charCodeAt(0) - 'a'.charCodeAt(0))
     .reduce(toggleBitVector, 0);
 
   return bitVector === 0 || checkExactlyOneBitSet(bitVector);

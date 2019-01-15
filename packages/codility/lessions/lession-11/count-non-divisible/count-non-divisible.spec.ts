@@ -11,14 +11,14 @@ describe('Codility - CountNonDivisible', () => {
   describe('solution', () => {
     describe('Example tests', () => {
       it('should return [2, 4, 3, 2, 0] for Example 1 input [3, 1, 2, 3, 6]', () => {
-        const result = solution([3, 1, 2, 3, 6]);
+        const result: number[] = solution([3, 1, 2, 3, 6]);
 
         expect(result.length).toEqual(5);
         expect(result).toEqual([2, 4, 3, 2, 0]);
       });
 
       it('should return [1, 3, 1, 2] for Example 2 input [3, 1, 3, 5]', () => {
-        const result = solution([3, 1, 3, 5]);
+        const result: number[] = solution([3, 1, 3, 5]);
 
         expect(result.length).toEqual(4);
         expect(result).toEqual([1, 3, 1, 2]);

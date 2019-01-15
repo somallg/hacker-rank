@@ -2,18 +2,18 @@
  * ReverseTheString
  */
 
-const SPC = ' ';
+const SPC: string = ' ';
 
 function reverseTheString(s: string): string {
-  const l = s.length;
-  let i = l - 1;
-  let result = '';
+  const l: number = s.length;
+  let i: number = l - 1;
+  let result: string = '';
 
   while (i >= 0) {
     while (i >= 0 && s[i] === SPC) {
       i = i - 1;
     }
-    let j = i;
+    let j: number = i;
     while (j >= 0 && s[j] !== SPC) {
       j = j - 1;
     }

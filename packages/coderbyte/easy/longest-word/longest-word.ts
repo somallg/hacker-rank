@@ -1,11 +1,13 @@
 /**
  */
 
-function solveLongestWord(sen: string) {
+function solveLongestWord(sen: string): string {
   return sen
     .split(/\s+/)
-    .map(word => word.replace(/\W+/g, ''))
-    .reduce((acc, word) => (acc.length < word.length ? word : acc));
+    .map((word: string) => word.replace(/\W+/g, ''))
+    .reduce(
+      (acc: string, word: string) => (acc.length < word.length ? word : acc)
+    );
 }
 
 export { solveLongestWord };

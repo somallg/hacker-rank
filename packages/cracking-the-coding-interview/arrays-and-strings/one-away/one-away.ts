@@ -3,9 +3,9 @@
  */
 
 function oneEditReplace(first: string, second: string): boolean {
-  let foundDiff = false;
+  let foundDiff: boolean = false;
 
-  for (let i = 0; i < first.length; i += 1) {
+  for (let i: number = 0; i < first.length; i += 1) {
     if (first[i] !== second[i]) {
       if (foundDiff) {
         return false;
@@ -19,8 +19,8 @@ function oneEditReplace(first: string, second: string): boolean {
 }
 
 function oneEditInsert(first: string, second: string): boolean {
-  let index1 = 0;
-  let index2 = 0;
+  let index1: number = 0;
+  let index2: number = 0;
 
   while (index2 < second.length && index1 < first.length) {
     if (first[index1] !== second[index2]) {

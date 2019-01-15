@@ -2,19 +2,19 @@
  * ZigzagString
  */
 
-const DOWN = 0;
-const UP = 1;
+const DOWN: number = 0;
+const UP: number = 1;
 
 function zigzagString(text: string, nRows: number): string {
   if (nRows <= 1) {
     return text;
   }
-  const l = text.length;
-  let result = '';
+  const l: number = text.length;
+  let result: string = '';
 
-  for (let i = 0; i < nRows; i = i + 1) {
-    let j = i;
-    let direction = i < nRows - 1 ? DOWN : UP;
+  for (let i: number = 0; i < nRows; i = i + 1) {
+    let j: number = i;
+    let direction: number = i < nRows - 1 ? DOWN : UP;
     while (j < l) {
       result = `${result}${text[j]}`;
       if (i === 0) {

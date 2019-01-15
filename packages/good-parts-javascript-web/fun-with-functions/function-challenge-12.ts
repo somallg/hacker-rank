@@ -1,12 +1,19 @@
-function pubsub() {
-  const subscribers: any[] = [];
+interface Publisher<T> {
+  subscribe(subscriber: Subscriber<T>): void;
+  publish(publication: T): void;
+}
+
+type Subscriber<T> = (arg: T) => void;
+
+function pubsub<T>(): Publisher<T> {
+  const subscribers: Subscriber<T>[] = [];
 
   return Object.freeze({
-    subscribe(subscriber: any) {
+    subscribe(subscriber: Subscriber<T>): void {
       subscribers.push(subscriber);
     },
-    publish(publication: any) {
-      subscribers.forEach(sub => {
+    publish(publication: T): void {
+      subscribers.forEach((sub: Subscriber<T>) => {
         try {
           sub(publication);
         } catch (ignore) {
@@ -18,4 +25,4 @@ function pubsub() {
   });
 }
 
-export { pubsub };
+export { Publisher, pubsub };

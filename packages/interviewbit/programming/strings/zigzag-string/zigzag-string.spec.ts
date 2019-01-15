@@ -2,17 +2,19 @@
  * Test specs for zigzag-string problem
  * ZigzagString
  */
-import * as ut from '@challenges/util';
+
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { zigzagString } from './zigzag-string';
 import * as fixture from './zigzag-string.fixture.json';
 
+type Input = [string, number];
+type Output = string;
+
 describe('Interviewbit - ZigzagString', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[string, number], string>)
-    .executeTests(
-      ([text, nRows]) => zigzagString(text, nRows),
-      zigzagString.name,
-      inputSize => ['A'.repeat(inputSize), inputSize / 10]
-    )
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([text, nRows]: Input) => zigzagString(text, nRows),
+    zigzagString.name,
+    (inputSize: number) => ['A'.repeat(inputSize), inputSize / 10]
+  );
 });

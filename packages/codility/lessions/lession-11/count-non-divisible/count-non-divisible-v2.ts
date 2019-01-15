@@ -5,9 +5,9 @@
 function increaseMapValueBy(
   map: Map<number, number>,
   key: number,
-  byValue = 1
-) {
-  const [previousValue = 0] = [map.get(key)];
+  byValue: number = 1
+): Map<number, number> {
+  const [previousValue = 0]: [(number | undefined)] = [map.get(key)];
 
   map.set(key, previousValue + byValue);
 
@@ -15,10 +15,10 @@ function increaseMapValueBy(
 }
 
 function buildSieve(n: number, occ: Map<number, number>): Map<number, number> {
-  let result = new Map<number, number>();
+  let result: Map<number, number> = new Map<number, number>();
 
-  occ.forEach((occurence, num) => {
-    for (let k = num; k <= n; k = k + num) {
+  occ.forEach((occurence: number, num: number) => {
+    for (let k: number = num; k <= n; k = k + num) {
       result = increaseMapValueBy(result, k, occurence);
     }
   });
@@ -27,17 +27,17 @@ function buildSieve(n: number, occ: Map<number, number>): Map<number, number> {
 }
 
 function solution(arr: number[]): number[] {
-  const n = arr.reduce((max, e) => Math.max(max, e));
+  const n: number = arr.reduce((max: number, e: number) => Math.max(max, e));
 
-  let occurrence = new Map<number, number>();
+  let occurrence: Map<number, number> = new Map<number, number>();
 
-  arr.forEach(e => {
+  arr.forEach((e: number) => {
     occurrence = increaseMapValueBy(occurrence, e);
   });
 
-  const sieve = buildSieve(n, occurrence);
+  const sieve: Map<number, number> = buildSieve(n, occurrence);
 
-  return arr.map(e => arr.length - (sieve.get(e) || 0));
+  return arr.map((e: number) => arr.length - (sieve.get(e) || 0));
 }
 
 export { solution };

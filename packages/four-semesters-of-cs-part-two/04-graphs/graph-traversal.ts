@@ -6,23 +6,22 @@ interface User {
   title: string;
   connections: number[];
 }
-/* tslint:enable */
 
-type GetUserFunction = (id: number) => User | null;
+type GetUserFunction = (id: number) => User | undefined;
 
-const findMostCommonTitle = (
+const findMostCommonTitle: (myId: number, getUser: GetUserFunction, degreesOfSeparation: number) => string = (
   myId: number,
   getUser: GetUserFunction,
   degreesOfSeparation: number
 ) => {
-  let queue = [myId];
-  const seen = new Set();
-  const jobs = {};
+  let queue: number[] = [myId];
+  const seen: Set<any> = new Set();
+  const jobs: {} = {};
 
-  for (let i = 0; i <= degreesOfSeparation; i = i + 1) {
+  for (let i: number = 0; i <= degreesOfSeparation; i = i + 1) {
     queue = queue
       .filter(e => !seen.has(e)) // only not seen userId
-      .map(id => getUser(id))
+      .map(getUser)
       .map(user => {
         seen.add(user ? user.id : 0);
         jobs[user ? user.title : ''] = jobs[user ? user.title : '']
@@ -54,4 +53,4 @@ const findMostCommonTitle = (
     ).job;
 };
 
-export { findMostCommonTitle, User };
+export { findMostCommonTitle, GetUserFunction, User };

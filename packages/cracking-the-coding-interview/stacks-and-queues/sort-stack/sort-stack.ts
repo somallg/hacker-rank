@@ -10,14 +10,14 @@ class SortStack {
   constructor(array: number[]) {
     this.s = new Stack<number>();
 
-    array.forEach(n => this.s.push(n));
+    array.forEach((n: number) => this.s.push(n));
   }
 
   public sort(): void {
     const r: Stack<number> = new Stack<number>();
 
     while (!this.s.isEmpty()) {
-      const tmp = this.s.pop() || 0;
+      const tmp: number = this.s.pop() || 0;
 
       while (!r.isEmpty() && r.peek() > tmp) {
         this.s.push(r.pop());
@@ -42,7 +42,7 @@ class SortStack {
 }
 
 function sortStack(array: number[]): number[] {
-  const stack = new SortStack(array);
+  const stack: SortStack = new SortStack(array);
 
   stack.sort();
 

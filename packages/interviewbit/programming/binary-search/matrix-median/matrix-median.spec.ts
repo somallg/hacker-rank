@@ -3,13 +3,17 @@
  * MatrixMedian
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateMatrix,
+  TestFixture
+} from '@challenges/util';
 
 import { matrixMedian } from './matrix-median';
 import * as fixture from './matrix-median.fixture.json';
 
 describe('Interviewbit - MatrixMedian', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number[][], number>)
-    .executeTests(matrixMedian, ut.generateMatrix);
+  createTestExecutor(<TestFixture<number[][], number>>fixture)
+    .executeTests(matrixMedian, generateMatrix);
 });

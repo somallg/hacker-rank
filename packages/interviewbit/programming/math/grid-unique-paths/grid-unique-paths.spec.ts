@@ -3,13 +3,17 @@
  * GridUniquePaths
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { gridUniquePaths } from './grid-unique-paths';
 import * as fixture from './grid-unique-paths.fixture.json';
 
+type Input = [number, number];
+type Output = number;
+
 describe('Interviewbit - GridUniquePaths', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number, number], number>)
-    .executeTests(([row, col]) => gridUniquePaths(row, col), inputSize => [inputSize, inputSize]);
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([row, col]: Input) => gridUniquePaths(row, col),
+    (inputSize: number) => [inputSize, inputSize]
+  );
 });

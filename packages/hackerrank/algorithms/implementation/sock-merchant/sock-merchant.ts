@@ -6,6 +6,7 @@ export function solveSockMerchant(c: number[]): number {
   const socks: { [key: string]: number } = c.reduce(
     (acc: { [key: string]: number }, e: number) => {
       acc[e] = !acc[e] ? 1 : acc[e] + 1;
+
       return acc;
     },
     {}

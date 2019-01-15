@@ -60,24 +60,26 @@ describe('Interviewbit - TripletsWithSumBetweenGivenRange', () => {
 
     describe('Performance tests', () => {
       it('should run for Medium 1 input of 100 items', () => {
-        tripletsWithSumBetweenGivenRange(generateArray(100).map(e => `0.${e}`));
+        tripletsWithSumBetweenGivenRange(
+          generateArray(100).map((e: number) => `0.${e}`)
+        );
       });
 
       it('should run for Large 1 input of 10e3 items', () => {
         tripletsWithSumBetweenGivenRange(
-          generateArray(10e3).map(e => `0.${e}`)
+          generateArray(10e3).map((e: number) => `0.${e}`)
         );
       });
 
       it('should run for Large 2 input of 50e3 items', () => {
         tripletsWithSumBetweenGivenRange(
-          generateArray(50e3).map(e => `0.${e}`)
+          generateArray(50e3).map((e: number) => `0.${e}`)
         );
       });
 
       it('should run for Large 3 input of 100e3 items', () => {
         tripletsWithSumBetweenGivenRange(
-          generateArray(100e3).map(e => `0.${e}`)
+          generateArray(100e3).map((e: number) => `0.${e}`)
         );
       });
     });

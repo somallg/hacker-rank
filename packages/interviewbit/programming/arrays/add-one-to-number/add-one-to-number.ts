@@ -3,13 +3,13 @@
  */
 
 function addOneToNumber(array: number[]): number[] {
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return [1];
   }
 
-  let i = l - 1;
-  let carry = 1;
+  let i: number = l - 1;
+  let carry: number = 1;
 
   while (i >= 0) {
     array[i] = array[i] + carry;

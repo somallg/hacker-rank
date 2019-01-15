@@ -2,10 +2,10 @@
  * DivideIntegers
  */
 
-const INT_MAX = 2 ** 31 - 1;
+const INT_MAX: number = 2 ** 31 - 1;
 
-function findMostSignificantBit(a: number, b: number) {
-  let shift = 0;
+function findMostSignificantBit(a: number, b: number): number {
+  let shift: number = 0;
 
   while (b << shift > 0 && b << shift < a) {
     shift += 1;
@@ -29,11 +29,12 @@ function divideIntegers(a: number, b: number): number {
     return -divideIntegers(-a, b);
   }
 
-  let result = 0;
+  let result: number = 0;
 
   while (b < a) {
-    const mostSignificantBit = findMostSignificantBit(a, b);
+    const mostSignificantBit: number = findMostSignificantBit(a, b);
     result |= 1 << mostSignificantBit;
+    // tslint:disable-next-line
     a -= b << mostSignificantBit;
   }
 

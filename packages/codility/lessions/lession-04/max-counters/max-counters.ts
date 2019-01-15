@@ -2,12 +2,12 @@
  */
 
 function solveMaxCounters(n: number, array: number[]): number[] {
-  const result = Array(n).fill(0);
-  let max = -1;
-  let maxCounter = false;
-  let maxCounterValue = -1;
+  const result: number[] = Array(n).fill(0);
+  let max: number = -1;
+  let maxCounter: boolean = false;
+  let maxCounterValue: number = -1;
 
-  array.forEach(e => {
+  array.forEach((e: number) => {
     if (e <= n) {
       // increase(e)
       if (maxCounter && result[e - 1] <= maxCounterValue) {
@@ -24,7 +24,7 @@ function solveMaxCounters(n: number, array: number[]): number[] {
   });
 
   // now fix all value in result array
-  return result.map(e => Math.max(e, maxCounterValue));
+  return result.map((e: number) => Math.max(e, maxCounterValue));
 }
 
 export { solveMaxCounters };

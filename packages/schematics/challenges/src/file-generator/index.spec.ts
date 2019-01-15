@@ -1,24 +1,34 @@
 import { Tree } from '@angular-devkit/schematics';
-import { SchematicTestRunner } from '@angular-devkit/schematics/testing';
+// tslint:disable:no-submodule-imports
+import {
+  SchematicTestRunner,
+  UnitTestTree
+} from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 
 // SchematicTestRunner needs an absolute path to the collection to test.
-const collectionPath = path.join(__dirname, '../collection.json');
+const collectionPath: string = path.join(__dirname, '../collection.json');
 
-describe('file-generator', () => {
+describe('generate-template-files', () => {
   it('should throw error when no required options is given', () => {
     // We test that
-    const runner = new SchematicTestRunner('schematics', collectionPath);
+    const runner: SchematicTestRunner = new SchematicTestRunner(
+      'schematics',
+      collectionPath
+    );
     expect(() =>
-      runner.runSchematic('file-generator', {}, Tree.empty())
+      runner.runSchematic('generate-template-files', {}, Tree.empty())
     ).toThrow();
   });
 
   it('should throw error when only 1 required option is given', () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
+    const runner: SchematicTestRunner = new SchematicTestRunner(
+      'schematics',
+      collectionPath
+    );
     expect(() =>
       runner.runSchematic(
-        'file-generator',
+        'generate-template-files',
         { directory: 'directory' },
         Tree.empty()
       )
@@ -26,10 +36,13 @@ describe('file-generator', () => {
   });
 
   it('should throw error when only directory is incorrect path', () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
+    const runner: SchematicTestRunner = new SchematicTestRunner(
+      'schematics',
+      collectionPath
+    );
     expect(() =>
       runner.runSchematic(
-        'file-generator',
+        'generate-template-files',
         { directory: 'directory', problem: 'problem-name' },
         Tree.empty()
       )
@@ -37,15 +50,19 @@ describe('file-generator', () => {
   });
 
   it('should work and generate 3 files for typescript lang', () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
-      'file-generator',
+    const runner: SchematicTestRunner = new SchematicTestRunner(
+      'schematics',
+      collectionPath
+    );
+    const tree: UnitTestTree = runner.runSchematic(
+      'generate-template-files',
       { directory: 'directory/challenge', problem: 'problem-name' },
       Tree.empty()
     );
 
-    expect(tree.files.length).toEqual(3);
+    expect(tree.files.length).toEqual(4);
     expect(tree.files.sort()).toEqual([
+      '/directory/challenge/problem-name/problem-name.analysis.org',
       '/directory/challenge/problem-name/problem-name.fixture.json',
       '/directory/challenge/problem-name/problem-name.spec.ts',
       '/directory/challenge/problem-name/problem-name.ts'
@@ -53,9 +70,12 @@ describe('file-generator', () => {
   });
 
   it('should work and generate 2 files for python lang', () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic(
-      'file-generator',
+    const runner: SchematicTestRunner = new SchematicTestRunner(
+      'schematics',
+      collectionPath
+    );
+    const tree: UnitTestTree = runner.runSchematic(
+      'generate-template-files',
       {
         directory: 'directory/challenge',
         lang: 'python',

@@ -10,11 +10,14 @@ function* fromES6(start: number): IterableIterator<number> {
   }
 }
 
-function to(gen: () => number, end: number): () => number | undefined {
-  return () => {
-    const value = gen();
+function to(
+  gen: () => number | undefined,
+  end: number
+): () => number | undefined {
+  return (): number | undefined => {
+    const value: number | undefined = gen();
 
-    if (value < end) {
+    if (value && value < end) {
       return value;
     }
 
@@ -26,12 +29,12 @@ function fromTo(start: number, end: number): () => number | undefined {
   return to(from(start), end);
 }
 
-function element(
-  array: any[],
-  gen = fromTo(0, array.length)
-): () => any | undefined {
-  return () => {
-    const index = gen();
+function element<T>(
+  array: T[],
+  gen: () => number | undefined = fromTo(0, array.length)
+): () => T | undefined {
+  return (): T | undefined => {
+    const index: number | undefined = gen();
 
     if (index !== undefined && index <= array.length - 1) {
       return array[index];

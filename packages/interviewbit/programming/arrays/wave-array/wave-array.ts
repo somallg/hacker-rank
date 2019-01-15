@@ -3,14 +3,14 @@
  */
 
 function waveArray(array: number[]): number[] {
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return [];
   }
 
-  array.sort((a, b) => a - b);
+  array.sort((a: number, b: number) => a - b);
 
-  let i = 0;
+  let i: number = 0;
   while (i < l - 1) {
     // swap i voi i + 1;
     [array[i], array[i + 1]] = [array[i + 1], array[i]];

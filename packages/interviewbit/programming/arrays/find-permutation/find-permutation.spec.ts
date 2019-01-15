@@ -3,13 +3,21 @@
  * Interviewbit - FindPermutation
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateString,
+  TestFixture
+} from '@challenges/util';
 
 import { findPermutation } from './find-permutation';
 import * as fixture from './find-permutation.fixture.json';
 
+type Input = [string, number];
+type Output = number[];
+
 describe('Interviewbit - FindPermutation', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[string, number], number[]>)
-    .executeTests(([s, n]) => findPermutation(s, n), inputSize => [ut.generateString(inputSize), inputSize]);
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([s, n]: Input) => findPermutation(s, n),
+    (inputSize: number) => [generateString(inputSize), inputSize]
+  );
 });

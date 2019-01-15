@@ -1,11 +1,13 @@
 import { element } from './function-challenge-04';
 
+type GenFn = (a?: number, b?: number) => number | undefined;
+
 function collect(
   gen: () => number | undefined,
   array: number[]
 ): () => number | undefined {
-  return () => {
-    const value = gen();
+  return (): number | undefined => {
+    const value: number | undefined = gen();
     if (value !== undefined) {
       array.push(value);
     }
@@ -17,9 +19,9 @@ function collect(
 function filter(
   gen: () => number | undefined,
   pred: (n: number) => boolean
-): () => any {
-  const rec = (): any => {
-    const value = gen();
+): () => number | undefined {
+  const rec: () => number | undefined = (): number | undefined => {
+    const value: number | undefined = gen();
 
     if (value === undefined) {
       return undefined;
@@ -35,25 +37,27 @@ function concat(
   gen1: (a?: number, b?: number) => number | undefined,
   gen2: (a?: number, b?: number) => number | undefined
 ): () => number | undefined {
-  let gen = gen1;
-  return () => {
-    const value = gen();
+  let gen: (a?: number, b?: number) => number | undefined = gen1;
+
+  return (): number | undefined => {
+    const value: number | undefined = gen();
 
     if (value !== undefined) {
       return value;
     }
 
     gen = gen2;
+
     return gen();
   };
 }
 
-function concatES6(...gens: Array<() => number | undefined>): () => number {
-  const next = element(gens);
-  let gen = next();
+function concatES6(...gens: GenFn[]): () => number | undefined {
+  const next: () => GenFn | undefined = element<GenFn>(gens);
+  let gen: GenFn | undefined = next();
 
-  const recur = (): number => {
-    const value = gen();
+  const recur: () => number = (): number => {
+    const value: number | undefined = (<GenFn>gen)();
 
     if (value === undefined) {
       gen = next();
@@ -62,7 +66,7 @@ function concatES6(...gens: Array<() => number | undefined>): () => number {
       }
     }
 
-    return value;
+    return <number>value;
   };
 
   return recur;

@@ -2,7 +2,7 @@
  * Test specs for prefixSums
  */
 
-import { prefixSums, countTotal } from './prefix-sums';
+import { countTotal, prefixSums } from './prefix-sums';
 
 describe('prefixSums', () => {
   describe('prefixSums', () => {

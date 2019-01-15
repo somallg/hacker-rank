@@ -18,6 +18,7 @@ describe('Interviewbit - MaximumConsecutiveGap', () => {
         expect(maximumConsecutiveGap([1, 1, 2])).toEqual(1);
       });
 
+      // tslint:disable-next-line
       it('should return for Example 3', () => {
         expect(
           maximumConsecutiveGap([

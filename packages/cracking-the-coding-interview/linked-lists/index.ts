@@ -1,9 +1,8 @@
 class LinkedListNode {
-  public next: LinkedListNode | null;
+  public next: LinkedListNode | undefined;
   public data: number;
 
   constructor(data: number) {
-    this.next = null;
     this.data = data;
   }
 }

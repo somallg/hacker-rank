@@ -9,7 +9,7 @@ function solveBinaryGap(n: number): number {
     .toString(2)
     .split('')
     .reduce(
-      (acc, e) => {
+      (acc: IBinaryGap, e: string) => {
         if (e === '1') {
           acc.isBinaryGap = true;
           acc.result.push(acc.temp);
@@ -23,10 +23,11 @@ function solveBinaryGap(n: number): number {
 
         return acc;
       },
-      { result: [], temp: [], isBinaryGap: false } as IBinaryGap
+      // tslint:disable-next-line
+      <IBinaryGap>{ result: [], temp: [], isBinaryGap: false }
     )
-    .result.map(e => e.length)
-    .reduce((a, b) => (a > b ? a : b), 0);
+    .result.map((e: string[]) => e.length)
+    .reduce((a: number, b: number) => (a > b ? a : b), 0);
 }
 
 export { solveBinaryGap };

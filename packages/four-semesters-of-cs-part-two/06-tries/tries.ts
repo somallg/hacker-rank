@@ -3,7 +3,7 @@ class Node {
   public children: Node[];
   public terminus: boolean;
 
-  constructor(value = '') {
+  constructor(value: string = '') {
     this.value = value;
     this.children = [];
     this.terminus = false;
@@ -13,12 +13,15 @@ class Node {
 function add(node: Node, s: string): Node {
   if (s.length === 0) {
     node.terminus = true;
+
     return node;
   }
-  const value = s[0];
-  const next = s.substr(1);
+  const value: string = s[0];
+  const next: string = s.substr(1);
 
-  let foundChild = node.children.filter(child => child.value === value)[0];
+  let foundChild: Node = node.children.filter(
+    (child: Node) => child.value === value
+  )[0];
 
   if (foundChild) {
     foundChild = add(foundChild, next);
@@ -31,8 +34,8 @@ function add(node: Node, s: string): Node {
 }
 
 function createTrie(words: string[]): Node {
-  const root = new Node();
-  words.forEach(word => add(root, word.toLowerCase()));
+  const root: Node = new Node();
+  words.forEach((word: string) => add(root, word.toLowerCase()));
 
   return root;
 }
@@ -51,7 +54,7 @@ function traverse(
     res.push(`${built}${node.value}`);
   }
 
-  node.children.forEach(child =>
+  node.children.forEach((child: Node) =>
     traverse(child, s.substr(1), `${built}${node.value}`, res)
   );
 
@@ -60,8 +63,8 @@ function traverse(
 
 function completeTrie(root: Node, s: string): string[] {
   return root.children
-    .map(child => traverse(child, s, '', []))
-    .reduce((acc, item) => acc.concat(item), []);
+    .map((child: Node) => traverse(child, s, '', []))
+    .reduce((acc: string[], item: string[]) => acc.concat(item), []);
 }
 
-export { createTrie, completeTrie };
+export { createTrie, completeTrie, Node };

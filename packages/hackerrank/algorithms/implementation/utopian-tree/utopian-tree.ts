@@ -13,9 +13,9 @@ export function solveUtopianTree(n: number): number {
     return 1;
   }
 
-  return n % 2 !== 0
-    ? solveUtopianTree(n - 1) * 2
-    : solveUtopianTree(n - 1) + 1;
+  const acc: number = solveUtopianTree(n - 1);
+
+  return n % 2 !== 0 ? acc * 2 : acc + 1;
 }
 
 export function utopianTreeTail(acc: number, n: number): number {
@@ -24,7 +24,7 @@ export function utopianTreeTail(acc: number, n: number): number {
     return acc;
   }
 
-  return utopianTreeTail(n % 2 !== 0 ? n * 2 : n + 1, n - 1);
+  return utopianTreeTail(n % 2 !== 0 ? acc * 2 : acc + 1, n - 1);
 }
 
 // f(1, 4) => summer => f(1 + 1, 3)
@@ -46,10 +46,11 @@ export function utopianTreeLazy(acc: Function, n: number): number {
   }
 
   return utopianTreeLazy(
-    n % 2 !== 0 ? () => acc() * 2 : () => acc() + 1,
+    n % 2 !== 0 ? (): number => acc() * 2 : (): number => acc() + 1,
     n - 1
   );
 }
-export function solveUtopianTreeLazy(n: number) {
+
+export function solveUtopianTreeLazy(n: number): number {
   return utopianTreeLazy(() => 1, n);
 }

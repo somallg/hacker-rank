@@ -6,8 +6,9 @@ export function gameOfThrones(s: string): string {
   // Complete this function
   const chars: { [key: string]: number } = s
     .split('')
-    .reduce((acc: any, e: string) => {
+    .reduce((acc: {}, e: string) => {
       acc[e] = acc[e] ? acc[e] + 1 : 1;
+
       return acc;
     }, {});
 

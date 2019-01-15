@@ -3,9 +3,10 @@
  */
 
 function prefixSums(arr: number[]): number[] {
-  const p = arr.reduce(
-    (acc, e, i) => {
+  const p: number[] = arr.reduce(
+    (acc: number[], e: number, i: number) => {
       acc[i] = e + acc[Math.max(0, i - 1)];
+
       return acc;
     },
     [0]

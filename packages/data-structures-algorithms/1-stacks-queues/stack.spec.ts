@@ -2,7 +2,7 @@ import { Stack } from './stack';
 
 describe('Stack', () => {
   it('should work', () => {
-    const myMenu = new Stack<string>();
+    const myMenu: Stack<string> = new Stack<string>();
     myMenu.push('Salad');
     myMenu.push('Meat');
     myMenu.push('Fish');

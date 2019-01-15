@@ -3,16 +3,23 @@
  * MedianOfArray
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { medianOfArray } from './median-of-array';
 import * as fixture from './median-of-array.fixture.json';
 
+type Input = [number[], number[]];
+type Output = number;
+
 describe('Interviewbit - MedianOfArray', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number[], number[]], number>)
+  createTestExecutor(<TestFixture<Input, Output>>fixture)
     .executeTests(
-      ([a, b]) => medianOfArray(a, b),
+      ([a, b]: Input) => medianOfArray(a, b),
       medianOfArray.name,
-      inputSize => [ut.generateArray(inputSize), ut.generateArray(inputSize)]);
+      (inputSize: number)=> [generateArray(inputSize), generateArray(inputSize)]);
 });

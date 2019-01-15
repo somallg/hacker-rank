@@ -3,14 +3,18 @@
  * Interviewbit - ExcelColumnNumber
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateString,
+  TestFixture
+} from '@challenges/util';
 
 import { excelColumnNumber } from './excel-column-number';
 import * as fixture from './excel-column-number.fixture.json';
 
 describe('Interviewbit - ExcelColumnNumber', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<string, number>).executeTests(
+  createTestExecutor(<TestFixture<string, number>>fixture).executeTests(
     excelColumnNumber,
-    ut.generateString
+    generateString
   );
 });

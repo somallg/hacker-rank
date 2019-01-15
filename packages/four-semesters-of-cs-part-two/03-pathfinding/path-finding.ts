@@ -1,6 +1,6 @@
-const NO_ONE = 0;
-const BY_A = 1;
-const BY_B = 2;
+const NO_ONE: number = 0;
+const BY_A: number = 1;
+const BY_B: number = 2;
 
 interface VisitedNode {
   closed: boolean;
@@ -15,7 +15,7 @@ function getNeighbors(
   x: number,
   y: number
 ): VisitedNode[] {
-  const neighbors = [];
+  const neighbors: VisitedNode[] = [];
 
   if (y - 1 >= 0 && !visited[y - 1][x].closed) {
     // left
@@ -45,38 +45,39 @@ function findShortestPathLength(
   [xA, yA]: [number, number],
   [xB, yB]: [number, number]
 ): number {
-  const visited = maze.map((row, y) =>
+  const visited: VisitedNode[][] = maze.map((row: number[], y: number) =>
     row.map(
-      (point, x) =>
-        ({
-          x,
-          y,
+      (point: number, x: number) =>
+        // tslint:disable:no-object-literal-type-assertion
+        <VisitedNode>{
           closed: point === 1,
           length: 0,
-          openedBy: NO_ONE
-        } as VisitedNode)
+          openedBy: NO_ONE,
+          x,
+          y
+        }
     )
   );
 
   visited[yA][xA].openedBy = BY_A;
   visited[yB][xB].openedBy = BY_B;
 
-  let aQueue = [visited[yA][xA]];
-  let bQueue = [visited[yB][xB]];
-  let iteration = 0;
+  let aQueue: VisitedNode[] = [visited[yA][xA]];
+  let bQueue: VisitedNode[] = [visited[yB][xB]];
+  let iteration: number = 0;
 
   while (aQueue.length && bQueue.length) {
     iteration += 1;
-    const aNeighbors = aQueue.reduce(
-      (acc, neighbor) =>
+    const aNeighbors: VisitedNode[] = aQueue.reduce(
+      (acc: VisitedNode[], neighbor: VisitedNode) =>
         acc.concat(getNeighbors(visited, neighbor.x, neighbor.y)),
-      [] as VisitedNode[]
+      []
     );
 
     aQueue = [];
     // tslint:disable-next-line
-    for (let i = 0; i < aNeighbors.length; i += 1) {
-      const neighbor = aNeighbors[i];
+    for (let i: number = 0; i < aNeighbors.length; i += 1) {
+      const neighbor: VisitedNode = aNeighbors[i];
       if (neighbor.openedBy === BY_B) {
         return neighbor.length + iteration;
         // tslint:disable-next-line
@@ -87,16 +88,16 @@ function findShortestPathLength(
       }
     }
 
-    const bNeighbors = bQueue.reduce(
-      (acc, neighbor) =>
+    const bNeighbors: VisitedNode[] = bQueue.reduce(
+      (acc: VisitedNode[], neighbor: VisitedNode) =>
         acc.concat(getNeighbors(visited, neighbor.x, neighbor.y)),
-      [] as VisitedNode[]
+      []
     );
 
     bQueue = [];
     // tslint:disable-next-line
-    for (let i = 0; i < bNeighbors.length; i += 1) {
-      const neighbor = bNeighbors[i];
+    for (let i: number = 0; i < bNeighbors.length; i += 1) {
+      const neighbor: VisitedNode = bNeighbors[i];
       if (neighbor.openedBy === BY_A) {
         return neighbor.length + iteration;
         // tslint:disable-next-line

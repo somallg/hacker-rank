@@ -3,9 +3,9 @@
 import { Stack } from '../stack';
 
 function solveStoneWall(heights: number[]): number {
-  const heightStack = new Stack<number>();
-  const n = heights.length;
-  let count = 0;
+  const heightStack: Stack<number> = new Stack<number>();
+  const n: number = heights.length;
+  let count: number = 0;
 
   if (!n) {
     return count;
@@ -13,8 +13,8 @@ function solveStoneWall(heights: number[]): number {
 
   heightStack.push(0);
 
-  for (let i = 0; i < n; i = i + 1) {
-    const currentHeight = heights[i];
+  for (let i: number = 0; i < n; i = i + 1) {
+    const currentHeight: number = heights[i];
 
     while (heightStack.length > 0 && heightStack.peek() > currentHeight) {
       heightStack.pop();

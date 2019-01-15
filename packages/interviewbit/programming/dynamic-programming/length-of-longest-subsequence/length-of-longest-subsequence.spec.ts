@@ -6,9 +6,9 @@
 import { generateArray } from '@challenges/util';
 
 import {
-  solveLengthOfLongestSubsequence,
   longestSubsequenceEndingAt,
-  longestSubsequenceStartingAt
+  longestSubsequenceStartingAt,
+  solveLengthOfLongestSubsequence
 } from './length-of-longest-subsequence';
 
 describe('Interviewbit - LengthOfLongestSubsequence', () => {

@@ -7,12 +7,12 @@ function canBuildBlockWithSum(
   sum: number,
   nbBlocks: number
 ): boolean {
-  let currentSum = 0;
-  let nbBuiltBlocks = 0;
-  let i = 0;
+  let currentSum: number = 0;
+  let nbBuiltBlocks: number = 0;
+  let i: number;
 
   for (i = 0; i < arr.length; i = i + 1) {
-    const a = arr[i];
+    const a: number = arr[i];
     if (currentSum + a <= sum) {
       currentSum = currentSum + a;
     } else {
@@ -29,15 +29,15 @@ function canBuildBlockWithSum(
 }
 
 function solution(nbBlocks: number, maxValue: number, arr: number[]): number {
-  const maxA = arr.reduce((max, a) => Math.max(max, a));
-  const sumA = arr.reduce((acc, a) => acc + a);
+  const maxA: number = arr.reduce((max: number, a: number) => Math.max(max, a));
+  const sumA: number = arr.reduce((acc: number, a: number) => acc + a);
 
-  let start = maxA;
-  let end = sumA;
-  let result = -1;
+  let start: number = maxA;
+  let end: number = sumA;
+  let result: number = -1;
 
   while (start <= end) {
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
 
     if (!canBuildBlockWithSum(arr, middle, nbBlocks)) {
       start = middle + 1;

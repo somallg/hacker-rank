@@ -3,7 +3,7 @@
  */
 
 function countNbOfSetBit(array: number[], shift: number): number {
-  return array.reduce((acc, n) => {
+  return array.reduce((acc: number, n: number) => {
     if (((n >>> shift) & 1) === 1) {
       return acc + 1;
     }
@@ -13,12 +13,12 @@ function countNbOfSetBit(array: number[], shift: number): number {
 }
 
 function differentBitsSumPairwise(array: number[]): number {
-  const l = array.length;
-  let result = 0;
+  const l: number = array.length;
+  let result: number = 0;
 
-  for (let i = 0; i < 32; i += 1) {
-    const nbOfSetBit = countNbOfSetBit(array, i);
-    result += 2 * nbOfSetBit * (l - nbOfSetBit);
+  for (let i: number = 0; i < 32; i += 1) {
+    const nbOfSetBit: number = countNbOfSetBit(array, i);
+    result += nbOfSetBit * (l - nbOfSetBit) * 2;
   }
 
   return result % (1e9 + 7);

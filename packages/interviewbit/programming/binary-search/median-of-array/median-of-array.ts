@@ -3,29 +3,30 @@
  */
 
 function medianOfArray(a: number[], b: number[]): number {
-  let m = a.length;
-  let n = b.length;
+  let m: number = a.length;
+  let n: number = b.length;
   if (m > n) {
     [n, m] = [m, n];
+    // tslint:disable-next-line
     [a, b] = [b, a];
   }
 
   // tslint:disable:no-bitwise
-  const middle = (m + n + 1) >>> 1;
+  const middle: number = (m + n + 1) >>> 1;
 
-  let iStart = 0;
-  let iEnd = m;
+  let iStart: number = 0;
+  let iEnd: number = m;
 
   while (iStart <= iEnd) {
-    const i = (iStart + iEnd) >>> 1;
-    const j = middle - i;
+    const i: number = (iStart + iEnd) >>> 1;
+    const j: number = middle - i;
     if (j > 0 && i < m && a[i] < b[j - 1]) {
       iStart = i + 1;
     } else if (i > 0 && j < n && a[i - 1] > b[j]) {
       iEnd = i - 1;
     } else {
-      let median1 = 0;
-      let median2 = 0;
+      let median1: number = 0;
+      let median2: number = 0;
       if (i === 0) {
         median1 = b[j - 1];
       } else if (j === 0) {

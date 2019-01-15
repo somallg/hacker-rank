@@ -3,14 +3,14 @@
  * StringCompression
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { stringCompression } from './string-compression';
 import * as fixture from './string-compression.fixture.json';
 
 describe('CrackingTheCodingInterview - StringCompression', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<string, string>)
+  createTestExecutor(<TestFixture<string, string>> fixture)
     .executeTests(
       stringCompression
     );

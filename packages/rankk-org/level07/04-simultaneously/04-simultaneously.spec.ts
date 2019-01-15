@@ -13,11 +13,11 @@ xdescribe('04Simultaneously', () => {
     it('should return when input ', async () => {
       expect(solve04Simultaneously()).toEqual(1);
 
-      const browser = await puppeteer.launch({
+      const browser: puppeteer.Browser = await puppeteer.launch({
         headless: false,
         ignoreHTTPSErrors: true
       });
-      const page = await browser.newPage();
+      const page: puppeteer.Page = await browser.newPage();
       await page.goto('https://www.rankk.org/');
 
       await page.type('#login input#username', 'somallg');
@@ -27,9 +27,12 @@ xdescribe('04Simultaneously', () => {
       // await page.waitForNavigation({ timeout: 0 });
       await page.goto('https://www.rankk.org/challenges/simultaneously.py');
 
-      const pre = await page.$('pre');
+      const pre: puppeteer.ElementHandle<Element> | null = await page.$('pre');
       if (pre) {
-        const textContent = await pre.getProperty('textContent');
+        const textContent: puppeteer.JSHandle = await pre.getProperty(
+          'textContent'
+        );
+        // tslint:disable-next-line
         console.log(await textContent.jsonValue());
       }
 

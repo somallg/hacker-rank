@@ -3,14 +3,14 @@
  * SquareRootOfInteger
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
 import { squareRootOfInteger } from './square-root-of-integer';
 import * as fixture from './square-root-of-integer.fixture.json';
 
 describe('Interviewbit - SquareRootOfInteger', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number>).executeTests(
+  createTestExecutor(<TestFixture<number, number>>fixture).executeTests(
     squareRootOfInteger,
-    ut.identityf
+    identityf
   );
 });

@@ -1,8 +1,8 @@
-import { binarySearch, linearSearch } from './search-element';
+import { binarySearch, Element, linearSearch } from './search-element';
 
 describe('linear search', () => {
   it('should find an object on an unsorted array', () => {
-    const lookingFor = { id: 5, name: 'Brian' };
+    const lookingFor: Element = { id: 5, name: 'Brian' };
     expect(
       linearSearch(5, [
         { id: 1, name: 'Sam' },
@@ -26,7 +26,7 @@ describe('linear search', () => {
 
 describe('binary search', () => {
   it('should test things', () => {
-    const lookingFor = { id: 23, name: 'Brian' };
+    const lookingFor: Element = { id: 23, name: 'Brian' };
     expect(
       binarySearch(23, [
         { id: 1, name: 'Sam' },

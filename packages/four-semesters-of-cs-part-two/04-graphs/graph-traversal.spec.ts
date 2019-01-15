@@ -1,8 +1,8 @@
-import { findMostCommonTitle, User } from './graph-traversal';
+import { findMostCommonTitle, GetUserFunction, User } from './graph-traversal';
 
-const getUser = (id: number) => (id <= 1000 && id > 0 ? list[id - 1] : null);
+const getUser: GetUserFunction = (id: number): User | undefined =>
+  id <= 1000 && id > 0 ? list[id - 1] : undefined;
 
-/* tslint:disable */
 const list: User[] = [
   {
     id: 1,
@@ -7005,7 +7005,6 @@ const list: User[] = [
     connections: [532, 590, 907, 267, 829]
   }
 ];
-/* tslint:enable */
 
 describe('findMostCommonTitle', () => {
   // the getUser function and data comes from this CodePen: https://codepen.io/btholt/pen/NXJGwa?editors=0010

@@ -27,20 +27,23 @@ describe('Codility - MaxNonoverlappingSegments', () => {
 
     describe('Performance tests', () => {
       it('should run for Medium 1 input of 100 items', () => {
-        solution(generateArray(100), generateArray(100).sort((a, b) => a - b));
+        solution(
+          generateArray(100),
+          generateArray(100).sort((a: number, b: number) => a - b)
+        );
       });
 
       it('should run for Large 1 input of 10e3 items', () => {
         solution(
           generateArray(10e3),
-          generateArray(10e3).sort((a, b) => a - b)
+          generateArray(10e3).sort((a: number, b: number) => a - b)
         );
       });
 
       it('should run for Large 2 input of 30e3 items', () => {
         solution(
           generateArray(30e3),
-          generateArray(30e3).sort((a, b) => a - b)
+          generateArray(30e3).sort((a: number, b: number) => a - b)
         );
       });
     });

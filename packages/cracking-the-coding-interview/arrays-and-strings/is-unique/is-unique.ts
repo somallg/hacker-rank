@@ -3,11 +3,11 @@
  */
 
 function isUnique(s: string): boolean {
-  const charCodeOfA = 'a'.charCodeAt(0);
-  let checker = 0;
+  const charCodeOfA: number = 'a'.charCodeAt(0);
+  let checker: number = 0;
 
-  for (let i = 0; i < s.length; i += 1) {
-    const val = s.charCodeAt(i) - charCodeOfA;
+  for (let i: number = 0; i < s.length; i += 1) {
+    const val: number = s.charCodeAt(i) - charCodeOfA;
     if ((checker & (1 << val)) > 0) {
       return false;
     }

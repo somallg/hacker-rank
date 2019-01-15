@@ -3,16 +3,20 @@
  * SumOfPairwiseHammingDistance
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { sumOfPairwiseHammingDistance } from './sum-of-pairwise-hamming-distance';
 import * as fixture from './sum-of-pairwise-hamming-distance.fixture.json';
 
 describe('Interviewbit - SumOfPairwiseHammingDistance', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number[], number>)
+  createTestExecutor(<TestFixture<number[], number>>fixture)
     .executeTests(
       sumOfPairwiseHammingDistance,
-      ut.generateArray
+      generateArray
   );
 });

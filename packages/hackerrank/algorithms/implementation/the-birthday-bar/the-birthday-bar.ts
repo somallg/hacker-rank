@@ -14,6 +14,7 @@ export function solveBirthdayBar(
   }
 
   const slices: number[][] = s.reduce(
+    // tslint:disable-next-line
     (acc: number[][], _: number, i: number) => {
       acc.push(s.slice(i, i + m));
 
@@ -22,6 +23,7 @@ export function solveBirthdayBar(
     []
   );
 
+  // tslint:disable-next-line
   return slices.filter((s: number[]) => s.length === m && s.reduce(sum) === d)
     .length;
 }

@@ -1,10 +1,23 @@
+import { Node } from './node';
+
 import { breadthFirstTraverse } from './breadth-first';
 
-describe('tests', () => {
-  const answer = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'];
+describe('breadthFirstTraverse', () => {
+  const answer: string[] = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K'
+  ];
 
-  /* tslint:disable */
-  const tree = {
+  const tree: Node<string> = {
     value: 'A',
     left: {
       value: 'B',
@@ -12,21 +25,22 @@ describe('tests', () => {
         value: 'D',
         left: {
           value: 'G',
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         },
-        right: null
+        right: undefined
       },
       right: {
         value: 'E',
-        left: null,
+        left: undefined,
         right: {
           value: 'H',
           left: {
             value: 'K',
-            left: null,
-            right: null
-          }
+            left: undefined,
+            right: undefined
+          },
+          right: undefined
         }
       }
     },
@@ -36,21 +50,20 @@ describe('tests', () => {
         value: 'F',
         left: {
           value: 'I',
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         },
         right: {
           value: 'J',
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         }
       },
-      right: null
+      right: undefined
     }
   };
-  /* tslint:enable */
 
-  it('breadthFirstTraverse', () => {
+  it('should work', () => {
     expect(breadthFirstTraverse([tree], [])).toEqual(answer);
   });
 });

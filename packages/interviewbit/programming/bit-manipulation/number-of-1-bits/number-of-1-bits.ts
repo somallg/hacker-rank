@@ -3,10 +3,11 @@
  */
 
 function numberOf1Bits(n: number): number {
-  let result = 0;
+  let result: number = 0;
 
   while (n > 0) {
     result += 1;
+    // tslint:disable-next-line
     n &= n - 1;
   }
 

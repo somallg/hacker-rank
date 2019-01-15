@@ -3,15 +3,15 @@
  */
 
 function minXorValue(array: number[]): number {
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return 0;
   }
 
-  array.sort((a, b) => a - b);
-  let result = Infinity;
+  array.sort((a: number, b: number) => a - b);
+  let result: number = Infinity;
 
-  for (let i = 0; i < l - 1; i += 1) {
+  for (let i: number = 0; i < l - 1; i += 1) {
     result = Math.min(result, array[i] ^ array[i + 1]);
   }
 

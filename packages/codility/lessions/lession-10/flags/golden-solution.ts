@@ -1,15 +1,15 @@
-function nextPeak(arr: number[]) {
-  const l = arr.length;
+function nextPeak(arr: number[]): number[] {
+  const l: number = arr.length;
 
-  const peaks = arr.map(
-    (n, index) =>
+  const peaks: boolean[] = arr.map(
+    (n: number, index: number) =>
       index > 0 && index < l - 1 && n > arr[index - 1] && n > arr[index + 1]
   );
 
-  const next = Array(l).fill(0);
+  const next: number[] = Array(l).fill(0);
   next[l - 1] = -1;
 
-  for (let i = l - 2; i > -1; i = i - 1) {
+  for (let i: number = l - 2; i > -1; i = i - 1) {
     if (peaks[i]) {
       next[i] = i;
     } else {
@@ -21,16 +21,16 @@ function nextPeak(arr: number[]) {
 }
 
 function solveFlags(arr: number[]): number {
-  const l = arr.length;
+  const l: number = arr.length;
 
-  const next = nextPeak(arr);
+  const next: number[] = nextPeak(arr);
 
-  let i = 1;
-  let result = 0;
+  let i: number = 1;
+  let result: number = 0;
 
   while ((i - 1) * i <= l) {
-    let num = 0;
-    let index = 0;
+    let num: number = 0;
+    let index: number = 0;
 
     while (index < l && num < i) {
       index = next[index];

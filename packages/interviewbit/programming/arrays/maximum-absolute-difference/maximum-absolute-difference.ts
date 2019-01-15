@@ -3,22 +3,30 @@
  */
 
 function maximumAbsoluteDifference(array: number[]): number {
-  const l = array.length;
+  const l: number = array.length;
   if (l <= 1) {
     return 0;
   }
 
-  const arrayPlusIndex = array.map((a, i) => a + i + 1);
-  const arrayMinusIndex = array.map((a, i) => a - i - 1);
-
-  const maxArrayPlusIndex = arrayPlusIndex.reduce((acc, a) => Math.max(acc, a));
-  const minArrayPlusIndex = arrayPlusIndex.reduce((acc, a) => Math.min(acc, a));
-
-  const maxArrayMinusIndex = arrayMinusIndex.reduce((acc, a) =>
-    Math.max(acc, a)
+  const arrayPlusIndex: number[] = array.map(
+    (a: number, i: number) => a + i + 1
   );
-  const minArrayMinusIndex = arrayMinusIndex.reduce((acc, a) =>
-    Math.min(acc, a)
+  const arrayMinusIndex: number[] = array.map(
+    (a: number, i: number) => a - i - 1
+  );
+
+  const maxArrayPlusIndex: number = arrayPlusIndex.reduce(
+    (acc: number, a: number) => Math.max(acc, a)
+  );
+  const minArrayPlusIndex: number = arrayPlusIndex.reduce(
+    (acc: number, a: number) => Math.min(acc, a)
+  );
+
+  const maxArrayMinusIndex: number = arrayMinusIndex.reduce(
+    (acc: number, a: number) => Math.max(acc, a)
+  );
+  const minArrayMinusIndex: number = arrayMinusIndex.reduce(
+    (acc: number, a: number) => Math.min(acc, a)
   );
 
   return Math.max(

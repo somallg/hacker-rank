@@ -3,19 +3,19 @@
  * ImplementPowerFunction
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { implementPowerFunction } from './implement-power-function';
 import * as fixture from './implement-power-function.fixture.json';
 
-type InputType = [number, number, number];
+type Input = [number, number, number];
 
 describe('Interviewbit - ImplementPowerFunction', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<InputType, number>)
+  createTestExecutor(<TestFixture<Input, number>>fixture)
     .executeTests(
-      ([x, n, d]) => implementPowerFunction(x, n, d),
+      ([x, n, d]: Input) => implementPowerFunction(x, n, d),
       implementPowerFunction.name,
-      inputSize => [inputSize, inputSize >>> 1, inputSize]
+      (inputSize: number) => [inputSize, inputSize >>> 1, inputSize]
     );
 });

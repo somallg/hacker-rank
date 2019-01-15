@@ -19,18 +19,19 @@ import {
 
 import { Schema as FileGeneratorOptions } from './schema';
 
+// tslint:disable-next-line
 export default function(options: FileGeneratorOptions): Rule {
-  const { directory, problem, lang } = options;
+  const { directory, problem, lang }: Schema = options;
 
-  const challengeName = getChallengeName(options.directory);
+  const challengeName: string = getChallengeName(options.directory);
   if (!challengeName) {
     throw new SchematicsException(
       'Invalid options, "directory" must be correct'
     );
   }
 
-  const functionName = getFunctionName(challengeName, problem);
-  const challengeUrl = getUrl(challengeName, problem);
+  const functionName: string = getFunctionName(challengeName, problem);
+  const challengeUrl: string = getUrl(challengeName, problem);
 
   return chain([
     mergeWith(

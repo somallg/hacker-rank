@@ -9,8 +9,8 @@ function routeBetweenNodes(
   startIndex: number,
   endIndex: number
 ): boolean {
-  const graph = new Graph(nums);
-  const nodes = graph.getNodes();
+  const graph: Graph = new Graph(nums);
+  const nodes: Node[] = graph.getNodes();
 
   return search(graph, nodes[startIndex], nodes[endIndex]);
 }
@@ -25,7 +25,7 @@ function search(graph: Graph, start: Node, end: Node): boolean {
   queue.push(start);
 
   while (queue.length > 0) {
-    const u = queue.shift();
+    const u: Node | undefined = queue.shift();
 
     if (u) {
       for (const v of u.getAdjacent()) {

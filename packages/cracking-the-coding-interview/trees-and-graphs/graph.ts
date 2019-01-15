@@ -11,12 +11,12 @@ class Graph {
   constructor(nums: number[][]) {
     this.nodes = [];
 
-    nums.forEach((_, index) => {
+    nums.forEach((_: number[], index: number) => {
       this.nodes.push(new Node(index));
     });
 
-    nums.forEach((nodeIndexes, index) => {
-      nodeIndexes.forEach(n => {
+    nums.forEach((nodeIndexes: number[], index: number) => {
+      nodeIndexes.forEach((n: number) => {
         this.nodes[index].children.push(this.nodes[n]);
       });
     });

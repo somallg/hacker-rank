@@ -9,9 +9,10 @@ function largestCoprimeDivisor(a: number, b: number): number {
     return 0;
   }
 
-  let gcdAB = greatestCommonDivisor(a, b);
+  let gcdAB: number = greatestCommonDivisor(a, b);
 
   while (gcdAB > 1) {
+    // tslint:disable-next-line
     a = a / gcdAB;
     gcdAB = greatestCommonDivisor(a, b);
   }

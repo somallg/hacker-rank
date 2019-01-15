@@ -5,7 +5,7 @@
 function generateBoard(n: number): string[][] {
   const board: string[][] = [];
 
-  for (let i = 0; i < n; i = i + 1) {
+  for (let i: number = 0; i < n; i = i + 1) {
     board[i] = Array(n).fill('.');
   }
 
@@ -13,24 +13,34 @@ function generateBoard(n: number): string[][] {
 }
 
 function isSafe(board: string[][], row: number, col: number): boolean {
-  const l = board.length;
+  const l: number = board.length;
 
   // check ^ direction
-  for (let i = row; i >= 0; i = i - 1) {
+  for (let i: number = row; i >= 0; i = i - 1) {
     if (board[i][col] === 'Q') {
       return false;
     }
   }
 
   // check left diagonals
-  for (let i = row, j = col; i >= 0 && j >= 0; i = i - 1, j = j - 1) {
+  for (
+    // tslint:disable-next-line
+    let i: number = row, j: number = col;
+    i >= 0 && j >= 0;
+    i = i - 1, j = j - 1
+  ) {
     if (board[i][j] === 'Q') {
       return false;
     }
   }
 
   // check right diagonals
-  for (let i = row, j = col; i >= 0 && j < l; i = i - 1, j = j + 1) {
+  for (
+    // tslint:disable-next-line
+    let i: number = row, j: number = col;
+    i >= 0 && j < l;
+    i = i - 1, j = j + 1
+  ) {
     if (board[i][j] === 'Q') {
       return false;
     }
@@ -40,15 +50,18 @@ function isSafe(board: string[][], row: number, col: number): boolean {
 }
 
 function nQueens(n: number): string[][] {
+  // tslint:disable-next-line
   function solveNQueensRec(board: string[][], row: number, n: number): boolean {
     if (row === n) {
-      result.push(board.map(row => row.join('')));
+      // tslint:disable-next-line
+      result.push(board.map((row: string[]) => row.join('')));
+
       return true;
     }
 
-    const l = board.length;
+    const l: number = board.length;
 
-    for (let i = 0; i < l; i = i + 1) {
+    for (let i: number = 0; i < l; i = i + 1) {
       if (isSafe(board, row, i)) {
         board[row][i] = 'Q';
         solveNQueensRec(board, row + 1, n);
@@ -59,7 +72,7 @@ function nQueens(n: number): string[][] {
     return false;
   }
 
-  const board = generateBoard(n);
+  const board: string[][] = generateBoard(n);
   const result: string[][] = [];
   solveNQueensRec(board, 0, n);
 

@@ -2,12 +2,12 @@
  * Interviewbit - Flip
  */
 
-function getMaxSumIndex(array: number[], reversed = false): number {
+function getMaxSumIndex(array: number[], reversed: boolean = false): number {
   if (reversed) {
     array.reverse();
   }
-  const maxSumEnding = [array[0]];
-  for (let i = 1; i < array.length; i = i + 1) {
+  const maxSumEnding: number[] = [array[0]];
+  for (let i: number = 1; i < array.length; i = i + 1) {
     maxSumEnding[i] = Math.max(maxSumEnding[i - 1] + array[i], array[i]);
   }
 
@@ -15,10 +15,10 @@ function getMaxSumIndex(array: number[], reversed = false): number {
     maxSumEnding.reverse();
   }
   // find index of max
-  let max = 0;
-  let maxIndex = -1;
+  let max: number = 0;
+  let maxIndex: number = -1;
 
-  for (let i = 0; i < maxSumEnding.length; i = i + 1) {
+  for (let i: number = 0; i < maxSumEnding.length; i = i + 1) {
     if (max < maxSumEnding[i]) {
       max = maxSumEnding[i];
       maxIndex = i;
@@ -29,14 +29,16 @@ function getMaxSumIndex(array: number[], reversed = false): number {
 }
 
 function flip(s: string): number[] {
-  const l = s.length;
-  const arrayBits = s.split('').map(c => (c === '1' ? -1 : 1));
+  const l: number = s.length;
+  const arrayBits: number[] = s
+    .split('')
+    .map((c: string) => (c === '1' ? -1 : 1));
   if (l <= 0) {
     return [];
   }
 
-  const maxSumEndingIndex = getMaxSumIndex(arrayBits);
-  const maxSumStartingIndex = getMaxSumIndex(arrayBits, true);
+  const maxSumEndingIndex: number = getMaxSumIndex(arrayBits);
+  const maxSumStartingIndex: number = getMaxSumIndex(arrayBits, true);
 
   if (maxSumStartingIndex === -1 || maxSumEndingIndex === -1) {
     return [];

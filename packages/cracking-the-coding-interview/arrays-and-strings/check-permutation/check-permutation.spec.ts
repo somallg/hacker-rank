@@ -3,15 +3,22 @@
  * CheckPermutation
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateString,
+  TestFixture
+} from '@challenges/util';
 
 import { checkPermutation } from './check-permutation';
 import * as fixture from './check-permutation.fixture.json';
 
+type Input = [string, string];
+type Output = boolean;
+
 describe('CrackingTheCodingInterview - CheckPermutation', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[string, string], boolean>)
+  createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
-      ([s, t]) => checkPermutation(s, t),
-      (inputSize) => [ut.generateString(inputSize), ut.generateString(inputSize)]);
+      ([s, t]: Input) => checkPermutation(s, t),
+      (inputSize: number) => [generateString(inputSize), generateString(inputSize)]);
 });

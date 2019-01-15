@@ -3,11 +3,11 @@
  */
 
 function buildFib(max: number): number[] {
-  const fib = [] as number[];
+  const fib: number[] = [];
 
-  let old1 = 1;
-  let old2 = 1;
-  let next = 1;
+  let old1: number = 1;
+  let old2: number = 1;
+  let next: number = 1;
 
   while (next <= max) {
     fib.push(next);
@@ -20,21 +20,19 @@ function buildFib(max: number): number[] {
 }
 
 function solution(arr: number[]): number {
-  const endPosition = arr.length;
-  const fibArr = buildFib(endPosition + 1);
+  const endPosition: number = arr.length;
+  const fibArr: number[] = buildFib(endPosition + 1);
 
-  let iteration = 0;
-  let starts = [-1];
-  const checked = new Map<number, boolean>();
+  let iteration: number = 0;
+  let starts: number[] = [-1];
+  const checked: Map<number, boolean> = new Map<number, boolean>();
+
   while (starts.length > 0) {
-    const queue = [] as number[];
+    const queue: number[] = [];
 
-    for (let i = 0; i < starts.length; i = i + 1) {
-      const startPosition = starts[i];
-
-      for (let j = 0; j < fibArr.length; j = j + 1) {
-        const fib = fibArr[j]; // how far the frog can jump
-        const nextPosition = startPosition + fib;
+    for (const startPosition of starts) {
+      for (const fib of fibArr) {
+        const nextPosition: number = startPosition + fib;
 
         if (nextPosition === endPosition) {
           return iteration + 1;

@@ -7,12 +7,12 @@ function powerOfTwoIntegers(n: number): number {
     return 1;
   }
 
-  let p = 2;
-  let a = 2;
+  let p: number = 2;
+  let a: number = 2;
 
   while (p < 32) {
     a = 2;
-    let power = a ** p;
+    let power: number = a ** p;
 
     while (power <= n) {
       if (power === n) {

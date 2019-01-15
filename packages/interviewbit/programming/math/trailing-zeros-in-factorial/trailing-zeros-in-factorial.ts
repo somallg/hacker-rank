@@ -1,11 +1,12 @@
 /**
- * Trailing Zeros in Factorial
+ * Trailing Zeros in Factorial problem
  */
 
 function trailingZerosInFactorial(n: number): number {
-  let result = 0;
+  let result: number = 0;
 
   while (n >= 5) {
+    // tslint:disable-next-line
     n = Math.floor(n / 5);
     result = result + n;
   }

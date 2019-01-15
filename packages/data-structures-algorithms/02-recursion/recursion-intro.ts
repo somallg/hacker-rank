@@ -11,7 +11,7 @@ function recursiveMultiplier(arr: number[], num: number): number[] {
     return [];
   }
 
-  const [head, ...tail] = arr;
+  const [head, ...tail]: number[] = arr;
 
   return [head * num].concat(recursiveMultiplier(tail, num));
 }
@@ -21,7 +21,7 @@ function recursiveReverse<T>(arr: T[]): T[] {
     return [];
   }
 
-  const [head, ...tail] = arr;
+  const [head, ...tail]: T[] = arr;
 
   return recursiveReverse(tail).concat(head);
 }

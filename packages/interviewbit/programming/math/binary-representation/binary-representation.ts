@@ -7,7 +7,7 @@ function binaryRepresentation(n: number): string {
     return '0';
   }
 
-  let result = '';
+  let result: string = '';
 
   while (n > 0) {
     result = `${n % 2}${result}`;

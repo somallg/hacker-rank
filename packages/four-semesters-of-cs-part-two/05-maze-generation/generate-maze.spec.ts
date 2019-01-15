@@ -1,12 +1,12 @@
 import { generateMaze } from './generate-maze';
-import { genEmptyMaze, setOrder } from './maze.util';
+import { genEmptyMaze, Node, setOrder } from './maze.util';
 
-// TODO fix tests cases
 // Refer: https://codepen.io/somallg/pen/vjBGyq?editors=0010
+// tslint:disable:max-func-body-length
 xdescribe('mazes', () => {
   it('5x5', () => {
     setOrder(1);
-    const maze = generateMaze(genEmptyMaze(5, 5), [0, 0]);
+    const maze: Node[][] = generateMaze(genEmptyMaze(5, 5), [0, 0]);
     expect(maze).toEqual([
       [
         { n: true, e: false, s: true, w: true, visited: true },
@@ -48,7 +48,7 @@ xdescribe('mazes', () => {
 
   it('8x8', () => {
     setOrder(2);
-    const maze = generateMaze(genEmptyMaze(8, 8), [5, 3]);
+    const maze: Node[][] = generateMaze(genEmptyMaze(8, 8), [5, 3]);
     expect(maze).toEqual([
       [
         { n: false, e: false, s: true, w: true, visited: true },
@@ -135,7 +135,7 @@ xdescribe('mazes', () => {
 
   xit('15x15', () => {
     setOrder(3);
-    const maze = generateMaze(genEmptyMaze(15, 15), [10, 2]);
+    const maze: Node[][] = generateMaze(genEmptyMaze(15, 15), [10, 2]);
     expect(maze).toEqual([
       [
         { n: false, e: true, s: true, w: true, visited: true },

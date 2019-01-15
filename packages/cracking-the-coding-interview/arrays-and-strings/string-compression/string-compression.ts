@@ -3,7 +3,7 @@
  */
 
 function countConsecutive(s: string, i: number): number {
-  let index = i + 1;
+  let index: number = i + 1;
 
   while (index < s.length && s[index] === s[i]) {
     index += 1;
@@ -13,12 +13,11 @@ function countConsecutive(s: string, i: number): number {
 }
 
 function stringCompression(s: string): string {
-  let compressedString = '';
-
-  let i = 0;
+  let compressedString: string = '';
+  let i: number = 0;
 
   while (i < s.length) {
-    const count = countConsecutive(s, i);
+    const count: number = countConsecutive(s, i);
     compressedString += s[i] + count;
 
     i += count;

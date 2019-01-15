@@ -3,16 +3,19 @@
  * MinSumPathInMatrix
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateMatrix,
+  TestFixture
+} from '@challenges/util';
 
 import { minSumPathInMatrix } from './min-sum-path-in-matrix';
 
 import * as fixture from './min-sum-path-in-matrix.fixture.json';
-const testFixture = fixture as ut.TestFixture<number[][], number>;
 
 describe('Interviewbit - MinSumPathInMatrix', () => {
-  ut.createTestExecutor(testFixture).executeTests(
+  createTestExecutor(<TestFixture<number[][], number>>fixture).executeTests(
     minSumPathInMatrix,
-    ut.generateMatrix
+    generateMatrix
   );
 });

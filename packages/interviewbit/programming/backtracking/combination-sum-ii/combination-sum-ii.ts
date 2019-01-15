@@ -5,16 +5,18 @@
 function combinationSumIi(candidates: number[], targetSum: number): number[][] {
   function combine(
     startIndex: number,
+    // tslint:disable-next-line
     targetSum: number,
     soFar: number[]
   ): void {
     if (targetSum === 0) {
       result.push(soFar.slice());
+
       return;
     }
 
-    for (let i = startIndex; i < candidates.length; i = i + 1) {
-      const candidate = candidates[i];
+    for (let i: number = startIndex; i < candidates.length; i = i + 1) {
+      const candidate: number = candidates[i];
       if (i > startIndex && candidates[i] === candidates[i - 1]) {
         continue;
       }
@@ -29,7 +31,7 @@ function combinationSumIi(candidates: number[], targetSum: number): number[][] {
   }
 
   const result: number[][] = [];
-  candidates.sort((a, b) => a - b);
+  candidates.sort((a: number, b: number) => a - b);
   combine(0, targetSum, []);
 
   return result;

@@ -7,8 +7,7 @@ import {
 } from './depth-first';
 
 describe('Depth First tests', () => {
-  /* tslint:disable */
-  const tree = {
+  const tree: Node<number> = {
     value: 8,
     left: {
       value: 4,
@@ -16,21 +15,22 @@ describe('Depth First tests', () => {
         value: 3,
         left: {
           value: 2,
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         },
-        right: null
+        right: undefined
       },
       right: {
         value: 5,
-        left: null,
+        left: undefined,
         right: {
           value: 7,
           left: {
             value: 6,
-            left: null,
-            right: null
-          }
+            left: undefined,
+            right: undefined
+          },
+          right: undefined
         }
       }
     },
@@ -40,18 +40,18 @@ describe('Depth First tests', () => {
         value: 10,
         left: {
           value: 9,
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         },
         right: {
           value: 11,
-          left: null,
-          right: null
+          left: undefined,
+          right: undefined
         }
-      }
+      },
+      right: undefined
     }
-  } as Node;
-  /* tslint:enable */
+  };
 
   it('preorderTraverse', () => {
     expect(preorderTraverse(tree, [])).toEqual([

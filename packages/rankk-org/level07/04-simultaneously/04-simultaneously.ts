@@ -1,7 +1,7 @@
 /**
  */
 
-function solve04Simultaneously() {
+function solve04Simultaneously(): number {
   return 1;
 }
 

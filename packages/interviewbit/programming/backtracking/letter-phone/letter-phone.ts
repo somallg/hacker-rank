@@ -16,16 +16,20 @@ function letterPhone(letter: string): string[] {
     ['w', 'x', 'y', 'z']
   ];
 
-  const l = letter.length;
+  const l: number = letter.length;
   const result: string[] = [];
 
-  const letterPhoneRec = (currentIndex: number, soFar: string): void => {
+  const letterPhoneRec: (currentIndex: number, soFar: string) => void = (
+    currentIndex: number,
+    soFar: string
+  ): void => {
     if (soFar.length === l) {
       result.push(soFar);
+
       return;
     }
 
-    mapping[+letter[currentIndex]].forEach(possibleLetter =>
+    mapping[+letter[currentIndex]].forEach((possibleLetter: string) =>
       letterPhoneRec(currentIndex + 1, `${soFar}${possibleLetter}`)
     );
   };

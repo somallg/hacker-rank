@@ -21,7 +21,7 @@ class StackWithMin extends Stack<number> {
   }
 
   public pop(): number | undefined {
-    const value = super.pop();
+    const value: number | undefined = super.pop();
 
     if (value === this.minStack.peek()) {
       this.minStack.pop();
@@ -40,9 +40,9 @@ class StackWithMin extends Stack<number> {
 }
 
 function stackMin(array: number[]): number {
-  const stackWithMin = new StackWithMin();
+  const stackWithMin: StackWithMin = new StackWithMin();
 
-  array.forEach(n => stackWithMin.push(n));
+  array.forEach((n: number) => stackWithMin.push(n));
 
   stackWithMin.pop();
   stackWithMin.pop();

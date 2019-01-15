@@ -3,9 +3,9 @@
  */
 
 function greedyCanoeist(w: number[], k: number): number {
-  let result = 0;
-  let j = 0;
-  let i = w.length - 1;
+  let result: number = 0;
+  let j: number = 0;
+  let i: number = w.length - 1;
 
   while (i >= j) {
     if (w[i] + w[j] <= k) {

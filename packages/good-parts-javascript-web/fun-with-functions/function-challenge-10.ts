@@ -1,79 +1,111 @@
 import { BinaryFunction } from './function.util';
 
-function addg(first?: number): (n?: number) => number | any {
+type EmptyFn = () => void;
+type ArraygFn = () => number[];
+type MoreFn = ((next?: number) => number | undefined | MoreFn) | ArraygFn;
+
+function addg(first?: number): EmptyFn | MoreFn {
   if (first === undefined) {
-    return () => undefined;
+    return emptyFn;
   }
 
-  const more = (next: number | undefined) => {
+  function emptyFn(): void {
+    return undefined;
+  }
+
+  function moreFn(next?: number): number | MoreFn {
     if (next === undefined) {
       return first || 0;
     }
 
     /* tslint:disable:no-parameter-reassignment */
     first = (first || 0) + next;
-    return more;
-  };
 
-  return more;
+    return moreFn;
+  }
+
+  return moreFn;
 }
 
 function liftg(
-  binary: BinaryFunction<any, any>
-): (first?: any) => (next?: number) => number | any {
-  return (first?: any) => {
+  binary: BinaryFunction<number, number>
+): (first?: number) => undefined | MoreFn {
+  function firstFn(first?: number): undefined | MoreFn {
     if (first === undefined) {
       return first;
     }
 
-    return function more(next?: number) {
+    function moreFn(next?: number): number | undefined | MoreFn {
       if (next === undefined) {
         return first;
       }
-      first = binary(first, next);
+      first = binary(<number>first, next);
 
-      return more;
-    };
-  };
+      return moreFn;
+    }
+
+    return moreFn;
+  }
+
+  return firstFn;
 }
 
-function arrayg(first?: number): (n?: number) => number | any {
+function arrayg(first?: number): MoreFn {
   const arr: number[] = [];
 
-  const more = (next?: number): any => {
+  function more(next?: number): MoreFn {
     if (next === undefined) {
-      return () => arr;
+      return arraygFn;
     }
 
     arr.push(next);
 
     return more;
-  };
+  }
+
+  function arraygFn(): number[] {
+    return arr;
+  }
 
   return more(first);
 }
 
+// tslint:disable-next-line
 function arrayg2(first?: number): any {
   if (first === undefined) {
-    return () => [];
+    // @ts-ignore
+    return (): void => [];
   }
 
+  // @ts-ignore
   return liftg((array: number[], value: number) => {
     array.push(value);
+
     return array;
   })([first]);
 }
 
-function continuize(
-  fn: (arg: any) => any
-): (cb: (arg: any) => any, arg: any) => any {
-  return (callback: (arg: any) => any, arg: any) => callback(fn(arg));
+type Continuized<T, U, V> = (cb: (arg: U) => V, arg: T) => V;
+
+function continuize<T, U, V>(fn: (arg: T) => U): Continuized<T, U, V> {
+  return (callback: (arg: U) => V, arg: T): V => callback(fn(arg));
 }
 
-function continuizeES6(
-  fn: (...args: any[]) => any
-): (cb: (arg: any) => any, ...args: any[]) => any {
-  return (callback: (arg: any) => any, ...args: any[]) => callback(fn(...args));
+type ContinuizedES6<T, U, V> = (cb: (arg: U) => V, ...args: T[]) => V;
+
+function continuizeES6<T, U, V>(
+  fn: (...args: T[]) => U
+): ContinuizedES6<T, U, V> {
+  return (callback: (arg: U) => V, ...args: T[]): V => callback(fn(...args));
 }
 
-export { addg, liftg, arrayg, arrayg2, continuize, continuizeES6 };
+export {
+  addg,
+  liftg,
+  arrayg,
+  arrayg2,
+  continuize,
+  Continuized,
+  continuizeES6,
+  ContinuizedES6
+};

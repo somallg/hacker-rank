@@ -1,21 +1,25 @@
 // tslint:disable-next-line
-const XXH = require('xxhashjs');
+const XXH: any = require('xxhashjs');
 
-const h1 = (s: string) =>
+type HashFn = (s: string) => number;
+
+const h1: HashFn = (s: string): number =>
   Math.abs(
     XXH.h32(0xabcd)
       .update(s)
       .digest()
       .toNumber() % 100
   );
-const h2 = (s: string) =>
+
+const h2: HashFn = (s: string): number =>
   Math.abs(
     XXH.h32(0x1234)
       .update(s)
       .digest()
       .toNumber() % 100
   );
-const h3 = (s: string) =>
+
+const h3: HashFn = (s: string): number =>
   Math.abs(
     XXH.h32(0x6789)
       .update(s)

@@ -16,10 +16,10 @@ function getDecimal(r: string): number {
 }
 
 function romanToInteger(s: string): number {
-  const l = s.length;
-  let result = 0;
+  const l: number = s.length;
+  let result: number = 0;
 
-  for (let i = 0; i < l; i = i + 1) {
+  for (let i: number = 0; i < l; i = i + 1) {
     if (i < l - 1 && getDecimal(s[i]) < getDecimal(s[i + 1])) {
       result = result - getDecimal(s[i]);
     } else {

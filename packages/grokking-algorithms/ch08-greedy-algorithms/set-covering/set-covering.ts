@@ -2,32 +2,36 @@
  * @url https://www.hackerrank.com/challenges/set-covering/problem
  */
 
-function intersect<T>(setA: Set<T>, setB: Set<T>) {
-  return new Set<T>(Array.from(setA).filter(x => setB.has(x)));
+function intersect<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+  return new Set<T>(Array.from(setA).filter((x: T) => setB.has(x)));
 }
 
 function difference<T>(setA: Set<T>, setB: Set<T>): Set<T> {
-  return new Set<T>(Array.from(setA).filter(x => !setB.has(x)));
+  return new Set<T>(Array.from(setA).filter((x: T) => !setB.has(x)));
 }
 
 function solveSetCovering(
   statesNeeded: Set<string>,
   stations: Map<string, Set<string>>
 ): Set<string> {
-  const finalStations = new Set<string>();
+  const finalStations: Set<string> = new Set<string>();
 
   while (statesNeeded.size > 0) {
-    const [bestStation, bestStatesCovered] = Array.from(stations)
+    const [bestStation, bestStatesCovered]: [string, Set<string>] = Array.from(
+      stations
+    )
       .map(
-        ([station, statesForStation]): [string, Set<string>] => [
-          station,
-          intersect(statesNeeded, statesForStation)
-        ]
+        ([station, statesForStation]: [string, Set<string>]): [
+          string,
+          Set<string>
+        ] => [station, intersect(statesNeeded, statesForStation)]
       )
+      // tslint:disable-next-line
       .reduce(([bestStation, bestStatesCovered], [station, covered]) => {
         if (bestStatesCovered.size < covered.size) {
           return [station, covered];
         }
+
         return [bestStation, bestStatesCovered];
       });
 

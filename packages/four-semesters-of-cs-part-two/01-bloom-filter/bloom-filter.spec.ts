@@ -22,7 +22,7 @@ describe('BloomFilter', () => {
   });
 
   it('handles many items', () => {
-    const names = [
+    const names: string[] = [
       'Brian',
       'Simona',
       'Sarah',
@@ -33,9 +33,9 @@ describe('BloomFilter', () => {
       'Paige',
       'Ashley'
     ];
-    names.forEach(item => bf.add(item));
-    names.forEach(item => expect(bf.contains(item)).toBe(true));
-    ['Sam', 'Chris', 'Taylor', 'Florence'].forEach(item =>
+    names.forEach((item: string) => bf.add(item));
+    names.forEach((item: string) => expect(bf.contains(item)).toBe(true));
+    ['Sam', 'Chris', 'Taylor', 'Florence'].forEach((item: string) =>
       expect(bf.contains(item)).toBe(false)
     );
   });

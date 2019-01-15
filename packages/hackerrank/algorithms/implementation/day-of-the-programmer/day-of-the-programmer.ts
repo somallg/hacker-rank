@@ -14,7 +14,7 @@ export function dayOfTheProgrammer(y: number): string {
 }
 
 export interface Calendar {
-  isLeapYear: () => boolean;
+  isLeapYear(): boolean;
 }
 
 // tslint:disable:variable-name

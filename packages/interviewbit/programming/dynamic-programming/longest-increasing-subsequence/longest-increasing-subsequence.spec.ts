@@ -3,16 +3,19 @@
  * LongestIncreasingSubsequence
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { longestIncreasingSubsequence } from './longest-increasing-subsequence';
 
 import * as fixture from './longest-increasing-subsequence.fixture.json';
-const testFixture = fixture as ut.TestFixture<number[], number>;
 
 describe('Interviewbit - LongestIncreasingSubsequence', () => {
-  ut.createTestExecutor(testFixture).executeTests(
+  createTestExecutor(<TestFixture<number[], number>>fixture).executeTests(
     longestIncreasingSubsequence,
-    ut.generateArray
+    generateArray
   );
 });

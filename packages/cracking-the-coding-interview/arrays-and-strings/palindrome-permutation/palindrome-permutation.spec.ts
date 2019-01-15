@@ -3,14 +3,14 @@
  * PalindromePermutation
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { palindromePermutation } from './palindrome-permutation';
 import * as fixture from './palindrome-permutation.fixture.json';
 
 describe('CrackingTheCodingInterview - PalindromePermutation', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<string, boolean>)
+  createTestExecutor(<TestFixture<string, boolean>> fixture)
     .executeTests(
       palindromePermutation
     );

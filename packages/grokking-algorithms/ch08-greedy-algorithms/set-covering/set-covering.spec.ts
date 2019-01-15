@@ -1,9 +1,8 @@
 /**
  * Test specs for set-covering problem
- * @url https://www.hackerrank.com/challenges/set-covering/problem
  */
 
-import { solveSetCovering, intersect, difference } from './set-covering';
+import { difference, intersect, solveSetCovering } from './set-covering';
 
 describe('SetCovering', () => {
   describe('intersect', () => {
@@ -24,7 +23,7 @@ describe('SetCovering', () => {
 
   describe('solveSetCovering', () => {
     it('should return when input ', () => {
-      const statesNeeded = new Set([
+      const statesNeeded: Set<string> = new Set([
         'mt',
         'wa',
         'or',
@@ -35,7 +34,7 @@ describe('SetCovering', () => {
         'az'
       ]);
 
-      const stations = new Map([
+      const stations: Map<string, Set<string>> = new Map([
         ['kone', new Set(['id', 'nv', 'ut'])],
         ['ktwo', new Set(['wa', 'id', 'mt'])],
         ['kthree', new Set(['or', 'nv', 'ca'])],

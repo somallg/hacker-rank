@@ -2,16 +2,22 @@
  * Test specs for sorted-insert-position problem
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { sortedInsertPosition } from './sorted-insert-position';
 import * as fixture from './sorted-insert-position.fixture.json';
-const testFixture = fixture as ut.TestFixture<[number[], number], number>;
+
+type Input = [number[], number];
+type Output = number;
 
 describe('Interviewbit - SortedInsertPosition', () => {
-  ut.createTestExecutor(testFixture).executeTests(
-    ([array, target]) => sortedInsertPosition(array, target),
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([array, target]: Input) => sortedInsertPosition(array, target),
     sortedInsertPosition.name,
-    inputSize => [ut.generateArray(inputSize, 1), 2]
+    (inputSize: number) => [generateArray(inputSize, 1), 2]
   );
 });

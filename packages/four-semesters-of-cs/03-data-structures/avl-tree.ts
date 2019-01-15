@@ -1,10 +1,8 @@
+// tslint:disable:no-any
 class Tree {
-  public root: Node | null;
+  public root: Node | undefined;
 
-  constructor() {
-    this.root = null;
-  }
-
+  // tslint:disable-next-line
   public add(value: any): void {
     if (!this.root) {
       this.root = new Node(value);
@@ -14,7 +12,7 @@ class Tree {
   }
 
   public toJSON(): string {
-    return JSON.stringify(this.root ? this.root.serialize() : '', null, 4);
+    return JSON.stringify(this.root ? this.root.serialize() : '', undefined, 4);
   }
 
   public toObject(): Node {
@@ -24,12 +22,12 @@ class Tree {
 
 // tslint:disable-next-line
 class Node {
-  public right: Node | null;
-  public left: Node | null;
+  public right: Node | undefined;
+  public left: Node | undefined;
   public value: any;
   public height: number;
 
-  constructor(value = null, left = null, right = null) {
+  constructor(value?: any, left?: Node | undefined, right?: Node | undefined) {
     this.left = left;
     this.right = right;
     this.value = value;
@@ -62,16 +60,16 @@ class Node {
   }
 
   public balance(): void {
-    const rightHeight = this.right ? this.right.height : 0;
-    const leftHeight = this.left ? this.left.height : 0;
+    const rightHeight: number = this.right ? this.right.height : 0;
+    const leftHeight: number = this.left ? this.left.height : 0;
 
     // tslint:disable-next-line
     console.log(this.value, leftHeight, rightHeight);
 
     if (leftHeight > rightHeight + 1) {
-      const leftRightHeight =
+      const leftRightHeight: number =
         this.left && this.left.right ? this.left.right.height : 0;
-      const leftLeftHeight =
+      const leftLeftHeight: number =
         this.left && this.left.left ? this.left.left.height : 0;
 
       if (leftRightHeight > leftLeftHeight && this.left) {
@@ -80,9 +78,9 @@ class Node {
 
       this.rotateLL();
     } else if (rightHeight > leftHeight + 1) {
-      const rightRightHeight =
+      const rightRightHeight: number =
         this.right && this.right.right ? this.right.right.height : 0;
-      const rightLeftHeight =
+      const rightLeftHeight: number =
         this.right && this.right.left ? this.right.left.height : 0;
 
       if (rightLeftHeight > rightRightHeight && this.right) {
@@ -94,8 +92,8 @@ class Node {
   }
 
   public rotateRR(): void {
-    const valueBefore = this.value;
-    const leftBefore = this.left;
+    const valueBefore: any = this.value;
+    const leftBefore: Node | undefined = this.left;
 
     if (this.right) {
       this.value = this.right.value;
@@ -114,8 +112,8 @@ class Node {
   }
 
   public rotateLL(): void {
-    const valueBefore = this.value;
-    const rightBefore = this.right;
+    const valueBefore: any = this.value;
+    const rightBefore: Node | undefined = this.right;
 
     if (this.left) {
       this.value = this.left.value;
@@ -148,12 +146,13 @@ class Node {
   }
 
   public serialize(): Node {
-    const ans = new Node(this.value);
-    ans.left = this.left === null ? null : this.left.serialize();
-    ans.right = this.right === null ? null : this.right.serialize();
+    const ans: Node = new Node(this.value);
+    ans.left = this.left === undefined ? undefined : this.left.serialize();
+    ans.right = this.right === undefined ? undefined : this.right.serialize();
     ans.height = this.height;
+
     return ans;
   }
 }
 
-export { Tree };
+export { Node, Tree };

@@ -4,22 +4,24 @@
 
 import { LinkedListNode } from '../index';
 
-function createLoop(array: number[]): LinkedListNode | null {
+function createLoop(array: number[]): LinkedListNode | undefined {
   if (array.length <= 0) {
-    return null;
+    return undefined;
   }
 
-  const [head, ...rest] = array;
+  const [head, ...rest]: number[] = array;
 
-  const headNode = new LinkedListNode(head);
+  const headNode: LinkedListNode = new LinkedListNode(head);
 
-  const seed = 2;
+  const seed: number = 2;
 
-  let loopNode = null;
-  let previous = headNode;
+  // @ts-ignore
+  // tslint:disable-next-line
+  let loopNode: LinkedListNode = undefined;
+  let previous: LinkedListNode = headNode;
 
-  rest.forEach((n, index) => {
-    const node = new LinkedListNode(n);
+  rest.forEach((n: number, index: number) => {
+    const node: LinkedListNode = new LinkedListNode(n);
     previous.next = node;
     previous = node;
     if (index + 1 === seed) {
@@ -27,16 +29,17 @@ function createLoop(array: number[]): LinkedListNode | null {
     }
   });
 
+  // @ts-ignore
   previous.next = loopNode;
 
   return headNode;
 }
 
-function isLoop(head: LinkedListNode | null): LinkedListNode | null {
-  let slow: LinkedListNode | null = head;
-  let fast: LinkedListNode | null = head;
+function isLoop(head: LinkedListNode | undefined): LinkedListNode | undefined {
+  let slow: LinkedListNode | undefined = head;
+  let fast: LinkedListNode | undefined = head;
 
-  while (slow !== null && fast !== null && fast.next !== null) {
+  while (slow !== undefined && fast !== undefined && fast.next !== undefined) {
     slow = slow.next;
     fast = fast.next.next;
 
@@ -45,12 +48,12 @@ function isLoop(head: LinkedListNode | null): LinkedListNode | null {
     }
   }
 
-  if (fast === null || fast.next === null) {
-    return null;
+  if (fast === undefined || fast.next === undefined) {
+    return undefined;
   }
 
   slow = head;
-  while (slow !== fast && slow !== null && fast !== null) {
+  while (slow !== fast && slow !== undefined && fast !== undefined) {
     slow = slow.next;
     fast = fast.next;
   }
@@ -59,9 +62,9 @@ function isLoop(head: LinkedListNode | null): LinkedListNode | null {
 }
 
 function loopDetection(array: number[]): boolean {
-  const node = createLoop(array);
+  const node: LinkedListNode | undefined = createLoop(array);
 
-  return isLoop(node) !== null;
+  return isLoop(node) !== undefined;
 }
 
 export { loopDetection };

@@ -7,13 +7,18 @@ interface GenomicOccurrence {
   T: number;
 }
 
-function diffGenomic(occA: GenomicOccurrence, occB: GenomicOccurrence) {
+function diffGenomic(
+  occA: GenomicOccurrence,
+  occB: GenomicOccurrence
+): GenomicOccurrence {
   return ['A', 'C', 'G', 'T'].reduce(
-    (acc, dna) => {
+    (acc: GenomicOccurrence, dna: string) => {
       acc[dna] = occA[dna] - occB[dna];
+
       return acc;
     },
-    {} as GenomicOccurrence
+    // tslint:disable-next-line
+    <GenomicOccurrence>{}
   );
 }
 
@@ -24,21 +29,23 @@ function solveGenomicRangeQuery(
 ): number[] {
   // apply prefixSums to store occurrence of a genomic from 0 to index k
   const occurence: GenomicOccurrence[] = [...dna.split('')].reduce(
+    // tslint:disable-next-line
     (acc, dna, i) => {
-      const previous = acc[i];
-      const newOcc = { ...previous };
+      const previous: GenomicOccurrence = acc[i];
+      const newOcc: GenomicOccurrence = { ...previous };
       newOcc[dna] = newOcc[dna] + 1;
       acc.push(newOcc);
 
       return acc;
     },
-    [{ A: 0, C: 0, G: 0, T: 0 }] as GenomicOccurrence[]
+    <GenomicOccurrence[]>[{ A: 0, C: 0, G: 0, T: 0 }]
   );
 
+  // tslint:disable-next-line
   return start.map((e, i) => [e, end[i]]).map(([start, end]) => {
-    const startOcc = occurence[start];
-    const endOcc = occurence[end + 1];
-    const rangeOcc = diffGenomic(endOcc, startOcc);
+    const startOcc: GenomicOccurrence = occurence[start];
+    const endOcc: GenomicOccurrence = occurence[end + 1];
+    const rangeOcc: GenomicOccurrence = diffGenomic(endOcc, startOcc);
 
     return rangeOcc.A > 0 ? 1 : rangeOcc.C > 0 ? 2 : rangeOcc.G > 0 ? 3 : 4;
   });

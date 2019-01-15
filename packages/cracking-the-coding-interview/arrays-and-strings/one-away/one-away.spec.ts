@@ -3,16 +3,19 @@
  * OneAway
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { oneAway } from './one-away';
 import * as fixture from './one-away.fixture.json';
 
+type Input = [string, string];
+type Output = boolean;
+
 describe('CrackingTheCodingInterview - OneAway', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[string, string], boolean>)
+  createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
-      ([first, second]) => oneAway(first, second),
+      ([first, second]: Input) => oneAway(first, second),
       oneAway.name
     );
 });

@@ -9,17 +9,18 @@ function isAllNailed(
   planks: number[][],
   nails: number[]
 ): boolean {
-  const nailsPrefix = Array(2 * nails.length).fill(0);
-  for (let i = 0; i <= index; i = i + 1) {
+  const nailsPrefix: number[] = Array(nails.length * 2).fill(0);
+  for (let i: number = 0; i <= index; i = i + 1) {
     nailsPrefix[nails[i]] = 1;
   }
 
-  for (let i = 1; i < nailsPrefix.length; i = i + 1) {
+  for (let i: number = 1; i < nailsPrefix.length; i = i + 1) {
     nailsPrefix[i] = nailsPrefix[i] + nailsPrefix[i - 1];
   }
 
   return planks.every(
-    ([pStart, pEnd]) => nailsPrefix[pEnd] - nailsPrefix[pStart - 1] > 0
+    ([pStart, pEnd]: number[]) =>
+      nailsPrefix[pEnd] - nailsPrefix[pStart - 1] > 0
   );
 }
 
@@ -28,14 +29,14 @@ function solution(
   planksEnd: number[],
   nails: number[]
 ): number {
-  let start = 0;
-  let end = nails.length - 1;
-  let result = -1;
+  let start: number = 0;
+  let end: number = nails.length - 1;
+  let result: number = -1;
 
-  const planks = zip(planksStart, planksEnd);
+  const planks: number[][] = zip(planksStart, planksEnd);
 
   while (start <= end) {
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
     if (isAllNailed(middle, planks, nails)) {
       end = middle - 1;
       result = middle;

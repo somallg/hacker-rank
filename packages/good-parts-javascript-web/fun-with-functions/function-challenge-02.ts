@@ -2,17 +2,28 @@ import { BinaryFunction } from './function.util';
 
 import { liftf } from './function-challenge-01';
 
-const curry = (binary: BinaryFunction<number, number>, first: number) => (
-  second: number
-) => binary(first, second);
+type CurryFn = (
+  binary: BinaryFunction<number, number>,
+  first: number
+) => CurriedFn;
+
+type CurriedFn = (second: number) => number;
+
+const curry: CurryFn = (
+  binary: BinaryFunction<number, number>,
+  first: number
+): CurriedFn => (second: number): number => binary(first, second);
 
 // use liftf to create curry
-const curry2 = (binary: BinaryFunction<number, number>, first: number) =>
-  liftf(binary)(first);
+const curry2: CurryFn = (
+  binary: BinaryFunction<number, number>,
+  first: number
+): CurriedFn => liftf(binary)(first);
 
 // ES6 version of curry
-const curryES6 = (func: (...args: number[]) => number, ...first: number[]) => (
-  ...second: number[]
-) => func(...first, ...second);
+const curryES6: CurryFn = (
+  func: (...args: number[]) => number,
+  ...first: number[]
+): CurriedFn => (...second: number[]): number => func(...first, ...second);
 
 export { curry, curry2, curryES6 };

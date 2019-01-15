@@ -85,7 +85,7 @@ describe('Interviewbit - Permutations', () => {
         permutations(
           Array(8)
             .fill(0)
-            .map((_, index) => index + 1)
+            .map((_: number, index: number) => index + 1)
         );
       });
     });

@@ -3,9 +3,9 @@
  */
 
 function solution(arr: number[]): number {
-  let result = 0;
-  let left = 0;
-  let right = arr.length - 1;
+  let result: number = 0;
+  let left: number = 0;
+  let right: number = arr.length - 1;
 
   while (left <= right) {
     // skip as many as possible on left side

@@ -3,17 +3,19 @@
  * DivideIntegers
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { divideIntegers } from './divide-integers';
 
 import * as fixture from './divide-integers.fixture.json';
-const testFixture = fixture as ut.TestFixture<[number, number], number>;
+
+type Input = [number, number];
+type Output = number;
 
 describe('Interviewbit - DivideIntegers', () => {
-  ut.createTestExecutor(testFixture).executeTests(
-    ([a, b]) => divideIntegers(a, b),
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([a, b]: Input) => divideIntegers(a, b),
     divideIntegers.name,
-    inputSize => [inputSize, 3]
+    (inputSize: number) => [inputSize, 3]
   );
 });

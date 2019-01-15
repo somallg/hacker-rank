@@ -3,13 +3,17 @@
  * Interviewbit - RotateMatrix
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateMatrix,
+  TestFixture
+} from '@challenges/util';
 
 import { rotateMatrix } from './rotate-matrix';
 import * as fixture from './rotate-matrix.fixture.json';
 
 describe('Interviewbit - RotateMatrix', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number[][], number[][]>)
-    .executeTests(rotateMatrix, ut.generateMatrix);
+  createTestExecutor(<TestFixture<number[][], number[][]>> fixture)
+    .executeTests(rotateMatrix, generateMatrix);
 });

@@ -3,17 +3,22 @@
  * PaintersPartitionProblem
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { paintersPartitionProblem } from './painters-partition-problem';
 import * as fixture from './painters-partition-problem.fixture.json';
-// prettier-ignore
-const testFixture = fixture as ut.TestFixture<[number, number, number[]], number>;
+
+type Input = [number, number, number[]];
+type Output = number;
 
 describe('Interviewbit - PaintersPartitionProblem', () => {
-  ut.createTestExecutor(testFixture).executeTests(
-    ([k, unitTime, l]) => paintersPartitionProblem(k, unitTime, l),
+  createTestExecutor(<TestFixture<Input, Output>>fixture).executeTests(
+    ([k, unitTime, l]: Input) => paintersPartitionProblem(k, unitTime, l),
     paintersPartitionProblem.name,
-    inputSize => [10, inputSize, ut.generateArray(inputSize)]
+    (inputSize: number) => [10, inputSize, generateArray(inputSize)]
   );
 });

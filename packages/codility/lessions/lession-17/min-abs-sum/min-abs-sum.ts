@@ -7,11 +7,11 @@ function calculateDp(arr: number[], max: number): number {
 }
 
 function solution(arr: number[]): number {
-  const n = arr.length;
-  arr.sort((a, b) => a - b);
+  const n: number = arr.length;
+  arr.sort((a: number, b: number) => a - b);
 
-  let first = arr[0];
-  let last = arr[n - 1];
+  const first: number = arr[0];
+  const last: number = arr[n - 1];
 
   if (Math.abs(first) < Math.abs(last)) {
     return Math.abs(last) - calculateDp(arr.slice(0, n - 1), Math.abs(last));

@@ -4,7 +4,7 @@ class Queue<T> {
   private head: number;
   private tail: number;
 
-  constructor(capacity = Infinity) {
+  constructor(capacity: number = Infinity) {
     this.storage = {};
     this.capacity = capacity;
     this.tail = 0;
@@ -15,6 +15,7 @@ class Queue<T> {
     if (this.tail < this.capacity) {
       // tslint:disable:no-increment-decrement
       this.storage[this.tail++] = value;
+
       return this.count();
     }
 
@@ -22,7 +23,8 @@ class Queue<T> {
   }
 
   public dequeue(): T {
-    const value = this.storage[this.head];
+    const value: T = this.storage[this.head];
+    // tslint:disable:no-dynamic-delete
     delete this.storage[this.head];
 
     if (this.head < this.tail) {

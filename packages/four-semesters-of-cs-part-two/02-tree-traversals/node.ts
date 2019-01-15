@@ -1,7 +1,7 @@
-interface Node {
-  value: number;
-  left: Node | null;
-  right: Node | null;
+interface Node<T> {
+  value: T;
+  left: Node<T> | undefined;
+  right: Node<T> | undefined;
 }
 
 export { Node };

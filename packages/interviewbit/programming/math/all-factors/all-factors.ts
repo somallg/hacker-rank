@@ -7,10 +7,10 @@ function allFactors(n: number): number[] {
     return [0];
   }
 
-  const factors = [];
-  const oppositeFactors = [];
+  const factors: number[] = [];
+  const oppositeFactors: number[] = [];
 
-  for (let i = 1; i * i <= n; i = i + 1) {
+  for (let i: number = 1; i * i <= n; i = i + 1) {
     if (n % i === 0) {
       factors.push(i);
       if (i !== n / i) {

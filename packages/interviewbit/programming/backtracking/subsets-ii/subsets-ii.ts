@@ -6,7 +6,7 @@ function subsetsIi(array: number[]): number[][] {
   function helper(startIndex: number, soFar: number[]): void {
     result.push(soFar.slice());
 
-    for (let i = startIndex; i < l; i = i + 1) {
+    for (let i: number = startIndex; i < l; i = i + 1) {
       if (i > startIndex && array[i] === array[i - 1]) {
         continue;
       }
@@ -16,13 +16,13 @@ function subsetsIi(array: number[]): number[][] {
     }
   }
 
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return [[]];
   }
 
   const result: number[][] = [];
-  array.sort((a, b) => a - b);
+  array.sort((a: number, b: number) => a - b);
   helper(0, []);
 
   return result;

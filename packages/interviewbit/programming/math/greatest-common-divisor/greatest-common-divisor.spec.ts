@@ -2,17 +2,20 @@
  * Test specs for greatest-common-divisor problem
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, TestFixture } from '@challenges/util';
 
 import { greatestCommonDivisor } from './greatest-common-divisor';
 import * as fixture from './greatest-common-divisor.fixture.json';
 
+type Input = [number, number];
+type Output = number;
+
 describe('Interviewbit - GreatestCommonDivisor', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number, number], number>)
+  createTestExecutor(<TestFixture<Input, Output>>fixture)
     .executeTests(
-      ([m, n]) => greatestCommonDivisor(m, n),
+      ([m, n]: Input) => greatestCommonDivisor(m, n),
       greatestCommonDivisor.name,
-      inputSize => [inputSize, inputSize >>> 1]
+      (inputSize: number) => [inputSize, inputSize >>> 1]
   );
 });

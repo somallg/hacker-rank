@@ -19,12 +19,12 @@ function gridUniquePaths(row: number, col: number): number {
   }
 
   const dp: number[][] = [];
-  for (let i = 0; i < row; i = i + 1) {
+  for (let i: number = 0; i < row; i = i + 1) {
     dp[i] = Array(col).fill(1);
   }
 
-  for (let i = 1; i < row; i = i + 1) {
-    for (let j = 1; j < col; j = j + 1) {
+  for (let i: number = 1; i < row; i = i + 1) {
+    for (let j: number = 1; j < col; j = j + 1) {
       dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
     }
   }

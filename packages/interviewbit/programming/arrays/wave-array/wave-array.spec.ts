@@ -19,6 +19,7 @@ describe('Interviewbit - WaveArray', () => {
         expect(waveArray([11, 8, 7, 9, 2, 10, 2])).toEqual([2, 2, 8, 7, 10, 9, 11]);
       });
 
+      // tslint:disable-next-line
       it('should return from Exampl 3 input [95, 19, 54, 23, 89, 60, 5, 26, 23, 6, 13, 70, 38, 94, 20, 44, 66, 34, 26, 94, 63, 38, 44, 90, 50, 59, 23, 47, 85, 17, 72, 39, 47, 85, 96, 85, 23, 20, 44, 68, 35, 15, 25, 34, 42, 11, 79, 52, 44]', () => {
         expect(
           waveArray([

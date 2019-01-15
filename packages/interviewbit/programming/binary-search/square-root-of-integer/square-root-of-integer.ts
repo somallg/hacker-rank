@@ -7,12 +7,12 @@ function double(n: number): number {
 }
 
 function squareRootOfInteger(n: number): number {
-  let start = 0;
-  let end = n;
+  let start: number = 0;
+  let end: number = n;
 
   while (start < end) {
     // tslint:disable:no-bitwise
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
     if (double(middle) < n) {
       start = middle + 1;
     } else if (double(middle) > n) {

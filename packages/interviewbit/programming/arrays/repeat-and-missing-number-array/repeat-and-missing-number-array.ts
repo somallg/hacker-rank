@@ -3,25 +3,27 @@
  */
 
 function repeatAndMissingNumberArray(array: number[]): number[] {
-  const l = array.length;
+  const l: number = array.length;
   if (l === 0) {
     return [];
   }
 
-  const sumArray = array.reduce((acc, a) => acc + a);
-  const sumUpToN = (l * (l + 1)) / 2;
+  const sumArray: number = array.reduce((acc: number, a: number) => acc + a);
+  const sumUpToN: number = (l * (l + 1)) / 2;
 
   // b - a = diff
-  const diff = sumUpToN - sumArray;
-  const squareArray = array.map(a => a * a);
-  const sumSquareArray = squareArray.reduce((acc, a) => acc + a);
-  const sumUpToNSquare = Array(l)
+  const diff: number = sumUpToN - sumArray;
+  const squareArray: number[] = array.map((a: number) => a * a);
+  const sumSquareArray: number = squareArray.reduce(
+    (acc: number, a: number) => acc + a
+  );
+  const sumUpToNSquare: number = Array(l)
     .fill(0)
-    .map((_, index) => (index + 1) ** 2)
-    .reduce((acc, a) => acc + a);
+    .map((_: number, index: number) => (index + 1) ** 2)
+    .reduce((acc: number, a: number) => acc + a);
   // b ** 2 - a ** 2 = diffSquare => b + b = diffSquare / diff
-  const diffSquare = sumUpToNSquare - sumSquareArray;
-  const sumAB = diffSquare / diff;
+  const diffSquare: number = sumUpToNSquare - sumSquareArray;
+  const sumAB: number = diffSquare / diff;
 
   return [(sumAB + diff) / 2 - diff, (sumAB + diff) / 2];
 }

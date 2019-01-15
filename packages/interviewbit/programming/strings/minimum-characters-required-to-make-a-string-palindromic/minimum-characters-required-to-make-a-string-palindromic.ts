@@ -3,12 +3,12 @@
  */
 
 function createLpsArray(s: string): number[] {
-  const l = s.length;
-  const lps = [];
+  const l: number = s.length;
+  const lps: number[] = [];
   lps[0] = 0;
 
-  let index = 0;
-  let i = 1;
+  let index: number = 0;
+  let i: number = 1;
 
   while (i < l) {
     if (s[i] === s[index]) {
@@ -29,13 +29,13 @@ function createLpsArray(s: string): number[] {
 }
 
 function minimumCharactersRequiredToMakeAStringPalindromic(s: string): number {
-  const combined = s.concat('&').concat(
+  const combined: string = s.concat('&').concat(
     s
       .split('')
       .reverse()
       .join('')
   );
-  const lps = createLpsArray(combined);
+  const lps: number[] = createLpsArray(combined);
 
   return s.length - lps[lps.length - 1];
 }

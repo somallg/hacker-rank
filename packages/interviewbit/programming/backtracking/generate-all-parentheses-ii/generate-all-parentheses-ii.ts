@@ -13,6 +13,7 @@ function generateAllParenthesesIi(n: number): string[] {
       nbOpeningParen === nbClosingParen
     ) {
       result.push(soFar);
+
       return;
     }
 

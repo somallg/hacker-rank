@@ -2,7 +2,12 @@
  * @url https://www.hackerrank.com/challenges/extra-long-factorials/problem
  */
 
-import { memorized } from '../../../../util/memorized';
+import { memorized } from '@challenges/util';
+
+interface Carry {
+  res: number[];
+  carry: number;
+}
 
 function toDigits(n: number): number[] {
   if (n < 10) {
@@ -13,8 +18,8 @@ function toDigits(n: number): number[] {
 }
 
 function mulNumberArray(n: number, array: number[]): number[] {
-  const tmp = array.map(e => e * n).reduce(
-    (acc, e) => {
+  const tmp: Carry = array.map((e: number) => e * n).reduce(
+    (acc: Carry, e: number) => {
       /* tslint:disable:no-parameter-reassignment */
       e = e + acc.carry;
       if (e > 9) {
@@ -28,7 +33,8 @@ function mulNumberArray(n: number, array: number[]): number[] {
 
       return acc;
     },
-    { res: [], carry: 0 } as { res: number[]; carry: number }
+    // tslint:disable-next-line
+    <Carry>{ res: [], carry: 0 }
   );
 
   if (tmp.carry) {
@@ -44,7 +50,7 @@ function combine(array: number[], carry: number): number[] {
   }
 
   // tslint:disable-next-line
-  let [head, ...rest] = array;
+  let [head, ...rest]: number[] = array;
 
   head += carry;
   /* tslint:disable:no-parameter-reassignment */
@@ -66,8 +72,8 @@ function addArrayRec(arrayA: number[], arrayB: number[]): number[] {
     return arrayA;
   }
 
-  const [headA, ...restA] = arrayA;
-  const [headB, ...restB] = arrayB;
+  const [headA, ...restA]: number[] = arrayA;
+  const [headB, ...restB]: number[] = arrayB;
 
   return combine([headA + headB, ...addArrayRec(restA, restB)], 0);
 }
@@ -81,7 +87,7 @@ function mulArrayRec(arrayA: number[], arrayB: number[]): number[] {
     return [];
   }
 
-  const [head, ...rest] = arrayA;
+  const [head, ...rest]: number[] = arrayA;
 
   return addArrayRec(
     mulNumberArray(head, arrayB),
@@ -97,14 +103,15 @@ function mulArray(arrayA: number[], arrayB: number[]): number[] {
   return mulArrayRec(arrayB, arrayA);
 }
 
-const solveExtraLongFactorialsRec = memorized(
+const solveExtraLongFactorialsRec: (n: number) => number[] = memorized(
   (n: number): number[] => {
     if (n < 2) {
       return [n];
     }
 
-    const digits = toDigits(n);
-    const factN1 = solveExtraLongFactorialsRec(n - 1);
+    const digits: number[] = toDigits(n);
+    const factN1: number[] = solveExtraLongFactorialsRec(n - 1);
+
     return mulArray(digits, factN1);
   }
 );

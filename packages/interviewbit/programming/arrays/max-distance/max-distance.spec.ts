@@ -14,6 +14,7 @@ describe('Interviewbit - MaxDistance', () => {
         expect(maxDistance([3, 5, 4, 2])).toEqual(2);
       });
 
+      // tslint:disable-next-line
       it('should return 239 for Example 2 input', () => {
         expect(
           maxDistance([

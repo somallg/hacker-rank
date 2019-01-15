@@ -54,7 +54,7 @@ describe('Function Challenge 03', () => {
   });
 
   describe('limit', () => {
-    const addLtd = limit(add, 1);
+    const addLtd: (a: number, b: number) => number | undefined = limit(add, 1);
     it('should return y', () => {
       expect(addLtd(3, 4)).toEqual(7);
     });

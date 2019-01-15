@@ -6,22 +6,22 @@ import { LinkedListNode } from '../index';
 
 // tslint:disable-next-line
 class ResultNode {
-  public node: LinkedListNode | null;
+  public node: LinkedListNode | undefined;
   public result: boolean;
 
-  constructor(node: LinkedListNode | null, result: boolean) {
+  constructor(node: LinkedListNode | undefined, result: boolean) {
     this.node = node;
     this.result = result;
   }
 }
 
 function createLinkedList(array: number[]): LinkedListNode {
-  const [head, ...rest] = array;
-  const headNode = new LinkedListNode(head);
+  const [head, ...rest]: number[] = array;
+  const headNode: LinkedListNode = new LinkedListNode(head);
 
-  let previous = headNode;
-  rest.forEach(n => {
-    const node = new LinkedListNode(n);
+  let previous: LinkedListNode = headNode;
+  rest.forEach((n: number) => {
+    const node: LinkedListNode = new LinkedListNode(n);
     previous.next = node;
     previous = node;
   });
@@ -30,11 +30,11 @@ function createLinkedList(array: number[]): LinkedListNode {
 }
 
 function isPalindromeRecurse(
-  head: LinkedListNode | null,
+  head: LinkedListNode | undefined,
   length: number
 ): ResultNode {
-  if (head === null || length <= 0) {
-    return new ResultNode(head, true);
+  if (head === undefined || length <= 0) {
+    return new ResultNode(undefined, true);
   } else if (length === 1) {
     return new ResultNode(head.next, true);
   }
@@ -42,7 +42,7 @@ function isPalindromeRecurse(
   // recurse on sublist
   const res: ResultNode = isPalindromeRecurse(head.next, length - 2);
 
-  if (!res.result || res.node === null) {
+  if (!res.result || res.node === undefined) {
     return res;
   }
 
@@ -53,7 +53,7 @@ function isPalindromeRecurse(
 }
 
 function palindrome(array: number[]): boolean {
-  const linkedList = createLinkedList(array);
+  const linkedList: LinkedListNode = createLinkedList(array);
 
   return isPalindromeRecurse(linkedList, array.length).result;
 }

@@ -3,17 +3,24 @@
  * MatrixSearch
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateMatrix,
+  TestFixture
+} from '@challenges/util';
 
 import { matrixSearch } from './matrix-search';
 import * as fixture from './matrix-search.fixture.json';
 
+type Input = [number[][], number];
+type Output = number;
+
 describe('Interviewbit - MatrixSearch', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number[][], number], number>)
+  createTestExecutor(<TestFixture<Input, Output>>fixture)
     .executeTests(
-      ([matrix, target]) => matrixSearch(matrix, target),
+      ([matrix, target]: Input) => matrixSearch(matrix, target),
       matrixSearch.name,
-      inputSize => [ut.generateMatrix(inputSize), inputSize]
+      (inputSize: number)=> [generateMatrix(inputSize), inputSize]
     );
 });

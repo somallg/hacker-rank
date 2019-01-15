@@ -3,15 +3,16 @@
  */
 
 function getTitle(n: number): string {
-  return String.fromCharCode(65 + n);
+  return String.fromCharCode(n + 65);
 }
 
 function excelColumnTitle(n: number): string {
-  let result = '';
+  let result: string = '';
 
   while (n > 0) {
-    const mod = (n - 1) % 26;
+    const mod: number = (n - 1) % 26;
     result = `${getTitle(mod)}${result}`;
+    // tslint:disable-next-line
     n = Math.floor((n - 1) / 26);
   }
 

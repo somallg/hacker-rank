@@ -35,21 +35,21 @@ describe('Function Challenge 02', () => {
 
   describe('3 ways to create inc function', () => {
     it('should return 6', () => {
-      const inc = addf(1);
+      const inc: (n: number) => number = addf(1);
       expect(inc(5)).toEqual(6);
       expect(inc(inc(5))).toEqual(7);
     });
 
     it('should return 6', () => {
-      const inc = liftf(add)(1);
+      const inc: (n: number) => number = liftf(add)(1);
       expect(inc(5)).toEqual(6);
       expect(inc(inc(5))).toEqual(7);
     });
 
     it('should return 6', () => {
-      const inc = curry(add, 1);
+      const inc: (n: number) => number = curry(add, 1);
       expect(inc(5)).toEqual(6);
-      expect(inc(inc(5) as number)).toEqual(7);
+      expect(inc(inc(5))).toEqual(7);
     });
   });
 });

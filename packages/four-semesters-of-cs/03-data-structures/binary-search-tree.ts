@@ -1,9 +1,13 @@
-class Node {
-  public value: any;
-  public left: Node | null;
-  public right: Node | null;
+class Node<T> {
+  public value: T | undefined;
+  public left: Node<T> | undefined;
+  public right: Node<T> | undefined;
 
-  constructor(value: any, left = null, right = null) {
+  constructor(
+    value?: T,
+    left?: Node<T> | undefined,
+    right?: Node<T> | undefined
+  ) {
     this.value = value;
     this.right = right;
     this.left = left;
@@ -11,23 +15,21 @@ class Node {
 }
 
 // tslint:disable-next-line
-class Tree {
-  public root: Node | null;
+class Tree<T> {
+  public root: Node<T> | undefined;
 
-  constructor() {
-    this.root = null;
-  }
-
-  public add(value: any): void {
-    if (this.root === null) {
+  public add(value: T): void {
+    if (this.root === undefined) {
       this.root = new Node(value);
-      return value;
+
+      return;
     }
 
-    let current = this.root;
+    let current: Node<T> = this.root;
 
+    // tslint:disable:no-constant-condition
     while (true) {
-      if (current.value > value) {
+      if (current.value && current.value > value) {
         // go left
         if (current.left) {
           current = current.left;
@@ -47,9 +49,9 @@ class Tree {
     }
   }
 
-  public toObject(): Node {
-    return this.root || new Node(0);
+  public toObject(): Node<T> {
+    return this.root || new Node();
   }
 }
 
-export { Tree };
+export { Node, Tree };

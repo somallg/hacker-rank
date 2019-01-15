@@ -2,7 +2,7 @@ import { HashTableSet } from './hash-table';
 
 describe('hash table set', () => {
   it('hash', () => {
-    const table = new HashTableSet();
+    const table: HashTableSet = new HashTableSet();
     expect(table.hash('test 1', 50)).toEqual(table.hash('test 1', 50));
     expect(table.hash('test 2', 10)).toEqual(table.hash('test 2', 10));
     expect(
@@ -15,7 +15,7 @@ describe('hash table set', () => {
   });
 
   it('add and check', () => {
-    const table = new HashTableSet();
+    const table: HashTableSet = new HashTableSet();
     table.add('hi');
     table.add('this is fun');
     table.add('another thing');

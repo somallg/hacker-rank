@@ -15,7 +15,7 @@ abstract class Animal {
     return this.timeStamp;
   }
 
-  public isOlderThan(other: Animal) {
+  public isOlderThan(other: Animal): boolean {
     return this.timeStamp < other.getTimeStamp();
   }
 
@@ -43,7 +43,7 @@ class AnimalQueue {
   private dogs: Dog[] = [];
   private cats: Cat[] = [];
 
-  public enqueue(a: Animal) {
+  public enqueue(a: Animal): void {
     if (a instanceof Dog) {
       this.dogs.push(a);
     } else {
@@ -58,8 +58,8 @@ class AnimalQueue {
       return this.dequeueCats();
     }
 
-    const [dog] = this.dogs;
-    const [cat] = this.cats;
+    const [dog]: Dog[] = this.dogs;
+    const [cat]: Cat[] = this.cats;
 
     if (dog.isOlderThan(cat)) {
       return this.dequeueDogs();
@@ -78,9 +78,9 @@ class AnimalQueue {
 }
 
 function animalShelter(array: number[]): string {
-  const queue = new AnimalQueue();
+  const queue: AnimalQueue = new AnimalQueue();
 
-  array.forEach((n, index) => {
+  array.forEach((n: number, index: number) => {
     if (n % 2 === 0) {
       queue.enqueue(new Dog(`Dog ${index}`));
     } else {
@@ -90,7 +90,7 @@ function animalShelter(array: number[]): string {
 
   queue.dequeueAny();
   queue.dequeueCats();
-  const dog = queue.dequeueDogs();
+  const dog: Dog | undefined = queue.dequeueDogs();
 
   return dog === undefined ? '' : dog.toString();
 }

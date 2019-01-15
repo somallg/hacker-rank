@@ -2,17 +2,17 @@
  */
 
 function average(...args: number[]): number {
-  return args.reduce((acc, n) => acc + n) / args.length;
+  return args.reduce((acc: number, n: number) => acc + n) / args.length;
 }
 
 function solveMinAvgTwoSlice(arr: number[]): number {
   // there must be a slice of length 2 or 3 having minimal average value
-  let minIndex = 0;
-  let minAvg = Infinity;
-  let avg = 0;
-  const n = arr.length;
+  let minIndex: number = 0;
+  let minAvg: number = Infinity;
+  let avg: number = 0;
+  const n: number = arr.length;
 
-  for (let i = 0; i < n - 2; i = i + 1) {
+  for (let i: number = 0; i < n - 2; i = i + 1) {
     // try slice of length 2
     avg = average(arr[i], arr[i + 1]);
     if (avg < minAvg) {

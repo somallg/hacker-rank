@@ -3,15 +3,15 @@
  * Interviewbit - PrimeSum
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
 import { primeSum } from './prime-sum';
 import * as fixture from './prime-sum.fixture.json';
 
 describe('Interviewbit - PrimeSum', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number[]>).executeTests(
+  createTestExecutor(<TestFixture<number, number[]>>fixture).executeTests(
     primeSum,
-    ut.identityf
+    identityf
   );
 });

@@ -1,26 +1,32 @@
-class Node {
-  public value: any;
-  public next: Node | null;
+type TestFn<T> = (
+  search: number | undefined,
+  nodeValue: T | number | undefined,
+  index: number,
+  current: Node<T>
+) => boolean;
 
-  constructor(value: any) {
+class Node<T> {
+  public value: T;
+  public next: Node<T> | undefined;
+
+  constructor(value: T) {
     this.value = value;
-    this.next = null;
   }
 }
 
 // tslint:disable-next-line
-class LinkedList {
-  public tail: Node | null;
-  public head: Node | null;
+class LinkedList<T> {
+  public tail: Node<T> | undefined;
+  public head: Node<T> | undefined;
   public length: number;
 
   constructor() {
-    this.tail = this.head = null;
+    this.tail = this.head = undefined;
     this.length = 0;
   }
 
-  public push(value: any): void {
-    const node = new Node(value);
+  public push(value: T): void {
+    const node: Node<T> = new Node(value);
     this.length = this.length + 1;
     if (!this.head) {
       this.head = node;
@@ -30,35 +36,43 @@ class LinkedList {
     this.tail = node;
   }
 
-  public pop(): Node | null {
+  public pop(): T | undefined {
     if (!this.head) {
-      return null;
+      return undefined;
     }
 
     if (this.head === this.tail) {
-      const node = this.head;
-      this.head = this.tail = null;
+      const node: Node<T> = this.head;
+      this.head = this.tail = undefined;
+
       return node.value;
     }
 
-    const penultimate = this._find(
-      null,
-      (value, nodeValue, i, current) => current.next === this.tail
+    const penultimate: Node<T> | undefined = this._find(
+      undefined,
+      (value: number, nodeValue: number, i: number, current: Node<T>) =>
+        current.next === this.tail
     );
-    const ans = penultimate && penultimate.next ? penultimate.next.value : null;
+    const ans: T | undefined =
+      penultimate && penultimate.next ? penultimate.next.value : undefined;
 
     if (penultimate) {
-      penultimate.next = null;
+      penultimate.next = undefined;
     }
 
     this.tail = penultimate;
-    this.length--;
+    this.length -= 1;
+
     return ans;
   }
 
-  public _find(value: any, test = this.test) {
-    let current = this.head;
-    let i = 0;
+  // tslint:disable:function-name
+  public _find(
+    value: number | undefined,
+    test: TestFn<T> = this.test
+  ): Node<T> | undefined {
+    let current: Node<T> | undefined = this.head;
+    let i: number = 0;
     while (current) {
       if (test(value, current.value, i, current)) {
         return current;
@@ -66,35 +80,39 @@ class LinkedList {
       current = current.next;
       i = i + 1;
     }
-    return null;
+
+    return undefined;
   }
 
-  public get(index: number): any {
-    const node = this._find(index, this.testIndex);
+  // tslint:disable:no-reserved-keywords
+  public get(index: number): T | undefined {
+    const node: Node<T> | undefined = this._find(index, this.testIndex);
     if (!node) {
-      return null;
+      return undefined;
     }
+
     return node.value;
   }
 
-  public delete(index: number): any {
+  // tslint:disable:no-reserved-keywords
+  public delete(index: number): T | undefined {
     if (index === 0) {
-      const head = this.head;
+      const head: Node<T> | undefined = this.head;
       if (head) {
         this.head = head.next;
       } else {
-        this.head = null;
+        this.head = undefined;
       }
-      this.length--;
+      this.length -= 1;
 
-      return head ? head.value : 0;
+      return head ? head.value : undefined;
     }
 
-    const node = this._find(index - 1, this.testIndex);
-    const excise = node ? node.next : null;
+    const node: Node<T> | undefined = this._find(index - 1, this.testIndex);
+    const excise: Node<T> | undefined = node ? node.next : undefined;
 
     if (!excise) {
-      return null;
+      return undefined;
     }
 
     if (node) {
@@ -105,21 +123,27 @@ class LinkedList {
       this.tail = node.next;
     }
 
-    this.length--;
+    this.length -= 1;
+
     return excise.value;
   }
 
-  public test(search: any, nodeValue: any, index: number, current: Node) {
+  public test(
+    search: number,
+    nodeValue: number,
+    index: number,
+    current: Node<T>
+  ): boolean {
     return search === nodeValue;
   }
 
-  public testIndex(search: any, _: any, i: any): boolean {
-    return search === i;
+  public testIndex(search: number, _: number, index: number): boolean {
+    return search === index;
   }
 
-  public serialize(): any {
-    const ans: any = [];
-    let current = this.head;
+  public serialize(): T[] {
+    const ans: T[] = [];
+    let current: Node<T> | undefined = this.head;
     if (!current) {
       return ans;
     }
@@ -127,6 +151,7 @@ class LinkedList {
       ans.push(current.value);
       current = current.next;
     }
+
     return ans;
   }
 }

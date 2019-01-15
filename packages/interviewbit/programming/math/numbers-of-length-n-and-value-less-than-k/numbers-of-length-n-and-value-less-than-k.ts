@@ -7,7 +7,7 @@ function numbersOfLengthNAndValueLessThanK(
   n: number,
   k: number
 ): number {
-  const d = setOfDigits.length;
+  const d: number = setOfDigits.length;
   if (d === 0) {
     return 0;
   }
@@ -16,13 +16,13 @@ function numbersOfLengthNAndValueLessThanK(
     return 0;
   }
 
-  let result = 0;
+  let result: number = 0;
 
-  for (let i = 1; i <= n; i = i + 1) {
+  for (let i: number = 1; i <= n; i = i + 1) {
     // calculate the possibilty of number having the first
     // digits is digitsC[i]
-    const digitOfK = Math.floor(k / 10 ** (n - i));
-    const possibleDigits = setOfDigits.filter(digit => {
+    const digitOfK: number = Math.floor(k / 10 ** (n - i));
+    const possibleDigits: number[] = setOfDigits.filter((digit: number) => {
       if (i === 1 && n > 1) {
         return digit > 0 && digit < digitOfK;
       }
@@ -38,6 +38,7 @@ function numbersOfLengthNAndValueLessThanK(
       break;
     }
 
+    // tslint:disable-next-line
     k = k % 10 ** (n - i);
   }
 

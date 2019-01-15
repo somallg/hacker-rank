@@ -13,7 +13,7 @@ function mul(first: number, second: number): number {
 }
 
 function identityf(n: number): () => number {
-  return () => n;
+  return (): number => n;
 }
 
 function addf(first: number): (n: number) => number {
@@ -23,7 +23,9 @@ function addf(first: number): (n: number) => number {
 function liftf(
   binary: BinaryFunction<number, number>
 ): (n: number) => (m: number) => number {
-  return (first: number) => (second: number) => binary(first, second);
+  return (first: number): ((second: number) => number) => (
+    second: number
+  ): number => binary(first, second);
 }
 
 export { add, sub, mul, identityf, addf, liftf };

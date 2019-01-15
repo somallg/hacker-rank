@@ -3,14 +3,14 @@
  * ExcelColumnTitle
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
 import { excelColumnTitle } from './excel-column-title';
 import * as fixture from './excel-column-title.fixture.json';
 
 describe('Interviewbit - ExcelColumnTitle', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<number, string>).executeTests(
+  createTestExecutor(<TestFixture<number, string>>fixture).executeTests(
     excelColumnTitle,
-    ut.identityf
+    identityf
   );
 });

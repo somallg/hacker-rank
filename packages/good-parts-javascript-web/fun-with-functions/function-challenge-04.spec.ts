@@ -2,7 +2,7 @@ import { element, from, fromES6, fromTo, to } from './function-challenge-04';
 
 describe('Function Challenge 04', () => {
   describe('from', () => {
-    const index = from(0);
+    const index: () => number = from(0);
 
     it('should return 0', () => {
       expect(index()).toEqual(0);
@@ -18,7 +18,7 @@ describe('Function Challenge 04', () => {
   });
 
   describe('fromES6', () => {
-    const index = fromES6(0);
+    const index: Iterator<number> = fromES6(0);
 
     it('should return 0', () => {
       expect(index.next().value).toEqual(0);
@@ -34,7 +34,7 @@ describe('Function Challenge 04', () => {
   });
 
   describe('to', () => {
-    const index = to(from(1), 3);
+    const index: () => number | undefined = to(from(1), 3);
 
     it('should return 1', () => {
       expect(index()).toEqual(1);
@@ -54,7 +54,7 @@ describe('Function Challenge 04', () => {
   });
 
   describe('fromTo', () => {
-    const index = fromTo(0, 3);
+    const index: () => number | undefined = fromTo(0, 3);
 
     it('should return 0', () => {
       expect(index()).toEqual(0);
@@ -78,7 +78,10 @@ describe('Function Challenge 04', () => {
   });
 
   describe('element with generator', () => {
-    const ele = element(['a', 'b', 'c', 'd'], fromTo(1, 3));
+    const ele: () => string | undefined = element<string>(
+      ['a', 'b', 'c', 'd'],
+      fromTo(1, 3)
+    );
 
     it('should return b', () => {
       expect(ele()).toEqual('b');
@@ -94,7 +97,7 @@ describe('Function Challenge 04', () => {
   });
 
   describe('element without generator', () => {
-    const ele = element(['a', 'b', 'c', 'd']);
+    const ele: () => string | undefined = element<string>(['a', 'b', 'c', 'd']);
 
     it('should return a', () => {
       expect(ele()).toEqual('a');

@@ -1,8 +1,10 @@
+import * as _ from 'underscore';
+
 import { radixSort } from './radix-sort';
 
 describe('radix sort', () => {
   it('should sort correctly', () => {
-    const nums = [
+    const nums: number[] = [
       20,
       51,
       3,
@@ -25,7 +27,7 @@ describe('radix sort', () => {
       1200,
       633
     ];
-    const ans = radixSort(nums);
+    const ans: number[] = radixSort(nums);
     expect(ans).toEqual([
       1,
       3,
@@ -50,12 +52,16 @@ describe('radix sort', () => {
       3001
     ]);
   });
+
   xit('should sort correctly', () => {
-    const fill = 99;
-    const nums = Array(fill)
+    const fill: number = 99;
+    const nums: number[] = Array(fill)
       .fill(0)
+      // tslint:disable:insecure-random
       .map(() => Math.floor(Math.random() * 500000));
-    const ans = radixSort(nums);
+    const ans: number[] = radixSort(nums);
+
+    // tslint:disable:underscore-consistent-invocation
     expect(ans).toEqual(_.sortBy(nums));
   });
 });

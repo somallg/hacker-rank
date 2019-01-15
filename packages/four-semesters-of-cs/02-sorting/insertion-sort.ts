@@ -1,9 +1,9 @@
 function insertionSort(nums: number[]): number[] {
-  const l = nums.length;
-  for (let i = 1; i < l; i = i + 1) {
-    for (let j = 0; j < i; j = j + 1) {
+  const l: number = nums.length;
+  for (let i: number = 1; i < l; i = i + 1) {
+    for (let j: number = 0; j < i; j = j + 1) {
       if (nums[i] < nums[j]) {
-        const spliced = nums.splice(i, 1);
+        const spliced: number[] = nums.splice(i, 1);
         nums.splice(j, 0, spliced[0]);
       }
     }

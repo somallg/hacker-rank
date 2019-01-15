@@ -3,13 +3,18 @@
  * SingleNumber
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { singleNumber } from './single-number';
 import * as fixture from './single-number.fixture.json';
 
 describe('Interviewbit - SingleNumber', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number[], number>)
-    .executeTests(singleNumber, ut.generateArray);
+  createTestExecutor(<TestFixture<number[], number>>fixture).executeTests(
+    singleNumber,
+    generateArray
+  );
 });

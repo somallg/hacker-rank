@@ -3,12 +3,12 @@
  */
 
 function searchPivot(array: number[]): number {
-  const l = array.length;
-  let start = 0;
-  let end = l - 1;
+  const l: number = array.length;
+  let start: number = 0;
+  let end: number = l - 1;
 
   while (start <= end) {
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
     // if middle is the pivot then we need to find the first element of the sorted array based on the pivot
     // original array: the last one is on l - 1 index
     // if its rotated by pivot => (l - 1 + pivot) % l = pivot - 1
@@ -26,12 +26,12 @@ function searchPivot(array: number[]): number {
 }
 
 function rotatedSortedArraySearch(array: number[], target: number): number {
-  const l = array.length;
-  const pivot = searchPivot(array);
+  const l: number = array.length;
+  const pivot: number = searchPivot(array);
   // [0...pivot-1] is the upper partitiion
   // [pivot...l - 1] is the lower partitiion
-  let start = 0;
-  let end = 0;
+  let start: number = 0;
+  let end: number = 0;
 
   if (pivot > 0 && target >= array[0]) {
     start = 0;
@@ -42,7 +42,7 @@ function rotatedSortedArraySearch(array: number[], target: number): number {
   }
 
   while (start <= end) {
-    const middle = (start + end) >>> 1;
+    const middle: number = (start + end) >>> 1;
 
     if (array[middle] < target) {
       start = middle + 1;

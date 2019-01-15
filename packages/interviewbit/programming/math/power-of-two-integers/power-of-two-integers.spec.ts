@@ -3,14 +3,14 @@
  * PowerOfTwoIntegers
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
 import { powerOfTwoIntegers } from './power-of-two-integers';
 import * as fixture from './power-of-two-integers.fixture.json';
 
 describe('Interviewbit - PowerOfTwoIntegers', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number>).executeTests(
+  createTestExecutor(<TestFixture<number, number>>fixture).executeTests(
     powerOfTwoIntegers,
-    ut.identityf
+    identityf
   );
 });

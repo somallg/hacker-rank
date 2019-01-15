@@ -4,17 +4,20 @@
 
 import { getFiles, readFilePromise } from '../../../tools/utils/file.util';
 
-const folderName = `${__dirname}/numfiles`;
+const folderName: string = `${__dirname}/numfiles`;
 
 function getChunks(nbChunk: number, length: number): number[][] {
   return Array(length / nbChunk)
     .fill(undefined)
-    .map((_, index) => [index * nbChunk, index * nbChunk + nbChunk]);
+    .map((_: undefined, index: number) => [
+      index * nbChunk,
+      index * nbChunk + nbChunk
+    ]);
 }
 
 function parseFile(content: string, reg: RegExp): string[] {
   try {
-    const found = content.match(reg);
+    const found: RegExpMatchArray | null = content.match(reg);
 
     if (found) {
       return [found[1], found[2]];
@@ -26,25 +29,36 @@ function parseFile(content: string, reg: RegExp): string[] {
   return [];
 }
 
-async function solveElizaSpeak(): Promise<string> {
-  const files = getFiles(folderName);
+interface MagicNumber {
+  magicNumber: string;
+  next: string;
+}
 
-  return Promise.all(files.map(f => readFilePromise(`${folderName}/${f}`)))
-    .then(contents =>
-      contents.reduce((map, content, index) => {
-        const [next, magicNumber] =
-          files[index] === 'readme'
-            ? parseFile(content, /Start from file (\d+)/)
-            : parseFile(content, /(\d+) \[(\d+)\]/);
-        map.set(files[index], {
-          magicNumber,
-          next
-        });
-        return map;
-      }, new Map<string, { magicNumber: string; next: string }>())
+async function solveElizaSpeak(): Promise<string> {
+  const files: string[] = getFiles(folderName);
+
+  return Promise.all(
+    files.map((f: string) => readFilePromise(`${folderName}/${f}`))
+  )
+    .then((contents: string[]) =>
+      contents.reduce(
+        (map: Map<string, MagicNumber>, content: string, index: number) => {
+          const [next, magicNumber]: string[] =
+            files[index] === 'readme'
+              ? parseFile(content, /Start from file (\d+)/)
+              : parseFile(content, /(\d+) \[(\d+)\]/);
+          map.set(files[index], {
+            magicNumber,
+            next
+          });
+
+          return map;
+        },
+        new Map<string, MagicNumber>()
+      )
     )
-    .then(map => {
-      let next = 'readme';
+    .then((map: Map<string, MagicNumber>) => {
+      let next: string = 'readme';
       let magicNumber: string;
       const res: string[] = [];
 
@@ -55,14 +69,14 @@ async function solveElizaSpeak(): Promise<string> {
 
       return res.join('');
     })
-    .then(res =>
+    .then((res: string) =>
       getChunks(8, res.length)
-        .map(e => {
+        .map((e: number[]) => {
           return e;
         })
-        .map(([start, end]) => res.slice(start, end))
-        .map(bin => parseInt(bin, 2))
-        .map(code => String.fromCharCode(code))
+        .map(([start, end]: [number, number]) => res.slice(start, end))
+        .map((bin: string) => parseInt(bin, 2))
+        .map((code: number) => String.fromCharCode(code))
         .join('')
     );
 }

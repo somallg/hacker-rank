@@ -2,7 +2,7 @@ import { Queue } from './queue';
 
 describe('Queue', () => {
   it('should work', () => {
-    const myQueue = new Queue<string>();
+    const myQueue: Queue<string> = new Queue<string>();
 
     myQueue.enqueue('Salad');
     myQueue.enqueue('Meat');

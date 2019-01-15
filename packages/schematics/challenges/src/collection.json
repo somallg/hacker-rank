@@ -1,17 +1,17 @@
 {
   "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "file-generator": {
+    "generate-template-files": {
       "description": "A schematic to generate template files for various coding challenge sites.",
       "factory": "./file-generator",
       "schema": "./file-generator/schema.json"
     },
-    "fix-spec": {
-      "description": "A schematic to fix spec file",
-      "factory": "./fix-spec/index#fixSpec",
+    "fix-spec-file": {
+      "description": "A schematic to fix spec file structure",
+      "factory": "./fix-spec",
       "schema": "./fix-spec/schema.json"
     },
-    "test-fixture": {
+    "fix-test-fixture": {
       "description": "A schematic to fix test fixture structure",
       "factory": "./test-fixture",
       "schema": "./test-fixture/schema.json"

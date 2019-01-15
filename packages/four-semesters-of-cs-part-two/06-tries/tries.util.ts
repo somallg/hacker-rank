@@ -1,4 +1,4 @@
-export const CITY_NAMES = [
+export const CITY_NAMES: string[] = [
   'New York',
   'Los Angeles',
   'Chicago',

@@ -9,7 +9,7 @@ function maximumSubarrayRec(array: number[]): number {
     return 0;
   }
 
-  const maximumSubarrayMemo = memorized(
+  const maximumSubarrayMemo: MemoFn<number, number> = memorized(
     (endIndex: number): number => {
       if (endIndex < 0) {
         return 0;
@@ -19,14 +19,14 @@ function maximumSubarrayRec(array: number[]): number {
         return array[0];
       }
 
-      const lastMax = maximumSubarrayMemo(endIndex - 1);
+      const lastMax: number = maximumSubarrayMemo(endIndex - 1);
 
       return Math.max(lastMax + array[endIndex], array[endIndex]);
     }
   );
 
-  let max = array[0];
-  for (let i = array.length - 1; i >= 0; i = i - 1) {
+  let max: number = array[0];
+  for (let i: number = array.length - 1; i >= 0; i = i - 1) {
     max = Math.max(max, maximumSubarrayMemo(i));
   }
 

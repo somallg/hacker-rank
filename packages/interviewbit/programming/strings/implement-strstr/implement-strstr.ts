@@ -3,12 +3,12 @@
  */
 
 function computeLpsArray(pattern: string): number[] {
-  const l = pattern.length;
-  const lps = [];
+  const l: number = pattern.length;
+  const lps: number[] = [];
   lps[0] = 0;
 
-  let index = 0;
-  let i = 1;
+  let index: number = 0;
+  let i: number = 1;
 
   while (i < l) {
     if (pattern[i] === pattern[index]) {
@@ -29,13 +29,13 @@ function computeLpsArray(pattern: string): number[] {
 }
 
 function implementStrstr(text: string, pattern: string): number {
-  const n = text.length;
-  const m = pattern.length;
+  const n: number = text.length;
+  const m: number = pattern.length;
 
-  const lps = computeLpsArray(pattern);
+  const lps: number[] = computeLpsArray(pattern);
 
-  let i = 0;
-  let j = 0;
+  let i: number = 0;
+  let j: number = 0;
   while (i < n) {
     if (pattern[j] === text[i]) {
       j += 1;

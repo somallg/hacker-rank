@@ -3,14 +3,18 @@
  * SortedPermutationRankWithRepeats
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateString,
+  TestFixture
+} from '@challenges/util';
 
 import { sortedPermutationRankWithRepeats } from './sorted-permutation-rank-with-repeats';
 import * as fixture from './sorted-permutation-rank-with-repeats.fixture.json';
 
 describe('Interviewbit - SortedPermutationRankWithRepeats', () => {
-  ut.createTestExecutor(fixture as ut.TestFixture<string, number>).executeTests(
+  createTestExecutor(<TestFixture<string, number>>fixture).executeTests(
     sortedPermutationRankWithRepeats,
-    ut.generateString
+    generateString
   );
 });

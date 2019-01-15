@@ -1,5 +1,5 @@
-function generateString(length: number, seed = 'x'): string {
-  let result = '';
+function generateString(length: number, seed: string = 'x'): string {
+  let result: string = '';
 
   while (length > 0) {
     if (length & 1) {

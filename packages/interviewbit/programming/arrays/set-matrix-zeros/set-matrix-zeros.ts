@@ -3,7 +3,8 @@
  */
 
 function haveZeroInFirstRow(matrix: number[][]): boolean {
-  for (let i = 0; i < matrix[0].length; i = i + 1) {
+  // tslint:disable-next-line
+  for (let i: number = 0; i < matrix[0].length; i = i + 1) {
     if (matrix[0][i] === 0) {
       return true;
     }
@@ -13,7 +14,7 @@ function haveZeroInFirstRow(matrix: number[][]): boolean {
 }
 
 function setAllZeroInFirstRow(matrix: number[][]): number[][] {
-  for (let i = 0; i < matrix[0].length; i = i + 1) {
+  for (let i: number = 0; i < matrix[0].length; i = i + 1) {
     matrix[0][i] = 0;
   }
 
@@ -21,7 +22,8 @@ function setAllZeroInFirstRow(matrix: number[][]): number[][] {
 }
 
 function haveZeroInFirstColumn(matrix: number[][]): boolean {
-  for (let i = 0; i < matrix.length; i = i + 1) {
+  // tslint:disable-next-line
+  for (let i: number = 0; i < matrix.length; i = i + 1) {
     if (matrix[i][0] === 0) {
       return true;
     }
@@ -31,7 +33,8 @@ function haveZeroInFirstColumn(matrix: number[][]): boolean {
 }
 
 function setAllZeroInFirstColumn(matrix: number[][]): number[][] {
-  for (let i = 0; i < matrix.length; i = i + 1) {
+  // tslint:disable-next-line
+  for (let i: number = 0; i < matrix.length; i = i + 1) {
     matrix[i][0] = 0;
   }
 
@@ -39,8 +42,8 @@ function setAllZeroInFirstColumn(matrix: number[][]): number[][] {
 }
 
 function setInfoInFirstRowAndFirstColumn(matrix: number[][]): number[][] {
-  for (let row = 1; row < matrix.length; row = row + 1) {
-    for (let col = 1; col < matrix[row].length; col = col + 1) {
+  for (let row: number = 1; row < matrix.length; row = row + 1) {
+    for (let col: number = 1; col < matrix[row].length; col = col + 1) {
       if (matrix[row][col] === 0) {
         matrix[0][col] = 0;
         matrix[row][0] = 0;
@@ -52,14 +55,14 @@ function setInfoInFirstRowAndFirstColumn(matrix: number[][]): number[][] {
 }
 
 function setMatrixZeros(matrix: number[][]): number[][] {
-  const zeroInFirstRow = haveZeroInFirstRow(matrix);
-  const zeroInFirstColumn = haveZeroInFirstColumn(matrix);
+  const zeroInFirstRow: boolean = haveZeroInFirstRow(matrix);
+  const zeroInFirstColumn: boolean = haveZeroInFirstColumn(matrix);
 
   // tslint:disable-next-line
   matrix = setInfoInFirstRowAndFirstColumn(matrix);
 
-  for (let row = 1; row < matrix.length; row = row + 1) {
-    for (let col = 1; col < matrix[row].length; col = col + 1) {
+  for (let row: number = 1; row < matrix.length; row = row + 1) {
+    for (let col: number = 1; col < matrix[row].length; col = col + 1) {
       matrix[row][col] = matrix[0][col] === 1 && matrix[row][0] === 1 ? 1 : 0;
     }
   }

@@ -3,13 +3,15 @@
  * PrettyPrint
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, identityf, TestFixture } from '@challenges/util';
 
-import { prettyPrint } from './pretty-print';
 import * as fixture from './pretty-print.fixture.json';
 
+import { prettyPrint } from './pretty-print';
+
 describe('Interviewbit - PrettyPrint', () => {
-  // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number[][]>)
-    .executeTests(prettyPrint, ut.identityf);
+  createTestExecutor(<TestFixture<number, number[][]>>fixture).executeTests(
+    prettyPrint,
+    identityf
+  );
 });

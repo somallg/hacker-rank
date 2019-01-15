@@ -9,31 +9,36 @@ function combinationSum(candiates: number[], targetSum: number): number[][] {
     return result;
   }
 
-  const combine = (
+  const combine: (
     currentIndex: number,
     currentSum: number,
     soFar: number[]
-  ) => {
+  ) => void = (
+    currentIndex: number,
+    currentSum: number,
+    soFar: number[]
+  ): void => {
     if (currentSum === targetSum) {
       result.push(soFar.slice());
+
       return;
     }
     if (currentSum > targetSum || currentIndex === candiates.length) {
       return;
     }
 
-    for (let i = currentIndex; i < candiates.length; i = i + 1) {
+    for (let i: number = currentIndex; i < candiates.length; i = i + 1) {
       if (i > 0 && candiates[i] === candiates[i - 1]) {
         continue;
       }
-      const candidate = candiates[i];
+      const candidate: number = candiates[i];
       soFar.push(candidate);
       combine(i, currentSum + candidate, soFar);
       soFar.pop();
     }
   };
 
-  candiates.sort((a, b) => a - b);
+  candiates.sort((a: number, b: number) => a - b);
 
   combine(0, 0, []);
 

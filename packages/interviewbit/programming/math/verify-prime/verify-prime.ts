@@ -7,7 +7,7 @@ function verifyPrime(n: number): number {
     return 0;
   }
 
-  for (let i = 2; i * i <= n; i = i + 1) {
+  for (let i: number = 2; i * i <= n; i = i + 1) {
     if (n % i === 0) {
       return 0;
     }

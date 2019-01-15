@@ -7,11 +7,11 @@ function getCharCode(code: string): number {
 }
 
 function excelColumnNumber(columnTile: string): number {
-  let result = 0;
+  let result: number = 0;
 
-  const l = columnTile.length;
-  for (let i = 0; i < l; i = i + 1) {
-    result = 26 * result + getCharCode(columnTile[i]);
+  const l: number = columnTile.length;
+  for (let i: number = 0; i < l; i = i + 1) {
+    result = result * 26 + getCharCode(columnTile[i]);
   }
 
   return result;

@@ -2,11 +2,11 @@
  */
 
 function solvePermCheck(a: number[]): number {
-  const n = a.length;
+  const n: number = a.length;
+  const tmp: number[] = Array(n).fill(0);
 
-  const tmp = Array(n).fill(0);
-  // tslint:disable:no-increment-decrement
-  return tmp.map((_, i) => ++tmp[a[i] - 1]).every(e => e === 1) ? 1 : 0;
+  // tslint:disable-next-line
+  return tmp.map((_: number, i: number) => ++tmp[a[i] - 1]).every((e: number) => e === 1) ? 1 : 0;
 }
 
 export { solvePermCheck };

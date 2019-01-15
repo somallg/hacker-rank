@@ -1,11 +1,11 @@
-import { Tree } from './avl-tree';
+import { Node, Tree } from './avl-tree';
 
 describe('AVL Tree', () => {
   it('creates a correct tree', () => {
-    const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8];
-    const tree = new Tree();
-    nums.map(num => tree.add(num));
-    const objs = tree.toObject();
+    const nums: number[] = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8];
+    const tree: Tree = new Tree();
+    nums.forEach((num: number) => tree.add(num));
+    const objs: Node = tree.toObject();
 
     expect(objs.value).toEqual(4);
 

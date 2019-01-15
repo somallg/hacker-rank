@@ -2,13 +2,13 @@
  * PrettyJson
  */
 
-const indent = '\t';
-const OPEN_BRACE = ['[', '{'];
-const CLOSING_BRACE = [']', '}'];
+const indent: string = '\t';
+const OPEN_BRACE: string[] = ['[', '{'];
+const CLOSING_BRACE: string[] = [']', '}'];
 
-function indentize(level: number) {
-  let result = '';
-  for (let i = 0; i < level; i = i + 1) {
+function indentize(level: number): string {
+  let result: string = '';
+  for (let i: number = 0; i < level; i = i + 1) {
     result = `${indent}${result}`;
   }
 
@@ -17,13 +17,13 @@ function indentize(level: number) {
 
 function prettyJson(json: string): string[] {
   const result: string[] = [];
-  const l = json.length;
+  const l: number = json.length;
 
-  let temp = '';
-  let indentLevel = 0;
+  let temp: string = '';
+  let indentLevel: number = 0;
 
-  for (let i = 0; i < l; i = i + 1) {
-    const currentChar = json[i];
+  for (let i: number = 0; i < l; i = i + 1) {
+    const currentChar: string = json[i];
 
     if (OPEN_BRACE.indexOf(currentChar) !== -1) {
       if (temp.trim().length > 0) {
@@ -41,7 +41,7 @@ function prettyJson(json: string): string[] {
       temp = '';
     } else if (currentChar === ',') {
       if (CLOSING_BRACE.indexOf(json[i - 1]) !== -1) {
-        const last = result.pop();
+        const last: string | undefined = result.pop();
         result.push(`${last},`);
       } else {
         result.push(`${indentize(indentLevel)}${temp},`);

@@ -14,7 +14,7 @@ describe('ElizaSpeak', () => {
   });
   describe('solveElizaSpeak', () => {
     it('should return when input ', () => {
-      return solveElizaSpeak().then(data => {
+      return solveElizaSpeak().then((data: string) => {
         console.log(data); // tslint:disable-line
 
         expect(data).toMatch('The solution');

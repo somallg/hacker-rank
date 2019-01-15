@@ -21,7 +21,7 @@ describe('Function Challenge 01', () => {
 
   describe('identityf', () => {
     it('should return 3', () => {
-      const three = identityf(3);
+      const three: () => number = identityf(3);
       expect(three()).toEqual(3);
     });
   });

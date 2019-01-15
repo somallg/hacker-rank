@@ -3,17 +3,21 @@
  * <%= challengeUrl %>
  */
 
-import * as ut from '@challenges/util';
+import { createTestExecutor, generateArray, TestFixture } from '@challenges/util';
 
 import { <%= functionName %> } from './<%= problem %>';
 import * as fixture from './<%= problem %>.fixture.json';
 
+type Input = number;
+type Output = number;
+
 describe('<%= classify(challengeName) %> - <%= classify(problem) %>', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<number, number>)
+  // @ts-ignore
+  createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
       <%= functionName %>,
       <%= functionName %>.name,
-      ut.generateArray
+      generateArray
     );
 });

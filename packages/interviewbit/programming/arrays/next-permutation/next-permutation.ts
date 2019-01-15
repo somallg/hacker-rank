@@ -7,19 +7,20 @@ function swapBetweenIndexes(
   endIndex: number,
   array: number[]
 ): number[] {
-  const middleIndex = Math.floor((endIndex - startIndex) >>> 1);
-  for (let i = 0; i <= middleIndex; i = i + 1) {
+  const middleIndex: number = Math.floor((endIndex - startIndex) >>> 1);
+  for (let i: number = 0; i <= middleIndex; i = i + 1) {
     [array[startIndex + i], array[endIndex - i]] = [
       array[endIndex - i],
       array[startIndex + i]
     ];
   }
+
   return array;
 }
 
-function getSwapIndex(array: number[], preSuffixIndex: number) {
-  const l = array.length;
-  for (let i = l - 1; i > preSuffixIndex; i = i - 1) {
+function getSwapIndex(array: number[], preSuffixIndex: number): number {
+  const l: number = array.length;
+  for (let i: number = l - 1; i > preSuffixIndex; i = i - 1) {
     if (array[i] > array[preSuffixIndex]) {
       return i;
     }
@@ -29,12 +30,12 @@ function getSwapIndex(array: number[], preSuffixIndex: number) {
 }
 
 function nextPermutation(array: number[]): number[] {
-  const l = array.length;
+  const l: number = array.length;
   if (l < 2) {
     return array;
   }
 
-  let preSuffixIndex = l - 2;
+  let preSuffixIndex: number = l - 2;
 
   while (
     preSuffixIndex >= 0 &&
@@ -49,7 +50,7 @@ function nextPermutation(array: number[]): number[] {
 
   // need to find index between swapIndex and l - 1
   // where array[swapIndex]
-  const swapIndex = getSwapIndex(array, preSuffixIndex);
+  const swapIndex: number = getSwapIndex(array, preSuffixIndex);
   [array[preSuffixIndex], array[swapIndex]] = [
     array[swapIndex],
     array[preSuffixIndex]

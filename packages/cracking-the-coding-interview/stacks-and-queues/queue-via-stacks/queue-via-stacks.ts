@@ -23,9 +23,9 @@ class MyQueue<T> {
     return this.s2.pop();
   }
 
-  public peek(): T | null {
+  public peek(): T | undefined {
     if (this.isEmpty()) {
-      return null;
+      return undefined;
     }
 
     this.transferStacks();
@@ -46,10 +46,10 @@ class MyQueue<T> {
   }
 }
 
-function queueViaStacks(array: number[]): number | null {
-  const myQueue = new MyQueue<number>();
+function queueViaStacks(array: number[]): number | undefined {
+  const myQueue: MyQueue<number> = new MyQueue<number>();
 
-  array.forEach(n => myQueue.add(n));
+  array.forEach((n: number) => myQueue.add(n));
 
   myQueue.remove();
   myQueue.remove();

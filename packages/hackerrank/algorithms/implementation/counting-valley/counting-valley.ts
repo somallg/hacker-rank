@@ -6,11 +6,11 @@ export interface StepTrace {
   path: number[];
 }
 
-export function solveCountingValley(_: number, s: string) {
+export function solveCountingValley(_: number, s: string): number {
   return s
     .split('')
     .reduce(
-      (acc, e) => {
+      (acc: StepTrace, e: string) => {
         if (e === 'U') {
           acc.level = acc.level + 1;
         } else {
@@ -20,8 +20,12 @@ export function solveCountingValley(_: number, s: string) {
 
         return acc;
       },
-      { level: 0, path: [] } as StepTrace
+      // tslint:disable-next-line
+      <StepTrace>{ level: 0, path: [] }
     )
-    .path.filter((e, i, arr) => e < 0 || (e === 0 && arr[i - 1] < 0))
-    .filter(e => e === 0).length;
+    .path.filter(
+      (e: number, i: number, arr: number[]) =>
+        e < 0 || (e === 0 && arr[i - 1] < 0)
+    )
+    .filter((e: number) => e === 0).length;
 }

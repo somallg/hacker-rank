@@ -2,11 +2,11 @@
  */
 
 function solveTriangle(arr: number[]): number {
-  const descendingArr = arr.sort((a, b) => b - a);
-  const n = descendingArr.length;
-  let found = false;
+  const descendingArr: number[] = arr.sort((a: number, b: number) => b - a);
+  const n: number = descendingArr.length;
+  let found: boolean = false;
 
-  for (let i = 0; i < n - 2; i = i + 1) {
+  for (let i: number = 0; i < n - 2; i = i + 1) {
     if (arr[i] < arr[i + 1] + arr[i + 2]) {
       found = true;
       break;

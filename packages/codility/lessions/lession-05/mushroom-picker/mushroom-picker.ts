@@ -1,36 +1,38 @@
-import { prefixSums, countTotal } from '../prefix-sums';
-
 /**
  */
-const max = Math.max.bind(Math);
-const min = Math.min.bind(Math);
+
+import { countTotal, prefixSums } from '../prefix-sums';
 
 function solveMushroomPicker(
   mushrooms: number[],
   pickerPosition: number, // picker position
   moves: number // number of moves
 ): number {
-  const n = mushrooms.length;
-  const prefS = prefixSums(mushrooms);
-  let result = 0;
+  const n: number = mushrooms.length;
+  const prefS: number[] = prefixSums(mushrooms);
+  let result: number = 0;
 
-  for (let p = 0; p < min(moves, pickerPosition) + 1; p = p + 1) {
-    const leftPos = pickerPosition - p;
-    const rightPos = min(
+  for (let p: number = 0; p < Math.min(moves, pickerPosition) + 1; p = p + 1) {
+    const leftPos: number = pickerPosition - p;
+    const rightPos: number = Math.min(
       n - 1,
-      max(pickerPosition, pickerPosition + moves - 2 * p)
+      Math.max(pickerPosition, pickerPosition + moves - p * 2)
     );
-    result = max(result, countTotal(prefS, leftPos, rightPos));
+    result = Math.max(result, countTotal(prefS, leftPos, rightPos));
   }
 
-  for (let p = 0; p < min(moves + 1, n - pickerPosition); p = p + 1) {
-    const rightPos = pickerPosition + p;
-    const leftPos = max(
+  for (
+    let p: number = 0;
+    p < Math.min(moves + 1, n - pickerPosition);
+    p = p + 1
+  ) {
+    const rightPos: number = pickerPosition + p;
+    const leftPos: number = Math.max(
       0,
-      min(pickerPosition, pickerPosition - (moves - 2 * p))
+      Math.min(pickerPosition, pickerPosition - (moves - p * 2))
     );
 
-    result = max(result, countTotal(prefS, leftPos, rightPos));
+    result = Math.max(result, countTotal(prefS, leftPos, rightPos));
   }
 
   return result;

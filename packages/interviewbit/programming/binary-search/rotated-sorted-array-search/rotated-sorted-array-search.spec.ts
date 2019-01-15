@@ -3,17 +3,24 @@
  * RotatedSortedArraySearch
  */
 
-import * as ut from '@challenges/util';
+import {
+  createTestExecutor,
+  generateArray,
+  TestFixture
+} from '@challenges/util';
 
 import { rotatedSortedArraySearch } from './rotated-sorted-array-search';
 import * as fixture from './rotated-sorted-array-search.fixture.json';
 
+type Input = [number[], number];
+type Output = number;
+
 describe('Interviewbit - RotatedSortedArraySearch', () => {
   // prettier-ignore
-  ut.createTestExecutor(fixture as ut.TestFixture<[number[], number], number>)
+  createTestExecutor(<TestFixture<Input, Output>>fixture)
     .executeTests(
-      ([array, target]) => rotatedSortedArraySearch(array, target),
+      ([array, target]: Input) => rotatedSortedArraySearch(array, target),
       rotatedSortedArraySearch.name,
-      inputSize => [ut.generateArray(inputSize), inputSize]
+      (inputSize: number)=> [generateArray(inputSize), inputSize]
     );
 });

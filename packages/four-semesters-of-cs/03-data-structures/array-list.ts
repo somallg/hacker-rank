@@ -1,3 +1,4 @@
+// tslint:disable
 class ArrayList {
   public length: number;
   private readonly data: object;
@@ -13,7 +14,7 @@ class ArrayList {
   }
 
   public pop(): any {
-    const ans = this.data[this.length - 1];
+    const ans: any = this.data[this.length - 1];
     delete this.data[this.length - 1];
     this.length--;
     return ans;
@@ -24,13 +25,13 @@ class ArrayList {
   }
 
   public delete(index: number): any {
-    const ans = this.data[index];
+    const ans: any = this.data[index];
     this._collapseTo(index);
     return ans;
   }
 
   private _collapseTo(index: number): void {
-    for (let i = index; i < this.length; i = i + 1) {
+    for (let i: number = index; i < this.length; i = i + 1) {
       this.data[i] = this.data[i + 1];
     }
 

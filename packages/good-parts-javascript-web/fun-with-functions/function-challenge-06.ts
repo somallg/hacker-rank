@@ -8,35 +8,41 @@ import { element, from } from './function-challenge-04';
 
 import { concat } from './function-challenge-05';
 
-function gensymf(symbol: string): () => string {
-  const nb = from(1);
-  return () => symbol + nb();
+function gensymf(s: string): () => string {
+  const nb: () => number = from(1);
+
+  return (): string => s + nb();
 }
 
 function gensymff(
   unary: UnaryFunction<number, number>,
   seed: number
 ): (s: string) => () => string {
-  return (symbol: string) => {
-    let num = seed;
-    return () => {
+  return (s: string): (() => string) => {
+    let num: number = seed;
+
+    return (): string => {
       num = unary(num) || 0;
-      return symbol + num;
+
+      return s + num;
     };
   };
 }
 
 function fibonaccif(first: number, second: number): () => number {
-  let i = 0;
-  return () => {
-    let next;
+  let i: number = 0;
+
+  return (): number => {
+    let next: number;
 
     switch (i) {
       case 0:
         i = 1;
+
         return first;
       case 1:
         i = 2;
+
         return second;
 
       default:
@@ -44,6 +50,7 @@ function fibonaccif(first: number, second: number): () => number {
         /* tslint:disable:no-parameter-reassignment */
         first = second;
         second = next;
+
         return next;
     }
   };
@@ -51,7 +58,7 @@ function fibonaccif(first: number, second: number): () => number {
 
 function fibonaccif2(a: number, b: number): () => number | undefined {
   return concat(concat(limit(identityf(a), 1), limit(identityf(b), 1)), () => {
-    const next = a + b;
+    const next: number = a + b;
     /* tslint:disable:no-parameter-reassignment */
     a = b;
     b = next;
@@ -60,9 +67,9 @@ function fibonaccif2(a: number, b: number): () => number | undefined {
   });
 }
 
-function fibonaccif3(a: number, b: number) {
+function fibonaccif3(a: number, b: number): () => number | undefined {
   return concat(element([a, b]), () => {
-    const next = a + b;
+    const next: number = a + b;
     a = b;
     b = next;
 

@@ -1,11 +1,11 @@
 /**
- * Fizzbuzz
+ * Fizzbuzz problem
  */
 
 function fizzbuzz(n: number): string[] {
   const result: string[] = [];
 
-  for (let i = 1; i <= n; i = i + 1) {
+  for (let i: number = 1; i <= n; i = i + 1) {
     if (i % 5 === 0 && i % 3 === 0) {
       result.push('FizzBuzz');
     } else if (i % 5 === 0) {

@@ -7,7 +7,7 @@
  */
 
 function houseRobber(array: number[]): number {
-  const n = array.length;
+  const n: number = array.length;
 
   if (n === 0) {
     return 0;
@@ -23,7 +23,7 @@ function houseRobber(array: number[]): number {
 
   const dp: number[] = [array[0], Math.max(array[0], array[1])];
 
-  for (let i = 2; i < n; i = i + 1) {
+  for (let i: number = 2; i < n; i = i + 1) {
     dp[i] = Math.max(array[i] + dp[i - 2], dp[i - 1]);
   }
 

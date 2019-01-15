@@ -4,15 +4,20 @@
 
 function permutations(array: number[]): number[][] {
   const result: number[][] = [];
-  const using: any = {};
+  const using: {} = {};
 
-  const permute = (candidates: number[], soFar: number[]): void => {
+  const permute: (candidates: number[], soFar: number[]) => void = (
+    candidates: number[],
+    soFar: number[]
+  ): void => {
     if (soFar.length === candidates.length) {
       result.push(soFar.slice());
+
       return;
     }
 
-    for (let i = 0; i < candidates.length; i = i + 1) {
+    // tslint:disable-next-line
+    for (let i: number = 0; i < candidates.length; i = i + 1) {
       if (!using[candidates[i]]) {
         using[candidates[i]] = 1;
         soFar.push(candidates[i]);
@@ -23,7 +28,7 @@ function permutations(array: number[]): number[][] {
     }
   };
 
-  array.sort((a, b) => a - b);
+  array.sort((a: number, b: number) => a - b);
   permute(array, []);
 
   return result;

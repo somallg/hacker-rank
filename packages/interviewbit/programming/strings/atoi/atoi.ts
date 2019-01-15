@@ -2,22 +2,22 @@
  * Atoi
  */
 
-const INT_MAX = 2 ** 31 - 1;
-const INT_MIN = -(2 ** 31);
+const INT_MAX: number = 2 ** 31 - 1;
+const INT_MIN: number = -(2 ** 31);
 
-function isNumeric(s: string) {
-  const [charCode, charCodeZero, charCodeNine] = [s, '0', '9'].map(c =>
-    c.charCodeAt(0)
+function isNumeric(s: string): false | boolean {
+  const [charCode, charCodeZero, charCodeNine]: number[] = [s, '0', '9'].map(
+    (c: string) => c.charCodeAt(0)
   );
 
   return charCode >= charCodeZero && charCode <= charCodeNine;
 }
 
 function atoi(s: string): number {
-  const l = s.length;
-  let result = 0;
-  let i = 0;
-  let signed = -1;
+  const l: number = s.length;
+  let result: number = 0;
+  let i: number = 0;
+  let signed: number = -1;
 
   while (i < l && s[i] === ' ') {
     i = i + 1;
@@ -40,7 +40,7 @@ function atoi(s: string): number {
   }
 
   while (i < l && isNumeric(s[i])) {
-    result = 10 * result + Number(s[i]);
+    result = result * 10 + Number(s[i]);
     i = i + 1;
   }
 

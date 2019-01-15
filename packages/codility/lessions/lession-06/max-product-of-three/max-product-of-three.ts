@@ -2,9 +2,9 @@
  */
 
 function solveMaxProductOfThree(arr: number[]): number {
-  const ascendingArr = arr.sort((a, b) => a - b);
-  const n = arr.length;
-  const [min1, min2] = ascendingArr;
+  const ascendingArr: number[] = arr.sort((a: number, b: number) => a - b);
+  const n: number = arr.length;
+  const [min1, min2]: number[] = ascendingArr;
 
   return Math.max(
     min1 * min2 * ascendingArr[n - 1],

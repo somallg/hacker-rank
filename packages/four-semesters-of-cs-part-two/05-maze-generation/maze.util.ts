@@ -8,17 +8,16 @@ interface Node {
   visited: boolean;
 }
 
-function clone(array: any): any[] {
+function clone<T>(array: T[]): T[] {
   return toArray(array);
 }
 
 function genEmptyMaze(x: number, y: number): Node[][] {
-  const maze = [];
+  const maze: Node[][] = [];
 
-  for (let i = 0; i < y; i = i + 1) {
-    const row = [];
-    for (let j = 0; j < x; j = j + 1) {
-      /* tslint:disable */
+  for (let i: number = 0; i < y; i = i + 1) {
+    const row: Node[] = [];
+    for (let j: number = 0; j < x; j = j + 1) {
       row.push({
         n: true,
         e: true,
@@ -26,14 +25,14 @@ function genEmptyMaze(x: number, y: number): Node[][] {
         w: true,
         visited: false
       });
-      /* tslint:enable */
     }
     maze.push(row);
   }
+
   return maze;
 }
 
-const ORDER_1 = [
+const ORDER_1: string[][] = [
   ['e', 's', 'n', 'w'],
   ['s', 'w', 'e', 'n'],
   ['e', 'w', 'n', 's'],
@@ -61,7 +60,7 @@ const ORDER_1 = [
   ['s', 'e', 'w', 'n']
 ];
 
-const ORDER_2 = [
+const ORDER_2: string[][] = [
   ['n', 's', 'w', 'e'],
   ['n', 'e', 'w', 's'],
   ['w', 'n', 'e', 's'],
@@ -128,7 +127,7 @@ const ORDER_2 = [
   ['e', 'n', 's', 'w']
 ];
 
-const ORDER_3 = [
+const ORDER_3: string[][] = [
   ['s', 'n', 'w', 'e'],
   ['w', 's', 'n', 'e'],
   ['s', 'n', 'w', 'e'],
@@ -356,10 +355,10 @@ const ORDER_3 = [
   ['w', 's', 'e', 'n']
 ];
 
-let order = ORDER_1;
+let order: string[][] = ORDER_1;
 let trackedOrder: string[][] = [];
 
-function setOrder(num: number | null) {
+function setOrder(num: number | null): void {
   trackedOrder = [];
   switch (num) {
     case 1:
@@ -376,23 +375,23 @@ function setOrder(num: number | null) {
     default:
       order = [];
       order = clone(ORDER_3);
-      break;
   }
 }
 
-function logOrder() {
+function logOrder(): void {
   // tslint:disable-next-line
   console.log(JSON.stringify(trackedOrder, null, 0));
 }
 
 function randomizeDirection(): string[] {
   if (order === null) {
-    const next = shuffle(['n', 'e', 's', 'w']);
-    trackedOrder.push(next as string[]);
-    return next as string[];
+    const next: string[] = shuffle(['n', 'e', 's', 'w']);
+    trackedOrder.push(next);
+
+    return next;
     // tslint:disable:no-else-after-return
   } else if (order.length) {
-    const next = shuffle(['n', 'e', 's', 'w']);
+    const next: string[] = shuffle(['n', 'e', 's', 'w']);
     // tslint:disable-next-line
     console.warn(next);
   } else {
@@ -400,6 +399,7 @@ function randomizeDirection(): string[] {
     console.warn(
       "🚨 warning: you've called randomizeDirection more than you should have for this test; it probably won't pass the unit test 🚨"
     );
+
     return shuffle(['n', 'e', 's', 'w']);
   }
 

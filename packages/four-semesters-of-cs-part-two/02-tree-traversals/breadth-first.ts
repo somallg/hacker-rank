@@ -1,12 +1,12 @@
 import { Node } from './node';
 
-function breadthFirstTraverse(queue: Node[], array: number[]) {
+function breadthFirstTraverse<T>(queue: Node<T>[], array: T[]): T[] {
   if (queue.length === 0) {
     return array;
   }
 
-  const [first] = queue;
-  let [, ...rest] = queue;
+  const [first]: Node<T>[] = queue;
+  let [, ...rest]: Node<T>[] = queue;
   array.push(first.value);
 
   if (first.left) {

@@ -3,7 +3,7 @@
  */
 
 function singleNumber(array: number[]): number {
-  const l = array.length;
+  const l: number = array.length;
 
   if (l === 0) {
     return 0;
@@ -11,7 +11,7 @@ function singleNumber(array: number[]): number {
     return array[0];
   }
 
-  return array.reduce((acc, e) => acc ^ e);
+  return array.reduce((acc: number, e: number) => acc ^ e);
 }
 
 export { singleNumber };

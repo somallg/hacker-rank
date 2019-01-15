@@ -1,40 +1,43 @@
 /**
  * Interviewbit - WaysToDecode
  */
-import { memorized } from '@challenges/util';
+import { MemoFn, memorized } from '@challenges/util';
 
-function isValid(code: string, from: number, to = from) {
-  if (to >= code.length) {
+function isValid(code: string, fromN: number, toN: number = fromN): boolean {
+  if (toN >= code.length) {
     return false;
   }
 
-  const n = Number(code.substr(from, to - from + 1));
+  const n: number = Number(code.substr(fromN, toN - fromN + 1));
 
   return n >= 1 && n <= 26;
 }
 
 function solveWaysToDecode(code: string): number {
-  const waysToDecodeRec = memorized<string, number>((code: string) => {
-    if (code.length <= 0) {
-      return 1;
+  const waysToDecodeRec: MemoFn<string, number> = memorized<string, number>(
+    // tslint:disable-next-line
+    (code: string) => {
+      if (code.length <= 0) {
+        return 1;
+      }
+
+      if (code[0] === '0') {
+        return 0;
+      }
+
+      let result: number = 0;
+
+      if (isValid(code, 0)) {
+        result = result + waysToDecodeRec(code.slice(1));
+      }
+
+      if (isValid(code, 0, 1)) {
+        result = result + waysToDecodeRec(code.slice(2));
+      }
+
+      return result;
     }
-
-    if (code[0] === '0') {
-      return 0;
-    }
-
-    let result = 0;
-
-    if (isValid(code, 0)) {
-      result = result + waysToDecodeRec(code.slice(1));
-    }
-
-    if (isValid(code, 0, 1)) {
-      result = result + waysToDecodeRec(code.slice(2));
-    }
-
-    return result;
-  });
+  );
 
   return waysToDecodeRec(code);
 }
