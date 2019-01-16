@@ -17,7 +17,7 @@ const methodNames: string[] = [];
 
 // tslint:disable-next-line
 export default function(options: FixSpecOptions): Rule {
-  const { directory }: Schema = options;
+  const { directory }: FixSpecOptions = options;
 
   if (!directory) {
     throw new SchematicsException(

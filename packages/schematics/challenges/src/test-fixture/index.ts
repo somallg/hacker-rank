@@ -5,7 +5,7 @@ import { Schema as TestFixtureOptions } from './schema';
 
 // tslint:disable-next-line
 export default function(options: TestFixtureOptions): Rule {
-  const { directory }: Schema = options;
+  const { directory }: TestFixtureOptions = options;
 
   return (tree: Tree): Tree => {
     tree.getDir(directory).visit((filePath: Path) => {

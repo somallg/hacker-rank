@@ -21,7 +21,7 @@ import { Schema as FileGeneratorOptions } from './schema';
 
 // tslint:disable-next-line
 export default function(options: FileGeneratorOptions): Rule {
-  const { directory, problem, lang }: Schema = options;
+  const { directory, problem, lang }: FileGeneratorOptions = options;
 
   const challengeName: string = getChallengeName(options.directory);
   if (!challengeName) {
