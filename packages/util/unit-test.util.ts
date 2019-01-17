@@ -1,3 +1,7 @@
+import { createThenable, Thenable } from './thenable';
+
+const BASE_TIME_LIMIT: number = 200;
+
 type TestFn<InputType, OutputType> = (input: InputType) => OutputType;
 
 type GeneratorFn<InputType> = (inputSize: number) => InputType;
@@ -57,9 +61,9 @@ function getTestCaseDescription<InputType, OutputType>(
 
 function getPerformanceTestCaseDescription<InputType, OutputType>(
   testCase: TestCase<InputType, OutputType>,
-  timeLimit: number = 200
+  timeLimit: number = BASE_TIME_LIMIT
 ): string {
-  return `should run under ${timeLimit || 200}ms for ${
+  return `should run under ${timeLimit}ms for ${
     testCase.name
   } input of size ${testCase.inputSize.toLocaleString()}`;
 }
@@ -85,7 +89,8 @@ function runPerformanceTests<InputType, OutputType>(
 ): void {
   testCategory.testCases.forEach(
     (testCase: TestCase<InputType, OutputType>, index: number) => {
-      const timeLimit: number = testCase.timeLimit || (index + 1) * 200;
+      const timeLimit: number =
+        testCase.timeLimit || (index + 1) * BASE_TIME_LIMIT;
 
       it(`${getPerformanceTestCaseDescription(testCase, timeLimit)}`, () => {
         const start: number = Date.now();
@@ -111,7 +116,7 @@ function createTestExecutor<InputType, OutputType>(
       [it, xit] = [xit, it];
     }
 
-    return createBox(fixture)
+    return createThenable(fixture)
       .then(
         (testFixture: TestFixture<InputType, OutputType>) =>
           testFixture.testCategories
@@ -155,16 +160,6 @@ function createTestExecutor<InputType, OutputType>(
         }
       );
   }
-}
-
-function createBox<T>(data: T): Thenable<T> {
-  return {
-    then: <V>(fn: (data: T) => V): Thenable<V> => createBox<V>(fn(data))
-  };
-}
-
-interface Thenable<T> {
-  then<V>(fn: (data: T) => V): Thenable<V>;
 }
 
 function identityf<T>(data: T): T {

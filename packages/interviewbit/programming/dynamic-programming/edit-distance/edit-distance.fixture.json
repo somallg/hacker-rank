@@ -46,18 +46,15 @@
       "testCases": [
         {
           "name": "Medium 1",
-          "inputSize": 100,
-          "timeLimit": 200
+          "inputSize": 100
         },
         {
           "name": "Medium 2",
-          "inputSize": 1e3,
-          "timeLimit": 400
+          "inputSize": 1e3
         },
         {
           "name": "Large 1",
-          "inputSize": 10e3,
-          "timeLimit": 600
+          "inputSize": 10e3
         }
       ]
     }

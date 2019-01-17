@@ -41,8 +41,7 @@
       "testCases": [
         {
           "name": "Medium 1",
-          "inputSize": 100,
-          "timeLimit": 100
+          "inputSize": 100
         }
       ]
     }
