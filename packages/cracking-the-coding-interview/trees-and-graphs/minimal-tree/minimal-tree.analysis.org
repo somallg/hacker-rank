@@ -1,0 +1,30 @@
+* Doc va phan tich yeu cau
+Input: cho 1 mang gom cac so duy nhat, da duoc sap xep theo chieu tang dan
+Output: binary search tree ma, do dai la nho nhat
+
+* TDD: Setup test case
+
+* Dua ra brute force solution
+Neu ls BST khi tao print in-order se ra array theo chieu tang dang.
+Neu muon lam nguoc lai, ta can xac dinh dau la root cua tree chinh la diem o giua goi index la m.
+Tu do nhanh ben trai se co root la m - 1, nhanh ben phai la m - 2
+
+Steps:
+1. Tinh m la index middle cua array
+2. Lap voi m > 0 va m < array.length
+3. Push array[m] va root cua tree
+4. De quy tiep voi 0 => [m - 1] se vao tree.left va m[m + 1] den array.length - 1 vao tree.right
+5. Tra ve array, done
+
+* Toi uu vao so sanh cac thuat toan
+
+* Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
