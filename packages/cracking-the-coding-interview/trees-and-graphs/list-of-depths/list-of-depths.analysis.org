@@ -1,0 +1,57 @@
+* Doc va phan tich yeu cau
+Cho 1 Binary tree, voi moi tang cua BT tao 1 linked-list cac node
+Neu BT co D node thi se co D linked-list
+V/d
+BT:
+1 -> 2 -> 4
+       -> 5
+  -> 3 -> 6
+       -> 7
+
+Output:
+D1: 1
+D2: 2 -> 3
+D3: 4 -> 5 -> 6 -> 7
+
+* TDD: Setup test case
+Done
+
+* Dua ra brute force solution
+Truoc het ta se con phai duyet BT de lay tung phan tu.
+Ma de duyet BT ta co 2 cach la:
+1. Depth first: in-order, pre-order, post-order
+2. Breath first
+
+Ta co dung Depth first duoc khong ?
+Co, de linked list dung theo chieu tu left -> right thi ta can su dung in-order seach, cung voi do
+ta can co 1 bien de luu lai depth hien tai vi du `traverse(depth + 1)`
+Voi moi depth ta push gia tri cua cua node hien tai vao Linked-List depth + 1
+
+Co dung duoc pre-order khong ?
+Tuong tu ta cung van co the lam duoc, nhung thu tu se giong in-order
+
+Co dung duoc post-order khong ?
+Cung duoc
+
+Dung duoc Breath first khong ?
+Hoan toan duoc vi co che cua Breath first la duyet tung cap do mot, tung tu ta can nho lai depth hien tai dang duyet la gi
+Moi lan push het children cua node vao queue thi luc do ta can tang bien depth len
+
+Steps:
+1. Su dung de quy de duyet BT
+2. Voi moi Node => push Node vao Linked-List cua depth tuong ung
+3. De quy voi (Node.left, depth + 1) va (Node.right, depth + 1)
+4. Tra ve linked-list
+
+* TODO Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:

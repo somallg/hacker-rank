@@ -1,12 +1,7 @@
 /**
  * MinimalTree
  */
-
-interface BinaryTree {
-  value: number | undefined;
-  left: BinaryTree | undefined;
-  right: BinaryTree | undefined;
-}
+import { BinaryTree } from '../binary-tree';
 
 function createBinaryTree(
   array: number[],

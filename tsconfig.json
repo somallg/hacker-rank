@@ -23,9 +23,7 @@
       "@challenges/*": ["packages/*"]
     }
   },
-  "include": [
-    "packages/**/*.ts"
-  ],
+  "include": ["packages/**/*.ts"],
   "exclude": [
     "node_modules",
     "dist",
