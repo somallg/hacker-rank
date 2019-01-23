@@ -1,0 +1,35 @@
+* Doc va phan tich yeu cau
+Viet ham nhan vao 1 BT, va kiem tra BT nay co phai la can bang hay khong.
+Dieu kien cho su can bang cua BT la khong co nhanh nao ma hieu cua nhanh trai va nhay phai vuot qua 1
+
+* TDD: Setup test case
+Done
+
+* Dua ra brute force solution
+Steps, Su dung de quy:
+1. Neu node === null thi tra ve true
+2. Tinh do cai ben trai - do cao ben phai goi la diff
+3. Neu diff > 1 thi tra ve false
+4. Neu diff <= 1 thi BT can bang khi va chi khi BT.left can bang va BT.right can bang
+
+
+* Toi uu vao so sanh cac thuat toan
+Voi moi node, ta can check ben trai va ben phai no, them voi tinh do cao trai phai.
+Khi do ta da duyet tung node 2 ^ n lan.
+Ta co the save phep tinh getHeigh vao 1 hash de giam tinh lai
+
+Ta can giam phep tinh den getHeight.
+getHeight ngoai tinh do cao cua nhanh ta can kiem tra xem cay co can bang hay khong.
+Neu nhu khong can bang ben nhanh trai, ta khong can tiep tuc ma tra ve ngay error code (khong can tinh do cao nhanh phai lam gi).
+Steps: sua lai getCheck de vua kiem tra vua tra ve do cao cua cay
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:

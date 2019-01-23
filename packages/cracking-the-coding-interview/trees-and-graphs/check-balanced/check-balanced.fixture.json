@@ -1,0 +1,75 @@
+{
+  "name": "CheckBalanced Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": {
+            "value": 1,
+            "left": {
+              "value": 2,
+              "left": {
+                "value": 4
+              },
+              "right": {
+                "value": 5
+              }
+            },
+            "right": {
+              "value": 3,
+              "left": {
+                "value": 6
+              },
+              "right": {
+                "value": 7
+              }
+            }
+          },
+          "output": true
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": {
+            "value": 1,
+            "left": {
+              "value": 2,
+              "left": {
+                "value": 4
+              },
+              "right": {
+                "value": 5
+              }
+            }
+          },
+          "output": false
+        },
+        {
+          "name": "Sample 2",
+          "input": {
+            "value": 1,
+            "left": {
+              "value": 2,
+              "left": {
+                "value": 4
+              },
+              "right": {
+                "value": 5
+              }
+            },
+            "right": {
+              "value": 6
+            }
+          },
+          "output": true
+        }
+      ]
+    }
+  ]
+}
