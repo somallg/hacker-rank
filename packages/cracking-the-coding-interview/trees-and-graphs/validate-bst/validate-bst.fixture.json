@@ -1,0 +1,41 @@
+{
+  "name": "ValidateBst Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": {
+            "value": 2,
+            "left": {
+              "value": 1
+            },
+            "right": {
+              "value": 3
+            }
+          },
+          "output": true
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": {
+            "value": 1,
+            "left": {
+              "value": 2
+            },
+            "right": {
+              "value": 3
+            }
+          },
+          "output": false
+        }
+      ]
+    }
+  ]
+}

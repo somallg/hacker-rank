@@ -1,0 +1,34 @@
+* Doc va phan tich yeu cau
+Input: cho 1 BT (Binary Tree)
+Ouput: kiem tra xem BT co phai la BST (Binary Search Tree) hay khong
+
+* TDD: Setup test case
+1. Neu duyet BT theo in-order ta se duoc 1 mang sorted
+2. Dieu khien can de BT la BST la moi moi node, thi gia tri nodeLeft <= currentNode < nodeRight
+
+Dua vao do ta co 2 cach cho bai nay
+
+Cach 1: Bien BT thanh mang va kiem tra xem mang co sorted hay khong.
+Cach nay chi ap dung duoc neu nhu BT khong co phan tu nao lap lai.
+Steps:
+1. Duyet BT theo in-order
+2. Push tung phan tu vao mang
+3. Kiem tra mang co sorted hay khong
+
+Toi uu hoa: Ta khong can save tat ca cac phan tu cua BT vao mang, thuc te ta chi can kiem tra phan tu cuoi cung voi phan tu hien tai cua tree, neu nhu last >= current thi tra ve false
+Cu the tiep tuc
+
+* TODO Dua ra brute force solution
+
+* TODO Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
