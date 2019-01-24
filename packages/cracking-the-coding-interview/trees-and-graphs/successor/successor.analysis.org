@@ -1,0 +1,34 @@
+* Doc va phan tich yeu cau
+Input: Cho 1 node trong Binary Tree
+Output: tra ve "next" node theo phep duyet in-order.
+Biet rang moi Node co chua tham chieu den paren cua no
+
+* TDD: Setup test case
+Done
+
+* Dua ra nhan xet cho solution
+Q: Thu tu cua phep duyet in-order la gi?
+A: left sub tree -> current node -> right sub tree
+
+Q: Next node cua node hien tai la gi ?
+A: Theo thu tu cua in-order thi do la right sub tree
+
+Q: Bai toan la tra ve 1 next node khong phai right sub tree, do do cu the hon la gi?
+A: chinh la left most node cua right subtree cua current node
+
+Q: Khi nao thi ta ta sang right sub tree cua current node ?
+A: Khi no co sub tree ben phai
+
+Q: Neu khong co thi sao?
+A: Trong truong hop do thi ta can phai di len parent cua current node va tiep tuc
+
+Q: Tiep tuc ra sao ?
+A: Neu current Node o ben trai cua parent thi tra ve parent, neu nhu o ben phai cua parent node nghia la parent node da duyet xong thi tra ve parent cua parent node
+
+Q: Neu nhu node o ngoai cung ben phai cua tree, thi next node la gi?
+A: Do la node cuoi cung nen se khong co next, can tra ve null/undefined
+
+* Dua ra cac steps/pseudo code
+1. Kiem tra node no co sub tree ben phai khong?
+2. Neu co, tra ve left most node cua sub tree ben phai
+3. Neu khong, tra ve node.parent neu node la ben tra cua parent, neu khong tra ven node.parent.parent cho den khi node ben trai cua parent
