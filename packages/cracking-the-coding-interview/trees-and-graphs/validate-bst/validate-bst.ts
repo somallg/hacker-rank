@@ -3,27 +3,27 @@
  */
 import { BinaryTree } from '../binary-tree';
 
-let lastValue: number;
-
-function checkBST(node: BinaryTree | undefined): boolean {
+function checkBST(
+  node: BinaryTree | undefined,
+  min: number,
+  max: number
+): boolean {
   if (node === undefined) {
     return true;
   }
 
-  if (!checkBST(node.left)) {
+  if (node.value > max || node.value < min) {
     return false;
   }
 
-  if (lastValue !== undefined && lastValue >= node.value) {
-    return false;
-  }
-  lastValue = node.value;
-
-  return checkBST(node.right);
+  return (
+    checkBST(node.left, min, node.value) &&
+    checkBST(node.right, node.value, max)
+  );
 }
 
 function validateBst(root: BinaryTree): boolean {
-  return checkBST(root);
+  return checkBST(root, -Infinity, Infinity);
 }
 
 export { validateBst };

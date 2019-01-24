@@ -18,6 +18,14 @@ Steps:
 Toi uu hoa: Ta khong can save tat ca cac phan tu cua BT vao mang, thuc te ta chi can kiem tra phan tu cuoi cung voi phan tu hien tai cua tree, neu nhu last >= current thi tra ve false
 Cu the tiep tuc
 
+Cach 2: Kiem tra moi node ben trai <= current node <= moi node ben phai.
+Y tuong: voi moi lan di xuong BT, ta can save lai gia tri Min/Max (a.k.a gia gia tri cho node o duoi). Neu co bat cu node nao khong thoai man thi ta tra ve false.
+Steps:
+1. Duyet BT bang de quy,
+2. khoi dau voi min = -Infinity, max = Infinity
+3. De quy voi nhanh ben trai, se co min = -Infinify, max = node.value
+4. De quy voi nhanh ben phai, se co min = node.value, max = Infinity
+
 * TODO Dua ra brute force solution
 
 * TODO Toi uu vao so sanh cac thuat toan
