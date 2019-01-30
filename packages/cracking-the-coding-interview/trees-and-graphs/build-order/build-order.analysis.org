@@ -1,25 +1,44 @@
-| Question                    | Answer |
-|-----------------------------+--------|
-| Yeu cau la gi ?             |        |
-| Yeu cau dac biet gi khong ? |        |
-| Y tuong gi khong ?          |        |
-| Phan tich y tuong tren ?    |        |
+* Doc va phan tich yeu cau
+Input: projects: mang cua string, dependencies: mang cua mang string
+Output: thu tu de build project
+V/du:
+projects: a, b, c, d, e, f
+dependencis: [a, d], [f, b], [b, d], [f, a], [d, c]
+[a, d] nghia la d phu thuoc vao a, muon build duoc d can build a trc
 
-* TODO Doc va phan tich yeu cau
+* TDD: Setup test case
+Done
 
-* TODO TDD: Setup test case
+* Dua ra brute force solution
+Q: Nhan xet gi ve project ?
+A: chung co moi quan hen phu thuoc, [a -> d] la d phu thuoc va a
 
-* TODO Dua ra brute force solution
+Q: nen can chon cau truc du lieu gi? array, map, tree
+A: Graph la mot lua chon khong toi de bieu dien moi quan he nay
 
-* TODO Toi uu vao so sanh cac thuat toan
+Q: Co may cach de bieu dien graph?
+A: 2 cach: 1 matrix, 2 adjancent list. Voi danh sach projects ta nen su dung adjancent list de bieu dien de toi uu hoa du lieu
 
-* TODO Bat dau code thuat toan thich hop nhat
+Tu do ta co 2 cach cho bai toan nay:
+Pre-step: Xay dung nen graph dependencies (su dung adjancent list) dat ten la g
 
-* TODO Test va fix bug neu co
+** Cach 1: Xay dung tu duoi len (i.e non-dependent first)
+1. Duyet danh sach projects trong g push het cac project khong co dependencies vao vao 1 list
+2. Voi moi project vua duoc them vao list, giam dependencies cua children cua no di 1 (i.e vi da build project roi)
+3. Lap lai cho den khi duyet het project thi thoi
+4. Trong qua trinh duyet, neu nhu tai thoi diem nao do ta khong the add them non-dependent list nghia la project khong the build duoc
 
-#+BEGIN: clocktable :scope file :maxlevel 2
-#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
-| Headline     | Time   |
-|--------------+--------|
-| *Total time* | *0:00* |
-#+END:
+** Cach 2: Xay dung tu tren xuong (i.e dependent first)
+Neu nhu ta duyet graph theo DFS thi khi den node khong can children thi do chinh la project cuoi cung can build. Khi de quy len tren, neu nhu cac project con da duoc cho vao list thi project hien tai se phai push vao truoc cac con cua no. Tu do ta suy ra cac buoc sau:
+1. DFS (node) => kiem tra trang thai cua node
+2. Neu nhu node nay chua duoc duyet ta gan trang thai node la VISITING (PARTIAL)
+4. Loop tung children cua root, de quy DFS(child)
+5. Qua khoi de quy, them current node vao dau kq tra ve goi la res
+6. Gan trang thai node la VISITED (DONE)
+7. Neu nhu khi de quy ta gap lai 1 node PARTIAL (VISITING) thi da gap vong lap build tra ve fail
+
+* Toi uu vao so sanh cac thuat toan
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
