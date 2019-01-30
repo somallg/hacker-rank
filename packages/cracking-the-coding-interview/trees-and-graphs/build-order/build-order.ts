@@ -2,6 +2,12 @@
  * BuildOrder
  */
 
+enum State {
+  COMPLETED,
+  PARTIAL,
+  BLANK
+}
+
 class Graph {
   public nodes: Project[];
   public map: Map<string, Project>;
@@ -31,12 +37,14 @@ class Graph {
 class Project {
   public name: string;
   public dependencies: number;
+  public status: State;
   public children: Project[];
   public map: Map<string, Project>;
 
   constructor(name: string) {
     this.name = name;
     this.dependencies = 0;
+    this.status = State.BLANK;
     this.children = [];
     this.map = new Map<string, Project>();
   }
@@ -52,10 +60,6 @@ class Project {
   public incrementDependencies(): void {
     this.dependencies += 1;
   }
-
-  public decrementDependencies(): void {
-    this.dependencies -= 1;
-  }
 }
 
 function buildGraph(projects: string[], dependencies: string[][]): Graph {
@@ -70,48 +74,45 @@ function buildGraph(projects: string[], dependencies: string[][]): Graph {
   return graph;
 }
 
-function addNonDependent(
-  projects: Project[],
-  order: Project[],
-  offset: number
-): number {
-  for (const project of projects) {
-    if (project.dependencies === 0) {
-      order[offset] = project;
-      // tslint:disable-next-line
-      offset += 1;
-    }
+function doDFS(project: Project, stack: string[]): boolean {
+  if (project.status === State.PARTIAL) {
+    return false;
   }
 
-  return offset;
+  if (project.status === State.BLANK) {
+    project.status = State.PARTIAL;
+
+    for (const child of project.children) {
+      if (!doDFS(child, stack)) {
+        return false;
+      }
+    }
+
+    stack.push(project.name);
+    project.status = State.COMPLETED;
+  }
+
+  return true;
 }
 
-function orderGraph(graph: Graph): string[] {
-  const order: Project[] = Array(graph.nodes.length);
+function orderGraph(projects: Project[]): string[] {
+  const result: string[] = [];
 
-  let endIndex: number = addNonDependent(graph.nodes, order, 0);
-  let toBeProcessed: number = 0;
-
-  while (toBeProcessed < order.length) {
-    const current: Project = order[toBeProcessed];
-
-    if (current === undefined) {
-      return [];
+  for (const project of projects) {
+    if (project.status === State.BLANK) {
+      if (!doDFS(project, result)) {
+        return [];
+      }
     }
-
-    current.children.forEach((child: Project) => child.decrementDependencies());
-    endIndex = addNonDependent(current.children, order, endIndex);
-
-    toBeProcessed += 1;
   }
 
-  return order.map((project: Project) => project.name);
+  return result.reverse();
 }
 
 function buildOrder(projects: string[], dependencies: string[][]): string[] {
   const graph: Graph = buildGraph(projects, dependencies);
 
-  return orderGraph(graph);
+  return orderGraph(graph.nodes);
 }
 
 export { buildOrder };
