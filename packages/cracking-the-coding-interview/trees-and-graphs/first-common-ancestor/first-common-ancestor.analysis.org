@@ -1,0 +1,32 @@
+* Doc va phan tich yeu cau
+Input: 2 nodes g, h o trong binary tree
+Output: node dau tien la to tien cua ca 2 node g, h
+
+* TDD: Setup test case
+Done
+
+* Dua ra brute force solution/ y tuong
+Co 3 cau hoi ta can dat ra vi no anh huong truc tiep den y tuong/solution
+
+1. Neu nhu BinaryTree co link den parent node
+Trong truong hop nay, ta can move up a 2 node den khi nao parent cua ca 2 gap nhau la xong
+Steps:
+1. Kiem tra do cao cua g va h
+2. Move up node co do cao hon de 2 node nay cung do cao (vi ta di lan tung buoc 1)
+3. Di len tang buoc 1 su dung link to parent
+4. Kiem tra g.parent === h.parent khong neu co tra ve g.parent
+5. Neu khong move up va loop
+6. Ta dam bao se luon luon co parent cua ca 2 node chinh la root
+
+* Toi uu vao so sanh cac thuat toan
+
+* TODO Bat dau code thuat toan thich hop nhat
+
+* TODO Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
