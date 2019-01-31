@@ -31,6 +31,20 @@ Steps:
 7. parent => tang 1 bac = parent.parent
 8. Cuoi cung tra ve parent
 
+Cach 3. Khong co node den parent
+Gia su g va h deu co trong BT.Ta can tim ra dac diem thuoc tinh de tim g, h
+To tien chung cua g, h de co dac diem la, g/h phai o nhanh ben trai, node con lai se phai o nhanh ben con lai.
+Vi neu nhu g/h cung o tren 1 nhanh (n.left) thi n.left moi la to tien chung dau tien cua g, h.
+Ta suy ra y tuong la neu nhu cover(n.left, h) && cover(n.left, g) => tim tiep trong n.left
+Tuong tu cho n.right.
+Neu nhu khong thi n chinh la to tien chung dau tien
+
+Steps:
+1. Kiem tra cover(root, g), cover(root, h) neu 1 trong 2 khong co trong root thi tra ve -1 (error)
+2. Kiem tra node.left co chua g va h hay khong neu co de quy tiep cho root.left
+3. Kiem tra node.right co chua g va h hay khong neu co de quy tiep cho root.right
+4. Tra ve node
+
 * Toi uu vao so sanh cac thuat toan
 
 * TODO Bat dau code thuat toan thich hop nhat

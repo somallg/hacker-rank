@@ -7,51 +7,53 @@ import { BinaryTree } from '../binary-tree';
 import { firstCommonAncestor } from './first-common-ancestor';
 
 describe('CrackingTheCodingInterview - FirstCommonAncestor', () => {
-  // prettier-ignore
-  // @ts-ignore
   describe('firstCommonAncestor', () => {
     const binaryTree: BinaryTree = {
-        value: 1,
+      value: 1,
+      left: {
+        value: 2,
         left: {
-          value: 2,
-          left: {
-            value: 4,
-            left: undefined,
-            right: undefined,
-            parent: undefined
-          },
-          right: {
-            value: 5,
-            left: undefined,
-            right: undefined,
-            parent: undefined
-          },
+          value: 4,
+          left: undefined,
+          right: undefined,
           parent: undefined
         },
         right: {
-          value: 3,
-          left: {
-            value: 6,
-            left: undefined,
-            right: undefined,
-            parent: undefined
-          },
-          right: {
-            value: 7,
-            left: undefined,
-            right: undefined,
-            parent: undefined
-          },
+          value: 5,
+          left: undefined,
+          right: undefined,
           parent: undefined
         },
         parent: undefined
-      };
+      },
+      right: {
+        value: 3,
+        left: {
+          value: 6,
+          left: undefined,
+          right: undefined,
+          parent: undefined
+        },
+        right: {
+          value: 7,
+          left: undefined,
+          right: undefined,
+          parent: undefined
+        },
+        parent: undefined
+      },
+      parent: undefined
+    };
 
     bindParent(binaryTree);
 
-    const g: BinaryTree = <BinaryTree> (binaryTree.left && binaryTree.left.left);
-    const h: BinaryTree = <BinaryTree> (binaryTree.left && binaryTree.left.right);
-    const s: BinaryTree = <BinaryTree> (binaryTree.right && binaryTree.right.left);
+    const g: BinaryTree = <BinaryTree>(binaryTree.left && binaryTree.left.left);
+    const h: BinaryTree = <BinaryTree>(
+      (binaryTree.left && binaryTree.left.right)
+    );
+    const s: BinaryTree = <BinaryTree>(
+      (binaryTree.right && binaryTree.right.left)
+    );
 
     it('should work for node 4 and 5', () => {
       expect(firstCommonAncestor(binaryTree, g, h)).toEqual(2);

@@ -15,12 +15,25 @@ function cover(node: BinaryTree | undefined, h: BinaryTree): boolean {
   return cover(node.left, h) || cover(node.right, h);
 }
 
-function getSibling(node: BinaryTree): BinaryTree | undefined {
-  if (node === undefined || node.parent === undefined) {
-    return undefined;
+function findCommonAncestor(
+  node: BinaryTree | undefined,
+  g: BinaryTree,
+  h: BinaryTree
+): BinaryTree | undefined {
+  if (node === undefined || node === g || node === h) {
+    return node;
   }
 
-  return node.parent.left === node ? node.parent.right : node.parent.left;
+  const gIsOnLeft: boolean = cover(node.left, g);
+  const hIsOnLeft: boolean = cover(node.left, h);
+
+  if (gIsOnLeft !== hIsOnLeft) {
+    return node;
+  }
+
+  const childSide: BinaryTree | undefined = gIsOnLeft ? node.left : node.right;
+
+  return findCommonAncestor(childSide, g, h);
 }
 
 function firstCommonAncestor(
@@ -32,24 +45,9 @@ function firstCommonAncestor(
     return -1;
   }
 
-  if (cover(g, h)) {
-    return g.value;
-  }
+  const commonAncestor: BinaryTree | undefined = findCommonAncestor(root, g, h);
 
-  if (cover(h, g)) {
-    return h.value;
-  }
-
-  let sibling: BinaryTree | undefined = getSibling(g);
-  let parent: BinaryTree | undefined = g.parent;
-
-  while (parent && !cover(sibling, h)) {
-    // tslint:disable-next-line
-    sibling = getSibling(parent);
-    parent = parent.parent;
-  }
-
-  return parent ? parent.value : root.value;
+  return commonAncestor ? commonAncestor.value : root.value;
 }
 
 export { firstCommonAncestor };
