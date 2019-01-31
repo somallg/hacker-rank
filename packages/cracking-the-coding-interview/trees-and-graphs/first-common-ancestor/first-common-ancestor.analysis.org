@@ -8,7 +8,7 @@ Done
 * Dua ra brute force solution/ y tuong
 Co 3 cau hoi ta can dat ra vi no anh huong truc tiep den y tuong/solution
 
-1. Neu nhu BinaryTree co link den parent node
+Cach 1. Neu nhu BinaryTree co link den parent node
 Trong truong hop nay, ta can move up a 2 node den khi nao parent cua ca 2 gap nhau la xong
 Steps:
 1. Kiem tra do cao cua g va h
@@ -17,6 +17,19 @@ Steps:
 4. Kiem tra g.parent === h.parent khong neu co tra ve g.parent
 5. Neu khong move up va loop
 6. Ta dam bao se luon luon co parent cua ca 2 node chinh la root
+
+Cach 2. BinaryTree co parent node
+Ta nhan thay la, to tien dau tien chua ca g, h se o tren path cua g de den root.
+Thay vi move ca 2 len, ta chi can di theo duong cua g, va tim xem cac duong la anh em cua g.parent co duong nao chua h hay khong. Neu khong ta move len cao va tim tiep
+Steps:
+1. Kiem tra root cover g, hay root cover h hay khong neu khong thi tra ve -1 (error)
+2. Gan sibling => anh em cua g
+3. Gan parent = g.parent
+4. kiem tra sibling co chua h hay khong?
+5. Neu chua h thi tra ve parent, neu khong lap lai
+6. sibling => sibling cua parent
+7. parent => tang 1 bac = parent.parent
+8. Cuoi cung tra ve parent
 
 * Toi uu vao so sanh cac thuat toan
 

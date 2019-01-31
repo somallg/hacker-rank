@@ -3,42 +3,24 @@
  */
 import { BinaryTree } from '../binary-tree';
 
-function height(g: BinaryTree): number {
-  let h: number = 0;
-
-  while (g.parent !== undefined) {
-    h += 1;
-    // tslint:disable-next-line
-    g = g.parent;
+function cover(node: BinaryTree | undefined, h: BinaryTree): boolean {
+  if (node === undefined) {
+    return false;
   }
 
-  return h;
+  if (node === h) {
+    return true;
+  }
+
+  return cover(node.left, h) || cover(node.right, h);
 }
 
-function moveUp(second: BinaryTree, steps: number): BinaryTree {
-  while (steps > 0 && second.parent !== undefined) {
-    // tslint:disable-next-line
-    second = second.parent;
-    // tslint:disable-next-line
-    steps -= 1;
+function getSibling(node: BinaryTree): BinaryTree | undefined {
+  if (node === undefined || node.parent === undefined) {
+    return undefined;
   }
 
-  return second;
-}
-
-function findPathIntersect(first: BinaryTree, second: BinaryTree): BinaryTree {
-  while (
-    first.parent !== undefined &&
-    second.parent !== undefined &&
-    first.parent !== second.parent
-  ) {
-    // tslint:disable-next-line
-    first = first.parent;
-    // tslint:disable-next-line
-    second = second.parent;
-  }
-
-  return <BinaryTree>first.parent;
+  return node.parent.left === node ? node.parent.right : node.parent.left;
 }
 
 function firstCommonAncestor(
@@ -46,14 +28,28 @@ function firstCommonAncestor(
   g: BinaryTree,
   h: BinaryTree
 ): number {
-  const delta: number = height(g) - height(h);
+  if (!cover(root, g) || !cover(root, h)) {
+    return -1;
+  }
 
-  const first: BinaryTree = delta < 0 ? g : h; // shallower node
-  let second: BinaryTree = delta > 0 ? h : g; // deeper
+  if (cover(g, h)) {
+    return g.value;
+  }
 
-  second = moveUp(second, delta);
+  if (cover(h, g)) {
+    return h.value;
+  }
 
-  return findPathIntersect(first, second).value;
+  let sibling: BinaryTree | undefined = getSibling(g);
+  let parent: BinaryTree | undefined = g.parent;
+
+  while (parent && !cover(sibling, h)) {
+    // tslint:disable-next-line
+    sibling = getSibling(parent);
+    parent = parent.parent;
+  }
+
+  return parent ? parent.value : root.value;
 }
 
 export { firstCommonAncestor };
