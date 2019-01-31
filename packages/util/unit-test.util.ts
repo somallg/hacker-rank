@@ -137,8 +137,10 @@ function createTestExecutor<InputType, OutputType>(
           describe(functionNameOrGenerator, () => {
             [exampleTests, correctnessTests].forEach(
               (test: TestCategory<InputType, OutputType>) => {
-                describe(`${test.name}`, () =>
-                  runSampleTests(functionToTest, test));
+                if (test !== undefined) {
+                  describe(`${test.name}`, () =>
+                    runSampleTests(functionToTest, test));
+                }
               }
             );
 
