@@ -45,11 +45,46 @@ Steps:
 3. Kiem tra node.right co chua g va h hay khong neu co de quy tiep cho root.right
 4. Tra ve node
 
-* Toi uu vao so sanh cac thuat toan
+Cach 4. Toi uu hoa cach 3
+Trong cach 3 ta nhan thay dau tien ta tim root.left va root.right. Trong root.left ta lai tim het cac node o duoi,sau do ta lai tiep tuc voi root.left (duyet root.left.left va root.left.right) cu nhu vay cho den khi tim duoc to tien chung dau tien. Co nhieu phep tinh lap lai o day ma thuc te ta chi can duyen cac node 1 lan duy nhat neu nhu co cac nao do de "noi bot" gia tri o cac node duoi len node tren chinh la phep tra ve cua de quy. Tu do ta co cac buoc toi uu hon cua step 3 buoc ham de quy
+1. Ham tra ve g neu nhu nhanh root chua g (ma khong chua h)
+2. Ham tra ve h neu nhu nhanh root chua h (ma khong chua g)
+3. Tra ve null neu nhu root khong chua g, h
+4. tra ve common ancestor cua g, h (neu nhu x la to tien cua nhanh root.left, y la to tien cua nhanh root.right thi x chinh la dap an can tim)
 
-* TODO Bat dau code thuat toan thich hop nhat
+Ta co 4 kha nang xay ra voi ket qua tra ve cua ham findCommonAncestor
+1. null
+2. g
+3. h
+4. x (x !== g && x !== h) chinh la common ancestor
 
-* TODO Test va fix bug neu co
+Tu do ta se co bang duoi cho (rx = commonAncestor(root.left), rx = commonAncestor(root.rigt))
+
+| rx/ry | null | g    | h    | x    |
+|-------+------+------+------+------|
+| null  | null | ?    | ?    | ?    |
+| g     | ?    | root | root | root |
+| h     | ?    | root | root | root |
+| x     | ?    | root | root | x    |
+
+Cung voi root (node dang duyet), node g, node h, ta co 6 kha nang:
+1. root === undefined => da duyet het => tra ve undefined
+2. root === g && root === h => g, h trung nhau ta tra ve root
+3. goi x la kq tra ve cua phep de quy (root.left, g, h)
+4. goi y la kq tra ve cua phep de quy (root.right, g, h)
+5. neu nhu x !== null && x !== g && x !== h => da tim duoc to tien tra ve x
+6. neu nhu y !== null && y !== g && y !== h => da tim duoc to tien tra ve y
+7. x !== null && y !== null => da tim duoc o root.left va root.right => tra ve root
+8. root === g || root === h => tra ve root
+9. else tra ve gia tri nao khong null
+
+Cach nay work nhung khong phan biet duoc 2 truong hop:
+1. la h o duoi nhanh g (hoac g o duoi nhanh h)
+2. g la child nhung h thi khong phai
+
+Do do thay vi chi tra ve node ta can them dieu kien do co phai la ancoestor hay khong
+
+* Test va fix bug neu co
 
 #+BEGIN: clocktable :scope file :maxlevel 2
 #+CAPTION: Clock summary at [2018-08-07 Tue 22:10]

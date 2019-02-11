@@ -3,37 +3,48 @@
  */
 import { BinaryTree } from '../binary-tree';
 
-function cover(node: BinaryTree | undefined, h: BinaryTree): boolean {
-  if (node === undefined) {
-    return false;
-  }
+class Result {
+  public node: BinaryTree | undefined;
+  public isAncestor: boolean;
 
-  if (node === h) {
-    return true;
+  constructor(node: BinaryTree | undefined, isAncestor: boolean) {
+    this.node = node;
+    this.isAncestor = isAncestor;
   }
-
-  return cover(node.left, h) || cover(node.right, h);
 }
 
 function findCommonAncestor(
-  node: BinaryTree | undefined,
+  root: BinaryTree | undefined,
   g: BinaryTree,
   h: BinaryTree
-): BinaryTree | undefined {
-  if (node === undefined || node === g || node === h) {
-    return node;
+): Result {
+  if (root === undefined) {
+    return new Result(undefined, false);
   }
 
-  const gIsOnLeft: boolean = cover(node.left, g);
-  const hIsOnLeft: boolean = cover(node.left, h);
-
-  if (gIsOnLeft !== hIsOnLeft) {
-    return node;
+  if (root === g && root === h) {
+    return new Result(root, true);
   }
 
-  const childSide: BinaryTree | undefined = gIsOnLeft ? node.left : node.right;
+  const rx: Result = findCommonAncestor(root.left, g, h);
+  if (rx.isAncestor) {
+    return rx;
+  }
 
-  return findCommonAncestor(childSide, g, h);
+  const ry: Result = findCommonAncestor(root.right, g, h);
+  if (ry.isAncestor) {
+    return ry;
+  }
+
+  // rx and ry are not ancestor but their node is defined which man root is the commn ancestor
+  if (rx.node !== undefined && ry.node !== undefined) {
+    return new Result(root, true);
+  } else if (root === g || root === h) {
+    // we are in g/h branch, so either g/h is is this banch or not
+    return new Result(root, rx.node !== undefined || ry.node !== undefined);
+  }
+
+  return new Result(rx.node !== undefined ? rx.node : ry.node, false);
 }
 
 function firstCommonAncestor(
@@ -41,13 +52,13 @@ function firstCommonAncestor(
   g: BinaryTree,
   h: BinaryTree
 ): number {
-  if (!cover(root, g) || !cover(root, h)) {
-    return -1;
+  const result: Result = findCommonAncestor(root, g, h);
+
+  if (result.isAncestor && result.node) {
+    return result.node.value;
   }
 
-  const commonAncestor: BinaryTree | undefined = findCommonAncestor(root, g, h);
-
-  return commonAncestor ? commonAncestor.value : root.value;
+  return -1;
 }
 
 export { firstCommonAncestor };

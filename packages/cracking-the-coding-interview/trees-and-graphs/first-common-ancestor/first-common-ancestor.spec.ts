@@ -55,12 +55,18 @@ describe('CrackingTheCodingInterview - FirstCommonAncestor', () => {
       (binaryTree.right && binaryTree.right.left)
     );
 
+    const rootTwo: BinaryTree = <BinaryTree>binaryTree.left;
+
     it('should work for node 4 and 5', () => {
       expect(firstCommonAncestor(binaryTree, g, h)).toEqual(2);
     });
 
     it('should work for node 4 and 6', () => {
       expect(firstCommonAncestor(binaryTree, g, s)).toEqual(1);
+    });
+
+    it('should work for node 2 and 4', () => {
+      expect(firstCommonAncestor(binaryTree, g, rootTwo)).toEqual(2);
     });
   });
 });
