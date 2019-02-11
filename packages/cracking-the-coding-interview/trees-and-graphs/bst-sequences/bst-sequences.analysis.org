@@ -1,0 +1,66 @@
+* Doc va phan tich yeu cau
+Input: 1 BST (Binary search tree) duoc tao ra bang cach duyet 1 mang A tu trai qua phai
+Output: in ra tat ca cach kha nang co the cua mang A
+
+V/d:
+Input: 2 -> 1
+         -> 3
+
+Output: [2, 1, 3], [2, 3, 1]
+
+* Dua ra y tuong/nhan xet cho bai toan
+Q: Dieu kien cua BST la gi ?
+A: tat ca node ben nhanh trai <= current node <= tat ca cac node ben nhanh phai. Do BST cac node la duy nhat nen ta co the loai bo kha nang = o day
+
+Q: Quy trinh de tao ra BST la gi ?
+A: Duyet lan luot tung phan tu trong array, ta dat phan tu vao vi tri co dinh cua no, cho den khi het phan tu thi thoi
+
+Q: V/d [2, 1, 3]
+A: Ben dau tree chua co gi, phan tu dau tien la 2 => 2 se thanh root cua BST. Phan tu tiep theo la 1, do 1 < 2 nen 1 se dat vao nhanh trai cua 2. 3 > 2 nen 3 se vao nhanh phai cua 2. Tuong tu cho [2, 3, 1]
+
+Q: Nhan xet gi ?
+A: Co 3 nhan xet
+1. Phan tu dau tien se la root cua tree
+2. Cac ban tu tiep theo se dua vao gia tri cua no voi root de dieu huong. Neu nho hon root thi sang nhanh trai, neu lon hon root sang nhanh phai
+3. Den phan tu thu 3+, thi phan tu trc no se la root
+
+Q: Nhan xet gi cho Array ?
+A: Ta se thay la array nay co 2 phan, 1 phan < root goi la left phan lon hon root > righ. Va ben trong left cac phan tu duoc sap xep tang dan
+
+Q: Su dung de quy duoc khong?
+A: Neu nhu ta co tap hop mang de tao BST cho nhanh trai goi la leftArray, tap hop mang cho nhanh phai goi la rightArray. Ta se can theu 2 mang nay lai thanh 1 tap hop va them root vao dau tung array
+
+Q: Dinh nghia ve thue la gi?
+A: Vi du tao co
+array1: [1, 2]
+array2: [4, 5]
+root: 3
+weaved: [1, 2, 4, 5], [1, 4, 2, 5], [1, 4, 5, 2], [4, 1, 2, 5], [4, 1, 5, 2], [4, 5, 1, 2]
+
+* Dua ra cac buoc
+1. De quy BST. base case root === undefined => return
+2. Nho lai gia tri cua node => prefix = node.value
+3. Lay ra tat ca sequences ben nhanh trai
+4. Lay ra tat ca sequences ben nhanh phai
+5. theu tat ca gia tri nhanh trai voi nhanh phai => add vao result
+6. tra ve result
+
+Cho weaving
+weaveLists(first, second, results, prefix)
+1. Neu first/second === undefined => goi result = prefix.clone() ,add cac phan tu con lai cua first/second vao result, add result => results
+2. Lay phan tu dau tien cua first ra => de quy cho (first, second, result, prefix + firstHead) => first.add(firstHead)
+3. Lay ra phan tu dau tien cua second => de quy (frist, second, result, prefix + secondHead) => second.add(secondHead)
+4. return results
+
+* Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
