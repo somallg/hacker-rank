@@ -1,0 +1,67 @@
+* Doc va phan tich yeu cau
+Input: 2 BT T1, T2 trong do T1 lon hon T2 rat nhieu
+Output: boolean true/false kiem tra T2 la nhanh con cua T1
+
+* Dua ra nhan xet/solution
+Q: D/k nhanh con la gi ?
+A: Ton tai node n trong T1, sao cho nhanh n cua T1 giong y het T2. Hoac cach hinh dung khac la neu nhu ta cat T1 tai node n duoc subtree T1' ta se co T1' co cau truc giong het T2
+
+Solution 1:
+So sanh bieu dien duoi dang string T1 va T2 goi la S1, S2
+Neu nhu S2 o cuoi cua S1 thi la kq
+
+Q: Co bao nhieu cac bieu dien BT ?
+A: 3 cach pre-order, in-order, post-order
+
+Q: Neu dung in-order thi sao ?
+A: Trong truong hop dung pre-order ma T1, T2 la BST thi ta se duoc bieu dien theo thu tu tang dang, ke ca khi T1, T2 khac nhau, vi du
+[1, 2, 3, 4] => Neu root la 2 va root la 3 thi 2 BST khac nhau
+Nhung bieu dien deu la [1, 2, 3, 4]
+
+Q: Vay pre-order co duoc khong ?
+A: pre-order co ve on hon vi it nhat ta se co gia tri cua root dau tien sau do den nhanh duoi
+
+Q: Co xai duoc khong ?
+A: Khong, v/d: root: 3 -> left: 4 va root 3: right 4 deu cho ra [3, 4]
+
+Q: Co cach nao fix khong ?
+A: trong truong hop node null ta se bieu dien bang 'X' (gia su gia tri cua node dau le so tu nhien) Khi do ta se duoc [3, 4, X] va [3, X, 4] dam bao de co the phan biet duoc cau truc cua 2 cay nay la khac nhau
+
+Q: Tu do ta co cac chua ?
+A: su dung pre-order convert T1 ra S1, T2 ra S2 => S1.endWith(S2)
+
+Q: Steps cu the la gi ?
+A:
+1. Tao function checkSubtree(t1, t2)
+2. s1 = traverse(t1).toString()
+3. s2 = traverse(t2).toString()
+4. s1.endWith(s2)
+5. function traverse(node)
+6. node === undefined => return NaN
+7. res = []; res.push(node.value)
+8. res.push(traverse(node.left))
+9. res.push(traverse(node.right))
+10. tra ve res
+
+Cho ham traverse ta co the su dung 1 bien tren param hay vi tra ve trong tung phep de quy
+1. function traverse(node, result)
+2. neu node la undefined => result.push(NaN); return result
+3. result.push(node.value);
+4. traverse(node.left, result)
+5. traverse(node.right, result);
+6. tra ve result
+
+* Toi uu vao so sanh cac thuat toan
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
