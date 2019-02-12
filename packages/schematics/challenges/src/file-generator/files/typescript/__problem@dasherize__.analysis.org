@@ -1,21 +1,14 @@
-| Question                    | Answer |
-|-----------------------------+--------|
-| Yeu cau la gi ?             |        |
-| Yeu cau dac biet gi khong ? |        |
-| Y tuong gi khong ?          |        |
-| Phan tich y tuong tren ?    |        |
+* Doc va phan tich yeu cau
 
-* TODO Doc va phan tich yeu cau
+* Dua ra nhan xet/y tuong de giai quyet bai toan
 
-* TODO TDD: Setup test case
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
 
-* TODO Dua ra brute force solution
+* TDD: Setup test case
 
-* TODO Toi uu vao so sanh cac thuat toan
+* Bat dau code thuat toan thich hop nhat
 
-* TODO Bat dau code thuat toan thich hop nhat
-
-* TODO Test va fix bug neu co
+* Test va fix bug neu co
 
 #+BEGIN: clocktable :scope file :maxlevel 2
 #+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
