@@ -38,7 +38,9 @@ interface TestExecutor<InputType, OutputType> {
 function prettyFormatArray(array: any[]): string {
   return array
     .map((param: any) =>
-      Array.isArray(param) ? `\n${' '.repeat(12)}[${param.join(', ')}]` : param
+      Array.isArray(param)
+        ? `\n${' '.repeat(12)}[${param.join(', ')}]`
+        : prettyFormat(param)
     )
     .join(', ');
 }
