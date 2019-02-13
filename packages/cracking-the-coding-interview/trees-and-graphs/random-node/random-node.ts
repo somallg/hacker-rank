@@ -27,19 +27,26 @@ class TreeNode {
         this.right.insertInOrder(data);
       }
     }
+    this.size += 1;
   }
 
   public getRandomNode(): TreeNode {
-    const leftSize: number = this.left ? this.left.size : 0;
     // tslint:disable-next-line
     const index: number = Math.floor(Math.random() * this.size); // generate number from 0 to n (inclusive)
-    if (index < leftSize) {
-      return this.left.getRandomNode();
-    } else if (index === leftSize) {
+
+    return this.getIthNode(index);
+  }
+
+  public getIthNode(i: number): TreeNode {
+    const leftSize: number = this.left ? this.left.size : 0;
+
+    if (i < leftSize) {
+      return this.left.getIthNode(i);
+    } else if (i === leftSize) {
       return this;
     }
 
-    return this.right.getRandomNode();
+    return this.right.getIthNode(i - (leftSize + 1));
   }
 
   public find(data: number): TreeNode | undefined {
