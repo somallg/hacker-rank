@@ -51,13 +51,43 @@ Cho ham traverse ta co the su dung 1 bien tren param hay vi tra ve trong tung ph
 5. traverse(node.right, result);
 6. tra ve result
 
-* Toi uu vao so sanh cac thuat toan
+* Toi uu va so sanh cac thuat toan
+Cach 2: solution khac khong ?
+Duyet tung node n cua T1, kiem tra sub tree n co giong het t2 hay khong va tra ve
+
+Ham checkSubtree(t1, t2)
+1. Voi moi node n cua T1, neu t1 === undefined (big tree qua be) tra ve false
+2. Kiem tra n.value === t2.value
+3. Neu (2) tra ve true => goi ham matchTree(n, t2)
+4. Neu khong tiep tuc kiem tra cho n.left va n.right
+
+Ham matchTree(t1, t2)
+1. t1 va t2 cung === undefined => true
+2. t1/t2 === undefined => false
+3. t1.value !== t2.value => false
+4. tiep tuc de quy veoi t1.left, t2.left va t1.right, t2.right
+
+* Phan tich thuat toan
+Cach 1:
+Do phuc tap ve thoi gian O(n + m) voi n = so node cua T1, m = so node cua T2
+Do phuc tap ve bo nho O(n + m)
+
+Cach 2:
+Do phuc tap ve thoi gian O(n + k * m) voi n = so node cua T1, m = so node cua T2,
+k la so lan node n.value === t2.root
+Neu tinh cu the hon, k ~ n/p voi neu gia tri cua T1, T2 trong khoang [1..p]
+Q: Why?
+A: voi moi node trong T1, co 1/p xac suat === T2.root, T1 co n nodes nen se co n/p kha nang. Do do do phuc tap cuoi cung la O(n + n/p * m)
+Do phuc tap ve bo nho O(log(n) + log(m))
 
 * TDD: Setup test case
+Done
 
 * Bat dau code thuat toan thich hop nhat
+Code cach 1: Done
 
 * Test va fix bug neu co
+Done
 
 #+BEGIN: clocktable :scope file :maxlevel 2
 #+CAPTION: Clock summary at [2018-08-07 Tue 22:10]

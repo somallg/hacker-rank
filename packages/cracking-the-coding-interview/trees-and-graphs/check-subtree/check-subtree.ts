@@ -4,26 +4,35 @@
 
 import { BinaryTree } from '../binary-tree';
 
-function checkSubtree(t1: BinaryTree, t2: BinaryTree): boolean {
-  const s1: string = traverse(t1, []).join('');
-  const s2: string = traverse(t2, []).join('');
-
-  return s1.endsWith(s2);
-}
-
-function traverse(node: BinaryTree | undefined, result: number[]): number[] {
-  if (node === undefined) {
-    result.push(NaN);
-
-    return result;
+function checkSubtree(t1: BinaryTree | undefined, t2: BinaryTree): boolean {
+  if (t1 === undefined) {
+    return false;
   }
 
-  result.push(node.value);
+  if (t1.value === t2.value && matchTree(t1, t2)) {
+    return true;
+  }
 
-  traverse(node.left, result);
-  traverse(node.right, result);
+  return checkSubtree(t1.left, t2) || checkSubtree(t1.right, t2);
+}
 
-  return result;
+function matchTree(
+  t1: BinaryTree | undefined,
+  t2: BinaryTree | undefined
+): boolean {
+  if (t1 === undefined && t2 === undefined) {
+    return true;
+  }
+
+  if (t1 === undefined || t2 === undefined) {
+    return false;
+  }
+
+  if (t1.value !== t2.value) {
+    return false;
+  }
+
+  return matchTree(t1.left, t2.left) && matchTree(t1.right, t2.right);
 }
 
 export { checkSubtree };
