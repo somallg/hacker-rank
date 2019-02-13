@@ -1,0 +1,72 @@
+* Doc va phan tich yeu cau
+Input: Binary Search tree (ta co the choc vao cau truc ben trong de sua doi them tuy thich)
+Output: 1 node bat ky cua BST can dam bao cac node duoc chon deu nhau
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+** Option #1 [Slow & Working]
+Copy tat ca node cua BST ra array (in-order) va tra ve node random tu 0 den array.length - 1
+Cach nay can O(n) time va O(n) space va hien nhien la khong toi uu
+
+** Option #2 [Slow & Working]
+Luu copy array lai de tai su dung, nhung se gap van de cho insert/delete.
+Do phuc tap cuoi cung van la O(n) time va O(n) space
+
+** Option #3 [Slow & Working]
+Dan mac cac node tu 1 den N va tra ve random Index tu 1 den N roi su dung binary search de tim. Nhung van gap van de khi insert/delete
+
+** Option #4 [Fast & Not Working]
+Goi d la do cao cua BST => random den do cai d0 (0 => d) va random trai/phai cho den khi dung lai o do cao d0
+Nhung khoong giai quyet duoc van de xac xuat xuat hien cua node deu nhau vi co kha nang khong the di den d0, hoac node o 1 nhanh se khong bao gio duoc chon
+
+** Option #5 [Fast & Not Working]
+Duyet tung node trong BST, neu xac xuat la
+1. 1/3 tra ve node
+2. 1/3 tra ve node.left
+3. 1/3 tra ve node.right
+
+** Option #6 [Fast & Working]
+Thay vi tiep tuc nghi ra y tuong ta nen dung lai va xem van de chinh cua van den 5 la gi.
+
+Q: Tai sao Option #5 khong hoat dong?
+A: Vi xac xuat cua cac node khong deu nhau.
+
+Q: Vay xac xuat xuat hien cua 1 node la bao nhieu ?
+A: 1/N (voi N la so luong node trong BST)
+
+Q: Xac xuat cua nhanh trai la bao nhieu? co phai 1/3 khong?
+A: Khong, phai la LEFT_SIZE * 1/N, tuong tu cho nhanh trai: RIGHT_SIZE * 1/N
+
+De lam duoc nhu vay ta can luu lai so luong cua node trong tree moi khi insert/delete node. May man la ta co the truy suat vao duoc noi tai ben trong BST, voi moi node co thuoc tinh size de luu lai du lieu
+
+Q: Lam sao de random ra node ?
+A: Tai root ta co n nodes tat ca, l nodes ben trai, root, r nodes ben phais.
+Ta co cong thuc la n = l + r + 1
+random 1 so bat ky tu 0 den n (inclusive) goi la index.
+Neu index < l => node can tim o ben trai => de quy tiep tuc
+neu index == l => root la node can tim
+neu index > l => lam tuong tu cho right
+
+** Option #7
+Ta nhan thay voi cach tren moi len den node la ta se goi lai Math.random 1 lan nua voi du lieu moi ma node do lam root.
+Math.random la 1 phep tinh kha nang can duoc toi uu.
+Ta nhan thay la chi can su dung Math.random duy nhat va duoc so r0
+Neu r0 < leftSize => ta tiep tuc tim xuong nhanh trai voi su dung BS
+r0 == leftSize => tra ve node hien dang duyet
+r0 > leftSize => khi do gia tri cua nhanh phai se tu [r0+1,...n-1], r0 o nhanh ben phai se o index moi la: r0 - leftSize
+
+Cach nay giong voi binary search
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
