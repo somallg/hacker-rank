@@ -1,0 +1,83 @@
+* Doc va phan tich yeu cau
+Input: Cay nhi phan, moi node chua so tu nhien (duong/am), va 1 so T
+Output: tinh so luong path cua cay nhi phan ma tong cac node trong path bang T. Path co the bat dau tu bat ky node nao, khong nhat thiet la tu root va bat buoc phai di xuong (tu bo xuong con)
+
+Example:
+
+#+BEGIN_SRC dot :file dot.png
+graph G {
+  a [label="3"]
+  b [label="3"]
+
+	10 -- {5 -3};
+	5 -- {a 2};
+  -3 -- 11;
+  a -- {b -2};
+  2 -- 1;
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:dot.png]]
+
+Voi vu di nay ta co nhung path co tong la 8 do la:
+5 -> 2 -> 1
+5 -> 3
+-3 -> 11
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+** Option #1: Brute force
+Generate tat ca cac path va tinh tong path va dem so luong tong == target
+Steps:
+1. voi moi node trong tree
+2. neu node == undefined => tra ve 0
+3. neu khong, tinh tat ca cac path bat dau bang node n => count
+4. de quy cho nhanh trai => left
+5. de quy cho nhanh phai => right
+6. Tra ve count + left + right
+
+Cach tinh path tu node
+1. countPathsFromNode(root, currentSum, targetSum)
+2. root == undefined => tra ve 0 (khong the co path nao)
+3. currentSum += root.value, dat path = 0
+4. neu nhu currentSum == targetSum => path += 1
+5. tiep tuc duyet voi nhanh trai => leftPaths
+6. dem cho nhanh ben phai => rightPaths
+7. tra ve path + leftPaths + rightPaths
+
+Do phuc tap O(n log(n)) time, O(log(n))
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+Q: Co cach nao de toi uu hoa option #1 khong?
+A: co ta can phai dat cau hoi
+
+Q: Cau hoi gi?
+A: BUD
+
+Q: Duplicate work khong?
+A: Do voi root, ta tinh so luong paths cua no sau do lai duyet tiep cho ben trai va ben pahi. Khi do nhanh trai phai da tung duoc tinh roi
+
+Q: Gia su path tu root den leaf duoc bieu dien dang array [10, 5, 2, 1], co cach nao tinh so luont subArray co tong == targetSum (v/d 8)?
+A: Su dung prefix sum + hash nhu sau.
+[10, 5, 2, 1, 2] => [10, 15, 17, 18, 20]
+1. Duyet tung phan tu trong prefix sum => n
+2. Tinh targetSum - n => currentSum
+3. Kiem tra currentSum da tan tai trong hash khong (i.e da tung xuat hien trong prefixSum array chua)
+4. Neu khong co nghia la root => n khong co path nao tong = targetSum
+5. Neu co thi tra ve so lan n o trong hash
+
+V/d: n = 18, currentSum = 18 - 8 = 10
+Da co path nao tong = 10 chua ? co 1 => tra ve 1
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
