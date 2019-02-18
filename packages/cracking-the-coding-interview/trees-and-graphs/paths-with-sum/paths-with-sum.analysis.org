@@ -61,8 +61,8 @@ Q: Gia su path tu root den leaf duoc bieu dien dang array [10, 5, 2, 1], co cach
 A: Su dung prefix sum + hash nhu sau.
 [10, 5, 2, 1, 2] => [10, 15, 17, 18, 20]
 1. Duyet tung phan tu trong prefix sum => n
-2. Tinh targetSum - n => currentSum
-3. Kiem tra currentSum da tan tai trong hash khong (i.e da tung xuat hien trong prefixSum array chua)
+2. Tinh targetSum - n => sum
+3. Kiem tra sum co trong hash khong (i.e da tung xuat hien trong prefixSum array chua)
 4. Neu khong co nghia la root => n khong co path nao tong = targetSum
 5. Neu co thi tra ve so lan n o trong hash
 

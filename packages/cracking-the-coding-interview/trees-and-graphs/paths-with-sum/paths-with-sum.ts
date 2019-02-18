@@ -5,42 +5,43 @@
 import { BinaryTree } from '../binary-tree';
 
 function pathsWithSum(root: BinaryTree | undefined, targetSum: number): number {
-  if (root === undefined) {
-    return 0;
-  }
-
-  const pathFromRoot: number = countPathsFromNode(root, 0, targetSum);
-
-  const pathsOnLeft: number = pathsWithSum(root.left, targetSum);
-  const pathsOnRight: number = pathsWithSum(root.right, targetSum);
-
-  return pathFromRoot + pathsOnLeft + pathsOnRight;
+  return countPathsWithSum(root, 0, targetSum, new Map<number, number>());
 }
 
-function countPathsFromNode(
+function countPathsWithSum(
   node: BinaryTree | undefined,
   currentSum: number,
-  targetSum: number
+  targetSum: number,
+  pathCount: Map<number, number>
 ): number {
   if (node === undefined) {
     return 0;
   }
 
-  let paths: number = 0;
-
-  if (node.value === targetSum) {
-    paths += 1;
-  }
   // tslint:disable-next-line
   currentSum += node.value;
+  const sum: number = currentSum - targetSum;
+  let totalPaths: number = pathCount.get(sum) || 0;
+
   if (currentSum === targetSum) {
-    paths += 1;
+    totalPaths += 1;
   }
 
-  paths += countPathsFromNode(node.left, currentSum, targetSum);
-  paths += countPathsFromNode(node.right, currentSum, targetSum);
+  incrementMap(pathCount, currentSum, 1);
+  totalPaths += countPathsWithSum(node.left, currentSum, targetSum, pathCount);
+  totalPaths += countPathsWithSum(node.right, currentSum, targetSum, pathCount);
+  incrementMap(pathCount, currentSum, -1);
 
-  return paths;
+  return totalPaths;
+}
+
+function incrementMap(
+  map: Map<number, number>,
+  key: number,
+  delta: number
+): void {
+  const newValue: number = (map.get(key) || 0) + delta;
+  map.set(key, newValue);
 }
 
 export { pathsWithSum };
