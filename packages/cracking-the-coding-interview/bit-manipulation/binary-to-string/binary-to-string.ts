@@ -9,18 +9,17 @@ function binaryToString(n: number): string {
     return 'ERROR';
   }
 
+  let fac: number = 0.5;
   while (n > 0) {
-    const r: number = n * 2;
-
-    if (r >= 1) {
+    if (n >= fac) {
       result.push('1');
       // tslint:disable-next-line
-      n = r - 1;
+      n -= fac;
     } else {
       result.push('0');
-      // tslint:disable-next-line
-      n = r;
     }
+
+    fac /= 2;
   }
 
   return result.join('');

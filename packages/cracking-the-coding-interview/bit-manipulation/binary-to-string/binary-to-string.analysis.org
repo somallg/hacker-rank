@@ -18,6 +18,14 @@ Ta suy ra cac cach la
 3. Neu khong thi them 0 vao kq; lap lai 1; n = r
 4. dung lai khi n nho hon 0
 
+Q: Co cach 2 khong?
+A: Ta nhan thay moi bieu dien nhi phan cua so thuc co dang:
+a0 * 1/2 + a1 * 1/4 + a2 * 1/8 etc
+Ta bat dau tu 0.5 (1/2) neu n > 0.5 (fac) thi push 1 vao kq tra ve
+n = n - 0.5 tiep tuc voi fac = 0.25 (0.5/2)
+Neu n < fac => push vao 0; fac = fac/2
+Ket thu khi n < 0
+
 * Dua ra loi gian toi uu sau khi so sanh cac loi giai
 
 * TDD: Setup test case
