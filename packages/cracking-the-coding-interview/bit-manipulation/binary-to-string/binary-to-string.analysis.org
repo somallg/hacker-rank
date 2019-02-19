@@ -1,0 +1,34 @@
+* Doc va phan tich yeu cau
+Input: cho 1 so thuc co gia tri to 0 den 1 goi la n
+Output: bieu dien dang nhi phan cua so no
+Neu nhu khong the bieu dien n tra ve ERROR
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+Q: Bieu dien duoi dang nhi phan cua 1 so thuc ra sao?
+A: Gia su bieu dien nhi phan la la 0.101(2) = 1 * 1/2^1 + 0 * 1/2^2 + 1 * 1/2^3 = 0.72(10)
+
+Q: Co nhan xet gi ve 2 * n
+A: 2 * n = 2 * 0.101(2) = 2 * (1 * 1/2^1 + 0 * 1/2^2 + 1 * 1/2^3) =
+1 * 1/2^0 + 0 * 1/2^1 + 1*1/^2 = r
+Neu r >= 1 thi ta co bit 1 dau tien cua n.
+
+Ta suy ra cac cach la
+1. cho r = 2 * n
+2. Neu r >= 1; them 1 vao kq; va n = r - 1; lap lai 1
+3. Neu khong thi them 0 vao kq; lap lai 1; n = r
+4. dung lai khi n nho hon 0
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
