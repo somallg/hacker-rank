@@ -1,0 +1,45 @@
+* Doc va phan tich yeu cau
+Input: 2 so binary n va m, 2 so tu nhien i, j (index tinh tu phai)
+Output: so binary moi ma index tu i -> j cua n duoc gan bang m
+
+Example:
+n   = 1000000000, m = 10011, i = 2, j = 6
+res = 1001001100
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+** Option # 1 (handy)
+1. clear bit cua n tu j den i
+2. dich bit cua m j bits de thang hang voi n
+3. nhap n va m
+
+Q: Clear bit to i => j
+A: cho mask = 1 << i; neu n & mask == 1 => clear bit tai i, tiep tuc cho i + 1 cho den j
+
+Q: Do phuc tap
+A: O(n) voi n la do dai bit cua n
+
+Q: Co cac toi uu hon khong ?
+A: moi clear bit cua n tan can 1 so mask sao co = 111100001111, tu left cho den j = 1 het, tu j => j = 0 het con lai bang 1 het. Nghia la so 1 het tru i den j la bang 0
+
+Q: Lam sao lam duoc ?
+A:
+1. Dan ta can allOnes (1 het cac bit): ~O
+2. allOnes <<< j + 1 ta se co 1111000000000000 leftOnes (1 het cho den j - 1)
+3. (1 << i) - 1 => right 00001111 => 1 het tu i - 1
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+Done
+
+* Bat dau code thuat toan thich hop nhat
+Done
+
+* Test va fix bug neu co
+
+#+BEGIN: clocktable :scope file :maxlevel 2
+#+CAPTION: Clock summary at [2018-08-07 Tue 22:10]
+| Headline     | Time   |
+|--------------+--------|
+| *Total time* | *0:00* |
+#+END:
