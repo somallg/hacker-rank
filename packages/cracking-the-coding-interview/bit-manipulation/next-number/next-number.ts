@@ -1,5 +1,5 @@
 /**
- * NextProblem
+ * Next Number Problem
  */
 
 function nextNumber(n: number): number[] {
@@ -29,12 +29,7 @@ function getNext(n: number): number {
     return -1;
   }
 
-  // tslint:disable:no-parameter-reassignment
-  n |= 1 << p; // set bit 1 at p
-  n &= ~((1 << p) - 1); // clear bits on right of p
-  n |= (1 << (c1 - 1)) - 1; // move c1 - 1 bit to the right most
-
-  return n;
+  return n + (1 << c0) + (1 << (c1 - 1)) - 1;
 }
 
 function getPrev(n: number): number {
@@ -52,12 +47,7 @@ function getPrev(n: number): number {
     c >>= 1;
   }
 
-  const p: number = c0 + c1;
-
-  n &= ~0 << (p + 1); // clear bit 0 to p
-  n |= ((1 << (c1 + 1)) - 1) << (c0 - 1); // insert c1 - 1 bit 1 ben phai p
-
-  return n;
+  return n - (1 << c1) - (1 << (c0 - 1)) + 1;
 }
 
 export { nextNumber };

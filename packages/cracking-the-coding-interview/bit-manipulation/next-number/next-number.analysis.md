@@ -95,9 +95,28 @@ Nhac lai steps nhu sau:
 
 Cho step 2 va 3 ta co the su dung phep tinh (+, -)
 1. n + (1 << p) => set biet tai p sang 1
-2. n + (2 ** c0 - 2) => set het c0 bit sang 0
+2. n + (2 ** c0 - 1) => set het c0 bit sang 0
 3. n - (2 ** p - 1) => set het bit ben phai p ve 0
 4. n + (2 ** (c1 - 1) - 1) => dat c1 - 1 bits 1 tu ben phai
+5. ket qua cuoi cung:
+`n + (2 ** p) + (2 ** c0 - 1) - (2 ** p - 1) + (2 ** (c1 - 1) - 1)`
+= `n + 2 ** c0 + 2 ** (c1 - 1) - 1`
+= `n + 1 << c0 + 1 << (c1 - 1) - 1`
+
+## Cho next smallest
+Nhac lai cac buoc
+1. Tinh c0, c1, p voi (c1 so bit 1 o duoi, c0 so bit 0 tiep theo, p = index bit 1 dau tien non-trailling)
+2. clear bit tu 0 den p
+3. move c1 + 1 bits 1 sang ben phai p
+
+Su dung phep cong tru ta ca,
+1. n = n - (2 ** c1 - 1) // clear c1 bit 1 o duoi
+2. n = n - 1 // clear bit p thanh 0 theo sau la p bits 0
+4. n = n - (2 ** (c0 - 1) - 1) // make c0 - 1 bits 0 o phai duoi
+
+Cong thuc final
+`n - (2 ** c1 - 1) - (2 ** (c0 - 1) - 1) - 1`
+=`n - (1 << c1) - (1 << (c0 - 1)) + 1`
 
 # TDD: Setup test case
 
