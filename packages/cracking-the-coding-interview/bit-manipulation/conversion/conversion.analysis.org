@@ -1,0 +1,31 @@
+# Doc va phan tich yeu cau
+Input: cho so a, b
+Output: tra ve so luong bits can bat/tat de chuyen tu so a -> b
+
+# Dua ra nhan xet/y tuong de giai quyet bai toan
+Q: Nhan xet gi ve so luong bit can bat/tat ?
+A: So bits 0 hoac 1 chung ta khong can quan tam, ta chi can quan tam de bit khac nhau cua a va b
+
+Q: lam sao de bo duoc phan chung, chi de lai phan rieng cua a, b?
+A: su dung xor, voi a ^ b = c => c so luong bit 1 cua c = so luong bit khac nhau cua a va b
+
+Q: Dua ra steps dc khong?
+A: steps nhu sau
+1. tinh c = a ^ b
+2. dem so luong bit 1 cua c
+3. tra ve (2)
+
+Q: Cach de tinh bit 1 cua c
+A: Cach 1, shift tung bit cua c, neu c & 1 == 1 tang cao va giam c. Do phuc tap O(n) voi n la do dai bits cua c
+
+Q: Cach 2 ?
+A: su dung c & (c - 1) => clear bit 1 ngoai cung ben trai, cu lap nhu vay cho den khi c = 0. Do phuc tap O(n) voi n la so bit 1 cua c.
+Cach nay fip bit 1 ngoai cung ben phai (flip it anh huong nhat) cho den khi nao c ve 0
+
+# Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+# TDD: Setup test case
+
+# Bat dau code thuat toan thich hop nhat
+
+# Test va fix bug neu co
