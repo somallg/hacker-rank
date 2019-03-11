@@ -1,7 +1,10 @@
 import { Node } from './node';
 
-function preorderTraverse(node: Node | null, array: number[]): number[] {
-  if (!node) {
+function preorderTraverse(
+  node: Node<number> | undefined,
+  array: number[]
+): number[] {
+  if (node === undefined) {
     return array;
   }
 
@@ -14,8 +17,11 @@ function preorderTraverse(node: Node | null, array: number[]): number[] {
   return array;
 }
 
-function inorderTraverse(node: Node | null, array: number[]): number[] {
-  if (!node) {
+function inorderTraverse(
+  node: Node<number> | undefined,
+  array: number[]
+): number[] {
+  if (node === undefined) {
     return array;
   }
 
@@ -27,8 +33,11 @@ function inorderTraverse(node: Node | null, array: number[]): number[] {
   return array;
 }
 
-function postorderTraverse(node: Node | null, array: number[]): number[] {
-  if (!node) {
+function postorderTraverse(
+  node: Node<number> | undefined,
+  array: number[]
+): number[] {
+  if (node === undefined) {
     return array;
   }
 

@@ -2,7 +2,7 @@
  * Leetcode - MinCostClimbingStairs recursive version
  */
 
-import { memorized } from '@challenges/util';
+import { MemoFn, memorized } from '@challenges/util';
 
 function minCostClimbingStairsRec(cost: number[]): number {
   const n: number = cost.length;

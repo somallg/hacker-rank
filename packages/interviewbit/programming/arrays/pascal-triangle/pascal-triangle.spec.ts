@@ -3,8 +3,6 @@
  * Interviewbit - PascalTriangle
  */
 
-import { generateArray } from '@challenges/util';
-
 import { pascalTriangle } from './pascal-triangle';
 
 describe('Interviewbit - PascalTriangle', () => {
@@ -41,8 +39,8 @@ describe('Interviewbit - PascalTriangle', () => {
         pascalTriangle(100);
       });
 
-      it('should run for Large 1 input of 10e3 items', () => {
-        pascalTriangle(10e3);
+      it('should run for Large 1 input of 1e3 items', () => {
+        pascalTriangle(1e3);
       });
     });
   });

@@ -2,7 +2,7 @@
  * Leetcode - MaximumSubarray recursive version
  */
 
-import { memorized } from '@challenges/util';
+import { MemoFn, memorized } from '@challenges/util';
 
 function maximumSubarrayRec(array: number[]): number {
   if (array.length === 0) {

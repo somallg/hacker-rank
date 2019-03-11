@@ -3,8 +3,6 @@
  * HackerRank - CoinChange
  */
 
-import { generateArray } from '@challenges/util';
-
 import { solveCoinChangeRec } from './coin-change-rec';
 
 describe('HackerRank - CoinChange', () => {

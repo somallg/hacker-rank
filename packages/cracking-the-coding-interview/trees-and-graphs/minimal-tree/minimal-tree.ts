@@ -17,7 +17,8 @@ function createBinaryTree(
   return {
     value: array[middle],
     left: createBinaryTree(array, fromIndex, middle - 1),
-    right: createBinaryTree(array, middle + 1, toIndex)
+    right: createBinaryTree(array, middle + 1, toIndex),
+    parent: undefined
   };
 }
 
