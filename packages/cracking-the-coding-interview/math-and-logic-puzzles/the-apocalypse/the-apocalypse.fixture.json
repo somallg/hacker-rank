@@ -1,0 +1,45 @@
+{
+  "name": "TheApocalypse Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": 4,
+          "output": 1
+        },
+        {
+          "name": "Example 2",
+          "input": 40,
+          "output": 1
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": 10000,
+          "output": 0.5
+        },
+        {
+          "name": "Sample 2",
+          "input": 20000,
+          "output": 0.5
+        },
+        {
+          "name": "Sample 3",
+          "input": 30000,
+          "output": 0.5
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+* Doc va phan tich yeu cau
+Tinh so luong dan so biet rang: moi mot gia dinh phai co it nhat 1 con gai nghia la ho se de cho den khi nao co 1 con gai thi dung lai.
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+Moi gia dinh duoc bieu dien boi chuoi: "G", "BG", "BBG"
+trong do co tu 0 den n B va "G" se luon o cuoi cung
+Ta co bang tinh xac xuat nhu sau:
+
+| Sequence | No of Boys | Probability | No of Boys * Probability |
+|----------+------------+-------------+--------------------------|
+| G        |          0 | 1/2         | 0                        |
+| BG       |          1 | 1/4         | 1/4                      |
+| BBG      |          2 | 1/8         | 2/8                      |
+| BBBG     |          3 | 1/16        | 3/16                     |
+| BBBBG    |          4 | 1/32        | 4/32                     |
+| BBBBBG   |          5 | 1/64        | 5/64                     |
+| BBBBBBG  |          6 | 1/128       | 6/128                    |
+
+So luong con trai cho moi nha la:
+sum of i/2^i for i from 0 to Infinity
+Estimation ~ 120/128 ~ 1
+
+Neu ly luan 1 cach logic, ta gia su so dan so se duoc nhap voi moi gia dinh vao thanh 1 chuoi rat dai nhu: BGBBGG...
+Ta xem xet % ky tu tiep theo trong chuoi la B (hoac G) se la 50% theo quy luat cua tu nhien tu do tong quat hoa len thi so luong B/G ~ 1
+
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
