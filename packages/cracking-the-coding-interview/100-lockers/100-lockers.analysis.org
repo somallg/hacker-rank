@@ -1,0 +1,27 @@
+* Doc va phan tich yeu cau
+Cho 100 tu khoa. 
+Duyet i tu 1 den 100, moi lan mo/khoa tu lai neu stt cua tu la boi cua i
+Cau hoi dat ra la sau 100 lan thi co bao nhieu tu con mo
+
+* Dua ra nhan xet/y tuong de giai quyet bai toan
+
+Q: Cho tu n vay thi trong truong hop nao thi n bi dong hoac mo ?
+A: Tu n se bi dong/mo khi ma so lan duyet i la boi cua n.
+V/du tu 15 se bi dong/mo o cac lan la 1, 3, 5, 15
+
+Q: Khi nao thi tu n se mo ?
+A: Khi so uoc cua no phai la so le
+
+Q: Khi nao uoc cua so n la so le?
+A: Khi vao chi khi n la perfect square
+
+Q: Co bao nhieu perfect square to 1 den 100?
+A: 1, 2*2, 3*3, ...10*10 tong cong 10 perfect square
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
