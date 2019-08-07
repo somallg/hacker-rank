@@ -1,0 +1,35 @@
+* Doc va phan tich yeu cau
+Cho n bac thang. 1 dua tre co the nhay 1, 2 hoac 3 bac thang lien tiep.
+Hoi co bao nhieu cach de dua tre nhay len bac n?
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Q: Lam sao de nhay duoc len bac thu n?
+A: Ta co 3 cach de nhay len bac n la:
+1. O len bac n - 1 va nhay 1 bac
+2. O bac thu n - 2 va nhay 2 bac
+3. O bac thu n - 3 va nhay 3 bac
+
+Q: Co nghia la gi ?
+A: Dieu do cho thay so cach nhay len bac n = tong so cach nhay len bac n - 2 + so cach nhay len n - 1 + so cach nhay len n - 3
+Ta suy ra cong thuc tong quat la:
+countWays(n) = countWays(n - 1) + countWays(n - 2) + countWays(n - 3)
+
+Q: Tai sao la + ma khong phai nhan (*) ?
+A: Neu la nhan nghia la cac buoc nhay lien tiep nhau, khong phai trong truong hop nay
+
+* Naive Approach
+Su dung cong thuc tao ham de quy.
+Ta can chu y o buoc 0 tra ve 0 hay 1.
+Chon 1 se de dang hon neu tron 0 ta se co 1 chuoi 0 cong lai
+
+* Optimized Approach
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
