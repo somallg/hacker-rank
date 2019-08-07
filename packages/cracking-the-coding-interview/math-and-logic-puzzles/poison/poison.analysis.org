@@ -1,0 +1,73 @@
+* Doc va phan tich yeu cau
+Cho 1000 chai thuy tinh: trong do co 1 chai co doc va 10 lan thu kiem theo ngay
+Moi lan thu nghiem can 7 ngay de co ket qua. Neu nhu thu nghiem duong tinh thi coi nhu khong the su dung que thu do nua.
+Tinh so ngay it nhat de tim ra chai nao la chai co doc.
+Biet rang ta co the tron lan cac trai tuy thich va thu tuy thich mien la lan thu van am tinh
+
+* Quan sat va dua ra nhan xet/y tuong de giai quyet bai toan
+Ta nhan thay co 1 khoang trong 7 ngay giua cac ket qua nghia la ta co the gui lien tiep yeu cau de thu nghiem
+
+* Naive Approach
+// 1. tao 1000 chai
+// 2. mark 1 chai random 0->999 la poisoned
+// 3. khai bao 1 bien so luong strips = 10
+// 4. chia so chai = n / strips ~ 1000/ 10 = thanh 100 strips
+// 5. send kq va doi 7 ngay
+// 6. kiem tra 100 strips de lay ra cai nao bi doc
+// 7. bo 99 cai am tinh, lay cai duong tinh goi la i
+// 8. Ta con 100 chai va 9 strips
+// 9. phan thanh 9 nhom moi nhom 100/9 ~ 11 chai
+// tiep tuc cho den het
+
+* Optimized Approach
+Neu nhu ta sap xep cac chai theo nhom la:
+0xx tu 0 -> 99
+1xx tu 100 -> 199
+...
+9xx tu 900 -> 999
+
+Gui nhom nay de lay ket qua, ta se biet duoc chai thuoc doc o nhom nao.
+Ngay la ta biet duoc hang tram tren nhan cua chai thuoc doc.
+
+Neu nhu chia theo cach khac ta co the tim duoc so hang chuc va hang don vi cua chai thuoc doc.
+V/d de tim hang chuc ta chia theo nhom
+x0x -> tat ca cac chai co 0 o hang chuc 100, 101, 102, 202, ...
+x1x -> tat ca cac chai co 1 o hang chuc 010, 011, 012, ... 110, 111, 112, ... 919
+...
+x9x -> tat ca cac chai co 9 o hang chuc
+
+Tu do, ta co the suy ra duoc so nhan cua chai doc
+Trong truong hop 882 va 383 ?
+
+Vi lo 8xx cover x8x nen trong truong hop nay 8 co the
+
+Neu nhu ta chi duoc gui 10 que thu va phai doi thi can it nhat 21 lan de tim ra
+Neu nhu moi ngay ta duoc goi 10 que thu thi se can 1->7, 2->8, 3->9, tong la 9 ngay
+
+* Optimal Approach
+Q: Ta co nhan xet gi ve ket qua tra ve cua test strip ?
+A: Tra ve 1 trong 2 gia tri la true hoac false. Ta nhan thay ket qua nay gan giong voi binary number
+
+Q: Co cach nao de chia 1000 chai thanh 10 nhom (dep nhat la su dung binary) de sau khi biet ket qua kiem tra ta co the suy nguoc lai gia tri cua chai co doc ?
+A: Co cach nhu sau, voi moi so b tu 0 -> 999 ta so co
+chai 0:   0b0000000000
+chai 1:   0b0000000001
+chai 2:   0b0000000010
+chai n:   0b0000100000
+...
+chai 999: 0b1111100111
+
+Ta se chia theo hang doc nghia la nhom 0 = tat ca cac chai co bit 1 o vi tri 0
+nhom 1 = tat ca cac chai co bit 1 o vi tri 1
+...
+
+Khi co ket qua tra ve, neu nhom 0 co doc nghia~ la chai can tim phai co bit 1 o vi tri 0, tuong tu cho 1...999
+Chai can tim chinh la gia tri binary cua nhom 0 -> 9 ma ta da nhom lai
+
+Nhan thay la 2 ** 10 = 1024 > 1000 nen chac chan ta co the chia tham 10 nhom nhu tren
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
