@@ -17,7 +17,7 @@
     "lint": "tslint -p tsconfig.json -c tslint.json -t stylish",
     "gulp:lint": "gulp lint",
     "enforce": "gulp enforce",
-    "debug": "node --inspect node_modules/.bin/jest --runInBand --coverage false",
+    "debug": "node --inspect-brk node_modules/.bin/jest --runInBand --coverage false",
     "gulp:debug": "node --inspect node_modules/.bin/gulp",
     "gen:files": "schematics @schematics/challenges:generate-template-files",
     "fix:spec": "schematics @schematics/challenges:fix-spec-file",

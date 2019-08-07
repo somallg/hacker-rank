@@ -11,7 +11,8 @@
     "no-relative-imports": false,
     "export-name": false,
     "no-implicit-dependencies": false,
-    "mocha-no-side-effect-code": false
+    "mocha-no-side-effect-code": false,
+    "insecure-random": false
   },
   "linterOptions": {
     "exclude": ["packages/**/*.fixture.json"]
