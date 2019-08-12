@@ -1,0 +1,56 @@
+* Doc va phan tich yeu cau
+Dinh nghia magic index cua mot mang A[1..n-1] la index i sao cho: A[i] = i;
+Cho 1 mang so tu nhien A (da duoc sap xep tang dan) tim magic index cua A.
+Neu khong co tra ve -1;
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+
+* Naive Approach
+Cach don gian nhat la su dung Brute Force bang cach duyet tu dau den cuoi mang. Khi nao gap duoc phan tu a[i] == i thi tra ve i con khong thi tra ve -1;
+
+* Optimized Approach
+Ta van chua su dung yeu cau la mang da duoc sap xep ?
+Ta nhan thay yeu cau nay kha giong Binary Search.
+Van de dat ra la lam sao ta co the ap dung binary search vao bai toan nay.
+Gia su ta co input la
+array:  -40 -20 -1 1 2 3 5 7 9 12 13
+index:    0   1  2 3 4 5 6 7 8  9 10
+
+Nhac la thuat toan Binary Search la kiem tra dieu kien voi phan tu middle
+de sau do xem xet nen tim ben phai hay ben trai.
+Trong truong hop tren thi phan tu middle co index = 5
+array[5] = 3; ta nhan thay (array[mid] = array[5] = 3) < (5 = mid)
+
+Q: Co kha nang nao magic index o ben trai khong ?
+A: Khong, vi neu ta giam mid thanh mid - 1 luc do mid - 1 la magic index khi
+va chi khi array[mid - 1] < mid - 1.
+Ma array dang duoc sap xep tang dan va khong co phan tu nao lap lai.
+Cho nen array[mid - 1] < array[mid]
+Ma array[mid] <= mid - 1 < mid do do array[mid - 1] < mid - 1
+Vay ta can phai tim o ben phai
+
+Sua lai thuat toan Brute force thanh Binary Search ta co thuat toan toi uu.
+
+* Follow up
+Trong truong hop cac phan tu cua mang lap lai thi sao ?
+Vi du cho mang sau:
+array:  -40 -5 2 2 2 3 4 7 9 12 13
+index:    0  1 2 3 4 5 6 7 8  9 10
+
+Neu nhu ap dung lai thuat toan ben tren,
+tao so sanh a[mid] = a[5] = 3 voi mid = 5
+Khi do a[mid] < mid ta se can tim ben phai mang.
+Nhung thuc te vi cac phan tu 2 cua mang lap lai nen ta co the tim duoc ca ben
+trai.
+Ta can thay doi thuat toan de tim ca ben trai va phai cua mang va tra ve index dau tien tim duoc.
+Trong truong hop nay, khi tim ben trai ta co the bo qua nhieu phan tu?
+Ta da co la (a[mid] = value) < mid nghia la ta can tim index sao cho a[index] = value => a.k.a index = value
+Nen ta chi can tim tu start -> a[mid]
+Tuong tu cho ben phai tu a[mid] -> end
+
+* TDD: Setup test case
+Done
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
