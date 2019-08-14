@@ -1,0 +1,37 @@
+* Doc va phan tich yeu cau
+Cho 2 so a va b
+Tinh a * b ma khong dung phep tinh * hay /
+Co the dung +, - va dich bit,
+Han che so luong operation
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Ta can xem xet lai a * b bieu dien gi ?
+V/d 8 * 7 = 8 + 8 + 8 + .. + 8 (7 lan)
+Hoac la so luong o cua matrix 8x7
+
+* Naive Approach
+Cach don gian la cong a vao ket qua b lan
+
+Cach 2 la dem so luong cell cua ma tran 8x7
+
+Thay vi dem lan luot, ta dem 1/2 o trc sao do x2 len
+
+Ta co the suy nghi theo cach don gian la
+
+Neu a = 1, tra ve b;
+Neu a = 0, tra ve 0;
+mulRec(a, b) = 2 * mulRec(a / 2, b); neu a chan
+Neu a le => a = 2 * k + 1 => a * b = 2 * k * b + b
+mulRec(a, b) = 2 * mulRec(k, b) + b
+
+* Optimized Approach
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
