@@ -1,0 +1,52 @@
+* Doc va phan tich yeu cau
+Yeu cau: Cho 1 mang n tra ve tat ca sub-set cua mang n
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Q: Tinh do phuc tap ve thoi gian va khong gian (toi thieu) ?
+A: Neu phan tu chi co 2 gia tri, neu co thi no o strong sub-set,
+neu khong thi khong o trong sub-set.
+Neu co 1 phan tu ta co 2 kha nang
+Voi phan tu thu 2 ta cao 2 * 2 sub-set
+Tuong tu ta co { 2 * 2 .. 2 } n lan sub-set i.e 2^n (subset)
+
+Do ta can tra ve mang/danh sach tat ca subsets, then do phuc tap thoi gian toi uu nhat
+chinh la so luong phan tu cua mang/danh sach tren.
+Ta thay moi phan tu se xuat hien trong 2^(n-1) subsets.
+Suy ra co tong cong n * 2^(n-1) phan tu trong mang
+Do do do phuc tap ve thoi gian/khong gian toi uu la O(n * 2^n)
+
+* Naive Approach
+Ta can dua ra vai vi du de co the tim ra huong giai quyet.
+Gia su: ta co tap hon A = [a1, .... an]
+Case n = 0 => P(0) = []
+Case n = 1 => P(1) = [], [a1]
+Case n = 2 => P(2) = [], [a1], [a2], [a1, a2]
+Case n = 3 => P(3) = [], [a1], [a2], [a3], [a1, a2], [a1, a3], [a2, a3], [a1, a2, a3]
+
+Ta co quy luat gi de suy P(3) tu P(2) khoong?
+P(3) - P(2) = [a3], [a1, a3], [a2, a3], [a1, a2, a3]
+            = [].push(a3), [a1].push(a3), [a2].push(a3), [a1, a2].push(a3)
+            = P(2).push(a3)
+Hence P(3)  = P(2) + P(2).push(a3)
+
+Tu cong thuc tren ta suy ra cong thuc tong quat de tim P(n) la
+P(n) = P(n - 1) + P(n - 1).concat(a3)
+// bang cach clone P(n - 1) va lay P(n - 1) clone add them a3
+
+Voi cong thuc nay, khi trien khai vao JS, ta co 2 cach su dung de quy
+1. De quy lui tu array.length - 1 ve 0
+2. De quy tien tu 0 den array.length - 1
+
+Ca 2 cach nay deu cho ra ket qua nhu nhau
+
+* Optimized Approach
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
