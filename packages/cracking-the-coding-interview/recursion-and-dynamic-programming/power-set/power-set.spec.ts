@@ -5,7 +5,7 @@
 
 import { createTestExecutor, TestFixture } from '@challenges/util';
 
-import { powerSet } from './power-set';
+import { powerSet, powerSetBinary } from './power-set';
 import * as fixture from './power-set.fixture.json';
 
 type Input = number[];
@@ -17,5 +17,12 @@ describe('CrackingTheCodingInterview - PowerSet', () => {
   createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
       powerSet
+    );
+
+  // prettier-ignore
+  // @ts-ignore
+  createTestExecutor(<TestFixture<Input, Output>> fixture)
+    .executeTests(
+      powerSetBinary
     );
 });

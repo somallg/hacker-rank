@@ -40,6 +40,16 @@ Voi cong thuc nay, khi trien khai vao JS, ta co 2 cach su dung de quy
 Ca 2 cach nay deu cho ra ket qua nhu nhau
 
 * Optimized Approach
+Co cach nay khac de giai quyet bai toan nay khong ?
+Ta nhan thay voi moi phan tu ai thi co 2 kha nang ai o trong set hoac la khong.
+Neu nhu 0 hien thi ai khong o trong set, 1 bien hien cho ai o trong set.
+Ta co the bieu dien duoc subsets voi so binary
+0000...1100 => length n
+ma so 1 o vi tri i the hien a[i] o trong power set
+
+Tu do ta co cach thu2 de tim allsubets
+loop tu 0 => 2^n, moi so nay la 1 subsets => convert binary sang subsets bang cach tim index co gia tri 1 trong binary
+push vao mang moi
 
 * Optimal Approach
 
