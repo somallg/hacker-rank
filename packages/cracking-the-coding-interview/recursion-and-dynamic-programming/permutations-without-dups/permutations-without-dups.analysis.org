@@ -1,0 +1,50 @@
+* Doc va phan tich yeu cau
+Cho 1 chuoi string s.
+Tao ra tat cac cac phep hoan vi cua string s
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Voi dang bai nhu nay (su dung de quy) ta can di theo phuong phap Base Case and Build Approach
+Nghia la viet ra cac base case (n = 0, n = 1, n = 2)
+Tu do ta xem xet co cach nao de xay dung len ket qua cho n = 3 (tu kq n = 2 da co hay khong)
+Roi dua ra cong thuc tong quat cho n (da co ket qua tu n - 1)
+
+Gia su: ta co string s bieu dien boi a1a2a3...an
+
+* Approach 1: Xay dung tu phep hoan vi cua n - 1 ky tu dau tien
+Neu n = 0 => s = {}; P(0) = [""]
+Neu n = 1 => s = a1; P(1) = [a1]
+Neu n = 2 => s = a1a2; P(2) = [a1a2, a2a1]
+Neu n = 3 => s = a1a2a3; P(3) = [a1a2a3, a1a3a2, a3a1a2, a2a1a3, a2a3a1, a3a2a2]
+Voi n = 4 => lam sao ta co the xay duung dc cac hoan vi tu ket qua o tren ?
+Ta thay a1a2a3a4 la 1 trong cac hoan vi cua s = a1a2a3a4 trong do a1a2a3 dang o trong P3
+Nhung a4 duoc them vao vi tri cuoi cung, neu a4 duoc dat o vi tri khac thi chuoi do cung la 1 phep hoan vi
+Tu do ta suy ra duoc cach de xay dung hoan n (n = s.length) tu P(n - 1)
+
+Voi moi chuoi p cua P(n - 1), dat s[n] vao tung vi tri cua p
+V/d: p = a1a2a3, s[n] = a4
+Ta co 4 vi tri de da a4 la
+index = 0 => a4a1a2a3
+index = 1 => a1a4a2a3
+index = 2 => a1a2a4a3
+index = 3 => a1a2a3a4
+
+* Approach 2: Xay dung tu phep hoan vi cua tat ca n - 1 ky tu
+Gia su s = a1a2a3
+
+Hoan vi cua 1 ky tu P(a1) = [a1]
+Hoan vi cua 2 ky tu (trong chuoi)
+P(a1, a2) = [a1a2, a2a1]
+P(a1, a3) = [a1a3, a3a1]
+P(a2, a3) = [a2a3, a3a2]
+
+Hoan vi cua 3 ky tu thi sao ? Chinh la ky tu thieu + voi hoan vi cua 2 ky tu con lai
+P(a1, a2, a3) = [ a1 + P(a2, a3), a2 + P(a1, a3), a3 + P(a2, a3) ]
+              = [ a1 + a2 + P(a3), .... ]
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co

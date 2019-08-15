@@ -1,0 +1,64 @@
+{
+  "name": "PermutationsWithoutDups Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": "1",
+          "output": ["1"]
+        },
+        {
+          "name": "Example 2",
+          "input": "12",
+          "output": ["12", "21"]
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": "123",
+          "output": ["123", "132", "312", "213", "231", "321"]
+        },
+        {
+          "name": "Sample 2",
+          "input": "1234",
+          "output": [
+            "1234",
+            "1243",
+            "1423",
+            "4123",
+            "1324",
+            "1342",
+            "1432",
+            "4132",
+            "3124",
+            "3142",
+            "3412",
+            "4312",
+            "2134",
+            "2143",
+            "2413",
+            "4213",
+            "2314",
+            "2341",
+            "2431",
+            "4231",
+            "3214",
+            "3241",
+            "3421",
+            "4321"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": []
+    }
+  ]
+}
