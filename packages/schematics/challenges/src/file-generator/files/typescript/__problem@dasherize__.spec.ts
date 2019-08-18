@@ -12,8 +12,6 @@ type Input = number;
 type Output = number;
 
 describe('<%= classify(challengeName) %> - <%= classify(problem) %>', () => {
-  // prettier-ignore
-  // @ts-ignore
   createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
       <%= functionName %>,
