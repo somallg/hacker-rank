@@ -41,6 +41,9 @@ Hoan vi cua 3 ky tu thi sao ? Chinh la ky tu thieu + voi hoan vi cua 2 ky tu con
 P(a1, a2, a3) = [ a1 + P(a2, a3), a2 + P(a1, a3), a3 + P(a2, a3) ]
               = [ a1 + a2 + P(a3), .... ]
 
+Toi uu hoa de quy bang cac them prefix (a1 + a2) xuong phep goi ham P(a3) thay vi lay ket qua cua P(a3) len
+Base case se doi thanh neu nhu string dang duyent = '' => push prefix vao result va tra ve
+
 * Dua ra loi gian toi uu sau khi so sanh cac loi giai
 
 * TDD: Setup test case
