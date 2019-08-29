@@ -1,0 +1,77 @@
+* Doc va phan tich yeu cau
+Cho so n, tao ra tat ca cac to hop cua ngoac tron () voi n ngoac mo '(' va n ngoac dong ')'
+V/d
+n = 3
+output: ((())), (()()), (())(), ()(()), ()()()
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Thu ap dung phuong phap Base Case va Build up.
+Ta co the xay duoc duoc dap an voi n = 3 neu da biet ket qua cua n = 2 ?
+
+input: n = 2
+output: P(2) = (()), ()()
+
+n = 3
+Voi moi phan tu P(2), ta phai them () vao tung vi tri cua phan tu do
+V/d
+Phan tu (())
+Them vao index 0 => ()(())
+Them vao index 1 => (()()) => duplicate (index 3)
+Them vao index 2 => ((()))
+Them vao index 3 => (()()) => duplicate (index 1)
+Them vao index 4 => (())()
+Phan tu ()()
+Them vao index 0 => ()()() => duplicate (index 2)
+Them vao index 1 => (())() => duplicate (index 4 case trc)
+Them vao index 2 => ()()() => duplicate (index 0)
+Them vao index 3 => ()(()) => duplicate (index 0 case trc)
+Them vao index 4 => ()()() => duplicate (index 0)
+
+De giai quyet van de duplicate, ta co the them cac phan tu P(n) vao Set
+Cuoi cung tra ve cac phan tu trong Set
+
+* Naive Approach
+Let set (khoi tao set moi)
+Base case n = 1 => ()
+voi moi phan tu ele cua P(n - 1)
+let s = ket qua insert '()' vao tung index cua ele
+add s vao set
+tra ve set
+
+* Optimized Approach
+Cach o tren ton nhieu tai nguyen (do su dung set)
+Thuc te: goi s la 1 phan tu cua chuoi () voi do dai 2n
+ta nhan thay s[0] = '(' vi khong the nao la ngoac dong duoc
+vay s[i] co 2 kha nang '(', hoac ')'
+Ta chi can cho s[i] = '(' truoc sau do de quy tuong tu cho s[i + 1].
+V/d dat ra khi nao nen dat '(' hay ')' ?
+Ta co n - 1 ngoac '(', va n ')' co the them vao
+Ta can 1 bien dem so luong ngoach '(' goi le o, neu o > 0 thi ta them '(' va giam so luong n
+Khi nao thi them ngoac, ')', khi ta da su dung het ngoac ')',
+Neu so luong o < 0 va c < 0 => tra ve s
+
+Thuat tuan nhu sau:
+cho s la stack rong
+goi o (so luong ngoac mo) = 1
+goi c (so luong ngoac dong) = 0
+s.push('(');
+
+Base case:
+neu (o + c >= 2*n) => in ra gia tri trong stack
+
+s.push('(');
+de quy ham voi gia tri o + 1, c, stack s
+
+s.pop(); // remove last value;
+s.push(')');
+dequy ham voi o, c + 1, stack
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
