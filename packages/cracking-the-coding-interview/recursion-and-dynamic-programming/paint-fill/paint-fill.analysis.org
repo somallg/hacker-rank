@@ -1,0 +1,46 @@
+* Doc va phan tich yeu cau
+Input: Cho 1 matrix (bieu dien man hinh), 1 diem toa do (x, y), 1 ma mau moi
+Output: to lai matrix cho den khi ta cac cach mau lien tiep trung voi mau o toa di (x, y)
+thanh mau moi (giong nhu su dung chac nang to mau cua Paint)
+
+V/d:
+Mau RGB (012)
+Screen:
+[0 0 0 0]
+[0 2 1 0]
+[0 0 1 1]
+[1 0 1 1]
+Tao do: [2, 2]
+Mau moi: 3
+
+Ouput:
+[0 0 0 0]
+[0 2 2 0]
+[0 0 2 2]
+[1 0 2 2]
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Bai toan nay co the su dung 2 cach:
+Cach 1: Su dung de quy de duyet tat ca cac diem lien tiep co mau trung voi mau cua tao do [x, y] (tam goi la X)
+
+Cac base case:
+Neu nhu toa do ngoai matrix => return
+Toa do dang duyet khong trung voi mau cua X => return
+
+Neu khong:
+To diem [x, y] thanh mau moi
+Lam tuong tu (De quy) cho [x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]
+
+* Naive Approach
+
+* Optimized Approach
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
