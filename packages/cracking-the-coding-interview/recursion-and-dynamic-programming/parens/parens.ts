@@ -3,35 +3,30 @@
  */
 
 function parens(n: number): string[] {
-  return generateParens(n);
-}
-
-function generateParens(n: number): string[] {
-  if (n <= 1) {
-    return ['()'];
-  }
-
-  const previous: string[] = generateParens(n - 1);
-  let result: string[] = [];
-
-  for (const ele of previous) {
-    result = result.concat(insertParens(ele));
-  }
-
-  return [...new Set(result).values()];
-}
-
-function insertParens(ele: string): string[] {
+  const s: string[] = [];
   const result: string[] = [];
 
-  for (let i: number = 0; i < ele.length; i += 1) {
-    const left: string = ele.substr(0, i);
-    const right: string = ele.substr(i);
-
-    result.push(`${left}()${right}`);
-  }
+  generateParens(n, n, 0, s, result);
 
   return result;
+}
+
+function generateParens(openRem: number, closingRem: number, index: number, s: string[], result: string[]): void {
+  if (openRem < 0 || closingRem < openRem) {
+    return;
+  }
+
+  if (openRem === 0 && closingRem === 0) {
+    result.push(s.join(''));
+
+    return;
+  }
+
+  s[index] = '(';
+  generateParens(openRem - 1, closingRem, index + 1, s, result);
+
+  s[index] = ')';
+  generateParens(openRem, closingRem - 1, index + 1, s, result);
 }
 
 export { parens };

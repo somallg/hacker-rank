@@ -47,24 +47,29 @@ Ta chi can cho s[i] = '(' truoc sau do de quy tuong tu cho s[i + 1].
 V/d dat ra khi nao nen dat '(' hay ')' ?
 Ta co n - 1 ngoac '(', va n ')' co the them vao
 Ta can 1 bien dem so luong ngoach '(' goi le o, neu o > 0 thi ta them '(' va giam so luong n
-Khi nao thi them ngoac, ')', khi ta da su dung het ngoac ')',
+Khi nao thi them ngoac, ')', khi ma them ')' vao khong gay ra loi cu phap.
+Cu the la so luong ngoac dong phai lon hon ngoac mo
 Neu so luong o < 0 va c < 0 => tra ve s
 
 Thuat tuan nhu sau:
-cho s la stack rong
-goi o (so luong ngoac mo) = 1
-goi c (so luong ngoac dong) = 0
-s.push('(');
+cho s la chuoi dang xay dung
+goi index = 0
+goi openRem (so luong ngoac mo con lai) = n
+goi closingRem (so luong ngoac dong con lai) = n
 
 Base case:
-neu (o + c >= 2*n) => in ra gia tri trong stack
+neu openRem < 0 hay closingRem < 0 => khong the duoc tra ve luon
+neu nhu openRem == 0 va closingRem == 0 => OK da dung het ngoac dong mo add s vao danh sach tra ve
 
-s.push('(');
-de quy ham voi gia tri o + 1, c, stack s
+truong hop tong quat:
+Add '(' vao chuoi: s[index] = '(';
+de quy ham voi gia tri s, openRem - 1, closingRem, index + 1
 
-s.pop(); // remove last value;
-s.push(')');
-dequy ham voi o, c + 1, stack
+de quy xong: can add ngoac dong ')', khi nao add ? khi closingRem > openRem
+kiem tra closingRem > openRem ?
+co, add ')' vao chuoi: s[index] = ')';
+   de quy voi s, openRem, closingRem - 1, index + 1
+khong, khong lam gi ca
 
 * Optimal Approach
 
