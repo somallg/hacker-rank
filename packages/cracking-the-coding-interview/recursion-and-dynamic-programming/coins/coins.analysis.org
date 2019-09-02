@@ -1,0 +1,68 @@
+* Doc va phan tich yeu cau
+Cho so luong khong gioi than cac dong 25 cents, 10 cents, 5 cents va 1 cent
+Tinh so luong cach co the bieu dien duoc n cents?
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Ta can tim su lien ket giu van de hien tai va cac van de nho hon de co the suy ra duoc loi giai.
+
+n = 10
+1 dong 10
+2 dong 5
+1 dong 5, 5 dong 1
+10 dong 1
+
+V/d n = 100
+Ta co bao nhieu cach de bieu dien neu chi su dung 25 cents ?
+A: Tong cong la 5 cach: 0, 1, 2, 3, 4
+Cu the la
+makeChange(100) = makeChange(100 using 0 quarters) +
+                  makeChange(100 using 1 quarter)  +
+                  makeChange(100 using 2 quarters) +
+                  makeChange(100 using 3 quarters) +
+                  makeChange(100 using 4 quarters) +
+
+Ta nhan thay trong truong hop:
+makeChange(100 using 1 quarter) ta co the rut ngon lai hon thanh
+makeChange(75 using 0 quarts) vi (100 - 25 = 27)
+Tuong tu cho cac truong hop khac:
+makeChange(100) = makeChange(100 using 0 quarters) +
+                  makeChange(75  using 0 quarter)  +
+                  makeChange(50  using 0 quarters) +
+                  makeChange(25  using 0 quarters) +
+                  1
+Rieng truong hop:
+makeChange(100 using 4 quarters) rut lai thanh 1 (vi 25 * 4 = 100)
+
+Ta nhan thay la da su dung het 25 cents, tiep den ta se su dung don vi lon tiep theo la
+10 cents.
+Ta se su dung vao choi tung trung hop o tren:
+makeChange(100 using 0 quarters) = makeChange(100 using 0 quarters, 0 dimes) +
+                                   makeChange(100 using 0 quarters, 1 dime)  +
+                                   makeChange(100 using 0 quarters, 2 dimes)  +
+                                   makeChange(100 using 0 quarters, 3 dime)  +
+                                   ...
+                                   makeChange(100 using 0 quarters, 10 dime)  +
+
+makeChange(75 using 0 quarters) = makeChange(75 using 0 quarters, 0 dimes)
+                                  makeChange(75 using 0 quarters, 1 dime)  +
+                                  ...
+                                  makeChange(75 using 0 quarters, 7 dimes)  +
+
+Tuong tu cho cac don vi khac.
+Cuoi cung ta se gap duoc truong hop rut gop het (khi tong so luong tien cong lai vua voi don vi)
+
+* Naive Approach
+
+* Optimized Approach
+Cuoi cung ta se co 1 cay de quy moi moi nhanh lai gom tu 5-7 cau de quy tiep theo.
+Ta toi uu hoa bang cac luu lai nhung phep tinh truoc do de ve sau khong can tinh lai.
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
