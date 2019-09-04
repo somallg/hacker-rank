@@ -1,0 +1,44 @@
+{
+  "name": "EightQueens Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": 1,
+          "output": 1
+        },
+        {
+          "name": "Example 2",
+          "input": 2,
+          "output": 0
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": 4,
+          "output": 2
+        },
+        {
+          "name": "Sample 2",
+          "input": 8,
+          "output": 92
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 10
+        }
+      ]
+    }
+  ]
+}

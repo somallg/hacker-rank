@@ -1,0 +1,28 @@
+* Doc va phan tich yeu cau
+in ra tat ca cach co the dat n queens len ban co voi do dai nxn
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Nhan thay 2 con hau khong the cung 1 hang duoc.
+Nen ta se phai dat moi con queen vao 1 hang co the su dung hang de lam.
+Gia du ta dat 1 con queen vao vi tri (0, 0)
+thi con tiep theo se dat vao hang (1, [0..n])
+Con hau thu se tiep tuc...
+
+Neu nhu dat vao vi tri sai thi stop, chon vi tri khac
+
+Ta chon row cho param cua ham de quy vi vi khi tang row len con hau se khong bi trung
+ta chi can kiem tra duong thang va duong cheo
+
+* Naive Approach
+
+* Optimized Approach
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
