@@ -7,7 +7,7 @@ function countEval(s: string, target: boolean): number {
 }
 
 function convertToBoolean(s: string): boolean {
-  return s !== '0';
+  return s === '1';
 }
 
 function countEvalMemo(s: string, target: boolean, memo: Map<string, number>): number {

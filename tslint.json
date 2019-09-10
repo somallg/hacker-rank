@@ -1,9 +1,6 @@
 {
   "extends": ["tslint-microsoft-contrib", "tslint-config-prettier"],
-  "rulesDirectory": [
-    "node_modules/tslint-microsoft-contrib",
-    "tslint-plugin-prettier"
-  ],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib", "tslint-plugin-prettier"],
   "rules": {
     "prettier": true,
     "interface-name": false,
@@ -12,7 +9,19 @@
     "export-name": false,
     "no-implicit-dependencies": false,
     "mocha-no-side-effect-code": false,
-    "insecure-random": false
+    "insecure-random": false,
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration-ignore-function",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ]
   },
   "linterOptions": {
     "exclude": ["packages/**/*.fixture.json"]
