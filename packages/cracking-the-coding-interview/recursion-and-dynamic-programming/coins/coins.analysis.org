@@ -54,8 +54,9 @@ Cuoi cung ta se gap duoc truong hop rut gop het (khi tong so luong tien cong lai
 * Naive Approach
 
 * Optimized Approach
-Cuoi cung ta se co 1 cay de quy moi moi nhanh lai gom tu 5-7 cau de quy tiep theo.
-Ta toi uu hoa bang cac luu lai nhung phep tinh truoc do de ve sau khong can tinh lai.
+Cuoi cung ta se co 1 cay de quy moi moi nhanh lai gom tu 5-7 cau
+de quy tiep theo. Ta co the toi uu hoa bang cac luu lai nhung phep
+tinh truoc do de ve sau khong can tinh lai.
 
 * Optimal Approach
 

@@ -1,0 +1,68 @@
+* Doc va phan tich yeu cau
+Input: cho 1 string bieu dien 1 bieu thuc boolean chi chua cac ky tu
+1 (true), 0 (false), toan tu: & (AND), | (OR), ^ (XOR)
+Va 1 target boolean (true/false)
+Output: dem xem co bao nhieu cac de them grouping vao bieu thuc de
+khi thuc hien bieu thuc se ra duoc gia tri boolean
+
+V/d:
+Input: "1&1", true => chi co 1 cach duy nhat
+Input: "1&0|1", true =>
+Co cach cach la:
+1: (1&0)|1 = 0|1 = 1 (true)
+2: 1&(0|1) = 1&1 = 1 (true)
+
+Input: "1^0|0|1", false => 2
+Input: "0&0&0&1^1|0", true => 10
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Ta co cac nhan xet sau:
+1. Chi can tra ve so luong cach de thuc hien tinh toan ra target boolean
+2. Ta can tim su lien the giua van de hien tai voi van de truoc do
+3. Cho co the dat () vao chinh la quanh operator
+4. Neu ta tach operator & thanh 2 phan left (trai) va right (phai) thi ta co
+bieu thuc left&right.
+Khi do (gia su target false)
+countEval(left&right, false) = countEval(left, true) * countEval(right, false)
+                            + countEval(left, false) * countEval(right, true)
+
+Neu nhu target la true thi:
+countEval(left&right, true) = countEval(left, true) * countEval(right, true)
+
+Tuong tu cho opertor |
+countEval(left | right, true) = countEval(left, true) * countEval(right, false)
+                              + countEval(left, true) * countEval(right, true)
+                              + countEval(left, false) * countEval(right, true)
+
+countEval(left | right, false) = countEval(left, false) * countEval(right, false)
+
+Tuong tu cho operator ^
+countEval(left ^ right, true) = countEval(left, true) * countEval(right, false)
+                              + countEval(left, false) * countEval(right, true)
+
+countEval(left ^ right, false) = countEval(left, true) * countEval(right, true)
+                               + countEval(left, false) * countEval(right, false)
+
+Suy ra cong thuc tong quat
+
+totalEval(left) = countEval(left, true) + countEval(left, false)
+totalEval(right) = countEval(right, true) + countEval(left, false)
+
+totalEval(expression) =  countEval(left) * countEval(right)
+countEval(expression, false) = totalEval(expression) - countEval(expression, true)
+
+* Optimized Approach
+Toi uu hoa bang cac cache gia tri cua expression da duoc tinh toan lai.
+V/du:
+expression: "0^1^1|1&0^1^1"
+Ta thay sub-expression "0^1^1" xuat hien 2 lan va co the luu lai de tai su dung sau nay
+
+* Optimal Approach
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co

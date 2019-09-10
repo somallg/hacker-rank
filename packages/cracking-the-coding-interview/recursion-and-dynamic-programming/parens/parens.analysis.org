@@ -58,7 +58,7 @@ goi openRem (so luong ngoac mo con lai) = n
 goi closingRem (so luong ngoac dong con lai) = n
 
 Base case:
-neu openRem < 0 hay closingRem < 0 => khong the duoc tra ve luon
+neu openRem < 0 hay closingRem < openRem => trang thai loi, khong the duoc tra ve luon
 neu nhu openRem == 0 va closingRem == 0 => OK da dung het ngoac dong mo add s vao danh sach tra ve
 
 truong hop tong quat:
