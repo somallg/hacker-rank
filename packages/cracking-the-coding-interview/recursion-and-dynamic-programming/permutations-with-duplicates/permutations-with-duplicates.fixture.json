@@ -1,0 +1,39 @@
+{
+  "name": "PermutationsWithDuplicates Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": "ab",
+          "output": ["ab", "ba"]
+        },
+        {
+          "name": "Example 2",
+          "input": "aab",
+          "output": ["aab", "aba", "baa"]
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": "aba",
+          "output": ["aab", "aba", "baa"]
+        },
+        {
+          "name": "Sample 2",
+          "input": "aabb",
+          "output": ["aabb", "abab", "abba", "baab", "baba", "bbaa"]
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": []
+    }
+  ]
+}

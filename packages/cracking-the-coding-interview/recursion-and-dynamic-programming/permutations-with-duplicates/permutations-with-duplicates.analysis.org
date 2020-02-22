@@ -1,0 +1,44 @@
+* Doc va phan tich yeu cau
+Cho chuoi string s (co ky tu lap lai), tao ra tat ca hoan vi cua s ma khong co
+hoan vi nao trung lap nua
+
+* Quan sat va dua ra nhan xet, y tuong de giai quyet bai toan
+Bai toan nay kha giong voi bai toan permutations-without-dups
+Ta cung su dung phuong phap Base Case and Build approach cho bai toan nay
+
+* Approach 1: Xay dung tu hoan vi cua n - 1 ky tu dau tien
+V/du string s = abca
+Hoan vi cua 0 ky tu dau tien la: '' => P(0) = [''];
+Hoan vi cua 1 ky tu dau tien la: a  => P(1) = ['a'];
+Hoan vi cua 2 ky tu dau tien la: ab => P(2) = ['ab', 'ba']
+Hoan vi cua 3 ky tu dau tien la: abc => P(3) = ['abc', 'acb, 'cab', 'bac', 'bca', 'cba']
+Hoan vi cua 4 ky tu: abca => Ta can them a vao tung vi tri trong chuoi cua P(3)
+P(4) = [
+  'abca', 'abac', 'aabc', 'aabc',
+  'acba', 'acab', 'caab', 'aacb',
+  'caba', 'caab', 'caab', 'acab',
+  'baca', 'baac', 'baac', 'abac',
+  'bcaa', 'bcaa', 'baca', 'abca',
+  'cbaa', 'cbaa', 'caba', 'acba'
+]
+P(4) co nhieu phan tu dang lap lai, ta co the chon kieu du lieu tra ve la Set<string>
+de dam bao cac phan tu khong bi lap lai.
+Tong quat hoa thi cach cua ta la Tao ra tat cac cac hoan => chotn nhung hoan vi duy nhat
+Cac nay, co do phuc tap cao O(n!)
+
+Ta co the toi uu hoa, bang cach sap xep chuoi theo thu tu lexical.
+Sau do khi them ky tu c vao tung vi tri cua chuoi cua hoan vi trc do.
+Ta kiem tra vi tri i + 1 co bang c khong ? Neu bang thi ta skip vi ta da add c voi trc do roi
+
+* Approach 2: Xay dung hoan vi tu map<ku tu, so lan lap>
+Thay vi lap cac ky tu trong chuoi, ta xay dung 1 map cua tung ky tu voi so lan lap tuong ung.
+Khi do ta su dung prefix approach, de them tung ky tu va giam so lan xuat hien cua no di.
+Khi den het khong con gia tri nao trong map ta biet chac la da den base case => tra ve du lieu
+
+* Dua ra loi gian toi uu sau khi so sanh cac loi giai
+
+* TDD: Setup test case
+
+* Bat dau code thuat toan thich hop nhat
+
+* Test va fix bug neu co
