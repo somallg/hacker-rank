@@ -8,14 +8,14 @@ import { createTestExecutor, generateArray, TestFixture } from '@challenges/util
 import { <%= functionName %> } from './<%= problem %>';
 import * as fixture from './<%= problem %>.fixture.json';
 
-type Input = number;
-type Output = number;
+type Input = [number, number];
+type Output = [number, number];
 
-describe('<%= classify(challengeName) %> - <%= classify(problem) %>', () => {
+describe('<%= classify(challengeName) %> - <%= classify(problem) %>', (): void => {
   createTestExecutor(<TestFixture<Input, Output>> fixture)
     .executeTests(
-      <%= functionName %>,
+      ([a, b]: Input): Output => <%= functionName %>(a),
       <%= functionName %>.name,
-      generateArray
+      (inputSize: number): Input => generateArray(inputSize)
     );
 });

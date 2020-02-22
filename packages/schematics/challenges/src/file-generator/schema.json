@@ -7,13 +7,17 @@
     "directory": {
       "description": "The path to create problem files.",
       "type": "string",
+      "default": "packages/cracking-the-coding-interview",
       "format": "path",
-      "alias": "d"
+      "alias": "d",
+      "x-prompt": "Enter directory path"
     },
     "problem": {
       "description": "The name of the problem.",
       "type": "string",
-      "alias": "p"
+      "default": "problem",
+      "alias": "p",
+      "x-prompt": "Enter problem name"
     },
     "lang": {
       "description": "Specifes the programming language.",

@@ -1,21 +1,8 @@
 import { strings } from '@angular-devkit/core';
 
-import {
-  apply,
-  chain,
-  mergeWith,
-  move,
-  Rule,
-  SchematicsException,
-  template,
-  url
-} from '@angular-devkit/schematics';
+import { apply, chain, mergeWith, move, noop, Rule, template, url } from '@angular-devkit/schematics';
 
-import {
-  getChallengeName,
-  getFunctionName,
-  getUrl
-} from '../util/challenge.util';
+import { getChallengeName, getFunctionName, getUrl } from '../util/challenge.util';
 
 import { Schema as FileGeneratorOptions } from './schema';
 
@@ -24,10 +11,16 @@ export default function(options: FileGeneratorOptions): Rule {
   const { directory, problem, lang }: FileGeneratorOptions = options;
 
   const challengeName: string = getChallengeName(options.directory);
-  if (!challengeName) {
-    throw new SchematicsException(
-      'Invalid options, "directory" must be correct'
+  if (!challengeName || !problem) {
+    // tslint:disable-next-line
+    console.log(
+      `Usage:
+         --directory (-d): path to directory (required)
+         --problem   (-p): problem name (required)
+         --language  (-l): programming language (optional, default value: typescript)`
     );
+
+    return noop();
   }
 
   const functionName: string = getFunctionName(challengeName, problem);

@@ -20,9 +20,7 @@ export default function(options: FixSpecOptions): Rule {
   const { directory }: FixSpecOptions = options;
 
   if (!directory) {
-    throw new SchematicsException(
-      'Invalid options, "directory" must be correct'
-    );
+    throw new SchematicsException('Invalid options, "directory" must be correct');
   }
 
   return (tree: Tree): Tree => {
@@ -45,19 +43,12 @@ export default function(options: FixSpecOptions): Rule {
 
       const result: ts.TransformationResult<ts.Node> = ts.transform(
         sourceFile,
-        [
-          transformPropertyAccess,
-          transformImportDeclaration,
-          transformAsExpression
-        ].map(createTransformer)
+        [transformPropertyAccess, transformImportDeclaration, transformAsExpression].map(createTransformer)
       );
 
       const transformedSourceFile: ts.Node = result.transformed[0];
 
-      tree.overwrite(
-        filePath,
-        printer.printFile(<ts.SourceFile>transformedSourceFile)
-      );
+      tree.overwrite(filePath, printer.printFile(<ts.SourceFile>transformedSourceFile));
 
       result.dispose();
     });
@@ -66,9 +57,7 @@ export default function(options: FixSpecOptions): Rule {
   };
 }
 
-function createTransformer<T extends ts.Node>(
-  fn: (node: T) => T
-): ts.TransformerFactory<T> {
+function createTransformer<T extends ts.Node>(fn: (node: T) => T): ts.TransformerFactory<T> {
   return transformer;
 
   function transformer(context: ts.TransformationContext): ts.Transformer<T> {
@@ -97,9 +86,7 @@ function transformImportDeclaration(node: ts.Node): ts.Node {
     if (moduleSpecifier.includes(IMPORT_CHALLENGES)) {
       const elements: ts.ImportSpecifier[] = methodNames
         .concat('TestFixture')
-        .map((name: string) =>
-          ts.createImportSpecifier(undefined, ts.createIdentifier(name))
-        );
+        .map((name: string) => ts.createImportSpecifier(undefined, ts.createIdentifier(name)));
 
       return ts.createImportDeclaration(
         undefined,
@@ -182,9 +169,7 @@ function hasIdentifier(str: string, node: ts.Node): boolean {
 }
 
 function getMethod(node: ts.Node): string {
-  const method: ts.Node = node
-    .getChildren()
-    .filter((n: ts.Node, i: number) => i > 0 && ts.isIdentifier(n))[0];
+  const method: ts.Node = node.getChildren().filter((n: ts.Node, i: number) => i > 0 && ts.isIdentifier(n))[0];
 
   if (!method) {
     return '';
