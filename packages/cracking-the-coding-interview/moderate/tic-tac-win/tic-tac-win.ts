@@ -9,20 +9,20 @@ enum Piece {
 }
 
 function ticTacWin(board: number[][]): Piece {
-  const intructions: Check[] = [];
+  const iterators: IterableIterator<number[]>[] = [];
   const size: number = board.length;
 
   for (let i = 0; i < size; i += 1) {
     // check cols
-    intructions.push(new Check(0, i, 1, 0));
+    iterators.push(generateCoors(0, i, 1, 0, size));
     // check rows
-    intructions.push(new Check(i, 0, 0, 1));
+    iterators.push(generateCoors(i, 0, 0, 1, size));
   }
-  intructions.push(new Check(0, 0, 1, 1));
-  intructions.push(new Check(0, size - 1, 1, -1));
+  iterators.push(generateCoors(0, 0, 1, 1, size));
+  iterators.push(generateCoors(0, size - 1, 1, -1, size));
 
-  for (const intruction of intructions) {
-    const winner = hasWon(board, intruction);
+  for (const iterator of iterators) {
+    const winner = hasWon(board, iterator);
     if (winner !== Piece.EMPTY) {
       return winner;
     }
@@ -31,42 +31,41 @@ function ticTacWin(board: number[][]): Piece {
   return Piece.EMPTY;
 }
 
-function hasWon(board: number[][], intruction: Check): Piece {
-  const first = board[intruction.row][intruction.col];
+function hasWon(board: number[][], iterator: IterableIterator<number[]>): Piece {
+  // tslint:disable-next-line
+  let {
+    done,
+    value: [row, col]
+  } = iterator.next();
+  const first = board[row][col];
 
-  while (intruction.inBound(board.length)) {
-    if (board[intruction.row][intruction.col] !== first) {
+  while (!done) {
+    if (board[row][col] !== first) {
       return Piece.EMPTY;
     }
 
-    intruction.increment();
+    ({ done, value: [row, col] = [NaN, NaN] } = iterator.next());
   }
 
   return first;
 }
 
-// tslint:disable-next-line
-class Check {
-  public row: number;
-  public col: number;
-  public rowI: number;
-  public colI: number;
-
-  constructor(row: number, col: number, rowI: number, colI: number) {
-    this.row = row;
-    this.col = col;
-    this.rowI = rowI;
-    this.colI = colI;
+function* generateCoors(
+  row: number,
+  col: number,
+  rowI: number,
+  colI: number,
+  size: number
+): IterableIterator<number[]> {
+  while (row >= 0 && row < size && col >= 0 && col < size) {
+    yield [row, col];
+    // tslint:disable-next-line
+    row += rowI;
+    // tslint:disable-next-line
+    col += colI;
   }
 
-  public increment(): void {
-    this.row += this.rowI;
-    this.col += this.colI;
-  }
-
-  public inBound(size: number): boolean {
-    return this.row >= 0 && this.row < size && this.col >= 0 && this.col < size;
-  }
+  return;
 }
 
 export { ticTacWin };
