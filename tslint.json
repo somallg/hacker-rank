@@ -12,10 +12,7 @@
     "insecure-random": false,
     "typedef": [
       true,
-      "call-signature",
-      "arrow-call-signature",
       "parameter",
-      "arrow-parameter",
       "property-declaration",
       "variable-declaration-ignore-function",
       "member-variable-declaration",

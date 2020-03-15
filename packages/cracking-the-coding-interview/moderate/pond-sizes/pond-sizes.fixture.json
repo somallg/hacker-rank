@@ -1,0 +1,50 @@
+{
+  "name": "PondSizes Fixture",
+  "testCategories": [
+    {
+      "name": "Example Tests",
+      "testCases": [
+        {
+          "name": "Example 1",
+          "input": [
+            [0, 2, 1, 0],
+            [0, 1, 0, 1],
+            [1, 1, 0, 1],
+            [0, 1, 0, 1]
+          ],
+          "output": [2, 4, 1]
+        }
+      ]
+    },
+    {
+      "name": "Correctness Tests",
+      "testCases": [
+        {
+          "name": "Sample 1",
+          "input": [
+            [0, 0],
+            [0, 0]
+          ],
+          "output": [4]
+        },
+        {
+          "name": "Sample 2",
+          "input": [
+            [1, 1],
+            [1, 1]
+          ],
+          "output": [0]
+        }
+      ]
+    },
+    {
+      "name": "Performance Tests",
+      "testCases": [
+        {
+          "name": "Medium 1",
+          "inputSize": 100
+        }
+      ]
+    }
+  ]
+}
