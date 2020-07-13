@@ -91,7 +91,7 @@
     "rollup-plugin-typescript2": "^0.24.1",
     "semantic-release": "15.13.24",
     "semantic-release-cli": "5.2.1",
-    "standard-version": "7.0.0",
+    "standard-version": "8.0.1",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.20.0",
